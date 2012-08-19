@@ -3,10 +3,7 @@
 #+EMAIL: talha131@gmail.com
 
 * Contents
-1. [[#git-config-section][Git]]
+1. [[#git][Git]]
 * Git 
-:PROPERTIES:
-:CUSTOM_ID: git-config-section
-:END:
 1. [[http://dropshado.ws/post/7844857440/gitconfig-colors][David DeSandro]] blog entry is a good start point.
 2. [[http://cheat.errtheblog.com/s/git][Cheat sheets]] has more comprehensive entry.
