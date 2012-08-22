@@ -6,9 +6,9 @@
 [color]
   ui = true
 [color "branch"]
-  current = yellow black
-  local = yellow
-  remote = magenta
+  current = green 
+  local = magenta
+  remote = yellow 
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
