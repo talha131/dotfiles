@@ -1,0 +1,24 @@
+if has("gui_running")
+  set guifont=Courier_NEW:h11:cANSI
+endif
+set guifont=Menlo\ Regular:h13
+set term=screen-256color
+set number
+set expandtab
+set ruler
+set spell
+set wrap
+syntax on
+set autoindent
+set softtabstop=4
+set shiftwidth=2
+set hlsearch
+hi clear SpellBad
+hi SpellBad cterm=underline, ctermfg=red
+hi clear SpellCap
+hi SpellCap cterm=underline, ctermfg=green
+"set background=dark
+"let g:zenburn_alternate_Visual = 1
+"colorscheme zenburn 
+colorscheme beauty256Talha
+set colorcolumn=80
