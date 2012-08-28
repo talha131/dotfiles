@@ -1,11 +1,34 @@
-;;;; Core functionality
+;;; evil-core.el --- Core functionality
+;; Author: Vegard Øye <vegard_oye at hotmail.com>
+;; Maintainer: Vegard Øye <vegard_oye at hotmail.com>
+;;
+;; This file is NOT part of GNU Emacs.
+
+;;; License:
+
+;; This file is part of Evil.
+;;
+;; Evil is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; Evil is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with Evil.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
 
 ;; Evil is defined as a globalized minor mode, enabled with the toggle
-;; function `evil-mode'. This in turn enables `evil-local-mode' in
+;; function `evil-mode'.  This in turn enables `evil-local-mode' in
 ;; every buffer, which sets up the buffer's state.
 ;;
 ;; Each state has its own keymaps, and these keymaps have status as
-;; "emulation keymaps" with priority over regular keymaps. Emacs
+;; "emulation keymaps" with priority over regular keymaps.  Emacs
 ;; maintains the following keymap hierarchy (highest priority first):
 ;;
 ;;     * Overriding keymaps/overlay keymaps...
@@ -29,7 +52,7 @@
 ;; in `emulation-mode-map-alist'.
 ;;
 ;; Most of the key bindings for a state are stored in its global
-;; keymap, which has a name such as `evil-normal-state-map'. (See the
+;; keymap, which has a name such as `evil-normal-state-map'.  (See the
 ;; file evil-maps.el, which contains all the default key bindings.)
 ;; A state also has a local keymap (`evil-normal-state-local-map'),
 ;; which may contain user customizations for the current buffer.
@@ -37,22 +60,22 @@
 ;; own by passing the mode's keymap to the function `evil-define-key'.
 ;; These mode-specific bindings are ultimately stored in so-called
 ;; auxiliary keymaps, which are sandwiched between the local keymap
-;; and the global keymap. Finally, the state may also activate the
+;; and the global keymap.  Finally, the state may also activate the
 ;; keymaps of other states (e.g., Normal state inherits bindings
 ;; from Motion state).
 ;;
 ;; For integration purposes, a regular Emacs keymap may be "elevated"
 ;; to emulation status by passing it to `evil-make-intercept-map' or
-;; `evil-make-overriding-map'. An "intercept" keymap has priority over
-;; all other Evil keymaps. (Evil uses this facility when debugging and
+;; `evil-make-overriding-map'.  An "intercept" keymap has priority over
+;; all other Evil keymaps.  (Evil uses this facility when debugging and
 ;; for handling the "ESC" key in the terminal.) More common is the
 ;; "overriding" keymap, which only has priority over the global state
-;; keymap. (This is useful for adapting key-heavy modes such as Dired,
+;; keymap.  (This is useful for adapting key-heavy modes such as Dired,
 ;; where all but a few keys should be left as-is and should not be
 ;; shadowed by Evil's default bindings.)
 ;;
 ;; States are defined with the macro `evil-define-state', which
-;; creates a command for switching to the state. This command,
+;; creates a command for switching to the state.  This command,
 ;; for example `evil-normal-state' for Normal state, performs
 ;; the following tasks:
 ;;
@@ -70,12 +93,14 @@
 ;;
 ;; The various properties of a state can be accessed through their
 ;; respective variables, or by passing a keyword and the state's name
-;; to the `evil-state-property' function. Evil defines the states
+;; to the `evil-state-property' function.  Evil defines the states
 ;; Normal state ("normal"), Insert state ("insert"), Visual state
 ;; ("visual"), Replace state ("replace"), Operator-Pending state
 ;; ("operator"), Motion state ("motion") and Emacs state ("emacs").
 
 (require 'evil-common)
+
+;;; Code:
 
 (define-minor-mode evil-local-mode
   "Minor mode for setting up Evil in a single buffer."
@@ -128,7 +153,7 @@ To enable Evil globally, do (evil-mode 1)."
   (unless (minibufferp)
     (evil-local-mode 1)))
 
-;;;###autoload (autoload 'evil-mode "evil")
+;;;###autoload (autoload 'evil-mode "evil" "Toggle evil in all buffers" t)
 (define-globalized-minor-mode evil-mode
   evil-local-mode evil-initialize)
 
@@ -516,9 +541,10 @@ may be specified before the body code:
 
 (defun evil-state-keymaps (state &rest excluded)
   "Return a keymap alist of keymaps activated by STATE.
-Recursively includes the keymaps of other states referenced by STATE.
-The EXCLUDED argument is an internal safeguard against infinite
-recursion, keeping track of earlier states."
+If STATE references other states in its :enable property,
+these states are recursively processed and added to the list.
+\(The EXCLUDED argument is an internal safeguard against
+infinite recursion, keeping track of processed states.)"
   (let* ((state (or state evil-state))
          (enable (evil-state-property state :enable))
          (map (cons
@@ -548,7 +574,8 @@ recursion, keeping track of earlier states."
                        ,overriding-maps
                        (,map)))
         (push state excluded))
-       ;; the keymaps for another state
+       ;; the keymaps for another state: call `evil-state-keymaps'
+       ;; recursively, but keep track of processed states
        ((evil-state-p entry)
         (setq result `(,@result
                        ,(apply #'evil-state-keymaps entry excluded))))
@@ -578,8 +605,8 @@ This is a keymap alist, determined by the current state
     (dolist (entry evil-mode-map-alist)
       (setq mode (car-safe entry)
             map (cdr-safe entry))
-      ;; overriding keymaps are not toggled here,
-      ;; but by the mode they are associated with
+      ;; don't deactivate overriding keymaps;
+      ;; they are toggled by their associated mode
       (if (or (memq mode excluded)
               (evil-intercept-keymap-p map)
               (evil-overriding-keymap-p map)

@@ -1,5 +1,29 @@
 ;; evil-tests.el --- unit tests for Evil -*- coding: utf-8 -*-
 
+;; Author: Vegard Øye <vegard_oye at hotmail.com>
+;; Maintainer: Vegard Øye <vegard_oye at hotmail.com>
+;;
+;; This file is NOT part of GNU Emacs.
+
+;;; License:
+
+;; This file is part of Evil.
+;;
+;; Evil is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; Evil is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with Evil.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
 ;; This file is for developers. It runs some tests on Evil.
 ;; To load it, run the Makefile target "make test" or add
 ;; the following lines to .emacs:
@@ -37,6 +61,8 @@
 (require 'elp)
 (require 'ert)
 (require 'evil)
+
+;;; Code:
 
 (defvar evil-tests-run nil
   "*Run Evil tests.")
@@ -108,8 +134,7 @@ with `M-x evil-tests-run'"))
 The following optional keywords specify the buffer's properties:
 
 :state STATE            The initial state, defaults to `normal'.
-:visual TYPE            The Visual type, defaults to
-                        `evil-visual-char'.
+:visual SELECTION       The Visual selection, defaults to `char'.
 :point-start STRING     String for matching beginning of point,
                         defaults to \"[\".
 :point-end STRING       String for matching end of point,
@@ -2091,7 +2116,8 @@ Below some empty line")))
 (ert-deftest evil-test-shift ()
   "Test `evil-shift-right'."
   :tags '(evil operator)
-  (let ((evil-shift-width 4))
+  (let ((evil-shift-width 4)
+        indent-tabs-mode)
     (ert-info ("Shift linewise")
       (evil-test-buffer
         "[l]ine 1\nline 2\nline 3\n"
@@ -2101,7 +2127,14 @@ Below some empty line")))
       (evil-test-buffer
         "[l]ine 1\nline 2\nline 3\n"
         ("v$>")
-        "[ ]   line 1\nline 2\nline 3\n"))))
+        "[ ]   line 1\nline 2\nline 3\n"))
+    (ert-info ("Shift visual with count")
+      (evil-test-buffer
+        "[l]ine 1\nline 2\nline 3\n"
+        ("Vj3>")
+        "[ ]           line 1\n            line 2\nline 3\n"
+        ("Vj2<")
+        "[ ]   line 1\n    line 2\nline 3\n"))))
 
 ;;; Paste
 
@@ -6204,22 +6237,22 @@ if no previous selection")
   (should (equal (evil-ex-parse "5,2cmd arg")
                  '(evil-ex-call-command
                    (evil-ex-range
-                    (evil-ex-address (string-to-number "5") nil)
-                    (evil-ex-address (string-to-number "2") nil))
+                    (evil-ex-line (string-to-number "5") nil)
+                    (evil-ex-line (string-to-number "2") nil))
                    "cmd"
                    "arg")))
   (should (equal (evil-ex-parse "5,2cmd !arg")
                  '(evil-ex-call-command
                    (evil-ex-range
-                    (evil-ex-address (string-to-number "5") nil)
-                    (evil-ex-address (string-to-number "2") nil))
+                    (evil-ex-line (string-to-number "5") nil)
+                    (evil-ex-line (string-to-number "2") nil))
                    "cmd"
                    "!arg")))
   (should (equal (evil-ex-parse "5,2 arg")
                  '(evil-ex-call-command
                    (evil-ex-range
-                    (evil-ex-address (string-to-number "5") nil)
-                    (evil-ex-address (string-to-number "2") nil))
+                    (evil-ex-line (string-to-number "5") nil)
+                    (evil-ex-line (string-to-number "2") nil))
                    "arg"
                    nil))))
 
@@ -6230,30 +6263,30 @@ if no previous selection")
                  '(evil-ex-full-range)))
   (should (equal (evil-ex-parse "5,27" nil 'range)
                  '(evil-ex-range
-                   (evil-ex-address (string-to-number "5") nil)
-                   (evil-ex-address (string-to-number "27") nil))))
+                   (evil-ex-line (string-to-number "5") nil)
+                   (evil-ex-line (string-to-number "27") nil))))
   (should (equal (evil-ex-parse "5;$" nil 'range)
                  '(evil-ex-range
-                   (evil-ex-address (string-to-number "5") nil)
-                   (evil-ex-address (evil-ex-last-line) nil))))
+                   (evil-ex-line (string-to-number "5") nil)
+                   (evil-ex-line (evil-ex-last-line) nil))))
   (should (equal (evil-ex-parse "5,'x" nil 'range)
                  '(evil-ex-range
-                   (evil-ex-address (string-to-number "5") nil)
-                   (evil-ex-address (evil-ex-marker "x") nil))))
+                   (evil-ex-line (string-to-number "5") nil)
+                   (evil-ex-line (evil-ex-marker "x") nil))))
   (should (equal (evil-ex-parse "5,+" nil 'range)
                  '(evil-ex-range
-                   (evil-ex-address (string-to-number "5") nil)
-                   (evil-ex-address
+                   (evil-ex-line (string-to-number "5") nil)
+                   (evil-ex-line
                     nil (+ (evil-ex-signed-number (intern "+") nil))))))
   (should (equal (evil-ex-parse "5,-" nil 'range)
                  '(evil-ex-range
-                   (evil-ex-address (string-to-number "5") nil)
-                   (evil-ex-address
+                   (evil-ex-line (string-to-number "5") nil)
+                   (evil-ex-line
                     nil (+ (evil-ex-signed-number (intern "-") nil))))))
   (should (equal (evil-ex-parse "5;4+2-7-3+10-" nil 'range)
                  '(evil-ex-range
-                   (evil-ex-address (string-to-number "5") nil)
-                   (evil-ex-address
+                   (evil-ex-line (string-to-number "5") nil)
+                   (evil-ex-line
                     (string-to-number "4")
                     (+ (evil-ex-signed-number
                         (intern "+") (string-to-number "2"))
@@ -6266,11 +6299,11 @@ if no previous selection")
                        (evil-ex-signed-number (intern "-") nil))))))
   (should (equal (evil-ex-parse ".-2;4+2-7-3+10-" nil 'range)
                  '(evil-ex-range
-                   (evil-ex-address
+                   (evil-ex-line
                     (evil-ex-current-line)
                     (+ (evil-ex-signed-number
                         (intern "-") (string-to-number "2"))))
-                   (evil-ex-address
+                   (evil-ex-line
                     (string-to-number "4")
                     (+ (evil-ex-signed-number
                         (intern "+") (string-to-number "2"))
@@ -6284,17 +6317,17 @@ if no previous selection")
                         (intern "-") nil))))))
   (should (equal (evil-ex-parse "'a-2,$-10" nil 'range)
                  '(evil-ex-range
-                   (evil-ex-address
+                   (evil-ex-line
                     (evil-ex-marker "a")
                     (+ (evil-ex-signed-number
                         (intern "-") (string-to-number "2"))))
-                   (evil-ex-address
+                   (evil-ex-line
                     (evil-ex-last-line)
                     (+ (evil-ex-signed-number
                         (intern "-") (string-to-number "10")))))))
   (should (equal (evil-ex-parse ".+42" nil 'range)
                  '(evil-ex-range
-                   (evil-ex-address
+                   (evil-ex-line
                     (evil-ex-current-line)
                     (+ (evil-ex-signed-number
                         (intern "+") (string-to-number "42"))))
@@ -6392,7 +6425,12 @@ if no previous selection")
       (evil-test-buffer
         "[A]bcAbcAbc\naBcaBcaBc\nABCABCABC\nabcabcabc"
         (":%s/bc/xy/g" (kbd "RET"))
-        "AxyAxyAxy\naXyaXyaXy\nAXYAXYAXY\n[a]xyaxyaxy"))))
+        "AxyAxyAxy\naXyaXyaXy\nAXYAXYAXY\n[a]xyaxyaxy"))
+    (ert-info ("Substitute zero range on whole line")
+      (evil-test-buffer
+        "no 1\nno 2\nno 3\n[y]es 4\nno 5\nno 6\nno 7\n"
+        (":s/^/# /g")
+        "no 1\nno 2\nno 3\n[#] yes 4\nno 5\nno 6\nno 7\n"))))
 
 (ert-deftest evil-test-ex-substitute-replacement ()
   "Test `evil-ex-substitute' with special replacements."
@@ -6807,6 +6845,19 @@ maybe we need one line more with some text\n"
           "[l]line 1\nline 2"
           (":read!echo -n cmd line 1" [return])
           "line 1\n[c]md line 1\nline 2")))))
+
+(ert-deftest evil-test-global ()
+  "Test `evil-ex-global'."
+  (ert-info ("global delete")
+    (evil-test-buffer
+      "[n]o 1\nno 2\nno 3\nyes 4\nno 5\nno 6\nno 7\n"
+      (":g/yes/d" [return])
+      "no 1\nno 2\nno 3\n[n]o 5\nno 6\nno 7\n"))
+  (ert-info ("global substitute")
+    (evil-test-buffer
+      "[n]o 1\nno 2\nno 3\nyes 4\nno 5\nno 6\nno 7\n"
+      (":g/no/s/[3-6]/x" [return])
+      "no 1\nno 2\nno x\nyes 4\nno x\nno x\n[n]o 7\n")))
 
 ;;; Utilities
 

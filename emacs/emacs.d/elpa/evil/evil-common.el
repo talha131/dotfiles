@@ -1,7 +1,30 @@
-;;;; Common functions and utilities
+;;; evil-common.el --- Common functions and utilities
+;; Author: Vegard Øye <vegard_oye at hotmail.com>
+;; Maintainer: Vegard Øye <vegard_oye at hotmail.com>
+;;
+;; This file is NOT part of GNU Emacs.
+
+;;; License:
+
+;; This file is part of Evil.
+;;
+;; Evil is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; Evil is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with Evil.  If not, see <http://www.gnu.org/licenses/>.
 
 (require 'evil-vars)
 (require 'rect)
+
+;;; Code:
 
 (condition-case nil
     (require 'windmove)
@@ -19,7 +42,7 @@ window commands not available.")
 (defmacro evil-called-interactively-p ()
   "Wrapper for `called-interactively-p'.
 In older versions of Emacs, `called-interactively-p' takes
-no arguments. In Emacs 23.2 and newer, it takes one argument."
+no arguments.  In Emacs 23.2 and newer, it takes one argument."
   (if (version< emacs-version "23.2")
       '(called-interactively-p)
     '(called-interactively-p 'any)))
@@ -83,7 +106,7 @@ otherwise add at the end of the list."
 ;; custom version of `delete-if'
 (defun evil-filter-list (predicate list &optional pointer)
   "Delete by side-effect all items satisfying PREDICATE in LIST.
-Stop when reaching POINTER. If the first item satisfies PREDICATE,
+Stop when reaching POINTER.  If the first item satisfies PREDICATE,
 there is no way to remove it by side-effect; therefore, write
 \(setq foo (evil-delete-if 'predicate foo)) to be sure of
 changing the value of `foo'."
@@ -404,6 +427,10 @@ This ensures that it behaves correctly in Visual state."
 (defun evil-declare-change-repeat (command)
   "Declare COMMAND to be repeatable by buffer changes."
   (evil-add-command-properties command :repeat 'change))
+
+(defun evil-declare-insert-at-point-repeat (command)
+  "Declare COMMAND to be repeatable by buffer changes."
+  (evil-add-command-properties command :repeat 'insert-at-point))
 
 (defun evil-declare-abort-repeat (command)
   "Declare COMMAND to be nonrepeatable."
@@ -932,7 +959,8 @@ argument. Honors field boundaries, i.e., constrains the movement
 to the current field as recognized by `line-beginning-position'."
   (when (or evil-move-cursor-back force)
     (unless (or (= (point) (line-beginning-position))
-                (and visual-line-mode
+                (and (boundp 'visual-line-mode)
+                     visual-line-mode
                      (= (point) (save-excursion
                                   (beginning-of-visual-line)
                                   (point)))))
@@ -1094,6 +1122,20 @@ Signals an error at buffer boundaries unless NOERROR is non-nil."
                (line-move-finish col opoint (< count 0)))
              ;; Maybe we should just `ding'?
              (signal (car err) (cdr err))))))))))
+
+(defun evil-forward-word (&optional count)
+  "Move by words.
+Moves point COUNT words forward or (- COUNT) words backward if
+COUNT is negative. This function is the same as `forward-word'
+but returns the number of words by which point could *not* be
+moved."
+  (setq count (or count 1))
+  (let* ((dir (if (>= count 0) +1 -1))
+         (count (abs count)))
+    (while (and (> count 0)
+                (forward-word dir))
+      (setq count (1- count)))
+    count))
 
 (defun evil-move-chars (chars count)
   "Move point to the end or beginning of a sequence of CHARS.
@@ -1463,10 +1505,13 @@ If POS is nil, delete the mark."
   (set-marker (mark-marker) pos))
 
 (defun evil-save-transient-mark-mode ()
-  "Save Transient Mark mode and make the new setup buffer-local.
-The variables to save are listed in `evil-transient-vars'.
-Their values are stored in `evil-transient-vals'.
-See also `evil-restore-transient-mark-mode'."
+  "Save Transient Mark mode and make it buffer-local.
+Any changes to Transient Mark mode are now local to the current
+buffer, until `evil-restore-transient-mark-mode' is called.
+
+Variables pertaining to Transient Mark mode are listed in
+`evil-transient-vars', and their values are stored in
+`evil-transient-vals'."
   (dolist (var evil-transient-vars)
     (when (and (boundp var)
                (not (assq var evil-transient-vals)))
@@ -1477,8 +1522,15 @@ See also `evil-restore-transient-mark-mode'."
       (put var 'permanent-local t))))
 
 (defun evil-restore-transient-mark-mode ()
-  "Restore Transient Mark mode from `evil-transient-vals'.
-See also `evil-save-transient-mark-mode'."
+  "Restore Transient Mark mode.
+This presupposes that `evil-save-transient-mark-mode' has been
+called earlier. If Transient Mark mode was disabled before but
+enabled in the meantime, this function disables it; if it was
+enabled before but disabled in the meantime, this function
+enables it.
+
+The earlier settings of Transient Mark mode are stored in
+`evil-transient-vals'."
   (let (entry local var val)
     (while (setq entry (pop evil-transient-vals))
       (setq var (pop entry)

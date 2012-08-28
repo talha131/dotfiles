@@ -1,8 +1,32 @@
-;;;; Macros
+;;; evil-macros.el --- Macros
+
+;; Author: Vegard Øye <vegard_oye at hotmail.com>
+;; Maintainer: Vegard Øye <vegard_oye at hotmail.com>
+;;
+;; This file is NOT part of GNU Emacs.
+
+;;; License:
+
+;; This file is part of Evil.
+;;
+;; Evil is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; Evil is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with Evil.  If not, see <http://www.gnu.org/licenses/>.
 
 (require 'evil-common)
 (require 'evil-states)
 (require 'evil-repeat)
+
+;;; Code:
 
 (defun evil-motion-range (motion &optional count type)
   "Execute a motion and return the buffer positions.
@@ -472,12 +496,10 @@ if COUNT is positive, and to the left of it if negative.
 ;; this is used in the `interactive' specification of an operator command
 (defun evil-operator-range (&optional return-type)
   "Read a motion from the keyboard and return its buffer positions.
-The return value is a list (BEG END) or (BEG END TYPE),
-depending on RETURN-TYPE. Instead of reading from the keyboard,
-a predefined motion may be specified with MOTION. Likewise,
-a predefined type may be specified with TYPE."
+The return value is a list (BEG END), or (BEG END TYPE) if
+RETURN-TYPE is non-nil."
   (let ((motion (or evil-operator-range-motion
-                    (when (and (fboundp 'evil-ex-p) (evil-ex-p))
+                    (when (with-no-warnings (evil-ex-p))
                       #'evil-line)))
         (type evil-operator-range-type)
         (range (evil-range (point) (point)))
@@ -488,12 +510,12 @@ a predefined type may be specified with TYPE."
        ((evil-visual-state-p)
         (setq range (evil-visual-range)))
        ;; Ex mode
-       ((and (fboundp 'evil-ex-p)
-             (evil-ex-p)
+       ((and (with-no-warnings (evil-ex-p))
              evil-ex-range)
         (setq range evil-ex-range))
        ;; active region
-       ((region-active-p)
+       ((and (not (with-no-warnings (evil-ex-p)))
+             (region-active-p))
         (setq range (evil-range (region-beginning)
                                 (region-end)
                                 (or evil-this-type 'exclusive))))
@@ -577,7 +599,7 @@ It is followed by a list of keywords and functions:
                  and returns a human-readable string, for example,
                  \"2 lines\".
 
-Further keywords and functions may be specified. These are assumed to
+If further keywords and functions are specified, they are assumed to
 be transformations on buffer positions, like :expand and :contract.
 
 \(fn TYPE DOC [[KEY FUNC]...])"

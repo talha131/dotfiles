@@ -1,4 +1,28 @@
-;;;; Settings and variables
+;;; evil-vars.el --- Settings and variables
+
+;; Author: Vegard Øye <vegard_oye at hotmail.com>
+;; Maintainer: Vegard Øye <vegard_oye at hotmail.com>
+;;
+;; This file is NOT part of GNU Emacs.
+
+;;; License:
+
+;; This file is part of Evil.
+;;
+;; Evil is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; Evil is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with Evil.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Code:
 
 ;;; Hooks
 
@@ -71,20 +95,24 @@ NEWLIST     the list of new special keymaps."
   "Tries to set pending special keymaps.
 This function should be called from an `after-load-functions'
 hook."
-  (dolist (map '((evil-make-overriding-map . evil-pending-overriding-maps)
-                 (evil-make-intercept-map . evil-pending-intercept-maps)))
-    (let ((make (car map))
-          (pending (cdr map))
-          newlist)
-      (dolist (map (symbol-value pending))
-        (let ((kmap (and (boundp (car map))
-                         (keymapp (symbol-value (car map)))
-                         (symbol-value (car map))))
-              (state (cdr map)))
-          (if kmap
-              (funcall make kmap state)
-            (push map newlist))))
-      (set-default pending newlist))))
+  (let ((maps '((evil-make-overriding-map . evil-pending-overriding-maps)
+                (evil-make-intercept-map . evil-pending-intercept-maps))))
+    (while maps
+      (let* ((map (pop maps))
+             (make (car map))
+             (pending-var (cdr map))
+             (pending (symbol-value pending-var))
+             newlist)
+        (while pending
+          (let* ((map (pop pending))
+                 (kmap (and (boundp (car map))
+                            (keymapp (symbol-value (car map)))
+                            (symbol-value (car map))))
+                 (state (cdr map)))
+            (if kmap
+                (funcall make kmap state)
+              (push map newlist))))
+        (set-default pending-var newlist)))))
 
 (defun evil-set-visual-newline-commands (var value)
   "Set the value of `evil-visual-newline-commands'.
@@ -181,6 +209,13 @@ This should be a regexp set without the enclosing []."
   :group 'evil)
 (make-variable-buffer-local 'evil-word)
 
+(defcustom evil-bigword "^ \t\r\n"
+  "The characters to be considered as a big word.
+This should be a regexp set without the enclosing []."
+  :type 'string
+  :group 'evil)
+(make-variable-buffer-local 'evil-bigword)
+
 (defcustom evil-want-fine-undo nil
   "Whether actions like \"cw\" are undone in several steps."
   :type 'boolean
@@ -215,6 +250,13 @@ This should be a regexp set without the enclosing []."
   "The minimal distance between point and a parenthesis
 which causes the parenthesis to be highlighted."
   :type 'integer
+  :group 'evil)
+
+(defcustom evil-ex-hl-update-delay 0.02
+  "Time in seconds of idle before updating search highlighting.
+Setting this to a period shorter than that of keyboard's repeat
+rate allows highlights to update while scrolling."
+  :type 'number
   :group 'evil)
 
 (defcustom evil-highlight-closing-paren-at-point-states
@@ -324,7 +366,7 @@ before point."
   :type 'function
   :group 'evil)
 
-(defcustom evil-lookup-func 'woman
+(defcustom evil-lookup-func #'woman
   "Lookup function used by \
 \"\\<evil-motion-state-map>\\[evil-lookup]\"."
   :type 'function
@@ -858,6 +900,12 @@ or call the state function (e.g., `evil-normal-state').")
 (evil-define-local-var evil-previous-state nil
   "The Evil state being switched from.")
 
+(defvar evil-execute-in-emacs-state-buffer nil
+  "The buffer of the latest `evil-execute-in-emacs-state'.
+When this command is being executed the current buffer is stored
+in this variable. This is necessary in case the Emacs-command to
+be called changes the current buffer.")
+
 (evil-define-local-var evil-mode-line-tag nil
   "Mode-Line indicator for the current state.")
 (put 'evil-mode-line-tag 'risky-local-variable t)
@@ -887,7 +935,7 @@ having higher priority.")
 (defvar evil-command-properties nil
   "Specifications made by `evil-define-command'.")
 
-(defvar evil-transient-vars '(cua-mode transient-mark-mode)
+(defvar evil-transient-vars '(cua-mode transient-mark-mode select-active-regions)
   "List of variables pertaining to Transient Mark mode.")
 
 (defvar evil-transient-vals nil
@@ -993,6 +1041,7 @@ character argument for some commands, e.g. `evil-replace'.")
   '((t . evil-repeat-keystrokes)
     (change . evil-repeat-changes)
     (motion . evil-repeat-motion)
+    (insert-at-point . evil-repeat-insert-at-point)
     (ignore . nil))
   "An alist of defined repeat-types.")
 

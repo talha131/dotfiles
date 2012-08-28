@@ -1,4 +1,28 @@
-;;;; Repeat system
+;;; evil-repeat.el --- Repeat system
+
+;; Author: Frank Fischer <frank.fischer at mathematik.tu-chemnitz.de>
+;; Maintainer: Vegard Øye <vegard_oye at hotmail.com>
+;;
+;; This file is NOT part of GNU Emacs.
+
+;;; License:
+
+;; This file is part of Evil.
+;;
+;; Evil is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; Evil is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with Evil.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
 
 ;; A repeat begins when leaving Normal state; it ends when re-entering
 ;; Normal state. The diagram below shows possible routes between
@@ -99,6 +123,8 @@
 ;; key-sequence.
 
 (require 'evil-states)
+
+;;; Code:
 
 (declare-function evil-visual-state-p "evil-visual")
 (declare-function evil-visual-range "evil-visual")
@@ -209,7 +235,8 @@ If COMMAND doesn't have this property, return DEFAULT."
       (eq repeat-type 'abort)                    ; ... explicitely forced
       (eq evil-recording-repeat 'abort)          ; ... already aborted
       (evil-emacs-state-p)                       ; ... in Emacs state
-      (evil-mouse-events-p (this-command-keys))  ; ... mouse events
+      (and (evil-mouse-events-p (this-command-keys))  ; ... mouse events
+           (eq repeat-type nil))
       (minibufferp)))                            ; ... minibuffer activated
 
 (defun evil-repeat-record (info)
@@ -345,6 +372,27 @@ If CHANGE is specified, it is added to `evil-repeat-changes'."
                           ,evil-repeat-changes
                           ,(- (point) evil-repeat-pos)))
     (setq evil-repeat-changes nil)))
+
+(defun evil-repeat-insert-at-point (flag)
+  "Repeation recording function for commands that insert text in region.
+This records text insertion when a command inserts some text in a
+buffer between (point) and (mark)."
+  (cond
+   ((eq flag 'pre)
+    (add-hook 'after-change-functions #'evil-repeat-insert-at-point-hook nil t))
+   ((eq flag 'post)
+    (remove-hook 'after-change-functions #'evil-repeat-insert-at-point-hook t))))
+
+(defun evil-repeat-insert-at-point-hook (beg end length)
+  (let ((repeat-type (evil-repeat-type this-command t)))
+    (when (and (evil-repeat-recording-p)
+               (eq repeat-type 'evil-repeat-insert-at-point)
+               (not (evil-emacs-state-p))
+               (not (evil-repeat-different-buffer-p t))
+               evil-state)
+      (setq evil-repeat-pos beg)
+      (evil-repeat-record (list 'insert (buffer-substring beg end))))))
+(put 'evil-repeat-insert-at-point-hook 'permanent-local-hook t)
 
 (defun evil-normalize-repeat-info (repeat-info)
   "Concatenate consecutive arrays in REPEAT-INFO.

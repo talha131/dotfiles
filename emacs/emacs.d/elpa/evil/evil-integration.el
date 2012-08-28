@@ -1,7 +1,31 @@
-;;;; Integrate Evil with other modules
+;;; evil-integration.el --- Integrate Evil with other modules
+
+;; Author: Vegard Øye <vegard_oye at hotmail.com>
+;; Maintainer: Vegard Øye <vegard_oye at hotmail.com>
+;;
+;; This file is NOT part of GNU Emacs.
+
+;;; License:
+
+;; This file is part of Evil.
+;;
+;; Evil is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; Evil is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with Evil.  If not, see <http://www.gnu.org/licenses/>.
 
 (require 'evil-maps)
 (require 'evil-core)
+
+;;; Code:
 
 (mapc #'(lambda (cmd)
           (evil-set-command-property cmd :keep-visual t)
@@ -20,6 +44,7 @@
       '(balance-windows
         eval-expression
         execute-extended-command
+        exit-minibuffer
         compile
         delete-window
         delete-other-windows
@@ -36,6 +61,10 @@
 
 (dolist (cmd '(keyboard-quit keyboard-escape-quit))
   (evil-set-command-property cmd :suppress-operator t))
+
+;;; Mouse
+(evil-declare-insert-at-point-repeat 'mouse-yank-primary)
+(evil-declare-insert-at-point-repeat 'mouse-yank-secondary)
 
 ;;; key-binding
 

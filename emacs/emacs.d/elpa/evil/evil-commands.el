@@ -1,11 +1,31 @@
-;;;; Commands
+;;; evil-commands.el --- Evil commands and operators
+;; Author: Vegard Øye <vegard_oye at hotmail.com>
+;; Maintainer: Vegard Øye <vegard_oye at hotmail.com>
+;;
+;; This file is NOT part of GNU Emacs.
+
+;;; License:
+
+;; This file is part of Evil.
+;;
+;; Evil is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; Evil is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with Evil.  If not, see <http://www.gnu.org/licenses/>.
 
 (require 'evil-common)
 (require 'evil-digraphs)
 (require 'evil-search)
 (require 'evil-ex)
 (require 'evil-types)
-(require 'evil-cjk)
 
 ;;; Motions
 
@@ -17,6 +37,8 @@
 ;; Furthermore, the command must have the command properties
 ;; :keep-visual t and :repeat motion; these are automatically
 ;; set by the `evil-define-motion' macro.
+
+;;; Code:
 
 (evil-define-motion evil-forward-char (count &optional crosslines noerror)
   "Move cursor to the right by COUNT characters.
@@ -237,13 +259,15 @@ By default the first line."
 
 (evil-define-union-move evil-move-word (count)
   "Move by words."
-  (evil-move-word-cjk count)
-  (evil-move-chars (evil-concat-charsets "^ \t\r\n" evil-word) count)
+  (evil-move-chars "^ \t\r\n[:word:]" count)
+  (let ((word-separating-categories evil-cjk-word-separating-categories)
+        (word-combining-categories evil-cjk-word-combining-categories))
+    (evil-forward-word count))
   (evil-move-empty-lines count))
 
 (evil-define-union-move evil-move-WORD (count)
   "Move by WORDs."
-  (evil-move-chars "^ \t\r\n" count)
+  (evil-move-chars evil-bigword count)
   (evil-move-empty-lines count))
 
 (evil-define-motion evil-forward-word-begin (count &optional bigword)
@@ -1226,44 +1250,56 @@ but doesn't insert or remove any spaces."
   :motion evil-line
   (evil-indent beg end))
 
-(evil-define-operator evil-shift-left (beg end)
+(evil-define-operator evil-shift-left (beg end &optional count)
   "Shift text from BEG to END to the left.
 The text is shifted to the nearest multiple of `evil-shift-width'
 \(the rounding can be disabled by setting `evil-shift-round').
 See also `evil-shift-right'."
   :type line
-  (if (not evil-shift-round)
-      (indent-rigidly beg end (- evil-shift-width))
-    (let* ((indent
-            (save-excursion
-              (goto-char beg)
-              (evil-move-beginning-of-line)
-              ;; ignore blank lines
-              (while (and (< (point) end) (looking-at "[ \t]*$"))
-                (forward-line))
-              (if (> (point) end) 0
-                (current-indentation))))
-           (offset (1+ (mod (1- indent) evil-shift-width))))
-      (indent-rigidly beg end (- offset)))))
+  (interactive "<r><vc>")
+  (let ((beg (set-marker (make-marker) beg))
+        (end (set-marker (make-marker) end)))
+    (dotimes (i (or count 1))
+      (if (not evil-shift-round)
+          (indent-rigidly beg end (- evil-shift-width))
+        (let* ((indent
+                (save-excursion
+                  (goto-char beg)
+                  (evil-move-beginning-of-line)
+                  ;; ignore blank lines
+                  (while (and (< (point) end) (looking-at "[ \t]*$"))
+                    (forward-line))
+                  (if (> (point) end) 0
+                    (current-indentation))))
+               (offset (1+ (mod (1- indent) evil-shift-width))))
+          (indent-rigidly beg end (- offset)))))
+    (set-marker beg nil)
+    (set-marker end nil)))
 
-(evil-define-operator evil-shift-right (beg end)
+(evil-define-operator evil-shift-right (beg end &optional count)
   "Shift text from BEG to END to the right.
 The text is shifted to the nearest multiple of `evil-shift-width'
 \(the rounding can be disabled by setting `evil-shift-round').
 See also `evil-shift-left'."
   :type line
-  (if (not evil-shift-round)
-      (indent-rigidly beg end evil-shift-width)
-    (let* ((indent
-            (save-excursion
-              (goto-char beg)
-              (evil-move-beginning-of-line nil)
-              (while (and (< (point) end) (looking-at "[ \t]*$"))
-                (forward-line))
-              (if (> (point) end) 0
-                (current-indentation))))
-           (offset (- evil-shift-width (mod indent evil-shift-width))))
-      (indent-rigidly beg end offset))))
+  (interactive "<r><vc>")
+  (let ((beg (set-marker (make-marker) beg))
+        (end (set-marker (make-marker) end)))
+    (dotimes (i (or count 1))
+      (if (not evil-shift-round)
+          (indent-rigidly beg end evil-shift-width)
+        (let* ((indent
+                (save-excursion
+                  (goto-char beg)
+                  (evil-move-beginning-of-line nil)
+                  (while (and (< (point) end) (looking-at "[ \t]*$"))
+                    (forward-line))
+                  (if (> (point) end) 0
+                    (current-indentation))))
+               (offset (- evil-shift-width (mod indent evil-shift-width))))
+          (indent-rigidly beg end offset))))
+    (set-marker beg nil)
+    (set-marker end nil)))
 
 (evil-define-operator evil-align-left (beg end type &optional width)
   "Right-align lines in the region at WIDTH columns.
@@ -1620,10 +1656,10 @@ When called interactively, the selection is rotated blockwise."
 (defun evil-insert (count &optional vcount skip-empty-lines)
   "Switch to Insert state just before point.
 The insertion will be repeated COUNT times and repeated once for
-the next VCOUNT-1 lines starting at the same column.
+the next VCOUNT - 1 lines starting at the same column.
 If SKIP-EMPTY-LINES is non-nil, the insertion will not be performed
 on lines on which the insertion point would be after the end of the
-lines. This is the default behaviour for Visual-state insertion."
+lines.  This is the default behaviour for Visual-state insertion."
   (interactive
    (list (prefix-numeric-value current-prefix-arg)
          (when (evil-visual-state-p)
@@ -1649,7 +1685,7 @@ lines. This is the default behaviour for Visual-state insertion."
 (defun evil-append (count &optional vcount skip-empty-lines)
   "Switch to Insert state just after point.
 The insertion will be repeated COUNT times and repeated once for
-the next VCOUNT-1 lines starting at the same column. If
+the next VCOUNT - 1 lines starting at the same column.  If
 SKIP-EMPTY-LINES is non-nil, the insertion will not be performed
 on lines on which the insertion point would be after the end of
 the lines."
@@ -1679,7 +1715,8 @@ the lines."
     (evil-insert count vcount skip-empty-lines)))
 
 (defun evil-insert-resume (count)
-  "Switch to Insert state at previous insertion point."
+  "Switch to Insert state at previous insertion point.
+The insertion will be repeated COUNT times."
   (interactive "p")
   (when (evil-get-marker ?^)
     (goto-char (evil-get-marker ?^)))
@@ -1688,10 +1725,10 @@ the lines."
 (defun evil-maybe-remove-spaces ()
   "Remove space from newly opened empty line.
 This function should be called from `post-command-hook' after
-`evil-open-above' or `evil-open-below'. If the last command
+`evil-open-above' or `evil-open-below'.  If the last command
 finished insert state and if the current line consists of
 whitespaces only, then those spaces have been inserted because of
-the indentation. In this case those spaces are removed leaving a
+the indentation.  In this case those spaces are removed leaving a
 completely empty line."
   (unless (memq this-command '(evil-open-above evil-open-below))
     (remove-hook 'post-command-hook 'evil-maybe-remove-spaces)
@@ -1729,8 +1766,11 @@ The insertion will be repeated COUNT times."
   (add-hook 'post-command-hook #'evil-maybe-remove-spaces))
 
 (defun evil-insert-line (count &optional vcount)
-  "Switch to Insert state just before the first non-blank character
-on the current line. The insertion will be repeated COUNT times."
+  "Switch to insert state at beginning of current line.
+Point is placed at the first non-blank character on the current
+line.  The insertion will be repeated COUNT times.  If VCOUNT is
+non nil it should be number > 0. The insertion will be repeated
+in the next VCOUNT - 1 lines below the current one."
   (interactive "p")
   (if evil-auto-indent
       (back-to-indentation)
@@ -1747,7 +1787,9 @@ on the current line. The insertion will be repeated COUNT times."
 
 (defun evil-append-line (count &optional vcount)
   "Switch to Insert state at the end of the current line.
-The insertion will be repeated COUNT times."
+The insertion will be repeated COUNT times.  If VCOUNT is non nil
+it should be number > 0. The insertion will be repeated in the
+next VCOUNT - 1 lines below the current one."
   (interactive "p")
   (evil-move-end-of-line)
   (setq evil-insert-count count
@@ -1761,8 +1803,7 @@ The insertion will be repeated COUNT times."
   (evil-insert-state 1))
 
 (defun evil-insert-digraph (count digraph)
-  "Insert the digraph DIGRAPH.
-The insertion is repeated COUNT times."
+  "Insert COUNT digraphs DIGRAPH."
   (interactive
    (let (count char1 char2 overlay string)
      (unwind-protect
@@ -1889,7 +1930,9 @@ Calls `evil-complete-previous-line-func'."
 ;;; Search
 
 (defun evil-repeat-search (flag)
-  "Called to record a search command."
+  "Called to record a search command.
+FLAG is either 'pre or 'post if the function is called before resp.
+after executing the command."
   (cond
    ((and (evil-operator-state-p) (eq flag 'pre))
     (evil-repeat-record (this-command-keys))
@@ -2071,7 +2114,7 @@ without confirmation."
    ;; save current buffer to its file
    ((string= filename (buffer-file-name))
     (if (not bang) (save-buffer) (write-file filename)))
-   ;; save to other file
+   ;; save to another file
    (t
     (write-region nil nil filename
                   nil (not (buffer-file-name)) nil
@@ -2138,10 +2181,10 @@ If no FILE is specified, reload the current buffer from disk."
   :repeat nil
   (let (message-truncate-lines message-log-max)
     (display-message-or-buffer
-     (mapconcat 'identity
+     (mapconcat #'identity
                 (sort
                  (mapcar #'buffer-name (buffer-list))
-                 'string<)
+                 #'string<)
                 "\n")
      "*Buffers*")))
 
@@ -2396,7 +2439,9 @@ Change to `%s'? "
     (evil-ex-search-next count)))
 
 (defun evil-repeat-ex-search (flag)
-  "Called to record a search command."
+  "Called to record a search command.
+FLAG is either 'pre or 'post if the function is called before
+resp.  after executing the command."
   (cond
    ((and (evil-operator-state-p) (eq flag 'pre))
     (evil-repeat-record (this-command-keys))
@@ -2468,12 +2513,19 @@ Change to `%s'? "
          (evil-ex-substitute-regex (evil-ex-pattern-regex pattern)))
     (setq evil-ex-substitute-pattern pattern
           evil-ex-substitute-replacement replacement
-          evil-ex-substitute-flags flags)
+          evil-ex-substitute-flags flags
+          isearch-string evil-ex-substitute-regex)
+    (isearch-update-ring evil-ex-substitute-regex t)
     (if (evil-ex-pattern-whole-line pattern)
         ;; this one is easy, just use the built-in function
         (perform-replace evil-ex-substitute-regex
                          evil-ex-substitute-replacement
-                         confirm t nil nil nil beg end)
+                         confirm t nil nil nil
+                         beg
+                         (if (and (> end (point-min))
+                                  (= (char-after (1- end)) ?\n))
+                             (1- end)
+                           end))
       (let ((evil-ex-substitute-nreplaced 0)
             (evil-ex-substitute-next-line (line-number-at-pos beg))
             (evil-ex-substitute-last-line
@@ -2637,6 +2689,8 @@ This is the same as :%s//~/&"
          (eq (evil-ex-regex-case pattern 'smart) 'insensitive))
         match markers)
     (when (and pattern command)
+      (setq isearch-string pattern)
+      (isearch-update-ring pattern t)
       (goto-char beg)
       (evil-move-beginning-of-line)
       (while (< (point) end)
@@ -2697,7 +2751,9 @@ Default position is the beginning of the buffer."
 ;;; Window navigation
 
 (defun evil-resize-window (new-size &optional horizontal)
-  "Sets the current window's with or height to `new-size'."
+  "Set the current window's width or height to NEW-SIZE.
+If HORIZONTAL is non-nil the width of the window is changed,
+otherwise its height is changed."
   (let ((wincfg (current-window-configuration))
         (nwins (length (window-list)))
         (count (if horizontal
@@ -2719,13 +2775,14 @@ Default position is the beginning of the buffer."
     (set-window-configuration wincfg)))
 
 (defun evil-get-buffer-tree (wintree)
-  "Extracts the buffer tree from a given window-tree."
+  "Extracts the buffer tree from a given window tree WINTREE."
   (if (consp wintree)
       (cons (car wintree) (mapcar #'evil-get-buffer-tree (cddr wintree)))
     (window-buffer wintree)))
 
 (defun evil-restore-window-tree (win tree)
-  "Restores the given buffer-tree layout as subwindows of win."
+  "Restore the given buffer-tree layout as subwindows of WIN.
+TREE is the tree layout to be restored."
   (cond
    ((and (consp tree) (cddr tree))
     (let ((newwin (split-window win nil (not (car tree)))))
@@ -3024,6 +3081,258 @@ and redisplays the current buffer there."
           (select-window newwin))))
     (balance-windows)))
 
+;;; Mouse handling
+
+;; Large parts of this code are taken from mouse.el which is
+;; distributed with GNU Emacs
+(defun evil-mouse-drag-region (start-event)
+  "Set the region to the text that the mouse is dragged over.
+Highlight the drag area as you move the mouse.
+This must be bound to a button-down mouse event.
+
+If the click is in the echo area, display the `*Messages*' buffer.
+
+START-EVENT should be the event that started the drag."
+  (interactive "e")
+  ;; Give temporary modes such as isearch a chance to turn off.
+  (run-hooks 'mouse-leave-buffer-hook)
+  (evil-mouse-drag-track start-event t))
+(evil-set-command-property 'evil-mouse-drag-region :keep-visual t)
+
+(defun evil-mouse-drag-track (start-event &optional
+                                          do-mouse-drag-region-post-process)
+  "Track mouse drags by highlighting area between point and cursor.
+The region will be defined with mark and point.
+DO-MOUSE-DRAG-REGION-POST-PROCESS should only be used by
+`mouse-drag-region'."
+  (mouse-minibuffer-check start-event)
+  (setq mouse-selection-click-count-buffer (current-buffer))
+  (deactivate-mark)
+  (let* ((scroll-margin 0) ; Avoid margin scrolling (Bug#9541).
+         (original-window (selected-window))
+         ;; We've recorded what we needed from the current buffer and
+         ;; window, now let's jump to the place of the event, where things
+         ;; are happening.
+         (_ (mouse-set-point start-event))
+         (echo-keystrokes 0)
+         (start-posn (event-start start-event))
+         (start-point (posn-point start-posn))
+         (start-window (posn-window start-posn))
+         (start-window-start (window-start start-window))
+         (start-hscroll (window-hscroll start-window))
+         (bounds (window-edges start-window))
+         (make-cursor-line-fully-visible nil)
+         (top (nth 1 bounds))
+         (bottom (if (window-minibuffer-p start-window)
+                     (nth 3 bounds)
+                   ;; Don't count the mode line.
+                   (1- (nth 3 bounds))))
+         (on-link (and mouse-1-click-follows-link
+                       (or mouse-1-click-in-non-selected-windows
+                           (eq start-window original-window))
+                       ;; Use start-point before the intangibility
+                       ;; treatment, in case we click on a link inside an
+                       ;; intangible text.
+                       (mouse-on-link-p start-posn)))
+         (click-count (1- (event-click-count start-event)))
+         (remap-double-click (and on-link
+                                  (eq mouse-1-click-follows-link 'double)
+                                  (= click-count 1)))
+         ;; Suppress automatic hscrolling, because that is a nuisance
+         ;; when setting point near the right fringe (but see below).
+         (auto-hscroll-mode-saved auto-hscroll-mode)
+         (auto-hscroll-mode nil)
+         event end end-point)
+
+    (setq mouse-selection-click-count click-count)
+    ;; In case the down click is in the middle of some intangible text,
+    ;; use the end of that text, and put it in START-POINT.
+    (if (< (point) start-point)
+        (goto-char start-point))
+    (setq start-point (point))
+    (if remap-double-click
+        (setq click-count 0))
+
+    (setq click-count (mod click-count 4))
+
+    ;; activate correct visual state
+    (let ((range (evil-mouse-start-end start-point start-point click-count)))
+      (set-mark (nth 0 range))
+      (goto-char (nth 1 range)))
+
+    (cond
+     ((= click-count 0)
+      (when (evil-visual-state-p) (evil-exit-visual-state)))
+     ((= click-count 1)
+      (evil-visual-char)
+      (evil-visual-post-command))
+     ((= click-count 2)
+      (evil-visual-line)
+      (evil-visual-post-command))
+     ((= click-count 3)
+      (evil-visual-block)
+      (evil-visual-post-command)))
+
+    ;; Track the mouse until we get a non-movement event.
+    (track-mouse
+      (while (progn
+               (setq event (read-event))
+               (or (mouse-movement-p event)
+                   (memq (car-safe event) '(switch-frame select-window))))
+        (unless (evil-visual-state-p)
+          (cond
+           ((= click-count 0) (evil-visual-char))
+           ((= click-count 1) (evil-visual-char))
+           ((= click-count 2) (evil-visual-line))
+           ((= click-count 3) (evil-visual-block))))
+
+        (evil-visual-pre-command)
+        (unless (memq (car-safe event) '(switch-frame select-window))
+          ;; Automatic hscrolling did not occur during the call to
+          ;; `read-event'; but if the user subsequently drags the
+          ;; mouse, go ahead and hscroll.
+          (let ((auto-hscroll-mode auto-hscroll-mode-saved))
+            (redisplay))
+          (setq end (event-end event)
+                end-point (posn-point end))
+          (if (and (eq (posn-window end) start-window)
+                   (integer-or-marker-p end-point))
+              (evil-mouse--drag-set-mark-and-point start-point
+                                                   end-point click-count)
+            (let ((mouse-row (cdr (cdr (mouse-position)))))
+              (cond
+               ((null mouse-row))
+               ((< mouse-row top)
+                (mouse-scroll-subr start-window (- mouse-row top)
+                                   nil start-point))
+               ((>= mouse-row bottom)
+                (mouse-scroll-subr start-window (1+ (- mouse-row bottom))
+                                   nil start-point))))))
+        (evil-visual-post-command)))
+
+    ;; Handle the terminating event if possible.
+    (when (consp event)
+      ;; Ensure that point is on the end of the last event.
+      (when (and (setq end-point (posn-point (event-end event)))
+                 (eq (posn-window end) start-window)
+                 (integer-or-marker-p end-point)
+                 (/= start-point end-point))
+        (evil-mouse--drag-set-mark-and-point start-point
+                                             end-point click-count))
+
+      ;; Find its binding.
+      (let* ((fun (key-binding (vector (car event))))
+             (do-multi-click (and (> (event-click-count event) 0)
+                                  (functionp fun)
+                                  (not (memq fun '(mouse-set-point
+                                                   mouse-set-region))))))
+        (if (and (/= (mark) (point))
+                 (not do-multi-click))
+
+            ;; If point has moved, finish the drag.
+            (let (last-command this-command)
+              (and mouse-drag-copy-region
+                   do-mouse-drag-region-post-process
+                   (let (deactivate-mark)
+                     (evil-visual-expand-region)
+                     (copy-region-as-kill (mark) (point))
+                     (evil-visual-contract-region))))
+
+          ;; If point hasn't moved, run the binding of the
+          ;; terminating up-event.
+          (if do-multi-click
+              (goto-char start-point)
+            (deactivate-mark))
+          (when (and (functionp fun)
+                     (= start-hscroll (window-hscroll start-window))
+                     ;; Don't run the up-event handler if the window
+                     ;; start changed in a redisplay after the
+                     ;; mouse-set-point for the down-mouse event at
+                     ;; the beginning of this function.  When the
+                     ;; window start has changed, the up-mouse event
+                     ;; contains a different position due to the new
+                     ;; window contents, and point is set again.
+                     (or end-point
+                         (= (window-start start-window)
+                            start-window-start)))
+            (when (and on-link
+                       (= start-point (point))
+                       (evil-mouse--remap-link-click-p start-event event))
+              ;; If we rebind to mouse-2, reselect previous selected
+              ;; window, so that the mouse-2 event runs in the same
+              ;; situation as if user had clicked it directly.  Fixes
+              ;; the bug reported by juri@jurta.org on 2005-12-27.
+              (if (or (vectorp on-link) (stringp on-link))
+                  (setq event (aref on-link 0))
+                (select-window original-window)
+                (setcar event 'mouse-2)
+                ;; If this mouse click has never been done by the
+                ;; user, it doesn't have the necessary property to be
+                ;; interpreted correctly.
+                (put 'mouse-2 'event-kind 'mouse-click)))
+            (push event unread-command-events)))))))
+
+;; This function is a plain copy of `mouse--drag-set-mark-and-point',
+;; which is only available in Emacs 24
+(defun evil-mouse--drag-set-mark-and-point (start click click-count)
+  (let* ((range (evil-mouse-start-end start click click-count))
+         (beg (nth 0 range))
+         (end (nth 1 range)))
+    (cond ((eq (mark) beg)
+           (goto-char end))
+          ((eq (mark) end)
+           (goto-char beg))
+          ((< click (mark))
+           (set-mark end)
+           (goto-char beg))
+          (t
+           (set-mark beg)
+           (goto-char end)))))
+
+;; This function is a plain copy of `mouse--remap-link-click-p',
+;; which is only available in Emacs 23
+(defun evil-mouse--remap-link-click-p (start-event end-event)
+  (or (and (eq mouse-1-click-follows-link 'double)
+           (= (event-click-count start-event) 2))
+      (and
+       (not (eq mouse-1-click-follows-link 'double))
+       (= (event-click-count start-event) 1)
+       (= (event-click-count end-event) 1)
+       (or (not (integerp mouse-1-click-follows-link))
+           (let ((t0 (posn-timestamp (event-start start-event)))
+                 (t1 (posn-timestamp (event-end   end-event))))
+             (and (integerp t0) (integerp t1)
+                  (if (> mouse-1-click-follows-link 0)
+                      (<= (- t1 t0) mouse-1-click-follows-link)
+                    (< (- t0 t1) mouse-1-click-follows-link))))))))
+
+(defun evil-mouse-start-end (start end mode)
+  "Return a list of region bounds based on START and END according to MODE.
+If MODE is not 1 then set point to (min START END), mark to (max
+START END).  If MODE is 1 then set point to start of word at (min
+START END), mark to end of word at (max START END)."
+  (evil-sort start end)
+  (setq mode (mod mode 4))
+  (if (/= mode 1) (list start end)
+    (list
+     (save-excursion
+       (goto-char start)
+       (cond
+        ((looking-at "[ \t\r\n]")
+         (save-excursion
+           (unless (bolp) (skip-chars-backward " \t\r"))
+           (point)))
+        ((looking-back "[ \t\r\n]") start)
+        (t (evil-move-word -1) (point))))
+     (save-excursion
+       (goto-char end)
+       (cond
+        ((looking-at "[ \t\r\n]")
+         (save-excursion
+           (unless (eolp) (skip-chars-forward " \t\r"))
+           (if (bolp) (point) (1- (point)))))
+        (t (evil-move-word +1) (1- (point))))))))
+
 ;;; State switching
 
 (evil-define-command evil-exit-emacs-state (&optional buffer message)
@@ -3057,11 +3366,14 @@ if the previous state was Emacs state."
   (cond
    (arg
     (add-hook 'post-command-hook #'evil-execute-in-emacs-state t)
+    (setq evil-execute-in-emacs-state-buffer (current-buffer))
     (evil-emacs-state)
     (evil-echo "Switched to Emacs state for the next command ..."))
    ((not (eq this-command #'evil-execute-in-emacs-state))
     (remove-hook 'post-command-hook 'evil-execute-in-emacs-state)
-    (evil-change-to-previous-state))))
+    (with-current-buffer evil-execute-in-emacs-state-buffer
+      (evil-change-to-previous-state))
+    (setq evil-execute-in-emacs-state-buffer))))
 
 ;; TODO: this will probably not work well with the repeat-system.
 (evil-define-command evil-esc (arg)
@@ -3086,6 +3398,21 @@ Otherwise send [escape]."
   (evil-esc-mode -1)
   (setq this-command last-command)
   (add-hook 'pre-command-hook #'evil-turn-on-esc-mode nil t))
+
+(defun evil-exit-visual-and-repeat (event)
+  "Exit insert state and repeat event.
+This special command should be used if some command called from
+visual state should actually be called in normal-state.  The main
+reason for doing this is that the repeat system should *not*
+record the visual state information for some command.  This
+command should be bound to exactly the same event in visual state
+as the original command is bound in normal state.  EVENT is the
+event that triggered the execution of this command."
+  (interactive "e")
+  (when (evil-visual-state-p)
+    (evil-exit-visual-state)
+    (push event unread-command-events)))
+(evil-declare-ignore-repeat 'evil-exit-visual-and-repeat)
 
 (provide 'evil-commands)
 

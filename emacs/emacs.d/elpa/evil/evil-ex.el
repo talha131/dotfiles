@@ -1,20 +1,46 @@
-;;; Ex-mode
+;;; evil-ex.el --- Ex-mode
+
+;; Author: Frank Fischer <frank fischer at mathematik.tu-chemnitz.de>
+;; Maintainer: Vegard Øye <vegard_oye at hotmail.com>
+;;
+;; This file is NOT part of GNU Emacs.
+
+;;; License:
+
+;; This file is part of Evil.
+;;
+;; Evil is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; Evil is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with Evil.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
 
 ;; Ex is implemented as an extensible minilanguage, whose grammar
-;; is stored in `evil-ex-grammar'. Ex commands are defined with
+;; is stored in `evil-ex-grammar'.  Ex commands are defined with
 ;; `evil-ex-define-cmd', which creates a binding from a string
-;; to an interactive function. It is also possible to define key
+;; to an interactive function.  It is also possible to define key
 ;; sequences which execute a command immediately when entered:
 ;; such shortcuts go in `evil-ex-map'.
 ;;
 ;; To provide buffer and filename completion, as well as interactive
 ;; feedback, Ex defines the concept of an argument handler, specified
-;; with `evil-ex-define-argument-type'. In the case of the
+;; with `evil-ex-define-argument-type'.  In the case of the
 ;; substitution command (":s/foo/bar"), the handler incrementally
 ;; highlights matches in the buffer as the substitution is typed.
 
 (require 'evil-common)
 (require 'evil-states)
+
+;;; Code:
 
 (defconst evil-ex-grammar
   '((expression
@@ -33,11 +59,11 @@
      ((\? space) (\? "\\(?:.\\|\n\\)+") #'$2))
     (range
      ("%" #'(evil-ex-full-range))
-     (address (\? "[,;]" address #'$2) #'evil-ex-range))
-    (address
-     (line (\? offset) #'evil-ex-address)
-     ((\? line) offset #'evil-ex-address))
+     (line (\? "[,;]" line #'$2) #'evil-ex-range))
     (line
+     (base (\? offset) #'evil-ex-line)
+     ((\? base) offset #'evil-ex-line))
+    (base
      number
      marker
      search
@@ -82,9 +108,9 @@
      "(.*)" #'(car-safe (read-from-string $1))))
   "Grammar for Ex.
 An association list of syntactic symbols and their definitions.
-The first entry is the start symbol. A symbol's definition may
+The first entry is the start symbol.  A symbol's definition may
 reference other symbols, but the grammar cannot contain
-left recursion. See `evil-parser' for a detailed explanation
+left recursion.  See `evil-parser' for a detailed explanation
 of the syntax.")
 
 (defun evil-ex-p ()
@@ -171,8 +197,8 @@ Otherwise behaves like `delete-backward-char'."
   "Update Ex variables when the minibuffer changes.
 This function is usually called from `after-change-functions'
 hook. If BEG is non-nil (which is the case when called from
-`after-change-functions', then an error description in case if
-incomplete or unknown commands is show."
+`after-change-functions'), then an error description is shown
+in case of incomplete or unknown commands."
   (let* ((prompt (minibuffer-prompt-end))
          (string (or string (buffer-substring prompt (point-max))))
          arg bang cmd count expr func handler range tree type)
@@ -600,7 +626,7 @@ This function calls `evil-ex-update' explicitly when
       (when visual
         (evil-exit-visual-state)))))
 
-(defun evil-ex-address (base &optional offset)
+(defun evil-ex-line (base &optional offset)
   "Return the line number of BASE plus OFFSET."
   (+ (or base (line-number-at-pos))
      (or offset 0)))
@@ -671,7 +697,10 @@ NUMBER defaults to 1."
 (defun evil-ex-eval (string &optional start)
   "Evaluate STRING as an Ex command.
 START is the start symbol, which defaults to `expression'."
-  (let ((form (evil-ex-parse string nil start)))
+  ;; disable the mark before executing, otherwise the visual region
+  ;; may be used as operator range instead of the ex-range
+  (let ((form (evil-ex-parse string nil start))
+        transient-mark-mode deactivate-mark)
     (eval form)))
 
 (defun evil-ex-parse (string &optional syntax start)
