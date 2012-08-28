@@ -1,0 +1,189 @@
+(package-initialize)
+;; C-z calles suspend-frame command. 
+(put 'suspend-frame 'disabled t)
+
+(setq mac-command-modifier 'control)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auto-save-file-name-transforms (quote ((".*" "~/.emacsTemp/autosaves/" t))))
+ '(auto-save-interval 300)
+ '(auto-save-list-file-prefix "~/.emacsTemp/autosaves/.saves-")
+ '(backup-by-copying t)
+ '(backup-directory-alist (quote ((".*" . "~/.emacsTemp/backups/"))))
+ '(column-number-mode t)
+ '(fringe-mode 300 nil (fringe))
+ '(ispell-program-name "/opt/local/bin/aspell")
+ '(kept-new-versions 6)
+ '(markdown-command "multimarkdown")
+ '(org-agenda-files (quote ("~/Dropbox/Write/PersonalTodo.org")))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
+ '(tooltip-mode nil)
+ '(visible-bell t)
+ '(visible-cursor t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#ffffff" :foreground "#000000" :inversetideo nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "apple" :family "Menlo"))))
+ '(font-lock-comment-face ((t (:family "Menlo")))))
+
+;; ido mode
+(require 'ido)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere)
+(ido-mode 1)
+
+;; from http://emacswiki.org/emacs/InteractivelyDoThings#toc20
+;; Display ido results vertically, rather than horizontally
+(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
+(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
+
+(global-visual-line-mode 1)
+(defun my-enable-minor-modes ()
+   "Enables several minor modes."
+   (interactive)
+   (adaptive-wrap-prefix-mode 1))
+;(add-hook 'org-load-hook 'my-enable-minor-modes)
+;(add-hook 'org-mode-hook 'my-enable-minor-modes)
+
+;(add-to-list 'load-path "~/.emacs.d/elpa/autopair-0.3")
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers
+
+;(add-to-list 'load-path "~/.emacs.d/elpa/emacsd-tile-0.1")
+(require 'emacsd-tile)  
+(load "~/.emacs.d/talha/toggle-window-split.el")
+(toggle-window-split)
+
+(add-to-list 'load-path "~/.emacs.d/elpa/evil")
+(require 'evil)  
+(evil-mode 1)
+(setq evil-default-cursor t)
+(setq evil-default-state 'emacs)
+(add-to-list 'default-frame-alist '(cursor-color . "palegoldenrod"))
+
+;; Set to the location of your Org files on your local system
+(setq org-directory "~/Dropbox/Write")
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/Dropbox/Write/flagged.org")
+;; Set to <your Dropbox root directory>/MobileOrg.
+(setq org-mobile-directory "~/Dropbox/MobileOrg")
+
+(load "~/.emacs.d/talha/org-wc.el")
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+
+;; Org mode settings 
+;;'(org-agenda-files (quote ("~/Dropbox/Write/PersonalTodo.org")))
+(setq org-default-notes-file (concat org-directory "/PersonalTodo.org"))
+(define-key global-map "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+
+;; for blog
+(require 'org-publish)
+(setq org-publish-project-alist
+      '(
+	("org-notes"
+	 :base-directory "~/Repos/org-notes/org/"
+	 :base-extension "org"
+	 :publishing-directory "~/Repos/org-notes/publish"
+	 :recursive t
+	 :publishing-function org-publish-org-to-html
+	 :headline-levels 4
+	 :auto-preamble t	 
+	 :auto-sitemap t                ; Generate sitemap.org automagically...
+	 :sitemap-filename "index.org"  ; ... call it sitemap.org (it's the default)...
+	 :sitemap-title "Archives"         ; ... with title 'Sitemap'.
+	 :author "Talha"
+	 :email "talha131@gmail.com"
+	 :language "en"
+	 :style "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\" />"
+	 )
+
+	("org-static"
+	 :base-directory "~/Repos/org-notes/org/"
+	 :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+	 :publishing-directory "~/Repos/org-notes/publish"
+	 :recursive t
+	 :publishing-function org-publish-attachment
+	 )
+	("notes" 
+	 :components ("org-notes" "org-static"))))
+
+;; Add the user-contributed repository
+;(add-to-list 'package-archives
+;             '("elpa" . "http://tromey.com/elpa/"))
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t) 
+(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
+(require 'color-theme)
+(load  "~/.emacs.d/elpa/color-theme-leuven/color-theme-leuven.el")
+(color-theme-leuven)
+
+(frame-tag-mode 1)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;(add-to-list 'load-path "~/.emacs.d/talha")
+;(require 'color-theme)
+;;(color-theme-initialize)
+;(load "talha-emacs-theme")
+;(add-to-list 'load-path "~/.emacs.d/elpa/color-theme-leuven")
+;(require 'color-theme-leuven)
+;;(load-theme 'zenburn t)
+
+;;(require 'adaptive-wrap-prefix-mode)
+;;(require 'adaptive-wrap)
+;;(adaptive-wrap)
+;;(adaptive-wrap-prefix-mode)
+;;(global-adaptive-wrap-prefix-mode 1)
+
+;; In viper mode return key is not working. Fix:
+;;(define-key function-key-map [return] [?\C-m])
+;;(define-key local-function-key-map [return] [kp-enter])
+
+;; toggle viper mode
+;; if it creates conflict then try 
+;; http://stackoverflow.com/a/683575/177116 
+;;(global-set-key (kbd "C-c t") 'toggle-viper-mode)
+;;(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
+
+;;(define-key my-keys-minor-mode-map (kbd "C-c t") 'toggle-viper-mode)
+
+;;(define-minor-mode my-keys-minor-mode
+;;  "A minor mode so that my key settings override annoying major modes."
+;;  t " my-keys" 'my-keys-minor-mode-map)
+
+;;(my-keys-minor-mode 1)
+
+;;(defun my-minibuffer-setup-hook ()
+;;  (my-keys-minor-mode 0))
+
+;;(add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)  
+
+;;(setq mac-control-modifier 'meta)
+;;(setq x-select-enable-clipboard t)
+
+;;(add-to-list 'load-path "~/.emacs.d/elpa/autopair/") ;; comment if autopair.el is in standard load path 
+
+;;(load "~/.emacs.d/elpa/nxhtml/autostart.el")
+
+;;(setq load-path (cons "~/.emacs.d/elpa/html-helper-mode" load-path))
+;;(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+;;(setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
+
+;;(autoload 'css-mode "css-mode.el" "Major mode for editing CSS files" t) 
+;;(setq auto-mode-alist (cons '("\\.css" . css-mode) auto-mode-alist))
+
+
+;; for edit with emacs chrome extension
+;;(add-to-list 'load-path ".emacs.d/elpa/edit-server-for-chrome")
+;;(require 'edit-server)
+;;(edit-server-start)
