@@ -1,0 +1,34 @@
+set -o vi
+set -P # make bash respect physical path
+alias ls='ls -GF'
+alias grep='grep --color'
+alias vi='/opt/local/bin/vi'
+alias view='/opt/local/bin/view'
+alias vim='/opt/local/bin/vim'
+alias vimdiff='/opt/local/bin/vimdiff'
+alias vimtutor='/opt/local/bin/vimtutor'
+#alias python='/opt/local/bin/python'
+alias git='/opt/local/bin/git'
+
+
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export MANPATH=/opt/local/share/man:$MANPATH
+#PS1="[\\u@\\h:\\W]$ "
+export PATH=~/bin:$PATH
+# to set window tile in screen as the program it is running
+#export PS1='\[\033k\033\\\]\u@\h:\w\$ '
+#PS1='\[\033k\033\\\][\w]$ '
+
+PS1='[\w]$ '
+
+# Set screen window title
+case "$TERM" in
+screen)
+#linux)
+#screen.linux)
+#PROMPT_COMMAND='echo -ne "\033k$HOSTNAME\033\\"'
+export PROMPT_COMMAND='echo -ne "\033k${PWD##*/}\033\\"'
+;;
+esac
+
