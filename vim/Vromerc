@@ -1,6 +1,6 @@
 " Settings for [Vrome Google Chrome extension](https://chrome.google.com/webstore/detail/godjoomfiimiddapohpmfklhgmbfffjj)
 
-set disablesites=mail.google.com, reader.google.com, encrypted.google.com, newsblur.com, dev.newsblur.com , google.com/reader, docs.google.com, drive.google.com, app.asana.com, github.com, http://www.reddit.com,  http://www.google.com/reader/ // don't run Vrome in those sites
+set disablesites=mail.google.com, reader.google.com, encrypted.google.com, newsblur.com, dev.newsblur.com , google.com/reader, docs.google.com, drive.google.com, app.asana.com, github.com, bitbucket.org, http://www.reddit.com,  http://www.google.com/reader/ // don't run Vrome in those sites
 
 set editor=mvim -f
 
