@@ -5,6 +5,7 @@
 * Contents
 1. [[#git][Git]]
 2. [[#Vim][Vim]]
+3. [[#Bash][Bash]]
 * Git 
 1. [[http://dropshado.ws/post/7844857440/gitconfig-colors][David DeSandro]] blog entry is a good start point.
 2. [[http://cheat.errtheblog.com/s/git][Cheat sheets]] has more comprehensive entry.
@@ -15,3 +16,6 @@
 1. [[https://github.com/tpope/vim-markdown][tpope/vim-markdown]] is mostly used. But it does not conceal text markers in Markdown file.
 2. [[https://github.com/xolox/vim-markdown][xolox/vim-markdown]] does the concealing. See [[https://github.com/tpope/vim-markdown/pull/9#issuecomment-3098050][this image]] for example.
 3. But you have to switch to xolox/vim-markdown =conceal= branch to get his code. Use =git checkout -b conceal remotes/origin/conceal= to checkout the branch.
+* Bash
+1. Bash completion depends on bash_completion package. MacPorts users can do =sudo port install git-core +bash_completion=.
+2. [[http://blog.bitfluent.com/post/27983389/git-utilities-you-cant-live-without][Git Utilities You Can’t Live Without]] blog entry has an entry for Git aware PS1.
