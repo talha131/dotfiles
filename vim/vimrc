@@ -44,6 +44,8 @@ filetype plugin indent on     " required!
 set conceallevel=2
 set concealcursor=n
 
+autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
+
 if has("gui_running")
   set guifont=Courier_NEW:h11:cANSI
 endif
