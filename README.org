@@ -11,3 +11,7 @@
 * Vim
 1. I use [[https://github.com/gmarik/vundle][Vundle]] to manage Vim packages.
 2. [[https://github.com/vimoutliner/vimoutliner][vimoutliner/vimoutliner]] is the only complete repo of VimOutliner plugin. More details are in [[https://github.com/talha131/dotfiles/commit/42a19d07581087f274c3b461f6908ec5b75af6a7][this commit message]].
+** Vim Markdown 
+1. [[https://github.com/tpope/vim-markdown][tpope/vim-markdown]] is mostly used. But it does not conceal text markers in Markdown file.
+2. [[https://github.com/xolox/vim-markdown][xolox/vim-markdown]] does the concealing. See [[https://github.com/tpope/vim-markdown/pull/9#issuecomment-3098050][this image]] for example.
+3. But you have to switch to xolox/vim-markdown =conceal= branch to get his code. Use =git checkout -b conceal remotes/origin/conceal= to checkout the branch.
