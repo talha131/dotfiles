@@ -1,3 +1,7 @@
 *~
 *.swp
 .*
+vim/vim/bundle
+emacs/emacs.d/bookmarks
+emacs/emacs.d/elpa/archives/marmalade/archive-contents
+emacs/emacs.d/url/cookies
