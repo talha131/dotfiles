@@ -26,6 +26,7 @@ Bundle 'gmarik/vundle'
 " ...
 
 Bundle 'vimoutliner/vimoutliner'
+Bundle 'xolox/vim-markdown'
 
 filetype plugin indent on     " required!
 "
@@ -39,6 +40,9 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 
 " End Vundle section 
+
+set conceallevel=2
+set concealcursor=n
 
 if has("gui_running")
   set guifont=Courier_NEW:h11:cANSI
