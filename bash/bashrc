@@ -33,3 +33,8 @@ export PROMPT_COMMAND='echo -ne "\033k${PWD##*/}\033\\"'
 ;;
 esac
 
+# To use bash_completion
+# make sure you have installed bash_completion
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+    . /opt/local/etc/profile.d/bash_completion.sh
+fi
