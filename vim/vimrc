@@ -53,7 +53,11 @@ autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 
 "  set guifont=Courier_NEW:h11:cANSI
 set guifont=Menlo\ Regular:h13
-set term=screen-256color
+
+if !has("gui_running")
+  set term=screen-256color
+endif
+
 set number
 set expandtab
 set ruler
