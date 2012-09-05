@@ -26,8 +26,11 @@ Bundle 'gmarik/vundle'
 " ...
 
 Bundle 'vimoutliner/vimoutliner'
+" to Vim-markdown with conceal support
 Bundle 'xolox/vim-markdown'
+" to view and change file outline
 Bundle 'VOoM'
+" to quickly find file in the path and buffers with fuzzy find support
 Bundle 'kien/ctrlp.vim'
 
 filetype plugin indent on     " required!
