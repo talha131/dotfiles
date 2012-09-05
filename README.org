@@ -17,6 +17,10 @@
 1. [[https://github.com/tpope/vim-markdown][tpope/vim-markdown]] is mostly used. But it does not conceal text markers in Markdown file.
 2. [[https://github.com/xolox/vim-markdown][xolox/vim-markdown]] does the concealing. See [[https://github.com/tpope/vim-markdown/pull/9#issuecomment-3098050][this image]] for example.
 3. But you have to switch to xolox/vim-markdown =conceal= branch to get his code. Use =git checkout -b conceal remotes/origin/conceal= to checkout the branch.
+** Fuzzy filefinder 
+1. I tried [[https://wincent.com/products/command-t/][command-t]] but I could not make it work. It requires that your copy of vim should be compiled with the same version of ruby with which you compiled command-t, which effectively means you have to compile Vim yourself.
+2. I took the easier way, use [[http://kien.github.com/ctrlp.vim/][CtrlP]]. It is basically the same as Command-T but written in pure Vimscript. This means it neither requires Ruby support enabled in Vim nor does it require the compilation of some Ruby extension implemented in C.
+3. Other extensions are either not what I wanted, for example, [[http://www.vim.org/scripts/script.php?script_id%3D2050][LustyJuggler]], or not actively maintained any more like [[http://www.vim.org/scripts/script.php?script_id%3D1984][FuzzyFinder]] and [[https://github.com/jamis/fuzzy_file_finder][fuzzy file finder]].
 * Bash
 1. Bash completion depends on bash_completion package. MacPorts users can do =sudo port install git-core +bash_completion=.
 2. [[http://blog.bitfluent.com/post/27983389/git-utilities-you-cant-live-without][Git Utilities You Can’t Live Without]] blog entry has an entry for Git aware PS1.
