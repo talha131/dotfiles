@@ -58,8 +58,6 @@ endif
 
 set number
 set expandtab
-set ruler
-set spell
 set wrap
 syntax on
 set autoindent
@@ -72,9 +70,16 @@ set shiftwidth=2
 colorscheme beauty256Talha
 set colorcolumn=80
 
+"Always show current position
+set ruler
+
 " highlight search results
 set hlsearch
+" Makes search incremental 
+set incsearch
 
+" Enable spell check
+set spell
 " highlight spelling mistakes
 highlight clear SpellBad
 highlight SpellBad cterm=underline, ctermfg=red
