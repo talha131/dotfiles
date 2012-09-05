@@ -32,6 +32,8 @@ Bundle 'xolox/vim-markdown'
 Bundle 'VOoM'
 " to quickly find file in the path and buffers with fuzzy find support
 Bundle 'kien/ctrlp.vim'
+" to have auto close feature
+Bundle 'Townk/vim-autoclose'
 
 filetype plugin indent on     " required!
 "
