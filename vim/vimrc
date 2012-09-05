@@ -46,11 +46,9 @@ filetype plugin indent on     " required!
 
 " End Vundle section 
 
-set conceallevel=2
-set concealcursor=n
-
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 
+" set fonts
 "  set guifont=Courier_NEW:h11:cANSI
 set guifont=Menlo\ Regular:h13
 
@@ -67,16 +65,21 @@ syntax on
 set autoindent
 set softtabstop=4
 set shiftwidth=2
-set hlsearch
-hi clear SpellBad
-hi SpellBad cterm=underline, ctermfg=red
-hi clear SpellCap
-hi SpellCap cterm=underline, ctermfg=green
+
 "set background=dark
 "let g:zenburn_alternate_Visual = 1
 "colorscheme zenburn 
 colorscheme beauty256Talha
 set colorcolumn=80
+
+" highlight search results
+set hlsearch
+
+" highlight spelling mistakes
+highlight clear SpellBad
+highlight SpellBad cterm=underline, ctermfg=red
+highlight clear SpellCap
+highlight SpellCap cterm=underline, ctermfg=green
 
 " from [SO answer](http://stackoverflow.com/a/526940/177116)
 " When you type the first tab hit will complete as much as possible, the
@@ -85,12 +88,16 @@ set colorcolumn=80
 set wildmode=longest,list,full
 set wildmenu
 
+" for :shell, from [SO answer](http://stackoverflow.com/a/12273438/177116)
+" Otherwise I get error 
+" > __git_ps1: command not found
+set shell=bash\ --rcfile\ ~/.bashrc
+
 " for ctrlp 
 let g:ctrlp_map = '<c-x><c-f>'
 let g:ctrlp_cmd = 'CtrlP'
 nmap <c-x><c-b>  :CtrlPBuffer<CR>
 
-" for :shell, from [SO answer](http://stackoverflow.com/a/12273438/177116)
-" Otherwise I get error 
-" > __git_ps1: command not found
-set shell=bash\ --rcfile\ ~/.bashrc
+" for markdown plugin so that it can hide text markers
+set conceallevel=2
+set concealcursor=n
