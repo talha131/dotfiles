@@ -16,6 +16,13 @@ Vim
 2.  I use [Vundle](https://github.com/gmarik/vundle) to manage Vim packages.
 3.  [vimoutliner/vimoutliner](https://github.com/vimoutliner/vimoutliner) is the only complete repo of VimOutliner plugin. More details are in [this commit message](https://github.com/talha131/dotfiles/commit/42a19d07581087f274c3b461f6908ec5b75af6a7).
 
+Auto Close
+----------
+
+1.  [SO thread](http://stackoverflow.com/q/883437/177116) has got some good comments.
+1.  I decided to use Thiago Alves/Townk's [plugin](https://github.com/Townk/vim-autoclose).
+1.  [Townk's plugin tutorial](http://www.vim.org/scripts/script.php?script_id=2009).
+
 Vim Markdown
 ------------
 
