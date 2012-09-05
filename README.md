@@ -2,15 +2,6 @@
 % 
 % 
 
-Contents
-========
-
--   [Git](#git)
--   [Vim](#vim)
-    -   [Vim Markdown](#vim-markdown)
-    -   [Fuzzy File Finder](#fuzzy-file-finder)
--   [Bash](#bash)
-
 Git
 ===
 
