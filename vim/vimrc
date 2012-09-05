@@ -82,3 +82,8 @@ set colorcolumn=80
 " through completion options so you can complete the file without further keys
 set wildmode=longest,list,full
 set wildmenu
+
+" for ctrlp 
+let g:ctrlp_map = '<c-x><c-f>'
+let g:ctrlp_cmd = 'CtrlP'
+nmap <c-x><c-b>  :CtrlPBuffer<CR>
