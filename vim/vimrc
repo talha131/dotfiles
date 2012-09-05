@@ -95,7 +95,7 @@ set shell=bash\ --rcfile\ ~/.bashrc
 
 " for ctrlp 
 let g:ctrlp_map = '<c-x><c-f>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPMRU'
 nmap <c-x><c-b>  :CtrlPBuffer<CR>
 
 " for markdown plugin so that it can hide text markers
