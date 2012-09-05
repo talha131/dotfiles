@@ -28,6 +28,7 @@ Bundle 'gmarik/vundle'
 Bundle 'vimoutliner/vimoutliner'
 Bundle 'xolox/vim-markdown'
 Bundle 'VOoM'
+Bundle 'kien/ctrlp.vim'
 
 filetype plugin indent on     " required!
 "
