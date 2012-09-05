@@ -51,9 +51,7 @@ set concealcursor=n
 
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 
-if has("gui_running")
-  set guifont=Courier_NEW:h11:cANSI
-endif
+"  set guifont=Courier_NEW:h11:cANSI
 set guifont=Menlo\ Regular:h13
 set term=screen-256color
 set number
