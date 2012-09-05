@@ -71,3 +71,10 @@ hi SpellCap cterm=underline, ctermfg=green
 "colorscheme zenburn 
 colorscheme beauty256Talha
 set colorcolumn=80
+
+" from [SO answer](http://stackoverflow.com/a/526940/177116)
+" When you type the first tab hit will complete as much as possible, the
+" second tab hit will provide a list, the third and subsequent tabs will cycle
+" through completion options so you can complete the file without further keys
+set wildmode=longest,list,full
+set wildmenu
