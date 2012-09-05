@@ -87,3 +87,8 @@ set wildmenu
 let g:ctrlp_map = '<c-x><c-f>'
 let g:ctrlp_cmd = 'CtrlP'
 nmap <c-x><c-b>  :CtrlPBuffer<CR>
+
+" for :shell, from [SO answer](http://stackoverflow.com/a/12273438/177116)
+" Otherwise I get error 
+" > __git_ps1: command not found
+set shell=bash\ --rcfile\ ~/.bashrc
