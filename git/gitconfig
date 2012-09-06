@@ -3,6 +3,7 @@
 [core]
   quotepath = false
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  mergeoptions = --no-ff --no-commit
 [color]
   ui = true
 [color "branch"]
