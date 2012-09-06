@@ -5,8 +5,7 @@
 Git
 ===
 
-1.  [David DeSandro](http://dropshado.ws/post/7844857440/gitconfig-colors) blog
-    entry is a good start point.  
+1.  [David DeSandro](http://dropshado.ws/post/7844857440/gitconfig-colors) blog entry is a good start point.  
 2.  [Cheat sheets](http://cheat.errtheblog.com/s/git) has more comprehensive entry.
 
 Vim
