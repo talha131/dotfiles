@@ -3,7 +3,6 @@
 [core]
   quotepath = false
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  mergeoptions = --no-ff --no-commit
 [color]
   ui = true
 [color "branch"]
@@ -21,3 +20,5 @@
   changed = green
   untracked = cyan reverse
   branch = magenta
+[merge]
+  ff = false 
