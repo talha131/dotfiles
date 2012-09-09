@@ -36,6 +36,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Townk/vim-autoclose'
 " to make quoting and parenthesizing easier
 Bundle 'tpope/vim-surround'
+" to draw ASCII art in Vim
+Bundle 'DrawIt'
 
 filetype plugin indent on     " required!
 "
