@@ -11,6 +11,7 @@ alias vimtutor='/Applications/MacVim.app/Contents/MacOS/Vim'
 #alias python='/opt/local/bin/python'
 alias git='/opt/local/bin/git'
 
+md () { mkdir -p "$@" && cd "$_" ; } 
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
