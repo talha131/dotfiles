@@ -74,6 +74,9 @@ set autoindent
 set softtabstop=4
 set shiftwidth=2
 
+" remember x number of commands executed previously
+set history=100
+
 "set background=dark
 "let g:zenburn_alternate_Visual = 1
 "colorscheme zenburn 
