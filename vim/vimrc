@@ -74,6 +74,9 @@ set autoindent
 set softtabstop=4
 set shiftwidth=2
 
+" write undo history to file so that undo history remains persistent
+set undofile
+
 " remember x number of commands executed previously
 set history=100
 
