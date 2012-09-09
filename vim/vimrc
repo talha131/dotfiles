@@ -42,6 +42,8 @@ Bundle 'DrawIt'
 Bundle 'dahu/VimRegexTutor'
 " Vim syntax file for tmux configuration
 Bundle 'zaiste/tmux.vim'
+" to browse the undo tree
+Bundle 'chrisbra/histwin.vim'
 
 filetype plugin indent on     " required!
 "
