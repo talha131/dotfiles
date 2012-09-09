@@ -38,6 +38,8 @@ Bundle 'Townk/vim-autoclose'
 Bundle 'tpope/vim-surround'
 " to draw ASCII art in Vim
 Bundle 'DrawIt'
+" Vim regex tutor
+Bundle 'dahu/VimRegexTutor'
 
 filetype plugin indent on     " required!
 "
