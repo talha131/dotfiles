@@ -40,6 +40,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'DrawIt'
 " Vim regex tutor
 Bundle 'dahu/VimRegexTutor'
+" Vim syntax file for tmux configuration
+Bundle 'zaiste/tmux.vim'
 
 filetype plugin indent on     " required!
 "
