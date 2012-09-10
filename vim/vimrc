@@ -135,3 +135,9 @@ let g:ctrlp_dotfiles = 0
 " for markdown plugin so that it can hide text markers
 set conceallevel=2
 set concealcursor=n
+
+" for histwin plugin
+"" set replay speed
+let g:undo_tree_speed=300
+"" show + - and * sign in the first column of added, removed and modified lines
+let g:undo_tree_highlight_changes=1
