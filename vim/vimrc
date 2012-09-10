@@ -61,8 +61,12 @@ filetype plugin indent on     " required!
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 
 " set fonts
+if has("win32")
+   set guifont=Lucida_Console:h11:cANSI
 "  set guifont=Courier_NEW:h11:cANSI
-set guifont=Menlo\ Regular:h13
+else
+  set guifont=Menlo\ Regular:h13
+endif
 
 if !has("gui_running")
   set term=screen-256color
