@@ -1,5 +1,5 @@
 splitw -v -p 30 'cd Repos/org-notes/ && git status && bash -i'
-splitw -h -p 50 'ping www.google.com && bash -i' 
+splitw -h -p 50 'cd ~/ && ping www.google.com && bash -i' 
 selectp -t 0
 
 # create new window and change directory into my projects
