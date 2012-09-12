@@ -1,23 +1,31 @@
-splitw -v -p 30 'cd Repos/org-notes/ && git status && bash -i'
-splitw -h -p 50 'cd ~/ && ping www.google.com && bash -i' 
+splitw -v -p 30 
+splitw -h -p 50
+
+send-keys -t 1 "cd Repos/org-notes/ && git status" C-m
+send-keys -t 2 "ping www.google.com" C-m
 selectp -t 0
 
-# create new window and change directory into my projects
-## JV
-neww -a 'cd jv && bash -i'
+# create new window for JV
+neww -a 
+send-keys -t 0 "cd jv && git status" C-m
 
-## dot files project
-neww -a 'cd ~/Repos/dotfiles/ && bash -i'
-splitw -h -p 50 'cd ~/Repos/dotfiles/ && git status && bash -i'
+# create new window for dot files project
+neww -a 
+splitw -h -p 50 
+send-keys -t 0 "cd ~/Repos/dotfiles/" C-m
+send-keys -t 1 "cd ~/Repos/dotfiles/ && git status" C-m
 
-## flash cards
-neww -a   'cd ~/Repos/english-writing-skills/ && vim -o english-vocab.md brainscape/flash-cards-deck-1.csv && bash -i'
-splitw -v -p 20 'cd ~/Repos/english-writing-skills/ && git status && bash -i'
-selectp -t 0 
+# flash cards
+neww -a 
+splitw -v -p 20 
+send-keys -t 0 "cd ~/Repos/english-writing-skills/ && mvim -o english-vocab.md brainscape/flash-cards-deck-1.csv" C-m
+send-keys -t 1 "cd ~/Repos/english-writing-skills/ && git status" C-m
 
-## write a lot 
-neww -a 'cd ~/Repos/write-a-lot/ && bash -i'
-splitw -v -p 30 'cd ~/Repos/write-a-lot/ && rackup -p 9292 && bash -i'
-selectp -t 0 
+# write a lot 
+neww -a 
+splitw -v -p 30 
+send-keys -t 0 "cd ~/Repos/write-a-lot/" C-m
+send-keys -t 1 "cd ~/Repos/write-a-lot/ && rackup -p 9292" C-m
+select-pane -t 0
 
 select-window -t 1
