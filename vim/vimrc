@@ -43,6 +43,7 @@ Bundle 'dahu/VimRegexTutor'
 " Vim syntax file for tmux configuration
 Bundle 'zaiste/tmux.vim'
 " to browse the undo tree
+Bundle 'sjl/gundo.vim'
 
 filetype plugin indent on     " required!
 "
@@ -134,3 +135,7 @@ let g:ctrlp_dotfiles = 0
 " for markdown plugin so that it can hide text markers
 set conceallevel=2
 set concealcursor=n
+
+" for gundo plugin
+let g:gundo_preview_bottom=1
+let g:gundo_preview_height=25
