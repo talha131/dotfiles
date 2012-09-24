@@ -17,9 +17,7 @@ send-keys -t 1 "cd ~/Repos/dotfiles/ && git status" C-m
 
 # flash cards
 neww -a 
-splitw -v -p 20 
-send-keys -t 0 "cd ~/Repos/english-writing-skills/ && mvim -o english-vocab.md brainscape/flash-cards-deck-1.csv" C-m
-send-keys -t 1 "cd ~/Repos/english-writing-skills/ && git status" C-m
+send-keys -t 0 "cd ~/Repos/english-writing-skills/ && mvim -o english-vocab.md flash-cards-skeleton.md --remote-tab-silent ~/Dropbox/Write/Todo.todo ~/Dropbox/Write/Ideas.md && git status" C-m
 
 # write a lot 
 neww -a 
