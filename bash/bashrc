@@ -10,6 +10,7 @@ alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vimtutor='/Applications/MacVim.app/Contents/MacOS/Vim'
 #alias python='/opt/local/bin/python'
 alias git='/opt/local/bin/git'
+alias vi='mvim --remote-tab'
 
 md () { mkdir -p "$@" && cd "$_" ; } 
 
