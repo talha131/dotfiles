@@ -140,14 +140,17 @@ set wildmenu
 set shell=bash\ --rcfile\ ~/.bashrc
 
 " for ctrlp 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-nmap <c-p>o :CtrlPBuffer<CR>
-nmap <c-p>l :CtrlPMRU<CR>
-let g:ctrlp_by_filename = 1
-let g:ctrlp_max_height = 30
-let b:ctrlp_working_path_mode = 'c'
-let g:ctrlp_dotfiles = 0
+" make sure ctrlp is installed and loaded
+if  exists('g:loaded_ctrlp') && g:loaded_ctrlp 
+  let g:ctrlp_map = '<c-p>'
+  let g:ctrlp_cmd = 'CtrlP'
+  nmap <c-p>o :CtrlPBuffer<CR>
+  nmap <c-p>l :CtrlPMRU<CR>
+  let g:ctrlp_by_filename = 1
+  let g:ctrlp_max_height = 30
+  let b:ctrlp_working_path_mode = 'c'
+  let g:ctrlp_dotfiles = 0
+en
 
 " for markdown plugin so that it can hide text markers
 set conceallevel=2
