@@ -26,8 +26,8 @@ Bundle 'gmarik/vundle'
 " ...
 
 Bundle 'vimoutliner/vimoutliner'
-" to Vim-markdown with conceal support
-Bundle 'xolox/vim-markdown'
+" to add Vim-markdown support
+Bundle 'tpope/vim-markdown'
 " to view and change file outline
 Bundle 'VOoM'
 " to quickly find file in the path and buffers with fuzzy find support
@@ -148,10 +148,6 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 30
 let b:ctrlp_working_path_mode = 'c'
 let g:ctrlp_dotfiles = 0
-
-" for markdown plugin so that it can hide text markers
-set conceallevel=0
-set concealcursor=n
 
 " for gundo plugin
 let g:gundo_preview_bottom=1
