@@ -68,6 +68,9 @@ else
   set guifont=Menlo\ Regular:h12
 endif
 
+" make sure horizontal scroll bar is visible 
+set guioptions+=b
+
 if !has("gui_running")
   set term=screen-256color
 endif
