@@ -65,7 +65,7 @@ if has("win32")
    set guifont=Lucida_Console:h11:cANSI
 "  set guifont=Courier_NEW:h11:cANSI
 else
-  set guifont=Menlo\ Regular:h13
+  set guifont=Menlo\ Regular:h12
 endif
 
 if !has("gui_running")
