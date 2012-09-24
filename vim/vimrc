@@ -150,7 +150,7 @@ let b:ctrlp_working_path_mode = 'c'
 let g:ctrlp_dotfiles = 0
 
 " for markdown plugin so that it can hide text markers
-set conceallevel=2
+set conceallevel=0
 set concealcursor=n
 
 " for gundo plugin
