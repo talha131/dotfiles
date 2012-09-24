@@ -28,4 +28,11 @@ send-keys -t 0 "cd ~/Repos/write-a-lot/" C-m
 send-keys -t 1 "cd ~/Repos/write-a-lot/ && rackup -p 9292" C-m
 select-pane -t 0
 
+# notes
+neww -a
+splitw -v -p 30 
+send-keys -t 0 "cd ~/Repos/notes/ && mvim --servername notes -S && git status" C-m
+send-keys -t 1 "cd ~/Repos/notes/ && rackup -p 9293" C-m
+select-pane -t 0
+
 select-window -t 1
