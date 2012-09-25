@@ -147,9 +147,8 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 30
 let b:ctrlp_working_path_mode = 'c'
 let g:ctrlp_dotfiles = 0
-" ignore /Users/<any users>/Library|Google Drive ... and files which have
-" pdf, epub ... extension
-let g:ctrlp_custom_ignore = '/Users/\p\+/\(Library\|Google Drive\|Music\|Movies\|Pictures\|Documents\)\|.\(pdf\|epub\|mobi\|rar\|png\|jpg\|dmg\)$'
+" ignore ~/Library|Google Drive ... and files which have " pdf, epub ... extension
+let g:ctrlp_custom_ignore = $HOME.'/\(Library\|Google Drive\|Music\|Movies\|Pictures\|Documents\)\|.\(pdf\|epub\|mobi\|rar\|png\|jpg\|dmg\)$'
 
 " for gundo plugin
 let g:gundo_preview_bottom=1
