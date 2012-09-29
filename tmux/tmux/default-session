@@ -15,6 +15,10 @@ splitw -h -p 50
 send-keys -t 0 "cd ~/Repos/dotfiles/" C-m
 send-keys -t 1 "cd ~/Repos/dotfiles/ && git status" C-m
 
+# create new window for my todo plugin
+neww -a 
+send-keys -t 0 "cd ~/Repos/dotfiles/vim/vim/bundle/todo-plus" C-m
+
 # flash cards
 neww -a 
 send-keys -t 0 "cd ~/Repos/english-writing-skills/ && mvim -o english-vocab.md flash-cards-skeleton.md --remote-tab-silent ~/Dropbox/Write/Todo.todo ~/Dropbox/Write/Ideas.md && git status" C-m
