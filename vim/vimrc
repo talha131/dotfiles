@@ -123,10 +123,10 @@ set spell
 " highlight spelling mistakes
 highlight clear SpellBad
 highlight SpellBad cterm=underline, ctermfg=red 
-highlight SpellBad gui=underline, guifg=Red
+highlight SpellBad gui=undercurl, guisp=red
 highlight clear SpellCap
 highlight SpellCap cterm=underline,bold, ctermfg=green
-highlight SpellCap gui=underline,bold, guifg=DarkGreen
+highlight SpellCap gui=undercurl guisp=DarkCyan
 
 " from [SO answer](http://stackoverflow.com/a/526940/177116)
 " When you type the first tab hit will complete as much as possible, the
