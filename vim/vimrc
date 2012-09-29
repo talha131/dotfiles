@@ -44,6 +44,8 @@ Bundle 'dahu/VimRegexTutor'
 Bundle 'zaiste/tmux.vim'
 " to browse the undo tree
 Bundle 'sjl/gundo.vim'
+" my todo plugin
+Bundle 'talha131/todo-plus'
 
 filetype plugin indent on     " required!
 "
