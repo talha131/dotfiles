@@ -21,7 +21,7 @@ send-keys -t 0 "cd ~/Repos/dotfiles/vim/vim/bundle/todo-plus" C-m
 
 # flash cards
 neww -a 
-send-keys -t 0 "cd ~/Repos/english-writing-skills/ && mvim -o english-vocab.md flash-cards-skeleton.md --remote-tab-silent ~/Dropbox/Write/Todo.todo ~/Dropbox/Write/Ideas.md && git status" C-m
+send-keys -t 0 "cd ~/Repos/english-writing-skills/ && mvim -o english-vocab.md flash-cards-skeleton.md --remote-tab-silent ~/Dropbox/Write/Ideas.md ~/Dropbox/Write/Todo.todo && git status" C-m
 
 # write a lot 
 neww -a 
