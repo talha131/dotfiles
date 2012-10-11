@@ -46,6 +46,8 @@ Bundle 'zaiste/tmux.vim'
 Bundle 'sjl/gundo.vim'
 " my todo plugin
 Bundle 'talha131/todo-plus'
+" maze generator for practising hjkl in Vim
+Bundle 'dahu/Vimazing'
 
 filetype plugin indent on     " required!
 "
