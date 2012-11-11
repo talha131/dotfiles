@@ -11,17 +11,19 @@ send-keys -t 0 "cd jv && git status" C-m
 
 # create new window for dot files project
 neww -a 
-splitw -h -p 50 
-send-keys -t 0 "cd ~/Repos/dotfiles/" C-m
-send-keys -t 1 "cd ~/Repos/dotfiles/ && git status" C-m
+send-keys -t 0 "cd ~/Repos/dotfiles/ && git status" C-m
 
 # create new window for my todo plugin
 neww -a 
 send-keys -t 0 "cd ~/Repos/dotfiles/vim/vim/bundle/todo-plus" C-m
 
+# create new window for Pelican theme development
+neww -a
+send-keys -t 0 "cd ~/Repos/pelican-themes/elegant && git status" C-m
+
 # flash cards
 neww -a 
-send-keys -t 0 "cd ~/Repos/english-writing-skills/ && mvim -o english-vocab.md flash-cards-skeleton.md --remote-tab-silent ~/Dropbox/Write/Ideas.md ~/Dropbox/Write/Todo.todo && git status" C-m
+send-keys -t 0 "cd ~/Repos/english-writing-skills/ && mvim -o english-vocab.md flash-cards-skeleton.md --remote-tab-silent ~/Dropbox/Write/Todo.todo && git status" C-m
 
 # write a lot 
 neww -a 
@@ -34,8 +36,8 @@ select-pane -t 0
 neww -a
 splitw -v -p 30 
 send-keys -t 0 "sleep 1" C-m
-send-keys -t 0 "cd ~/Repos/notes/ && mvim --servername notes -S && git status" C-m
-send-keys -t 1 "cd ~/Repos/notes/ && rackup -p 9293" C-m
+send-keys -t 0 "cd ~/Repos/notes/ && workon notes && mvim --servername notes -S && git status" C-m
+send-keys -t 1 "cd ~/Repos/notes/ && workon notes && ./develop_server.sh stop && make devserver" C-m
 select-pane -t 0
 
 select-window -t 1
