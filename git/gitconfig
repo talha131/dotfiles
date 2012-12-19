@@ -21,6 +21,5 @@
   untracked = cyan reverse
   branch = magenta
 [merge]
-  ff = false 
 [push]
 	default = simple
