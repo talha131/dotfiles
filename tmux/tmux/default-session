@@ -1,9 +1,10 @@
+# default window
 splitw -v -p 30 
 splitw -h -p 50
 
-send-keys -t 1 "cd Repos/org-notes/ && git status" C-m
+send-keys -t 1 "sudo iftop" C-m
 send-keys -t 2 "ping www.google.com" C-m
-selectp -t 0
+selectp -t 1
 
 # create new window for JV
 neww -a 
@@ -21,22 +22,11 @@ send-keys -t 0 "cd ~/Repos/dotfiles/vim/vim/bundle/todo-plus" C-m
 neww -a
 send-keys -t 0 "cd ~/Repos/pelican-themes/elegant && git status" C-m
 
-# flash cards
-neww -a 
-send-keys -t 0 "cd ~/Repos/english-writing-skills/ && mvim -o english-vocab.md flash-cards-skeleton.md --remote-tab-silent ~/Dropbox/Write/Todo.todo && git status" C-m
-
-# write a lot 
-neww -a 
-splitw -v -p 30 
-send-keys -t 0 "cd ~/Repos/write-a-lot/" C-m
-send-keys -t 1 "cd ~/Repos/write-a-lot/ && rackup -p 9292" C-m
-select-pane -t 0
-
 # notes
 neww -a
 splitw -v -p 30 
-send-keys -t 0 "sleep 1" C-m
-send-keys -t 0 "cd ~/Repos/notes/ && workon notes && mvim --servername notes -S && git status" C-m
+send-keys -t 0 "cd ~/Repos/notes/ && workon notes" C-m
+send-keys -t 0 "mvim -p ~/Dropbox/Write/Todo.todo content/ideas.rst +tabfirst" C-m
 send-keys -t 1 "cd ~/Repos/notes/ && workon notes && ./develop_server.sh stop && make devserver" C-m
 select-pane -t 0
 
