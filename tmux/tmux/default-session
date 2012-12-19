@@ -27,6 +27,7 @@ neww -a
 splitw -v -p 30 
 send-keys -t 0 "cd ~/Repos/notes/ && workon notes" C-m
 send-keys -t 0 "mvim -p ~/Dropbox/Write/Todo.todo content/ideas.rst +tabfirst" C-m
+send-keys -t 0 "git status" C-m
 send-keys -t 1 "cd ~/Repos/notes/ && workon notes && ./develop_server.sh stop && make devserver" C-m
 select-pane -t 0
 
