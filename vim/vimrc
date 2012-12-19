@@ -161,3 +161,6 @@ let g:gundo_close_on_revert=1
 
 " auto commit every time I update my notes
 autocmd BufWritePost ~/Repos/notes/content/*.rst  silent execute '! if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1 ; then git add % ; git commit -m %; fi'
+
+" add angle bracket and pipe to the list to auto close pairs
+let g:AutoClosePairs_add = "<> |"
