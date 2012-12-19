@@ -48,6 +48,8 @@ Bundle 'sjl/gundo.vim'
 Bundle 'talha131/todo-plus'
 " maze generator for practising hjkl in Vim
 Bundle 'dahu/Vimazing'
+" WriteRoom like env in Vim http://projects.mikewest.org/vimroom/ 
+Bundle 'mikewest/vimroom'
 
 filetype plugin indent on     " required!
 "
@@ -164,3 +166,6 @@ autocmd BufWritePost ~/Repos/notes/content/*.rst  silent execute '! if [ -d .git
 
 " add angle bracket and pipe to the list to auto close pairs
 let g:AutoClosePairs_add = "<> |"
+
+" vim room settings
+let g:vimroom_guibackground = "White"
