@@ -51,8 +51,6 @@ Bundle 'talha131/todo-plus'
 Bundle 'dahu/Vimazing'
 " WriteRoom like env in Vim http://projects.mikewest.org/vimroom/ 
 Bundle 'mikewest/vimroom'
-" Integrate Vim with SimpleNote http://mrtazz.com/simplenote.vim/
-Bundle 'mrtazz/simplenote.vim'
 
 filetype plugin indent on     " required!
 "
@@ -172,7 +170,3 @@ let g:AutoClosePairs_add = "<> |"
 
 " vim room settings
 let g:vimroom_guibackground = "White"
-
-" SimpleNote credentials
-let g:SimplenoteFiletype = "markdown"
-source ~/simplenoterc
