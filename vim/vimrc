@@ -51,6 +51,22 @@ Bundle 'talha131/todo-plus'
 Bundle 'dahu/Vimazing'
 " WriteRoom like env in Vim http://projects.mikewest.org/vimroom/ 
 Bundle 'mikewest/vimroom'
+" inserts code snippets
+Bundle 'msanders/snipmate.vim'
+" Syntax checking
+Bundle 'scrooloose/syntastic'
+" integrates Python documentation system into Vim
+Bundle 'fs111/pydoc.vim'
+" Shows list of open buffers in a mini window
+Bundle 'fholgado/minibufexpl.vim'
+" Use rope -Python refactoring library
+Bundle 'sontek/rope-vim'
+" jedi autocompletion library for VIM
+Bundle 'davidhalter/jedi-vim'
+" tree explorer
+Bundle 'scrooloose/nerdtree'
+" style checker
+Bundle 'nvie/vim-flake8'
 
 filetype plugin indent on     " required!
 "
@@ -170,3 +186,7 @@ let g:AutoClosePairs_add = "<> |"
 
 " vim room settings
 let g:vimroom_guibackground = "White"
+
+" Vim as Python IDE
+set foldmethod=indent
+set foldlevel=99
