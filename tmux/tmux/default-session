@@ -4,7 +4,7 @@ splitw -h -p 50
 
 send-keys -t 1 "ping www.google.com" C-m
 send-keys -t 2 "sudo iftop" C-m
-selectp -t 1
+selectp -t 2
 
 # create new window for JV
 neww -a 
