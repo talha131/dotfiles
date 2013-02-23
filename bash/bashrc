@@ -71,3 +71,4 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ] ; then
 fi
 
 export HISTCONTROL=ignorespace 
+function gi() { curl http://gitignore.io/api/$@ ;}
