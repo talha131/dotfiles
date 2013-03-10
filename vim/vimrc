@@ -165,7 +165,7 @@ set shell=bash\ --rcfile\ ~/.bashrc
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 nmap <c-p>o :CtrlPBuffer<CR>
-nmap <c-p>l :CtrlPMRU<CR>
+nmap <c-p>l :CtrlPMRUFiles<CR>
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 30
 let b:ctrlp_working_path_mode = 'c'
