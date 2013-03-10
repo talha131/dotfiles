@@ -27,7 +27,7 @@ def main():
     filename = date.today().strftime('%m-%d-%Y.md')
     text = date.today().strftime('%A, %b %d, %Y')
     text = text + '\n' + '=' * len(text)
-    text = text + '\n' * 3
+    text = text + '\n' * 2
     make_file(filename, text)
 
 
