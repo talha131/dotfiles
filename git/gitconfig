@@ -3,6 +3,7 @@
 [core]
   quotepath = false
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  excludesfile = /Users/talha/.gitignore
 [color]
   ui = true
 [color "branch"]
