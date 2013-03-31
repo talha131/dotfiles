@@ -59,8 +59,10 @@ export LC_ALL=
 
 # virtualenvwrapper is a set of extensions to Ian Bicking's virtualenv tool
 # http://pypi.python.org/pypi/virtualenvwrapper
-export WORKON_HOME=~/Repos
+export WORKON_HOME=~/Repos/VirtualEnvs
 export VIRTUALENVWRAPPER_HOOK_DIR=~/Repos/VirtualEnvWrapper_Hooks
+export VIRTUALENVWRAPPER_LOG_FILE=~/Repos/VirtualEnvWrapper_Hooks
+
 
 if [ ! -d "$VIRTUALENVWRAPPER_HOOK_DIR" ] ; then
   mkdir -p "$VIRTUALENVWRAPPER_HOOK_DIR"
