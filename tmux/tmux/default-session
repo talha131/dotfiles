@@ -24,10 +24,11 @@ send-keys -t 0 "cd ~/Repos/pelican-themes/elegant && git status" C-m
 
 # notes
 neww -a
-splitw -v -p 30 
-send-keys -t 0 "cd ~/Repos/notes/ && workon notes" C-m
+send-keys -t 0 "cd ~/Repos/notes/ && workon pelican-dev && ./develop_server.sh stop && make devserver" C-m
 send-keys -t 0 "git status" C-m
-send-keys -t 1 "cd ~/Repos/notes/ && workon notes && ./develop_server.sh stop && make devserver" C-m
-select-pane -t 0
+
+# pelican
+neww -a
+send-keys -t 0 "cd ~/Repos/pelican/ && workon pelican-dev && python setup.py install && pelican-themes -s ~/Repos/pelican-themes/elegant/"
 
 select-window -t 1
