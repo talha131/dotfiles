@@ -67,6 +67,8 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'scrooloose/nerdtree'
 " style checker
 Bundle 'nvie/vim-flake8'
+" Powerline
+Bundle 'Lokaltog/powerline'
 
 filetype plugin indent on     " required!
 "
@@ -187,3 +189,8 @@ let g:vimroom_guibackground = "White"
 " Vim as Python IDE
 set foldmethod=indent
 set foldlevel=99
+
+" Powerline
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+set laststatus=2 " Always display the statusline in all windows
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
