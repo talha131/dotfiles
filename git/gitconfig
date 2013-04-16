@@ -1,28 +1,27 @@
 [user]
         name = Talha Mansoor
-  email = talha131@gmail.com
+        email = talha131@gmail.com
 [core]
-  quotepath = false
-  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  excludesfile = /Users/talha/.gitignore
+        quotepath = false
+        whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+        excludesfile = /Users/talha/.gitignore
 [color]
-  ui = true
+        ui = true
 [color "branch"]
-  current = green 
-  local = magenta
-  remote = yellow 
+        current = green 
+        local = magenta
+        remote = yellow 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red
-  new = green 
-  whitespace = white reverse
+        meta = yellow bold
+        frag = magenta bold
+        old = red
+        new = green 
+        whitespace = white reverse
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan reverse
-  branch = magenta
-[merge]
+        added = yellow
+        changed = green
+        untracked = cyan reverse
+        branch = magenta
 [push]
 	default = simple
 [alias]
