@@ -1,4 +1,5 @@
 [user]
+        name = Talha Mansoor
   email = talha131@gmail.com
 [core]
   quotepath = false
@@ -24,3 +25,10 @@
 [merge]
 [push]
 	default = simple
+[alias]
+	st = status -sb
+        l = "!source ~/.githelper && pretty_git_log"
+        la = "!git l --all"
+        lr = !git l -50 --graph
+        lg = !git l --graph
+        lar = !git lr --all
