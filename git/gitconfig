@@ -6,17 +6,19 @@
         whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
         excludesfile = /Users/talha/.gitignore
 [color]
-        ui = true
+        ui = auto
 [color "branch"]
         current = green 
         local = magenta
         remote = yellow 
 [color "diff"]
         meta = yellow bold
-        frag = magenta bold
+        frag = magenta
         old = red
         new = green 
         whitespace = white reverse
+        commit = blue reverse
+        plain = black
 [color "status"]
         added = yellow
         changed = green
