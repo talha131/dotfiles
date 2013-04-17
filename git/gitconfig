@@ -27,10 +27,12 @@
 [push]
 	default = simple
 [alias]
-	st = status -sb
+	sb = status -sb
         l = "!source ~/.githelper && pretty_git_log"
         la = "!git l --all"
         lr = !git l -50 --graph
+        lra = !git lr --all
         lg = !git l --graph
-        lar = !git lr --all
 	lp = log --patch --decorate
+	d = diff
+	dc = diff --cached
