@@ -33,3 +33,4 @@
         lr = !git l -50 --graph
         lg = !git l --graph
         lar = !git lr --all
+	lp = log --patch --decorate
