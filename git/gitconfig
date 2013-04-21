@@ -36,3 +36,6 @@
 	lp = log --patch --decorate
 	d = diff
 	dc = diff --cached
+	c = commit -v
+	ca = !git c -a
+	caa = !git c -a --amend
