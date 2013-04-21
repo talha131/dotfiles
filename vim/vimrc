@@ -57,8 +57,6 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/syntastic'
 " integrates Python documentation system into Vim
 Bundle 'fs111/pydoc.vim'
-" Shows list of open buffers in a mini window
-Bundle 'fholgado/minibufexpl.vim'
 " Use rope -Python refactoring library
 Bundle 'sontek/rope-vim'
 " jedi autocompletion library for VIM
