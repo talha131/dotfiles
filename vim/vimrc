@@ -129,7 +129,6 @@ set history=100
 "let g:zenburn_alternate_Visual = 1
 "colorscheme zenburn 
 colorscheme beauty256Talha
-set colorcolumn=80
 
 "Always show current position
 set ruler
@@ -192,3 +191,6 @@ set foldlevel=99
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 set laststatus=2 " Always display the statusline in all windows
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
+"
+autocmd FileType gitcommit set colorcolumn=72
