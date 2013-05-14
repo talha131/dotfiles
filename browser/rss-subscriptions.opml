@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="1.0">
+<head>
+<title>Vienna Subscriptions</title>
+<dateCreated>2013-05-14 14:10:23 +0500</dateCreated>
+</head>
+<body>
+<outline htmlUrl="http://1000thingsaboutjapan.blogspot.com/" xmlUrl="http://1000thingsaboutjapan.blogspot.com/feeds/posts/default" type="rss" description="...that I will and won&apos;t miss." text="1000 Things About Japan"/>
+<outline htmlUrl="http://www.applieddatalabs.com/rss.xml" xmlUrl="http://feeds.feedburner.com/AppliedDataLabs" type="rss" description="Applied Data Labs news, reports, and commentary" text="Applied Data Labs - Working to bring you tomorrow&apos;s analytics today."/>
+<outline htmlUrl="http://hnapp.com/filter/88d5a5dd166f933b62b9ff3f289892dc" xmlUrl="http://hnapp.com/api/items/rss/88d5a5dd166f933b62b9ff3f289892dc" type="rss" description="A hnapp filter" text="Ask HN"/>
+<outline text="Business">
+<outline htmlUrl="http://mixergy.com" xmlUrl="http://feeds.feedburner.com/Mixergy-blog" type="rss" description="Entrepreneurs you respect teach how they did it." text="Business tips for startups by proven entrepreneurs - Mixergy"/>
+<outline htmlUrl="http://michaelochurch.wordpress.com" xmlUrl="https://michaelochurch.wordpress.com/feed/" type="rss" description="Rants, essays, and diatribes." text="Michael O. Church"/>
+<outline htmlUrl="http://sethgodin.typepad.com/seths_blog/" xmlUrl="http://sethgodin.typepad.com/seths_blog/atom.xml" type="rss" description="Seth Godin&apos;s riffs on marketing, respect, and the ways ideas spread." text="Seth&apos;s Blog"/>
+<outline htmlUrl="http://swombat.com/" xmlUrl="http://feeds.feedburner.com/swombat" type="rss" description="Essential reading about Startups. By Daniel Tenner." text="swombat.com"/>
+</outline>
+<outline text="Cocoa Development">
+<outline htmlUrl="http://adoptioncurve.net/" xmlUrl="http://www.adoptioncurve.net/atom.xml" type="rss" description="" text="Adoption Curve Dot Net"/>
+<outline htmlUrl="http://www.cocoawithlove.com/" xmlUrl="http://feeds.feedburner.com/CocoaWithLove" type="rss" description="Advanced programming tips, tricks and hacks for Mac development in C/Objective-C and Cocoa." text="Cocoa with Love"/>
+<outline htmlUrl="http://meandmark.com/blog" xmlUrl="http://meandmark.com/blog/feed/" type="rss" description="" text="meandmark.com"/>
+<outline htmlUrl="http://www.mikeash.com/pyblog/" xmlUrl="http://www.mikeash.com/pyblog/rss.py?mode=fulltext" type="rss" description="Mac OS X and Cocoa programming" text="NSBlog"/>
+<outline htmlUrl="http://nshipster.com" xmlUrl="http://nshipster.com/feed.xml" type="rss" description="NSHipster is a journal of the overlooked bits in Objective-C and Cocoa. Updated weekly." text="NSHipster"/>
+<outline htmlUrl="http://swwritings.com" xmlUrl="http://feeds.feedburner.com/swwritings" type="rss" description="Sometimes random, occasionally focused, rarely proof-read" text="Simon Wolf&apos;s Writings on scriptogr.am"/>
+<outline htmlUrl="http://tomdalling.com" xmlUrl="http://feeds.feedburner.com/TomDalling" type="rss" description="Web &amp; software developer" text="Tom Dalling"/>
+<outline htmlUrl="http://comelearncocoawithme.blogspot.com/" xmlUrl="http://comelearncocoawithme.blogspot.com/feeds/posts/default" type="rss" description="" text="Yet Another Learn Cocoa With Me Blog"/>
+</outline>
+<outline text="Comics">
+<outline htmlUrl="http://abstrusegoose.com" xmlUrl="http://abstrusegoose.com/feed.xml" type="rss" description="awesome webcomic" text="Abstruse Goose"/>
+<outline htmlUrl="http://www.akimbocomics.com" xmlUrl="http://www.akimbocomics.com/?feed=rss2" type="rss" description="" text="Akim Bo Comics"/>
+<outline htmlUrl="http://www.amazingsuperpowers.com" xmlUrl="http://www.amazingsuperpowers.com/feed/" type="rss" description="by Wes and Tony" text="AmazingSuperPowers: Webcomic at the Speed of Light » Comics"/>
+<outline htmlUrl="http://www.balderduck.com" xmlUrl="http://www.balderduck.com/feed/" type="rss" description="...it&apos;s not even a word!" text="Balderduck"/>
+<outline htmlUrl="http://boggletondrive.com" xmlUrl="http://boggletondrive.com/feed/" type="rss" description="" text="Boggleton Drive"/>
+<outline htmlUrl="http://brawlinthefamily.keenspot.com" xmlUrl="http://brawlinthefamily.keenspot.com/feed/" type="rss" description="Fun times!" text="Brawl in the Family"/>
+<outline htmlUrl="http://buttersafe.com" xmlUrl="http://buttersafe.com/feed/" type="rss" description="Updated Tuesdays and Thursdays" text="Buttersafe - Updated Tuesdays and Thursdays"/>
+<outline htmlUrl="http://www.channelate.com" xmlUrl="http://www.channelate.com/feed/" type="rss" description="Comics and Cartoons by Ryan Hudson" text="Channelate by Ryan Hudson : Week daily comics"/>
+<outline htmlUrl="http://www.cheerupemokid.com" xmlUrl="http://www.cheerupemokid.com/feed" type="rss" description="A Webcomic about Life, Love, and Loss" text="Cheer Up, Emo Kid"/>
+<outline htmlUrl="http://www.courting-disaster.com/" xmlUrl="http://www.courting-disaster.com/index.xml" type="rss" description="A weekly webcomic about love, sex, relationships, and other disasters." text="Courting Disaster"/>
+<outline htmlUrl="http://pipes.yahoo.com/pipes/pipe.info?_id=9b91d1900e14d1caff163aa6fa1b24bd" xmlUrl="http://pipes.yahoo.com/pipes/pipe.run?_id=9b91d1900e14d1caff163aa6fa1b24bd&amp;_render=rss" type="rss" description="This pipe will generate an RSS feed of just the Cyanide and Happiness comics on Explosm.net. Enjoy!" text="Cyanide and Happiness - Only the comics"/>
+<outline htmlUrl="http://dilbert.com/" xmlUrl="http://feeds.feedburner.com/DilbertDailyStrip" type="rss" description="The Official Dilbert Daily Comic Strip RSS Feed" text="Dilbert Daily Strip"/>
+<outline htmlUrl="http://www.qwantz.com" xmlUrl="http://www.rsspect.com/rss/qwantz.xml" type="rss" description="Sexy exciting comics for all the awesome people of the world!" text="Dinosaur Comics"/>
+<outline htmlUrl="http://www.penguinpetes.com/Doomed_to_Obscurity/index.php" xmlUrl="http://www.penguinpetes.com/Doomed_to_Obscurity/rss.xml" type="rss" description="A webcomic that gives the geek culture just what it deserves! Published every odd-numbered calendar day at http://penguinpetes.com/" text="Doomed to Obscurity"/>
+<outline htmlUrl="http://eatthattoast.com" xmlUrl="http://eatthattoast.com/feed/" type="rss" description="Comics and Animation!" text="Eat That Toast!"/>
+<outline htmlUrl="http://www.foxtrot.com" xmlUrl="http://www.foxtrot.com/feed/" type="rss" description="by Bill Amend" text="FoxTrot.com"/>
+<outline htmlUrl="http://www.pidjin.net" xmlUrl="http://feeds.feedburner.com/Pidjin" type="rss" description="World&apos;s funniest webcomic by Eugen Erhan &amp; Tudor Muscalu" text="Fredo and Pidjin. The Webcomic. » Fredo &amp; Pid’Jin"/>
+<outline htmlUrl="http://geek-and-poke.com/" xmlUrl="http://geekandpoke.typepad.com/geekandpoke/rss.xml" type="rss" description="Cartoons" text="Geek And Poke"/>
+<outline htmlUrl="http://godsofthemoon.com" xmlUrl="http://godsofthemoon.com/feed/" type="rss" description="Everything is boring here" text="Gods of the Moon"/>
+<outline htmlUrl="http://gunshowcomic.com" xmlUrl="http://www.rsspect.com/rss/gunshowcomic.xml" type="rss" description="Gun show comics go off quick, like a gun in your hand, but you will be forever wounded and you can kill a deer with it as well." text="Gun Show ~ ~ ~ ~"/>
+<outline htmlUrl="http://www.rsspect.com" xmlUrl="http://www.rsspect.com/rss/vagrant.xml" type="rss" description="Kate Beaton&apos;s comics." text="Hark, A Vagrant!"/>
+<outline htmlUrl="http://invisiblebread.com" xmlUrl="http://feeds.feedburner.com/InvisibleBread" type="rss" description="A webcomic that you&apos;ll enjoy if you like comics about things and stuff!" text="Invisible Bread"/>
+<outline htmlUrl="http://loldwell.com" xmlUrl="http://loldwell.com/?feed=rss2" type="rss" description="" text="LOLDWELL.com"/>
+<outline htmlUrl="http://www.lukesurl.com" xmlUrl="http://www.lukesurl.com/feed" type="rss" description="The latest from LukeSurl.com" text="Luke Surl Comics"/>
+<outline htmlUrl="http://www.mightytrainer.com" xmlUrl="http://www.mightytrainer.com/feed/" type="rss" description="A Workout Comic | Funny Gym Idiots" text="Mighty Trainer"/>
+<outline htmlUrl="http://www.murraythenut.com" xmlUrl="http://www.murraythenut.com/feed/" type="rss" description="A web comic of sex, love, and depression" text="Murray The Nut"/>
+<outline htmlUrl="http://formalsweatpants.com/journal/" xmlUrl="http://formalsweatpants.com/journal/rss.xml" type="rss" description="" text="New Comics"/>
+<outline htmlUrl="http://www.phdcomics.com" xmlUrl="http://www.phdcomics.com/gradfeed.php" type="rss" description="Providing global up-to-the-minute procrastination!" text="PHD Comics"/>
+<outline htmlUrl="http://www.piecomic.com" xmlUrl="http://piecomic.tumblr.com/feed/" type="rss" description="" text="Pie Comic"/>
+<outline htmlUrl="http://poorlydrawnlines.com" xmlUrl="http://feeds.feedburner.com/PoorlyDrawnLines" type="rss" description="A Comic" text="Poorly Drawn Lines"/>
+<outline htmlUrl="http://www.questionablecontent.net" xmlUrl="http://www.questionablecontent.net/QCRSS.xml" type="rss" description="The Official QC RSS Feed" text="QC RSS"/>
+<outline htmlUrl="http://www.recombinantrecords.net" xmlUrl="http://www.recombinantrecords.net/feed/" type="rss" description="cartoons by Stuart McMillen" text="Recombinant Records"/>
+<outline htmlUrl="http://www.smbc-comics.com" xmlUrl="http://feeds.feedburner.com/smbc-comics/PvLb" type="rss" description="The Saturday Morning Breakfast Cereal Blog" text="Saturday Morning Breakfast Cereal (updated daily)"/>
+<outline htmlUrl="http://satwcomic.com" xmlUrl="http://feeds.feedburner.com/satwcomic" type="rss" description="The latest issues." text="Scandinavia and the World"/>
+<outline htmlUrl="http://sciencelovelsd.com" xmlUrl="http://sciencelovelsd.com/feed/" type="rss" description="" text="Science, Love and LSD"/>
+<outline htmlUrl="http://seemikedraw.com.au" xmlUrl="http://seemikedraw.com.au/feed" type="rss" description="The funniest cartoons on earth - guaranteed!* (*guarantee not actually guaranteed)" text="See Mike Draw"/>
+<outline htmlUrl="http://seemikedraw.com.au" xmlUrl="http://seemikedraw.com.au/feed" type="rss" description="The funniest cartoons on earth - guaranteed!* (*guarantee not actually guaranteed)" text="seemikedraw"/>
+<outline htmlUrl="http://www.sinfest.net" xmlUrl="http://www.sinfest.net/rss.php" type="rss" description="Sinfest" text="Sinfest"/>
+<outline htmlUrl="http://www.spaceavalanche.com" xmlUrl="http://feeds.feedburner.com/SpaceAvalanche" type="rss" description="Space avalanche web comic" text="SPACE AVALANCHE"/>
+<outline htmlUrl="http://storyboardcomics.blogspot.com/" xmlUrl="http://storyboardcomics.blogspot.com/feeds/posts/default?alt=rss" type="rss" description="Hi. I&apos;m Sam Saxton, and this is my webcomic/blog thing. I&apos;m a freelance storyboard artist in New York City. If you&apos;d like for me to create storyboards for your next commercial, tv show, movie, etc., contact me at samsaxtonart@gmail.com or 814 482 0577." text="Storyboards"/>
+<outline htmlUrl="http://page2rss.com/3b0e58587a685d1d6df012957dbb759c" xmlUrl="http://page2rss.com/rss/3b0e58587a685d1d6df012957dbb759c" type="rss" description="Page2RSS Monitored Page: strippy - new comic every monday (http://www.strippycomics.com/)" text="strippy - new comic every monday"/>
+<outline htmlUrl="http://www.stuartmcmillen.com" xmlUrl="http://www.stuartmcmillen.com/comics_en/feed/" type="rss" description="Comics and cartoons on science, society, the environment and ecological sustainability." text="Stuart McMillen comics » Comics"/>
+<outline htmlUrl="http://www.stuartmcmillen.com" xmlUrl="http://www.stuartmcmillen.com/en/feed/" type="rss" description="Comics and cartoons on science, society, the environment and ecological sustainability." text="Stuart McMillen comics » English"/>
+<outline htmlUrl="http://theoatmeal.com/" xmlUrl="http://feeds.feedburner.com/oatmealfeed" type="rss" description="The oatmeal tastes better than stale skittles found under the couch cushions" text="The Oatmeal - Comics, Quizzes, &amp; Stories"/>
+<outline htmlUrl="http://pbfcomics.com/feed/pbfcomics.com" xmlUrl="http://pbfcomics.com/feed/feed.xml" type="rss" description="" text="The Perry Bible Fellowship"/>
+<outline htmlUrl="http://www.toonhole.com" xmlUrl="http://www.toonhole.com/feed/" type="rss" description="Comics Mon, Wed, Fri. Animation Monthly" text="Toonhole"/>
+<outline htmlUrl="http://verabee.com" xmlUrl="http://verabee.com/feed/" type="rss" description="" text="Verabee"/>
+<outline htmlUrl="http://www.virtualshackles.com" xmlUrl="http://feeds2.feedburner.com/virtualshackles" type="rss" description="The Adventures of Orion and Jack!" text="Virtual Shackles"/>
+<outline htmlUrl="http://xkcd.com/" xmlUrl="https://www.xkcd.com/atom.xml" type="rss" description="" text="xkcd.com"/>
+</outline>
+<outline text="Develop">
+<outline htmlUrl="http://eviltrout.com/" xmlUrl="http://eviltrout.com/feed.xml" type="rss" description="The Evilist Trout of them all" text="Evil Trout&apos;s Blog"/>
+<outline htmlUrl="http://jacquesmattheij.com/" xmlUrl="http://jacquesmattheij.com/rss.xml" type="rss" description="" text="jacquesmattheij.com -"/>
+<outline htmlUrl="http://jobtipsforgeeks.com" xmlUrl="http://jobtipsforgeeks.com/feed/" type="rss" description="career advice for programmery people..." text="job tips for geeks"/>
+<outline htmlUrl="http://www.marco.org/" xmlUrl="http://www.marco.org/rss" type="rss" description="I’m Marco Arment, creator of Instapaper, technology writer, and coffee enthusiast." text="Marco.org"/>
+</outline>
+<outline htmlUrl="http://www.daemonology.net/hn-daily/" xmlUrl="http://www.daemonology.net/hn-daily/index.rss" type="rss" description="Daily top stories from Hacker News" text="Hacker News Daily"/>
+<outline text="Knowledge">
+<outline htmlUrl="http://betterexplained.com" xmlUrl="http://feeds.feedburner.com/Betterexplained" type="rss" description="Learn Right, Not Rote." text="BetterExplained"/>
+</outline>
+<outline text="Lead a better life">
+<outline htmlUrl="http://www.jamesaltucher.com" xmlUrl="http://feeds.feedburner.com/jamesaltucher" type="rss" description="Ideas for a World Out of Balance" text="Altucher Confidential"/>
+<outline htmlUrl="http://abetterlife.quora.com" xmlUrl="https://abetterlife.quora.com/rss" type="rss" description="Leading a better life on Quora" text="Leading a better life on Quora"/>
+<outline htmlUrl="http://learningfundamentals.com.au" xmlUrl="http://feeds2.feedburner.com/LearningFundamentals" type="rss" description="" text="Learning Fundamentals"/>
+<outline htmlUrl="http://oliveremberton.com" xmlUrl="http://oliveremberton.com/feed/" type="rss" description="" text="Oliver Emberton"/>
+<outline htmlUrl="http://calnewport.com/blog" xmlUrl="http://feeds.feedburner.com/StudyHacks" type="rss" description="Decoding Patterns of Success" text="Study Hacks"/>
+<outline htmlUrl="http://jamesaltucher.quora.com" xmlUrl="https://jamesaltucher.quora.com/rss" type="rss" description="The Altucher Confidential on Quora" text="The Altucher Confidential on Quora"/>
+</outline>
+<outline text="News Articles">
+<outline htmlUrl="http://dunya.com.pk/?key=VjFjeE1HTXhTbGRSYkZab1RXcEdZVlJYZEZwa01XUnpWbTVPVTFaclNsbFdSelZoWVZaT1IxZHFRbGhTUlhCSVdsWmFjMDB4UWxWTlJEQTk=" xmlUrl="http://feed43.com/amir-khakwani.xml" type="rss" description="Amir Khakwani in Daily Dunya" text="Amir Khakwani"/>
+<outline htmlUrl="http://dunya.com.pk/?key=VjFjeE1HTXhTbGRSYkZaVlZucEdZVlJYZEZwa01XUnpWbTVPVTFaclNsbFdSelZoWVZaT1IxZHFRbGhTUlhCSVdsWmFjMDB4UWxWTlJEQTk=" xmlUrl="http://feed43.com/nazeer-naji.xml" type="rss" description="Nazeer Naji in Daily Dunya" text="Nazeer Naji"/>
+<outline htmlUrl="http://dunya.com.pk/?key=VjFjeE1HTXhTbGRSYkZaaFRXcEdZVlJYZEZwa01XUnpWbTVPVTFaclNsbFdSelZoWVZaT1IxZHFRbGhTUlhCSVdsWmFjMDB4UWxWTlJEQTk=" xmlUrl="http://feed43.com/rauf-klasra.xml" type="rss" description="Rauf Klasra in Daily Dunya" text="Rauf Klasra"/>
+<outline htmlUrl="http://www.express.pk" xmlUrl="http://www.express.pk/author/39/jawed-chowhdray/feed/" type="rss" description="Latest Breaking News from Pakistan, Business, Life, Style, Cricket, Videos, Comments" text="ایکسپریسس اردو » Jawed Chowhdray"/>
+<outline htmlUrl="http://www.express.pk" xmlUrl="http://www.express.pk/author/150/tariq-mahmood-mian/feed/" type="rss" description="Latest Breaking News from Pakistan, Business, Life, Style, Cricket, Videos, Comments" text="ایکسپریسس اردو » Tariq Mahmood Mian"/>
+<outline htmlUrl="http://www.express.pk" xmlUrl="http://www.express.pk/author/638/wasat-ullah-khan/feed/" type="rss" description="Latest Breaking News from Pakistan, Business, Life, Style, Cricket, Videos, Comments" text="ایکسپریسس اردو » Wasat Ullah Khan"/>
+</outline>
+<outline text="Podcasts">
+<outline htmlUrl="http://atp.fm/" xmlUrl="http://atp.fm/episodes?format=rss" type="rss" description="Three nerds discussing tech and loosely related matters. An offshoot from Neutral, our car show." text="Accidental Tech Podcast"/>
+<outline htmlUrl="http://5by5.tv/buildanalyze" xmlUrl="http://feeds.5by5.tv/buildanalyze" type="rss" description="A weekly news and discussion show about the world of iPhone, iPad, iOS, and mobile web development. Hosted by Marco Arment &amp; Dan Benjamin." text="Build and Analyze"/>
+<outline htmlUrl="http://5by5.tv/cmdspace" xmlUrl="http://feeds.5by5.tv/cmdspace" type="rss" description="A tech news talk show that puts a spotlight on the guest. Hosted by Myke Hurley." text="CMD+Space"/>
+<outline htmlUrl="http://www.coreint.org/" xmlUrl="http://www.coreint.org/podcast.xml" type="rss" description="Daniel Jalkut and Manton Reece discuss Mac programming, independent development, Apple news, and more." text="Core Intuition"/>
+<outline htmlUrl="http://www.imore.com/debug/" xmlUrl="http://feeds.feedburner.com/debugshow" type="rss" description="Debug is a conversational interview show about developing software and services, primarily for iPhone, iPad, Mac, and gaming. Hosted by Guy English and Rene Ritchie, it&apos;s all the great talk you get at the bar after the conference, wrapped up in convenient podcast form. Pull up a chair, hit play, join us." text="Debug"/>
+<outline htmlUrl="https://www.destroyallsoftware.com/screencasts" xmlUrl="https://www.destroyallsoftware.com/screencasts/feed" type="rss" description="Destroy All Software Screencasts" text="Destroy All Software Screencasts"/>
+<outline htmlUrl="http://developingperspective.com" xmlUrl="http://developingperspective.com/feed/podcast/" type="rss" description="Developing Perspective is a podcast discussing the news of note in iOS Development, Apple and the like.  Hosted by David Smith, an independent iOS developer. Never longer than 15 minutes." text="Developing Perspective"/>
+<outline htmlUrl="http://grammar.quickanddirtytips.com" xmlUrl="http://www.qdnow.com/grammar.xml" type="rss" description="In under five minutes, you&apos;ll get a fun and friendly dose of writing advice. Grammar Girl covers everything from punctuation and grammar to style and voice. QuickandDirtyTips.com" text="Grammar Girl Quick and Dirty Tips for Better Writing"/>
+<outline htmlUrl="http://5by5.tv/hypercritical" xmlUrl="http://feeds.5by5.tv/hypercritical" type="rss" description="A weekly talk show ruminating on exactly what is wrong in the world of Apple and related technologies and businesses.  Nothing is so perfect that it can&apos;t be complained about. Hosted by John Siracusa &amp; Dan Benjamin." text="Hypercritical"/>
+<outline htmlUrl="http://identicalcousins.net/" xmlUrl="http://feeds.feedburner.com/IdenticalCousins" type="rss" description="Brent and Michael Simmons make Mac and iOS apps — except when they just talk about making apps. Like on this podcast." text="Identical Cousins"/>
+<outline htmlUrl="http://5by5.tv/inbeta" xmlUrl="http://feeds.5by5.tv/inbeta" type="rss" description="In Beta is a talk show about tech culture, making open source software, and how mobile, social, and web apps are changing the world. Hosted by Gina Trapani &amp; Kevin Purdy." text="In Beta"/>
+<outline htmlUrl="http://www.ted.com/talks/list" xmlUrl="http://feeds.feedburner.com/TedtalksHD" type="rss" description="TED is a nonprofit devoted to Ideas Worth Spreading. On this feed, you&apos;ll find TEDTalks video to inspire, intrigue and stir the imagination from some of the world&apos;s leading thinkers and doers, speaking from the stage at TED conferences, TEDx events and partner events around the world. This podcast is also available in high-def video and audio-only formats." text="TEDTalks (hd)"/>
+<outline htmlUrl="http://www.thisamericanlife.org" xmlUrl="http://feeds.thisamericanlife.org/talpodcast" type="rss" description="Official free, weekly podcast of the award-winning radio show &quot;This American Life.&quot; First-person stories and short fiction pieces that are touching, funny, and surprising. Hosted by Ira Glass, from WBEZ Chicago Public Radio. In mp3 and updated Mondays." text="This American Life"/>
+<outline htmlUrl="http://thisdeveloperslife.com" xmlUrl="http://feeds.feedburner.com/thisdeveloperslife" type="rss" description="Stories About Developers and Their Lives" text="This Developer&apos;s Life"/>
+<outline htmlUrl="http://vimcasts.org/feeds/ogg/" xmlUrl="http://vimcasts.org/feeds/ogg" type="rss" description="WEBSITE-DESCRIPTION" text="Vimcasts OGG Feed"/>
+</outline>
+<outline text="Product updates">
+<outline htmlUrl="http://blog.stackoverflow.com" xmlUrl="http://blog.stackoverflow.com/feed/" type="rss" description="free, community powered Q&amp;A" text="Blog - Stack Exchange"/>
+<outline htmlUrl="http://www.reddit.com/r/bookmarklets/" xmlUrl="http://www.reddit.com/r/bookmarklets/.rss" type="rss" description="" text="Bookmarklets"/>
+<outline htmlUrl="http://blog.calibre-ebook.com/" xmlUrl="http://blog.calibre-ebook.com/feeds/posts/default?alt=rss" type="rss" description="" text="calibre tips and tricks"/>
+<outline htmlUrl="http://www.codecademy.com/blog" xmlUrl="http://www.codecademy.com/blog.rss" type="rss" description="The easiest way to learn to code" text="Codecademy Blog"/>
+<outline htmlUrl="http://www.reddit.com/r/reddittools/" xmlUrl="http://www.reddit.com/r/reddittools/.rss" type="rss" description="" text="Reddittools - the the most out of reddit"/>
+<outline htmlUrl="http://startupli.st/" xmlUrl="http://startupli.st/rss" type="rss" description="Startup list for early adopters" text="StartupLi.st"/>
+<outline htmlUrl="https://github.com/blog" xmlUrl="https://github.com/blog.atom" type="rss" description="" text="The GitHub Blog"/>
+<outline htmlUrl="http://web.appstorm.net" xmlUrl="http://feeds.feedburner.com/webappstorm" type="rss" description="Web Apps" text="Web.AppStorm"/>
+</outline>
+<outline text="Python">
+<outline htmlUrl="http://www.jeffknupp.com" xmlUrl="http://feeds.feedburner.com/hackersgonnahack" type="rss" description="" text="Hackers Gonna Hack"/>
+</outline>
+<outline htmlUrl="http://hnapp.com/filter/b44f4700a7e57973303aa54dac0e0957" xmlUrl="http://hnapp.com/api/items/rss/b44f4700a7e57973303aa54dac0e0957" type="rss" description="A hnapp filter" text="Show HN"/>
+<outline htmlUrl="http://svbtle.com" xmlUrl="https://svbtle.com/feed" type="rss" description="" text="Svbtle Featured"/>
+<outline text="Think">
+<outline htmlUrl="http://sivers.org/" xmlUrl="https://sivers.org/en.atom" type="rss" description="" text="Derek Sivers"/>
+<outline htmlUrl="http://www.fitocracy.com/knowledge" xmlUrl="http://www.fitocracy.com/knowledge/feed/" type="rss" description="" text="Fitocracy Knowledge Center"/>
+<outline htmlUrl="http://www.motokoindepth.com/" xmlUrl="http://www.motokoindepth.com/feeds/posts/default?alt=rss" type="rss" description="Motoko Kusanagi in the Ghost in the Shell Anime Films, Manga and TV Series" text="Motoko in Depth"/>
+<outline htmlUrl="http://www.goodreads.com/quotes_of_the_day" xmlUrl="http://www.goodreads.com/quotes_of_the_day/rss" type="rss" description="Selected daily at Goodreads.com" text="Quotes of the Day"/>
+<outline htmlUrl="http://www.roughtype.com" xmlUrl="http://www.roughtype.com/?feed=rss2" type="rss" description="Nicholas Carr&apos;s Blog" text="Rough Type"/>
+<outline htmlUrl="http://www.roughtype.com/" xmlUrl="http://feeds.feedburner.com/roughtype/unGc" type="rss" description="" text="Rough Type: Nicholas Carr&apos;s Blog"/>
+<outline htmlUrl="http://www.sparringmind.com" xmlUrl="http://www.sparringmind.com/feed/" type="rss" description="Behavioral Psychology Blog" text="Sparring Mind"/>
+<outline htmlUrl="http://successfulsoftware.net" xmlUrl="http://successfulsoftware.net/feed/" type="rss" description="Successful software requires more than just good programming." text="Successful Software"/>
+<outline htmlUrl="http://zenpencils.com" xmlUrl="http://feeds.feedburner.com/zenpencils" type="rss" description="Cartoon quotes from inspirational folks" text="ZEN PENCILS"/>
+</outline>
+<outline htmlUrl="http://tolkiengeek.blogspot.com/" xmlUrl="http://tolkiengeek.blogspot.com/feeds/posts/default" type="rss" description="Blogging J.R.R. Tolkien&apos;s &quot;The Lord of the Rings&quot; and other aimless pursuits." text="Tolkien Geek"/>
+<outline text="UI">
+<outline htmlUrl="http://littlebigdetails.com/" xmlUrl="http://feeds.feedburner.com/littlebigdetails" type="rss" description="An inspirational collection of UI details." text="Little Big Details"/>
+<outline htmlUrl="http://sidebar.io/" xmlUrl="http://feeds.feedburner.com/SidebarFeed" type="rss" description="The 5 best design links, every day" text="Sidebar Archive Feed"/>
+<outline htmlUrl="http://wireframes.linowski.ca" xmlUrl="http://feeds2.feedburner.com/wireframesmag" type="rss" description="Because every IA has something funky up their sleeve" text="Wireframes Magazine"/>
+</outline>
+<outline text="Vim">
+<outline htmlUrl="http://usevim.com" xmlUrl="http://feeds.feedburner.com/usevim" type="rss" description="" text="usevim"/>
+<outline htmlUrl="http://www.reddit.com/r/vim/" xmlUrl="http://www.reddit.com/r/vim/.rss" type="rss" description="" text="vim"/>
+<outline htmlUrl="http://www.vimninjas.com/" xmlUrl="http://feeds.feedburner.com/vimninjas" type="rss" description="" text="Vim Ninjas"/>
+<outline htmlUrl="http://www.vimtips-blog.com" xmlUrl="http://www.vimtips-blog.com/feed/" type="rss" description="zzappers latest VIM Blog" text="VIM Tips Blog"/>
+<outline htmlUrl="http://of-vim-and-vigor.blogspot.com/" xmlUrl="http://of-vim-and-vigor.blogspot.com/feeds/posts/default?alt=rss" type="rss" description="Occasionally coherent observations on the stuff around me, from vim and inkscape to ESL and cooking. And more." text="Wholly Unbalanced Parentheses"/>
+</outline>
+<outline text="Write">
+<outline htmlUrl="http://www.reddit.com/r/OneParagraph/" xmlUrl="http://www.reddit.com/r/OneParagraph/.rss" type="rss" description="Like fiction, but only have a minute? OneParagraph is a subreddit specifically for small format fiction limited to a single paragraph. Everyone is encouraged to contribute, but silent audience members are just as welcome. If you&apos;re unsure how to start, take a quick look at our guidelines." text="Bite-Sized Chunks of Fiction"/>
+<outline htmlUrl="http://www.dailywritingtips.com" xmlUrl="http://feeds2.feedburner.com/DailyWritingTips" type="rss" description="" text="Daily Writing Tips"/>
+<outline htmlUrl="http://opinionator.blogs.nytimes.com/category/draft/" xmlUrl="http://opinionator.blogs.nytimes.com/category/draft/feed/" type="rss" description="A Gathering of Opinion From Around the Web" text="Opinionator» Draft"/>
+<outline htmlUrl="http://www.reddit.com/r/shutupandwrite/" xmlUrl="http://www.reddit.com/r/shutupandwrite/.rss" type="rss" description="" text="shut up and write already"/>
+<outline htmlUrl="http://writerunderground.com" xmlUrl="http://writerunderground.com/feed/" type="rss" description="writing about writers and other letter-related debris" text="The Writer Underground"/>
+</outline>
+<outline htmlUrl="http://yakihito.blogspot.com/" xmlUrl="http://yakihito.blogspot.com/feeds/posts/default" type="rss" description="Japanese and Korean culture from an American perspective." text="yakihito"/>
+</body>
+</opml>
