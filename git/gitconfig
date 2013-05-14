@@ -39,3 +39,6 @@
 	c = commit -v
 	ca = !git c -a
 	caa = !git c -a --amend
+	s = status --short
+	ap = add -p
+	ai = add -i
