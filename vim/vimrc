@@ -67,6 +67,14 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'nvie/vim-flake8'
 " Powerline
 Bundle 'Lokaltog/powerline'
+" Easy motion. Allows you to jump to motion or search targets with single key
+" press
+Bundle 'Lokaltog/vim-easymotion'
+" Work with shell commands inside Vim. Pipe file contents to shell commands or
+" run shell commands on file content.
+Bundle 'sjl/clam.vim'
+" A Suggested Path for Learning Vim
+Bundle 'dahu/LearnVim'
 
 filetype plugin indent on     " required!
 "
@@ -88,7 +96,7 @@ if has("win32")
    set guifont=Lucida_Console:h11:cANSI
 "  set guifont=Courier_NEW:h11:cANSI
 else
-  set guifont=Menlo\ Regular:h12
+  set guifont=Menlo\ for\ Powerline:h12
 endif
 
 " make sure horizontal scroll bar is visible 
@@ -191,6 +199,7 @@ set foldlevel=99
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 set laststatus=2 " Always display the statusline in all windows
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+let g:Powerline_symbols = 'fancy'
 
-"
+" highlight 72th column in git commit
 autocmd FileType gitcommit set colorcolumn=72
