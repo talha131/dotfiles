@@ -77,3 +77,6 @@ fi
 
 export HISTCONTROL=ignorespace 
 function gi() { curl http://gitignore.io/api/$@ ;}
+
+shopt -s cdspell
+shopt -s dirspell
