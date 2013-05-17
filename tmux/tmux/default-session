@@ -10,10 +10,6 @@ selectp -t 2
 neww -a 
 send-keys -t 0 "cd jv && git status" C-m
 
-# create new window for dot files project
-neww -a 
-send-keys -t 0 "cd ~/Repos/dotfiles/ && git status" C-m
-
 # create new window for my todo plugin
 neww -a 
 send-keys -t 0 "cd ~/Repos/dotfiles/vim/vim/bundle/todo-plus" C-m
