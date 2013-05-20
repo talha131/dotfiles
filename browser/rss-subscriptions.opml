@@ -2,7 +2,7 @@
 <opml version="1.0">
 <head>
 <title>Vienna Subscriptions</title>
-<dateCreated>2013-05-14 14:10:23 +0500</dateCreated>
+<dateCreated>2013-05-20 21:00:03 +0500</dateCreated>
 </head>
 <body>
 <outline htmlUrl="http://1000thingsaboutjapan.blogspot.com/" xmlUrl="http://1000thingsaboutjapan.blogspot.com/feeds/posts/default" type="rss" description="...that I will and won&apos;t miss." text="1000 Things About Japan"/>
@@ -42,7 +42,7 @@
 <outline htmlUrl="http://eatthattoast.com" xmlUrl="http://eatthattoast.com/feed/" type="rss" description="Comics and Animation!" text="Eat That Toast!"/>
 <outline htmlUrl="http://www.foxtrot.com" xmlUrl="http://www.foxtrot.com/feed/" type="rss" description="by Bill Amend" text="FoxTrot.com"/>
 <outline htmlUrl="http://www.pidjin.net" xmlUrl="http://feeds.feedburner.com/Pidjin" type="rss" description="World&apos;s funniest webcomic by Eugen Erhan &amp; Tudor Muscalu" text="Fredo and Pidjin. The Webcomic. » Fredo &amp; Pid’Jin"/>
-<outline htmlUrl="http://geek-and-poke.com/" xmlUrl="http://geekandpoke.typepad.com/geekandpoke/rss.xml" type="rss" description="Cartoons" text="Geek And Poke"/>
+<outline htmlUrl="http://geekandpoke.typepad.com/geekandpoke/" xmlUrl="http://geekandpoke.typepad.com/geekandpoke/rss.xml" type="rss" description="Cartoons" text="Geek And Poke"/>
 <outline htmlUrl="http://godsofthemoon.com" xmlUrl="http://godsofthemoon.com/feed/" type="rss" description="Everything is boring here" text="Gods of the Moon"/>
 <outline htmlUrl="http://gunshowcomic.com" xmlUrl="http://www.rsspect.com/rss/gunshowcomic.xml" type="rss" description="Gun show comics go off quick, like a gun in your hand, but you will be forever wounded and you can kill a deer with it as well." text="Gun Show ~ ~ ~ ~"/>
 <outline htmlUrl="http://www.rsspect.com" xmlUrl="http://www.rsspect.com/rss/vagrant.xml" type="rss" description="Kate Beaton&apos;s comics." text="Hark, A Vagrant!"/>
@@ -80,6 +80,7 @@
 <outline htmlUrl="http://jacquesmattheij.com/" xmlUrl="http://jacquesmattheij.com/rss.xml" type="rss" description="" text="jacquesmattheij.com -"/>
 <outline htmlUrl="http://jobtipsforgeeks.com" xmlUrl="http://jobtipsforgeeks.com/feed/" type="rss" description="career advice for programmery people..." text="job tips for geeks"/>
 <outline htmlUrl="http://www.marco.org/" xmlUrl="http://www.marco.org/rss" type="rss" description="I’m Marco Arment, creator of Instapaper, technology writer, and coffee enthusiast." text="Marco.org"/>
+<outline htmlUrl="http://www.nczonline.net/blog" xmlUrl="http://feeds.feedburner.com/nczonline" type="rss" description="The Official Web Site of Nicholas C. Zakas" text="NCZOnline"/>
 </outline>
 <outline htmlUrl="http://www.daemonology.net/hn-daily/" xmlUrl="http://www.daemonology.net/hn-daily/index.rss" type="rss" description="Daily top stories from Hacker News" text="Hacker News Daily"/>
 <outline text="Knowledge">
