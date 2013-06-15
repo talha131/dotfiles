@@ -2,7 +2,7 @@
 <opml version="1.0">
 <head>
 <title>Vienna Subscriptions</title>
-<dateCreated>2013-05-20 21:09:41 +0500</dateCreated>
+<dateCreated>2013-06-15 17:12:15 +0500</dateCreated>
 </head>
 <body>
 <outline htmlUrl="http://1000thingsaboutjapan.blogspot.com/" xmlUrl="http://1000thingsaboutjapan.blogspot.com/feeds/posts/default" type="rss" description="...that I will and won&apos;t miss." text="1000 Things About Japan"/>
@@ -17,6 +17,21 @@
 <outline text="Cocoa Development">
 <outline htmlUrl="http://adoptioncurve.net/" xmlUrl="http://www.adoptioncurve.net/atom.xml" type="rss" description="" text="Adoption Curve Dot Net"/>
 <outline htmlUrl="http://www.cocoawithlove.com/" xmlUrl="http://feeds.feedburner.com/CocoaWithLove" type="rss" description="Advanced programming tips, tricks and hacks for Mac development in C/Objective-C and Cocoa." text="Cocoa with Love"/>
+<outline htmlUrl="http://zaal.tumblr.com/" xmlUrl="http://zaal.tumblr.com/rss" type="rss" description="I am the developer behind the following iOS apps:Contacts Journal - Personal CRM Contacts Journal - iPad Edition
+
+You can also follow me on Twitter: @zulfishah 
+
+  var _gaq = _gaq || [];
+  _gaq.push([&apos;_setAccount&apos;, &apos;UA-410527-4&apos;]);
+  _gaq.push([&apos;_trackPageview&apos;]);
+
+  (function() {
+    var ga = document.createElement(&apos;script&apos;); ga.type = &apos;text/javascript&apos;; ga.async = true;
+    ga.src = (&apos;https:&apos; == document.location.protocol ? &apos;https://ssl&apos; : &apos;http://www&apos;) + &apos;.google-analytics.com/ga.js&apos;;
+    var s = document.getElementsByTagName(&apos;script&apos;)[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+" text="Learnings from iOS development"/>
 <outline htmlUrl="http://meandmark.com/blog" xmlUrl="http://meandmark.com/blog/feed/" type="rss" description="" text="meandmark.com"/>
 <outline htmlUrl="http://www.mikeash.com/pyblog/" xmlUrl="http://www.mikeash.com/pyblog/rss.py?mode=fulltext" type="rss" description="Mac OS X and Cocoa programming" text="NSBlog"/>
 <outline htmlUrl="http://nshipster.com" xmlUrl="http://nshipster.com/feed.xml" type="rss" description="NSHipster is a journal of the overlooked bits in Objective-C and Cocoa. Updated weekly." text="NSHipster"/>
@@ -33,6 +48,11 @@
 <outline htmlUrl="http://buttersafe.com" xmlUrl="http://buttersafe.com/feed/" type="rss" description="Updated Tuesdays and Thursdays" text="Buttersafe - Updated Tuesdays and Thursdays"/>
 <outline htmlUrl="http://www.channelate.com" xmlUrl="http://www.channelate.com/feed/" type="rss" description="Comics and Cartoons by Ryan Hudson" text="Channelate by Ryan Hudson : Week daily comics"/>
 <outline htmlUrl="http://www.cheerupemokid.com" xmlUrl="http://www.cheerupemokid.com/feed" type="rss" description="A Webcomic about Life, Love, and Loss" text="Cheer Up, Emo Kid"/>
+<outline htmlUrl="http://chibird.com/" xmlUrl="http://chibird.com/rss" type="rss" description="hello! My name is Jacqueline, but you can call me Jackie. ^^ I am in high school.
+
+This is where I share my small drawings, comics, and animations about my everyday life. I use Photoshop and a Bamboo tablet.  
+
+I hope they can make your day a little brighter. Thank you for visiting!" text="chibird"/>
 <outline htmlUrl="http://www.courting-disaster.com/" xmlUrl="http://www.courting-disaster.com/index.xml" type="rss" description="A weekly webcomic about love, sex, relationships, and other disasters." text="Courting Disaster"/>
 <outline htmlUrl="http://pipes.yahoo.com/pipes/pipe.info?_id=9b91d1900e14d1caff163aa6fa1b24bd" xmlUrl="http://pipes.yahoo.com/pipes/pipe.run?_id=9b91d1900e14d1caff163aa6fa1b24bd&amp;_render=rss" type="rss" description="This pipe will generate an RSS feed of just the Cyanide and Happiness comics on Explosm.net. Enjoy!" text="Cyanide and Happiness - Only the comics"/>
 <outline htmlUrl="http://dilbert.com/" xmlUrl="http://feeds.feedburner.com/DilbertDailyStrip" type="rss" description="The Official Dilbert Daily Comic Strip RSS Feed" text="Dilbert Daily Strip"/>
@@ -80,6 +100,10 @@
 <outline htmlUrl="http://www.marco.org/" xmlUrl="http://www.marco.org/rss" type="rss" description="I’m Marco Arment, creator of Instapaper, technology writer, and coffee enthusiast." text="Marco.org"/>
 <outline htmlUrl="http://www.nczonline.net/blog" xmlUrl="http://feeds.feedburner.com/nczonline" type="rss" description="The Official Web Site of Nicholas C. Zakas" text="NCZOnline"/>
 </outline>
+<outline text="Fitness">
+<outline htmlUrl="http://chaosandpain.blogspot.com/" xmlUrl="http://chaosandpain.blogspot.com/feeds/posts/default" type="rss" description="" text="ChAoS &amp; PAIN"/>
+<outline htmlUrl="http://www.fitocracy.com/knowledge" xmlUrl="http://www.fitocracy.com/knowledge/feed/" type="rss" description="" text="Fitocracy Knowledge Center"/>
+</outline>
 <outline htmlUrl="http://www.daemonology.net/hn-daily/" xmlUrl="http://www.daemonology.net/hn-daily/index.rss" type="rss" description="Daily top stories from Hacker News" text="Hacker News Daily"/>
 <outline text="Knowledge">
 <outline htmlUrl="http://betterexplained.com" xmlUrl="http://feeds.feedburner.com/Betterexplained" type="rss" description="Learn Right, Not Rote." text="BetterExplained"/>
@@ -101,6 +125,7 @@
 <outline htmlUrl="http://www.express.pk" xmlUrl="http://www.express.pk/author/638/wasat-ullah-khan/feed/" type="rss" description="Latest Breaking News from Pakistan, Business, Life, Style, Cricket, Videos, Comments" text="ایکسپریسس اردو » Wasat Ullah Khan"/>
 </outline>
 <outline text="Podcasts">
+<outline htmlUrl="http://99percentinvisible.org" xmlUrl="http://feeds.99percentinvisible.org/99percentinvisible" type="rss" description="A Tiny Radio Show about Design with Roman Mars" text="99% Invisible"/>
 <outline htmlUrl="http://atp.fm/" xmlUrl="http://atp.fm/episodes?format=rss" type="rss" description="Three nerds discussing tech and loosely related matters. An offshoot from Neutral, our car show." text="Accidental Tech Podcast"/>
 <outline htmlUrl="http://5by5.tv/buildanalyze" xmlUrl="http://feeds.5by5.tv/buildanalyze" type="rss" description="A weekly news and discussion show about the world of iPhone, iPad, iOS, and mobile web development. Hosted by Marco Arment &amp; Dan Benjamin." text="Build and Analyze"/>
 <outline htmlUrl="http://5by5.tv/cmdspace" xmlUrl="http://feeds.5by5.tv/cmdspace" type="rss" description="A tech news talk show that puts a spotlight on the guest. Hosted by Myke Hurley." text="CMD+Space"/>
@@ -112,9 +137,15 @@
 <outline htmlUrl="http://5by5.tv/hypercritical" xmlUrl="http://feeds.5by5.tv/hypercritical" type="rss" description="A weekly talk show ruminating on exactly what is wrong in the world of Apple and related technologies and businesses.  Nothing is so perfect that it can&apos;t be complained about. Hosted by John Siracusa &amp; Dan Benjamin." text="Hypercritical"/>
 <outline htmlUrl="http://identicalcousins.net/" xmlUrl="http://feeds.feedburner.com/IdenticalCousins" type="rss" description="Brent and Michael Simmons make Mac and iOS apps — except when they just talk about making apps. Like on this podcast." text="Identical Cousins"/>
 <outline htmlUrl="http://5by5.tv/inbeta" xmlUrl="http://feeds.5by5.tv/inbeta" type="rss" description="In Beta is a talk show about tech culture, making open source software, and how mobile, social, and web apps are changing the world. Hosted by Gina Trapani &amp; Kevin Purdy." text="In Beta"/>
+<outline htmlUrl="http://www.npr.org/planetmoney" xmlUrl="http://www.npr.org/rss/podcast.php?id=510289" type="rss" description="Money makes the world go around, faster and faster every day. On NPR&apos;s Planet Money, you&apos;ll meet high rollers, brainy economists and regular folks -- all trying to make sense of our rapidly changing global economy." text="NPR: Planet Money Podcast"/>
+<outline htmlUrl="http://podcasts.thestranger.com/savagelove/" xmlUrl="http://savagelove.savagelovecast.libsynpro.com/rss" type="rss" description="Dan Savage, America&apos;s only advice columnist, answers your sex questions and yaps about politics. To record a question for Dan to be answered in a later podcast, call 206-201-2720. For a much longer version of the show, with no ads, visit savagelovecast.com and get yourself a season subscription. " text="Savage Lovecast"/>
 <outline htmlUrl="http://www.ted.com/talks/list" xmlUrl="http://feeds.feedburner.com/TedtalksHD" type="rss" description="TED is a nonprofit devoted to Ideas Worth Spreading. On this feed, you&apos;ll find TEDTalks video to inspire, intrigue and stir the imagination from some of the world&apos;s leading thinkers and doers, speaking from the stage at TED conferences, TEDx events and partner events around the world. This podcast is also available in high-def video and audio-only formats." text="TEDTalks (hd)"/>
+<outline htmlUrl="http://www.publicradio.org/columns/dinnerpartydownload/" xmlUrl="https://www.publicradio.org/columns/dinnerpartydownload/podcast.xml" type="rss" description="The Dinner Party is a smart and funny public radio show about everything excellent in culture, from the company that brings you A Prairie Home Companion and Marketplace. Think NPR meets Vanity Fair. In each episode, hosts Rico Gagliano and Brendan Francis Newnam talk with some of the world&apos;s most interesting celebrities, and along the way equip you with bad jokes, fresh drink recipes, hot food finds, odd news stories... and etiquette tips from the likes of Henry Rollins and Dick Cavett.  It&apos;s all you need to get an edge in your weekend conversations.  Past guests include Michelle Williams, Judd Apatow, Kid Cudi and Sir Richard Branson. Wallpaper magazine calls The Dinner Party one of the Top 40 Reasons To Live In The USA." text="The Dinner Party"/>
+<outline htmlUrl="http://thememorypalace.us" xmlUrl="http://feeds.feedburner.com/thememorypalace" type="rss" description="the memory palace" text="the memory palace"/>
+<outline htmlUrl="http://www.themoth.org" xmlUrl="http://feeds.themoth.org/themothpodcast" type="rss" description="Since its launch in 1997, The Moth has presented thousands of true stories, told live and without notes, to standing-room-only crowds worldwide. Moth storytellers stand alone, under a spotlight, with only a microphone and a roomful of strangers. The storyteller and the audience embark on a high-wire act of shared experience which is both terrifying and exhilarating. Since 2008, The Moth podcast has featured many of our favorite stories told live on Moth stages around the country. For information on all of our programs and live events, visit themoth.org." text="The Moth Podcast"/>
 <outline htmlUrl="http://www.thisamericanlife.org" xmlUrl="http://feeds.thisamericanlife.org/talpodcast" type="rss" description="Official free, weekly podcast of the award-winning radio show &quot;This American Life.&quot; First-person stories and short fiction pieces that are touching, funny, and surprising. Hosted by Ira Glass, from WBEZ Chicago Public Radio. In mp3 and updated Mondays." text="This American Life"/>
 <outline htmlUrl="http://thisdeveloperslife.com" xmlUrl="http://feeds.feedburner.com/thisdeveloperslife" type="rss" description="Stories About Developers and Their Lives" text="This Developer&apos;s Life"/>
+<outline htmlUrl="http://thisibelieve.org" xmlUrl="http://feeds.thisibelieve.org/tib-podcast" type="rss" description="People from all walks of life describe their personal philosophies in a brief essay." text="This I Believe: Podcast"/>
 <outline htmlUrl="http://vimcasts.org/feeds/ogg/" xmlUrl="http://vimcasts.org/feeds/ogg" type="rss" description="WEBSITE-DESCRIPTION" text="Vimcasts OGG Feed"/>
 </outline>
 <outline text="Product updates">
@@ -124,6 +155,7 @@
 <outline htmlUrl="http://www.codecademy.com/blog" xmlUrl="http://www.codecademy.com/blog.rss" type="rss" description="The easiest way to learn to code" text="Codecademy Blog"/>
 <outline htmlUrl="http://www.reddit.com/r/reddittools/" xmlUrl="http://www.reddit.com/r/reddittools/.rss" type="rss" description="" text="Reddittools - the the most out of reddit"/>
 <outline htmlUrl="http://startupli.st/" xmlUrl="http://startupli.st/rss" type="rss" description="Startup list for early adopters" text="StartupLi.st"/>
+<outline htmlUrl="https://blog.mozilla.org/theden" xmlUrl="https://blog.mozilla.org/theden/feed/" type="rss" description="A cozy corner of the Web filled with content just for you." text="The Den"/>
 <outline htmlUrl="https://github.com/blog" xmlUrl="https://github.com/blog.atom" type="rss" description="" text="The GitHub Blog"/>
 <outline htmlUrl="http://web.appstorm.net" xmlUrl="http://feeds.feedburner.com/webappstorm" type="rss" description="Web Apps" text="Web.AppStorm"/>
 </outline>
@@ -134,7 +166,6 @@
 <outline htmlUrl="http://svbtle.com" xmlUrl="https://svbtle.com/feed" type="rss" description="" text="Svbtle Featured"/>
 <outline text="Think">
 <outline htmlUrl="http://sivers.org/" xmlUrl="https://sivers.org/en.atom" type="rss" description="" text="Derek Sivers"/>
-<outline htmlUrl="http://www.fitocracy.com/knowledge" xmlUrl="http://www.fitocracy.com/knowledge/feed/" type="rss" description="" text="Fitocracy Knowledge Center"/>
 <outline htmlUrl="http://www.motokoindepth.com/" xmlUrl="http://www.motokoindepth.com/feeds/posts/default?alt=rss" type="rss" description="Motoko Kusanagi in the Ghost in the Shell Anime Films, Manga and TV Series" text="Motoko in Depth"/>
 <outline htmlUrl="http://www.goodreads.com/quotes_of_the_day" xmlUrl="http://www.goodreads.com/quotes_of_the_day/rss" type="rss" description="Selected daily at Goodreads.com" text="Quotes of the Day"/>
 <outline htmlUrl="http://www.roughtype.com" xmlUrl="http://www.roughtype.com/?feed=rss2" type="rss" description="Nicholas Carr&apos;s Blog" text="Rough Type"/>
