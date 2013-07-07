@@ -13,7 +13,7 @@ alias vi='mvim --remote-tab'
 md () { mkdir -p "$@" && cd "$_" ; } 
 
 export PATH=~/bin:$PATH
-export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a Terminal"'
+export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
