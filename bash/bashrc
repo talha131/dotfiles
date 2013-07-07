@@ -12,12 +12,12 @@ alias vi='mvim --remote-tab'
 
 md () { mkdir -p "$@" && cd "$_" ; } 
 
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=~/bin:$PATH
+
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
 
 #PS1="[\\u@\\h:\\W]$ "
-export PATH=~/bin:$PATH
 # to set window tile in screen as the program it is running
 #export PS1='\[\033k\033\\\]\u@\h:\w\$ '
 #PS1='\[\033k\033\\\][\w]$ '
