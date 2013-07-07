@@ -75,6 +75,8 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'sjl/clam.vim'
 " A Suggested Path for Learning Vim
 Bundle 'dahu/LearnVim'
+" Create a new file, write .LOG as the first line and save it. Every time you reopen the file, a new line with the current timestamp is added, so you can easily maintain a chronologic log of your tasks. 
+Bundle 'logpad.vim'
 
 filetype plugin indent on     " required!
 "
@@ -203,3 +205,4 @@ let g:Powerline_symbols = 'fancy'
 
 " highlight 72th column in git commit
 autocmd FileType gitcommit set colorcolumn=72
+
