@@ -1,15 +1,13 @@
 # This bash configuration is used on my Mac
+
 set -o vi
 set -P # make bash respect physical path
+
 alias ls='ls -GF'
 alias grep='grep --color'
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias view='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias vimtutor='/Applications/MacVim.app/Contents/MacOS/Vim'
-#alias python='/opt/local/bin/python'
 alias git='/opt/local/bin/git'
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d'
 alias vi='mvim --remote-tab'
 
 md () { mkdir -p "$@" && cd "$_" ; } 
@@ -17,6 +15,7 @@ md () { mkdir -p "$@" && cd "$_" ; }
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
+
 #PS1="[\\u@\\h:\\W]$ "
 export PATH=~/bin:$PATH
 # to set window tile in screen as the program it is running
