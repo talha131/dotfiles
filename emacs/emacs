@@ -1,5 +1,9 @@
 (setq org-todo-keywords
-             '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+             '((sequence "TODO(t)" "WAIT(w@/!)" "STARTED(s)"  "|" "DONE(d!)" "CANCELED(c@)")))
+
+(setq org-todo-keyword-faces
+ '(("TODO" . org-warning) ("STARTED" . (:foreground "blue" :weight bold))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
