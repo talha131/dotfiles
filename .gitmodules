@@ -2,3 +2,6 @@
 	path = vim/vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
         ignore = untracked
+[submodule "emacs/emacs.d"]
+	path = emacs/emacs.d
+	url = http://github.com/eschulte/emacs24-starter-kit.git
