@@ -26,7 +26,6 @@ Bundle 'gmarik/vundle'
 "Bundle 'git://git.wincent.com/command-t.git'
 " ...
 
-Bundle 'vimoutliner/vimoutliner'
 " to add Vim-markdown support
 Bundle 'tpope/vim-markdown'
 " to view and change file outline
