@@ -209,3 +209,6 @@ autocmd FileType gitcommit set colorcolumn=72
 " default for plugin is to start insertmode.
 let LogpadInsert = 1
 let LogpadLogDuration = 1
+
+" automatically close NERDTree after a file has been opened
+let NERDTreeQuitOnOpen = 1
