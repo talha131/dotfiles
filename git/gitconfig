@@ -43,3 +43,4 @@
 	s = status --short
 	ap = add -p
 	ai = add -i
+	ln = log --name-only
