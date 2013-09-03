@@ -80,3 +80,9 @@ function gi() { curl http://gitignore.io/api/$@ ;}
 
 shopt -s cdspell
 shopt -s dirspell
+
+# To use autojump for bash
+if [ -f /opt/local/etc/profile.d/autojump.bash ]; then
+    . /opt/local/etc/profile.d/autojump.bash
+fi
+
