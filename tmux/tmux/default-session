@@ -10,21 +10,4 @@ selectp -t 2
 neww -a 
 send-keys -t 0 "cd jv && git status" C-m
 
-# create new window for my todo plugin
-neww -a 
-send-keys -t 0 "cd ~/Repos/dotfiles/vim/vim/bundle/todo-plus" C-m
-
-# create new window for Pelican theme development
-neww -a
-send-keys -t 0 "cd ~/Repos/pelican-themes/elegant && git status" C-m
-
-# notes
-neww -a
-send-keys -t 0 "cd ~/Repos/notes/ && workon pelican-dev && ./develop_server.sh stop && make devserver" C-m
-send-keys -t 0 "git status" C-m
-
-# pelican
-neww -a
-send-keys -t 0 "cd ~/Repos/pelican/ && workon pelican-dev && python setup.py install && pelican-themes -s ~/Repos/pelican-themes/elegant/" C-m
-
 select-window -t 1
