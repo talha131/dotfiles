@@ -2,7 +2,7 @@
 <opml version="1.0">
 <head>
 <title>Vienna Subscriptions</title>
-<dateCreated>2013-06-15 18:20:52 +0500</dateCreated>
+<dateCreated>2013-09-25 16:10:53 +0500</dateCreated>
 </head>
 <body>
 <outline htmlUrl="http://1000thingsaboutjapan.blogspot.com/" xmlUrl="http://1000thingsaboutjapan.blogspot.com/feeds/posts/default" type="rss" description="...that I will and won&apos;t miss." text="1000 Things About Japan"/>
@@ -48,7 +48,7 @@ You can also follow me on Twitter: @zulfishah
 <outline htmlUrl="http://buttersafe.com" xmlUrl="http://buttersafe.com/feed/" type="rss" description="Updated Tuesdays and Thursdays" text="Buttersafe - Updated Tuesdays and Thursdays"/>
 <outline htmlUrl="http://www.channelate.com" xmlUrl="http://www.channelate.com/feed/" type="rss" description="Comics and Cartoons by Ryan Hudson" text="Channelate by Ryan Hudson : Week daily comics"/>
 <outline htmlUrl="http://www.cheerupemokid.com" xmlUrl="http://www.cheerupemokid.com/feed" type="rss" description="A Webcomic about Life, Love, and Loss" text="Cheer Up, Emo Kid"/>
-<outline htmlUrl="http://chibird.com/" xmlUrl="http://chibird.com/rss" type="rss" description="hello! My name is Jacqueline, but you can call me Jackie. ^^ I am in high school.
+<outline htmlUrl="http://chibird.com/" xmlUrl="http://chibird.com/rss" type="rss" description="hello! My name is Jacqueline, but you can call me Jackie. ^^ I am a high school graduate… going to college in the fall!
 
 This is where I share my small drawings, comics, and animations about my everyday life. I use Photoshop and a Bamboo tablet.  
 
@@ -62,6 +62,7 @@ I hope they can make your day a little brighter. Thank you for visiting!" text="
 <outline htmlUrl="http://www.foxtrot.com" xmlUrl="http://www.foxtrot.com/feed/" type="rss" description="by Bill Amend" text="FoxTrot.com"/>
 <outline htmlUrl="http://www.pidjin.net" xmlUrl="http://feeds.feedburner.com/Pidjin" type="rss" description="World&apos;s funniest webcomic by Eugen Erhan &amp; Tudor Muscalu" text="Fredo and Pidjin. The Webcomic. » Fredo &amp; Pid’Jin"/>
 <outline htmlUrl="http://geekandpoke.typepad.com/geekandpoke/" xmlUrl="http://geekandpoke.typepad.com/geekandpoke/rss.xml" type="rss" description="Cartoons" text="Geek And Poke"/>
+<outline htmlUrl="http://geek-and-poke.com/" xmlUrl="http://feeds.feedburner.com/GeekAndPoke" type="rss" description="" text="Geek&amp;Poke"/>
 <outline htmlUrl="http://godsofthemoon.com" xmlUrl="http://godsofthemoon.com/feed/" type="rss" description="Everything is boring here" text="Gods of the Moon"/>
 <outline htmlUrl="http://gunshowcomic.com" xmlUrl="http://www.rsspect.com/rss/gunshowcomic.xml" type="rss" description="Gun show comics go off quick, like a gun in your hand, but you will be forever wounded and you can kill a deer with it as well." text="Gun Show ~ ~ ~ ~"/>
 <outline htmlUrl="http://www.rsspect.com" xmlUrl="http://www.rsspect.com/rss/vagrant.xml" type="rss" description="Kate Beaton&apos;s comics." text="Hark, A Vagrant!"/>
@@ -87,7 +88,7 @@ I hope they can make your day a little brighter. Thank you for visiting!" text="
 <outline htmlUrl="http://www.stuartmcmillen.com" xmlUrl="http://www.stuartmcmillen.com/comics_en/feed/" type="rss" description="Comics and cartoons on science, society, the environment and ecological sustainability." text="Stuart McMillen comics » Comics"/>
 <outline htmlUrl="http://www.stuartmcmillen.com" xmlUrl="http://www.stuartmcmillen.com/en/feed/" type="rss" description="Comics and cartoons on science, society, the environment and ecological sustainability." text="Stuart McMillen comics » English"/>
 <outline htmlUrl="http://theoatmeal.com/" xmlUrl="http://feeds.feedburner.com/oatmealfeed" type="rss" description="The oatmeal tastes better than stale skittles found under the couch cushions" text="The Oatmeal - Comics, Quizzes, &amp; Stories"/>
-<outline htmlUrl="http://pbfcomics.com/feed/pbfcomics.com" xmlUrl="http://pbfcomics.com/feed/feed.xml" type="rss" description="" text="The Perry Bible Fellowship"/>
+<outline htmlUrl="http://pbfcomics.com" xmlUrl="http://pbfcomics.com/feed/feed.xml" type="rss" description="" text="The Perry Bible Fellowship"/>
 <outline htmlUrl="http://www.toonhole.com" xmlUrl="http://www.toonhole.com/feed/" type="rss" description="Comics Mon, Wed, Fri. Animation Monthly" text="Toonhole"/>
 <outline htmlUrl="http://verabee.com" xmlUrl="http://verabee.com/feed/" type="rss" description="" text="Verabee"/>
 <outline htmlUrl="http://www.virtualshackles.com" xmlUrl="http://feeds2.feedburner.com/virtualshackles" type="rss" description="The Adventures of Orion and Jack!" text="Virtual Shackles"/>
@@ -101,10 +102,21 @@ I hope they can make your day a little brighter. Thank you for visiting!" text="
 <outline htmlUrl="http://www.nczonline.net/blog" xmlUrl="http://feeds.feedburner.com/nczonline" type="rss" description="The Official Web Site of Nicholas C. Zakas" text="NCZOnline"/>
 </outline>
 <outline text="Fitness">
+<outline htmlUrl="http://www.bodyrecomposition.com" xmlUrl="http://www.bodyrecomposition.com/feed/atom" type="rss" description="Training and Nutrition advice, straight from the monkey&apos;s mouth." text="BodyRecomposition - The Home of Lyle McDonald"/>
+<outline htmlUrl="http://breakingmuscle.com/feed/rss" xmlUrl="http://breakingmuscle.com/feed/rss" type="rss" description="" text="Breaking Muscle"/>
 <outline htmlUrl="http://chaosandpain.blogspot.com/" xmlUrl="http://chaosandpain.blogspot.com/feeds/posts/default" type="rss" description="" text="ChAoS &amp; PAIN"/>
+<outline htmlUrl="http://articles.elitefts.com" xmlUrl="http://articles.elitefts.com/feed/" type="rss" description="Educating &amp; Outfitting The Strongest Athletes in the World" text="Elite FTS"/>
 <outline htmlUrl="http://www.fitocracy.com/knowledge" xmlUrl="http://www.fitocracy.com/knowledge/feed/" type="rss" description="" text="Fitocracy Knowledge Center"/>
+<outline htmlUrl="http://miguelaragoncillo.wordpress.com" xmlUrl="https://miguelaragoncillo.wordpress.com/feed/" type="rss" description="CONTROL WHAT YOU CAN CONTROL......THEN DOMINATE THE WORLD." text="Miguel Aragoncillo"/>
+<outline htmlUrl="http://www.schwarzenegger.com/rss/fitness" xmlUrl="http://feeds.feedburner.com/SchwarzeneggercomFitnessFeed?format=xml" type="rss" description="Fitness Updates" text="Schwarzenegger.com Fitness Feed"/>
+<outline htmlUrl="http://turbulencetraining.blogspot.com/" xmlUrl="http://turbulencetraining.blogspot.com/feeds/posts/default" type="rss" description="www.TurbulenceTraining.com - Fat Loss Workout Routines&lt;br&gt;&lt;br&gt;&lt;a href=&quot;http://www.turbulencetraining.com&quot;&gt;&lt;img src=&quot;http://turbulencetraining.com/affiliates/banners/CL14P_728X90.gif&quot; width=&quot;600&quot;&gt;&lt;/a&gt;" text="Turbulence Training"/>
+</outline>
+<outline text="Github Updates">
+<outline htmlUrl="https://github.com/if1live/pelican-elegant/commits/master" xmlUrl="https://github.com/if1live/pelican-elegant/commits/master.atom" type="rss" description="" text="Recent Commits to pelican-elegant:master"/>
+<outline htmlUrl="https://github.com/wilbur-ma/pelican-elegant/commits/master" xmlUrl="https://github.com/wilbur-ma/pelican-elegant/commits/master.atom" type="rss" description="" text="Recent Commits to pelican-elegant:master (1)"/>
 </outline>
 <outline htmlUrl="http://www.daemonology.net/hn-daily/" xmlUrl="http://www.daemonology.net/hn-daily/index.rss" type="rss" description="Daily top stories from Hacker News" text="Hacker News Daily"/>
+<outline htmlUrl="http://www.kalzumeus.com" xmlUrl="http://www.kalzumeus.com/feed/" type="rss" description="Patrick McKenzie (patio11) blogs on software development, marketing, and general business topics" text="Kalzumeus Software"/>
 <outline text="Knowledge">
 <outline htmlUrl="http://betterexplained.com" xmlUrl="http://feeds.feedburner.com/Betterexplained" type="rss" description="Learn Right, Not Rote." text="BetterExplained"/>
 </outline>
@@ -113,20 +125,62 @@ I hope they can make your day a little brighter. Thank you for visiting!" text="
 <outline htmlUrl="http://abetterlife.quora.com" xmlUrl="https://abetterlife.quora.com/rss" type="rss" description="Leading a better life on Quora" text="Leading a better life on Quora"/>
 <outline htmlUrl="http://learningfundamentals.com.au" xmlUrl="http://feeds2.feedburner.com/LearningFundamentals" type="rss" description="" text="Learning Fundamentals"/>
 <outline htmlUrl="http://oliveremberton.com" xmlUrl="http://oliveremberton.com/feed/" type="rss" description="" text="Oliver Emberton"/>
-<outline htmlUrl="http://calnewport.com/blog" xmlUrl="http://feeds.feedburner.com/StudyHacks" type="rss" description="Decoding Patterns of Success" text="Study Hacks"/>
+<outline htmlUrl="http://calnewport.com" xmlUrl="http://feeds.feedburner.com/StudyHacks" type="rss" description="Decoding Patterns of Success" text="Study Hacks"/>
 <outline htmlUrl="http://jamesaltucher.quora.com" xmlUrl="https://jamesaltucher.quora.com/rss" type="rss" description="The Altucher Confidential on Quora" text="The Altucher Confidential on Quora"/>
 </outline>
-<outline text="News Articles">
+<outline text="News">
+<outline text="Articles">
 <outline htmlUrl="http://dunya.com.pk/?key=VjFjeE1HTXhTbGRSYkZab1RXcEdZVlJYZEZwa01XUnpWbTVPVTFaclNsbFdSelZoWVZaT1IxZHFRbGhTUlhCSVdsWmFjMDB4UWxWTlJEQTk=" xmlUrl="http://feed43.com/amir-khakwani.xml" type="rss" description="Amir Khakwani in Daily Dunya" text="Amir Khakwani"/>
-<outline htmlUrl="http://dunya.com.pk/?key=VjFjeE1HTXhTbGRSYkZaVlZucEdZVlJYZEZwa01XUnpWbTVPVTFaclNsbFdSelZoWVZaT1IxZHFRbGhTUlhCSVdsWmFjMDB4UWxWTlJEQTk=" xmlUrl="http://feed43.com/nazeer-naji.xml" type="rss" description="Nazeer Naji in Daily Dunya" text="Nazeer Naji"/>
+<outline htmlUrl="http://dunya.com.pk/index.php/columnist/amir-khakwani/10" xmlUrl="http://feedity.com/dunya-com-pk/VlFaW1FT.rss" type="rss" description="RSS Web Feed for Roznama Dunya: ???? ??? ?????? :- ???? ??????? (Generated by Feedity.com)" text="Amir Khakwani - Dunya News"/>
+<outline htmlUrl="http://www.thenews.com.pk/TodaysPrintWriterName.aspx?URL=Ayaz%20amir" xmlUrl="http://feed43.com/ayaz-amir.xml" type="rss" description="Ayaz Amir is a columnist and politician from Pakistan. His column is published in The News International every Friday." text="Ayaz Amir"/>
+<outline htmlUrl="http://beta.dawn.com/authors/193/cyril-almeida" xmlUrl="http://feedity.com/dawn-com/VlFaW1JX.rss" type="rss" description="RSS Web Feed for Home - DAWN.COM - Latest News, Breaking News, Pakistan News, World News, Business News, Science an.. (Generated by Feedity.com)" text="Cyril Almeida - Dawn"/>
+<outline htmlUrl="http://columns.jang.com.pk/details.asp?id=24" xmlUrl="http://feed43.com/hamid-mir.xml" type="rss" description="Hamid Mir Urdu Columns on Daily Jang" text="Hamid Mir"/>
+<outline htmlUrl="http://dunya.com.pk/?key=VjFjeE1HTXhTbGRSYkZaVFZrWmFURmxzVlRGaU1YQkdXa1prVkdKRmNFWlVWbVIzWVZVeGRWb3phRnBpUm1zeFdWVmtUMlJHVWxWTlJEQTk=" xmlUrl="http://feed43.com/kursheed-nadeem.xml" type="rss" description="Kursheed Nadeem in Daily Dunya" text="Kursheed Nadeem"/>
+<outline htmlUrl="http://beta.dawn.com/authors/363/muhammad-amir-rana" xmlUrl="http://feedity.com/dawn-com/VlFaW1JR.rss" type="rss" description="RSS Web Feed for Home - DAWN.COM - Latest News, Breaking News, Pakistan News, World News, Business News, Science an.. (Generated by Feedity.com)" text="Muhammad Amir Rana - Dawn"/>
+<outline htmlUrl="http://dunya.com.pk/index.php/columnist/muhammad-izhar-ul-haq/16" xmlUrl="http://feed43.com/muhammad-izhar-ul-haq.xml" type="rss" description="Roznama Dunya: کالم اور مضامین :- محمد اظہارالحق" text="Muhammad Izhar-ul-Haq"/>
+<outline htmlUrl="http://dunya.com.pk/?key=VjFjeE1HTXhTbGRSYkZaVlZucEdZVlJYZEZwa01XUnpWbTVPVTFaclNsbFdSelZoWVZaT1IxZHFRbGhTUlhCSVdsWmFjMDB4UWxWTlJEQTk=" xmlUrl="http://feed43.com/nazeer-naji.xml" type="rss" description="Nazeer Naji in Daily Dunya" text="Nazeer Naji - Dunya News"/>
 <outline htmlUrl="http://dunya.com.pk/?key=VjFjeE1HTXhTbGRSYkZaaFRXcEdZVlJYZEZwa01XUnpWbTVPVTFaclNsbFdSelZoWVZaT1IxZHFRbGhTUlhCSVdsWmFjMDB4UWxWTlJEQTk=" xmlUrl="http://feed43.com/rauf-klasra.xml" type="rss" description="Rauf Klasra in Daily Dunya" text="Rauf Klasra"/>
+<outline htmlUrl="http://dunya.com.pk/index.php/columnist/rauf-klasra/8" xmlUrl="http://feedity.com/dunya-com-pk/VlFaW1Jb.rss" type="rss" description="RSS Web Feed for Roznama Dunya: ???? ??? ?????? :- ??? ?????? (Generated by Feedity.com)" text="Rauf Klasra - Dunya News"/>
+<outline htmlUrl="http://saleemsafi.com" xmlUrl="http://saleemsafi.com/feed/" type="rss" description="Anchor / Analyst Geo TV" text="Saleem Safi"/>
+<outline htmlUrl="http://columns.jang.com.pk/details.asp?id=62" xmlUrl="http://feed43.com/yasir-pirzada.xml" type="rss" description="Yasir Pirzada is a columnist" text="Yasir Pirzada"/>
 <outline htmlUrl="http://www.express.pk" xmlUrl="http://www.express.pk/author/39/jawed-chowhdray/feed/" type="rss" description="Latest Breaking News from Pakistan, Business, Life, Style, Cricket, Videos, Comments" text="ایکسپریسس اردو » Jawed Chowhdray"/>
 <outline htmlUrl="http://www.express.pk" xmlUrl="http://www.express.pk/author/150/tariq-mahmood-mian/feed/" type="rss" description="Latest Breaking News from Pakistan, Business, Life, Style, Cricket, Videos, Comments" text="ایکسپریسس اردو » Tariq Mahmood Mian"/>
 <outline htmlUrl="http://www.express.pk" xmlUrl="http://www.express.pk/author/638/wasat-ullah-khan/feed/" type="rss" description="Latest Breaking News from Pakistan, Business, Life, Style, Cricket, Videos, Comments" text="ایکسپریسس اردو » Wasat Ullah Khan"/>
 </outline>
+<outline htmlUrl="http://www.bbc.co.uk" xmlUrl="http://www.bbc.co.uk/urdu/index.xml" type="rss" description="" text="BBCUrdu.com | صفحۂ اول"/>
+<outline text="Finance">
+<outline htmlUrl="http://investorguide360.com" xmlUrl="http://investorguide360.com/feed/" type="rss" description="Stocks, Mutual Funds, Forex, Commodities &amp; Personal Finance News" text="Investor Guide Pakistan"/>
+<outline htmlUrl="http://dawn.com/authors/675/khurram-husain" xmlUrl="http://feedity.com/dawn-com/VlFaVFRQ.rss" type="rss" description="RSS Web Feed for Home - DAWN.COM - Latest News, Breaking News, Pakistan News, World News, Business News, Science an.. (Generated by Feedity.com)" text="Khurram Husain - DAWN"/>
+<outline htmlUrl="http://dawn.com" xmlUrl="http://feeds.feedburner.com/dawn-news-business" type="rss" description="Dawn News RSS feeds" text="The Dawn News - Business"/>
+</outline>
+<outline htmlUrl="http://herald.dawn.com" xmlUrl="http://herald.dawn.com/feed" type="rss" description="" text="Herald"/>
+<outline htmlUrl="http://dawn.com" xmlUrl="http://feeds.feedburner.com/dawn-news-pakistan" type="rss" description="Dawn News RSS feeds" text="The Dawn News"/>
+<outline htmlUrl="http://dawn.com" xmlUrl="http://feeds.feedburner.com/dawn-news" type="rss" description="Dawn News RSS feeds" text="The Dawn News (1)"/>
+<outline htmlUrl="http://dawn.com" xmlUrl="http://feeds.feedburner.com/dawn-news-world" type="rss" description="Dawn News RSS feeds" text="The Dawn News - World"/>
+<outline htmlUrl="http://dawn.com" xmlUrl="http://feeds.feedburner.com/dawn-news-blogs" type="rss" description="Dawn News RSS feeds" text="The Dawn- Blogs"/>
+</outline>
+<outline text="Order them">
+<outline htmlUrl="http://businessofsoftware.org/blog/" xmlUrl="http://feedity.com/businessofsoftware-org/VlBbVFNR.rss" type="rss" description="RSS Web Feed for Blog &amp; News | Business of Software (Generated by Feedity.com)" text="Blog &amp; News | Business of Software"/>
+<outline htmlUrl="http://littlebigdetails.com/" xmlUrl="http://littlebigdetails.com/rss" type="rss" description="Your daily dose
+of UI inspiration
+
+
+
+  var _gaq = _gaq || [];
+  _gaq.push([&apos;_setAccount&apos;, &apos;UA-10450811-3&apos;]);
+  _gaq.push([&apos;_trackPageview&apos;]);
+
+  (function() {
+    var ga = document.createElement(&apos;script&apos;); ga.type = &apos;text/javascript&apos;; ga.async = true;
+    ga.src = (&apos;https:&apos; == document.location.protocol ? &apos;https://ssl&apos; : &apos;http://www&apos;) + &apos;.google-analytics.com/ga.js&apos;;
+    var s = document.getElementsByTagName(&apos;script&apos;)[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+" text="Little Big Details (1)"/>
+</outline>
 <outline text="Podcasts">
 <outline htmlUrl="http://5by5.tv/buildanalyze" xmlUrl="http://feeds.5by5.tv/buildanalyze" type="rss" description="A weekly news and discussion show about the world of iPhone, iPad, iOS, and mobile web development. Hosted by Marco Arment &amp; Dan Benjamin." text="Build and Analyze"/>
-<outline htmlUrl="http://5by5.tv/cmdspace" xmlUrl="http://feeds.5by5.tv/cmdspace" type="rss" description="A tech news talk show that puts a spotlight on the guest. Hosted by Myke Hurley." text="CMD+Space"/>
+<outline htmlUrl="http://5by5.tv/cmdspace" xmlUrl="http://feeds.5by5.tv/cmdspace" type="rss" description="CMD+SPACE is an interview show that puts a spotlight on the people behind awesome projects. Each week Myke Hurley looks to discover what inspires his guests to do great things. Hosted by Myke Hurley." text="CMD+Space"/>
 <outline htmlUrl="http://www.coreint.org/" xmlUrl="http://www.coreint.org/podcast.xml" type="rss" description="Daniel Jalkut and Manton Reece discuss Mac programming, independent development, Apple news, and more." text="Core Intuition"/>
 <outline htmlUrl="http://www.imore.com/debug/" xmlUrl="http://feeds.feedburner.com/debugshow" type="rss" description="Debug is a conversational interview show about developing software and services, primarily for iPhone, iPad, Mac, and gaming. Hosted by Guy English and Rene Ritchie, it&apos;s all the great talk you get at the bar after the conference, wrapped up in convenient podcast form. Pull up a chair, hit play, join us." text="Debug"/>
 <outline htmlUrl="https://www.destroyallsoftware.com/screencasts" xmlUrl="https://www.destroyallsoftware.com/screencasts/feed" type="rss" description="Destroy All Software Screencasts" text="Destroy All Software Screencasts"/>
@@ -158,7 +212,7 @@ I hope they can make your day a little brighter. Thank you for visiting!" text="
 <outline htmlUrl="http://www.roughtype.com" xmlUrl="http://www.roughtype.com/?feed=rss2" type="rss" description="Nicholas Carr&apos;s Blog" text="Rough Type"/>
 <outline htmlUrl="http://www.roughtype.com/" xmlUrl="http://feeds.feedburner.com/roughtype/unGc" type="rss" description="" text="Rough Type: Nicholas Carr&apos;s Blog"/>
 <outline htmlUrl="http://www.sparringmind.com" xmlUrl="http://www.sparringmind.com/feed/" type="rss" description="Behavioral Psychology Blog" text="Sparring Mind"/>
-<outline htmlUrl="http://successfulsoftware.net" xmlUrl="http://successfulsoftware.net/feed/" type="rss" description="Successful software requires more than just good programming." text="Successful Software"/>
+<outline htmlUrl="http://successfulsoftware.net" xmlUrl="http://successfulsoftware.net/feed/" type="rss" description="...requires more than just good programming." text="Successful Software"/>
 <outline htmlUrl="http://zenpencils.com" xmlUrl="http://feeds.feedburner.com/zenpencils" type="rss" description="Cartoon quotes from inspirational folks" text="ZEN PENCILS"/>
 </outline>
 <outline htmlUrl="http://tolkiengeek.blogspot.com/" xmlUrl="http://tolkiengeek.blogspot.com/feeds/posts/default" type="rss" description="Blogging J.R.R. Tolkien&apos;s &quot;The Lord of the Rings&quot; and other aimless pursuits." text="Tolkien Geek"/>
@@ -168,7 +222,7 @@ I hope they can make your day a little brighter. Thank you for visiting!" text="
 <outline htmlUrl="http://wireframes.linowski.ca" xmlUrl="http://feeds2.feedburner.com/wireframesmag" type="rss" description="Because every IA has something funky up their sleeve" text="Wireframes Magazine"/>
 </outline>
 <outline text="Vim">
-<outline htmlUrl="http://usevim.com" xmlUrl="http://feeds.feedburner.com/usevim" type="rss" description="" text="usevim"/>
+<outline htmlUrl="http://usevim.com" xmlUrl="http://feeds.feedburner.com/usevim" type="rss" description="usevim" text="usevim"/>
 <outline htmlUrl="http://www.reddit.com/r/vim/" xmlUrl="http://www.reddit.com/r/vim/.rss" type="rss" description="" text="vim"/>
 <outline htmlUrl="http://www.vimninjas.com/" xmlUrl="http://feeds.feedburner.com/vimninjas" type="rss" description="" text="Vim Ninjas"/>
 <outline htmlUrl="http://www.vimtips-blog.com" xmlUrl="http://www.vimtips-blog.com/feed/" type="rss" description="zzappers latest VIM Blog" text="VIM Tips Blog"/>
