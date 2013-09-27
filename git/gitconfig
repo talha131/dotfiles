@@ -49,3 +49,5 @@
 	chm = checkout master
 	chb = checkout -b
 	ch = checkout
+[merge]
+	conflictstyle = diff3
