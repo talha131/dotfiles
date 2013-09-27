@@ -40,7 +40,12 @@
 	c = commit -v
 	ca = !git c -a
 	caa = !git c -a --amend
+	cm = !git c --amend
 	s = status --short
 	ap = add -p
 	ai = add -i
 	ln = log --name-only
+	dw = diff --word-diff=color
+	chm = checkout master
+	chb = checkout -b
+	ch = checkout
