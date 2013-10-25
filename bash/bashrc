@@ -6,14 +6,14 @@ set -P # make bash respect physical path
 alias ls='ls -GF'
 alias grep='grep --color'
 alias git='/opt/local/bin/git'
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim -d'
+alias vim='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim'
+alias vimdiff='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim -d'
 alias vi='mvim --remote-tab'
 
 md () { mkdir -p "$@" && cd "$_" ; } 
 
 export PATH=~/bin:$PATH
-export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
+export EDITOR='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim'
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
