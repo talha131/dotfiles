@@ -52,8 +52,6 @@ Bundle 'talha131/todo-plus'
 Bundle 'dahu/Vimazing'
 " WriteRoom like env in Vim http://projects.mikewest.org/vimroom/ 
 Bundle 'mikewest/vimroom'
-" inserts code snippets
-Bundle 'msanders/snipmate.vim'
 " Syntax checking
 Bundle 'scrooloose/syntastic'
 " integrates Python documentation system into Vim
@@ -78,6 +76,8 @@ Bundle 'dahu/LearnVim'
 " the file, a new line with the current timestamp is added, so you can easily maintain
 " a chronologic log of your tasks.
 Bundle 'talha131/logpad-plus-duration'
+" inserts code snippets
+Bundle 'SirVer/ultisnips'
 
 filetype plugin indent on     " required!
 "
