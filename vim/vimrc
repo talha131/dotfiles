@@ -28,6 +28,8 @@ Bundle 'gmarik/vundle'
 
 " to add Vim-markdown support
 Bundle 'tpope/vim-markdown'
+" A code-completion engine
+Bundle 'Valloric/YouCompleteMe'
 " to view and change file outline
 Bundle 'VOoM'
 " to quickly find file in the path and buffers with fuzzy find support
@@ -58,8 +60,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'fs111/pydoc.vim'
 " Use rope -Python refactoring library
 Bundle 'sontek/rope-vim'
-" jedi autocompletion library for VIM
-Bundle 'davidhalter/jedi-vim'
 " tree explorer
 Bundle 'scrooloose/nerdtree'
 " style checker
