@@ -38,6 +38,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Townk/vim-autoclose'
 " to make quoting and parenthesizing easier
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
 " to draw ASCII art in Vim
 Bundle 'DrawIt'
 " Vim regex tutor
@@ -84,6 +85,14 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'SirVer/ultisnips'
 " collection of code snippets
 Bundle 'honza/vim-snippets'
+" browse the tags of source code files. TagbarToggle
+Bundle 'majutsushi/tagbar'
+" comments plugin
+Bundle 'tomtom/tcomment_vim'
+" session management
+Bundle 'xolox/vim-session'
+" vim-session requirement
+Bundle 'xolox/vim-misc'
 
 filetype plugin indent on     " required!
 "
