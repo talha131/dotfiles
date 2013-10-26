@@ -165,10 +165,21 @@ nmap <c-p>o :CtrlPBuffer<CR>
 nmap <c-p>l :CtrlPMRUFiles<CR>
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_height = 30
-let b:ctrlp_working_path_mode = 'c'
+let b:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_dotfiles = 0
-" ignore ~/Library|Google Drive ... and files which have pdf, epub ... extension
-let g:ctrlp_custom_ignore = $HOME.'/\(Library\|Google Drive\|Music\|Movies\|Pictures\|Documents\)\|.\(pdf\|epub\|mobi\|rar\|png\|jpg\|dmg\|nib\|bz\|gz\|tar\|xib\)$'
+" let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|
+"             \ public\/system\|data\|log\|\tmp$\|\.exe$\|\.so$\|\.dat$\|Library\|
+"             \ Music\|Movies\|Pictures\|\.pdf$\|\.epub$\|\.mobi$\|\.rar$\|\.png$\|
+"             \ \.jpg$\|\.dmg$\|\.nib$\|\.bz$\|\.gz$\|\.tar$\|\.xib$'
+let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\v[\/]\.(git|hg|svn)$
+            \ |(Desktop|Libary|Music|Movies|Pictures)',
+            \ 'file': '\v\.(jpg|png|gif|psd|jpeg
+            \ |exe|so|o|dat|dmg|nib|xib|bat|egg|cer|DS_Store|pkg
+            \ |tar|bz|gz|zip|rar|iso|cdr|bz2
+            \ |mp3|mp4|mov|avi|flv|torrent|wmv
+            \ |pdf|epub|mobi|chm|doc|docx|lit|gdoc)$'
+            \ }
 
 " for gundo plugin
 let g:gundo_preview_bottom=1
