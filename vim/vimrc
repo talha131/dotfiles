@@ -78,6 +78,8 @@ Bundle 'dahu/LearnVim'
 Bundle 'talha131/logpad-plus-duration'
 " inserts code snippets
 Bundle 'SirVer/ultisnips'
+" collection of code snippets
+Bundle 'honza/vim-snippets'
 
 filetype plugin indent on     " required!
 "
@@ -214,3 +216,11 @@ let LogpadLogDuration = 1
 
 " automatically close NERDTree after a file has been opened
 let NERDTreeQuitOnOpen = 1
+
+" ultisnips
+let g:UltiSnipsExpandTrigger = '<c-tab>'
+let g:UltiSnipsListSnippets = '<m-tab>'
+let g:UltiSnipsJumpForwardTrigger = '<c-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_UltiSnips' ]
+set rtp+=~/.vim/my_snippets
