@@ -76,6 +76,10 @@ Bundle 'dahu/LearnVim'
 " the file, a new line with the current timestamp is added, so you can easily maintain
 " a chronologic log of your tasks.
 Bundle 'talha131/logpad-plus-duration'
+" focus on a region and make the rest inaccessible
+Bundle 'chrisbra/NrrwRgn'
+" Git wrapper
+Bundle 'tpope/vim-fugitive'
 " inserts code snippets
 Bundle 'SirVer/ultisnips'
 " collection of code snippets
