@@ -218,8 +218,11 @@ autocmd FileType gitcommit set colorcolumn=72
 let LogpadInsert = 1
 let LogpadLogDuration = 1
 
-" automatically close NERDTree after a file has been opened
-let NERDTreeQuitOnOpen = 1
+" NERDTree
+let NERDTreeIgnore = ['\.pyc$', '\.jpg$']
+autocmd vimenter * NERDTree
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " ultisnips
 let g:UltiSnipsExpandTrigger = '<c-tab>'
