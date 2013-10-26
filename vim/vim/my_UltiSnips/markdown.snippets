@@ -1,0 +1,16 @@
+snippet pel "Pelican metadata" bs
+Title: ${1:title}
+Tags: $2
+Category: $3
+Date: `date '+%y-%m-%d %H:%M'`
+Slug: `!p snip.rv = t[1].replace(' ', '-')`
+Disqus_identifier: `!p
+if not snip.c:
+    random_string = ''.join(random.sample(string.ascii_lowercase + string.digits, 7))
+snip.rv = random_string + '-' + t[1].replace(' ', '-')`
+Subtitle: $4
+Summary: $5
+Keywords: $6
+
+${0:Content of your blog post}
+endsnippet
