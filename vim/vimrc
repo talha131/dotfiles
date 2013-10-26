@@ -1,4 +1,3 @@
-" This section is added for Vundle from [this link](https://github.com/gmarik/vundle/blob/master/README.md#quick-start)
 " Begin Vundle section
 
 set nocompatible               " be iMproved
@@ -9,23 +8,8 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
-
-" My Bundles here:
-"
-" original repos on github
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'tpope/vim-rails.git'
-" vim-scripts repos
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-" ...
-
 " to add Vim-markdown support
 Bundle 'tpope/vim-markdown'
 " A code-completion engine
@@ -51,7 +35,7 @@ Bundle 'sjl/gundo.vim'
 Bundle 'talha131/todo-plus'
 " maze generator for practising hjkl in Vim
 Bundle 'dahu/Vimazing'
-" WriteRoom like env in Vim http://projects.mikewest.org/vimroom/ 
+" WriteRoom like env in Vim http://projects.mikewest.org/vimroom/
 Bundle 'mikewest/vimroom'
 " Syntax checking
 Bundle 'scrooloose/syntastic'
@@ -95,29 +79,19 @@ Bundle 'xolox/vim-session'
 Bundle 'xolox/vim-misc'
 
 filetype plugin indent on     " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
 
-" End Vundle section 
+" End Vundle section
 
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 
 " set fonts
 if has("win32")
    set guifont=Lucida_Console:h11:cANSI
-"  set guifont=Courier_NEW:h11:cANSI
 else
   set guifont=Menlo\ Regular\ for\ Powerline:h14
 endif
 
-" make sure horizontal scroll bar is visible 
+" make sure horizontal scroll bar is visible
 set guioptions+=b
 
 if !has("gui_running")
@@ -145,15 +119,12 @@ set swapfile
 set backupdir^=~/.vimTemp//
 " directory for swap files
 set directory^=~/.vimTemp//
-" directory for undo history 
+" directory for undo history
 set undodir^=~/.vimTemp//
 
 " remember x number of commands executed previously
 set history=100
 
-"set background=dark
-"let g:zenburn_alternate_Visual = 1
-"colorscheme zenburn 
 colorscheme beauty256Talha
 
 "Always show current position
@@ -161,14 +132,15 @@ set ruler
 
 " highlight search results
 set hlsearch
-" Makes search incremental 
+" Makes search incremental
 set incsearch
+set ignorecase
 
 " Enable spell check
 set spell
 " highlight spelling mistakes
 highlight clear SpellBad
-highlight SpellBad cterm=underline, ctermfg=red 
+highlight SpellBad cterm=underline, ctermfg=red
 highlight SpellBad gui=undercurl, guisp=red
 highlight clear SpellCap
 highlight SpellCap cterm=underline,bold, ctermfg=green
@@ -182,11 +154,11 @@ set wildmode=longest,list,full
 set wildmenu
 
 " for :shell, from [SO answer](http://stackoverflow.com/a/12273438/177116)
-" Otherwise I get error 
+" Otherwise I get error
 " > __git_ps1: command not found
 set shell=bash\ --rcfile\ ~/.bashrc
 
-" for ctrlp 
+" for ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 nmap <c-p>o :CtrlPBuffer<CR>
@@ -239,7 +211,7 @@ let g:UltiSnipsExpandTrigger = '<c-tab>'
 let g:UltiSnipsListSnippets = '<m-tab>'
 let g:UltiSnipsJumpForwardTrigger = '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
-let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_UltiSnips' ]
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'my_UltiSnips' ]
 set rtp+=~/.vim/my_snippets
 
 " Voom
