@@ -220,7 +220,8 @@ let LogpadLogDuration = 1
 
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$', '\.jpg$']
-autocmd vimenter * NERDTree
+let blacklist = ['gitcommit',  'gitrebase']
+autocmd vimenter * if index(blacklist, &ft) < 0 | NERDTree
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
