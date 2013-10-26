@@ -53,6 +53,15 @@ hi Todo gui=bold guifg=Black guibg=Yellow ctermbg=214 ctermbg=232
 hi Type gui=bold guifg=RoyalBlue4 ctermfg=62
 hi Underlined gui=underline guifg=Blue
 hi Directory ctermfg=132
+
+hi NERDTreeDir guifg=#BFBFBF
+hi NERDTreeUp guifg=DarkGray guibg=LightGray
+hi NERDTreeCWD guifg=#59658F
+hi NERDTreeLink guifg=#77BF8E
+hi NERDTreeRO guifg=Red
+hi NERDTreeBookmark guifg=#2D408B
+hi NERDTreeOpenable  guifg=Red
+
 hi Pmenu ctermfg=250 ctermbg=238
 hi PmenuSel ctermbg=214 ctermfg=16
 
