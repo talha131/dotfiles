@@ -47,8 +47,8 @@ Bundle 'sontek/rope-vim'
 Bundle 'scrooloose/nerdtree'
 " style checker
 Bundle 'nvie/vim-flake8'
-" Powerline
-Bundle 'Lokaltog/powerline'
+" Airline statusline
+Bundle 'bling/vim-airline'
 " Easy motion. Allows you to jump to motion or search targets with single key
 " press
 Bundle 'Lokaltog/vim-easymotion'
@@ -185,11 +185,9 @@ let g:vimroom_guibackground = "White"
 set foldmethod=indent
 set foldlevel=99
 
-" Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-set laststatus=2 " Always display the statusline in all windows
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-let g:Powerline_symbols = 'fancy'
+" Airline statusline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'solarized'
 
 " highlight 72th column in git commit
 autocmd FileType gitcommit set colorcolumn=72
