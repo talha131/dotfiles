@@ -241,3 +241,8 @@ let g:UltiSnipsJumpForwardTrigger = '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_UltiSnips' ]
 set rtp+=~/.vim/my_snippets
+
+" Voom
+let g:voom_tree_placement = 'right'
+let g:voom_ft_modes = {'markdown': 'markdown', 'pandoc': 'markdown'}
+autocmd FileType voomtree setlocal nonumber
