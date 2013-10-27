@@ -77,6 +77,8 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'xolox/vim-session'
 " vim-session requirement
 Bundle 'xolox/vim-misc'
+" Delete buffers and close files without messing up your layout
+Bundle 'moll/vim-bbye'
 
 filetype plugin indent on     " required!
 
