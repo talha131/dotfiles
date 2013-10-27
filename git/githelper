@@ -22,3 +22,15 @@ function pretty_git_log {
         # Page only if needed
         less -FXRS
 }
+
+function pretty_git_log_stats {
+
+     git log --date=short --pretty="format:${FORMAT}" --stat $* |
+        sed 's/}/ /g' |
+        # indent stats by a tab for readability
+        sed 's/^ /	/g' |
+        # remove empty lines
+        sed '/^$/d' |
+        sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
+        less -FXRS
+}

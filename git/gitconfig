@@ -30,6 +30,7 @@
 [alias]
 	sb = status -sb
         l = "!source ~/.githelper && pretty_git_log"
+        ls = "!source ~/.githelper && pretty_git_log_stats"
         la = "!git l --all"
         lr = !git l -50 --graph
         lra = !git lr --all
