@@ -7,14 +7,14 @@ AUTHOR="%Cblue%aN%Creset"
 REFS="%C(bold red)%d%Creset"
 SUBJECT="%s"
 
-FORMAT="$HASH}$AUTHOR_DATE}$AUTHOR}$REFS $SUBJECT%n"
+FORMAT="$HASH}$AUTHOR_DATE}$AUTHOR}$REFS $SUBJECT"
 
 ANSI_MAGENTA='\033[35m'
 ANSI_RESET='\033[0m'
 
 function pretty_git_log {
 
-     git log --date=short --pretty="format:${FORMAT}" $* |
+     git log --date=short --pretty="format:${FORMAT}%n" $* |
         # Line columns up based on } delimiter
         column -s '}' -t 2> /dev/null |
         # Color merge commits specially
