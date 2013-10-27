@@ -7,7 +7,7 @@
         excludesfile = /Users/talha/.gitignore
 	trustctime = false
 [color]
-        ui = auto
+	ui = always
 [color "branch"]
         current = green 
         local = magenta
