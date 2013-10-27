@@ -214,8 +214,6 @@ let LogpadLogDuration = 1
 let NERDTreeIgnore = ['\.pyc$', '\.jpg$']
 let blacklist = ['gitcommit',  'gitrebase', 'diff']
 autocmd vimenter * if index(blacklist, &ft) < 0 | NERDTree
-autocmd BufEnter * if index(blacklist, &ft) < 0 | silent! cd %:p:h
-autocmd BufEnter * if &modifiable && index(blacklist, &ft) < 0 | silent! NERDTreeCWD | wincmd p | endif
 
 " ultisnips
 let g:UltiSnipsExpandTrigger = '<c-tab>'
