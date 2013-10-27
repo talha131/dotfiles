@@ -227,3 +227,6 @@ set rtp+=~/.vim/my_snippets
 let g:voom_tree_placement = 'right'
 let g:voom_ft_modes = {'markdown': 'markdown', 'pandoc': 'markdown'}
 autocmd FileType voomtree setlocal nonumber
+
+" You Complete me
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
