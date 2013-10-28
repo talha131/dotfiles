@@ -214,6 +214,8 @@ let LogpadLogDuration = 1
 let NERDTreeIgnore = ['\.pyc$', '\.jpg$']
 let blacklist = ['gitcommit',  'gitrebase', 'diff']
 autocmd vimenter * if index(blacklist, &ft) < 0 | NERDTree
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " ultisnips
 let g:UltiSnipsExpandTrigger = '<c-tab>'
