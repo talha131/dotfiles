@@ -2,7 +2,7 @@ snippet pel "Pelican metadata" bs
 Title: ${1:title}
 Tags: $2
 Category: $3
-Date: `date '+%y-%m-%d %H:%M'`
+Date: `date '+%Y-%m-%d %H:%M'`
 Slug: `!p
 user_input = re.sub('[%s]' % re.escape(string.punctuation), '', t[1])
 snip.rv = user_input.replace(' ', '-').lower()`
