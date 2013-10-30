@@ -1,6 +1,9 @@
-% Overview of my dotfiles
-% 
-% 
+Overview of my dotfiles
+=======================
+
+These configuration files do not work out of the box. These are specific to my Mac OSX system.
+
+Following are my not so comprehensive and perhaps out of date notes.
 
 Git
 ===
