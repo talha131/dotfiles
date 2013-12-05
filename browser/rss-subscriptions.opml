@@ -2,7 +2,7 @@
 <opml version="1.0">
 <head>
 <title>Vienna Subscriptions</title>
-<dateCreated>2014-01-06 19:31:58 +0500</dateCreated>
+<dateCreated>2014-01-07 21:17:09 +0500</dateCreated>
 </head>
 <body>
 <outline htmlUrl="http://1000thingsaboutjapan.blogspot.com/" xmlUrl="http://1000thingsaboutjapan.blogspot.com/feeds/posts/default" type="rss" description="...that I will and won&apos;t miss." text="1000 Things About Japan"/>
@@ -90,15 +90,12 @@ You can also follow me on Twitter: @zulfishah
 <outline htmlUrl="http://daringfireball.net/" xmlUrl="http://daringfireball.net/index.xml" type="rss" description="Mac and web curmudgeonry/nerdery. By John Gruber." text="Daring Fireball"/>
 <outline htmlUrl="http://eviltrout.com/" xmlUrl="http://eviltrout.com/feed.xml" type="rss" description="The Evilist Trout of them all" text="Evil Trout&apos;s Blog"/>
 <outline htmlUrl="http://inessential.com/" xmlUrl="http://inessential.com/xml/rss.xml" type="rss" description="Brent Simmons’s weblog." text="inessential.com"/>
-<outline htmlUrl="http://jacquesmattheij.com/" xmlUrl="http://jacquesmattheij.com/rss.xml" type="rss" description="" text="jacquesmattheij.com -"/>
 <outline htmlUrl="http://jobtipsforgeeks.com" xmlUrl="http://jobtipsforgeeks.com/feed/" type="rss" description="career advice for programmery people..." text="job tips for geeks"/>
 <outline htmlUrl="http://johnmurray.io" xmlUrl="http://johnmurray.io/rss" type="rss" description="Log entries of my interests and endeavours" text="JohnMurray.io"/>
 <outline htmlUrl="http://www.macdrifter.com/" xmlUrl="http://www.macdrifter.com/feeds/all.atom.xml" type="rss" description="" text="Macdrifter"/>
 <outline htmlUrl="http://www.marco.org/" xmlUrl="http://www.marco.org/rss" type="rss" description="I’m Marco Arment, creator of Instapaper, technology writer, and coffee enthusiast." text="Marco.org"/>
 <outline htmlUrl="http://www.nczonline.net/blog" xmlUrl="http://feeds.feedburner.com/nczonline" type="rss" description="The Official Web Site of Nicholas C. Zakas" text="NCZOnline"/>
 <outline htmlUrl="http://37signals.com/svn/posts" xmlUrl="http://feeds.feedburner.com/37signals/beMH" type="rss" description="Signal vs. Noise" text="Signal vs. Noise"/>
-<outline htmlUrl="http://us7.campaign-archive.com/feed?u=c79d409422057897558c7320f&amp;id=dba0e151cb" xmlUrl="http://us7.campaign-archive2.com/feed?u=c79d409422057897558c7320f&amp;id=dba0e151cb" type="rss" description="" text="Startup Edition Archive Feed"/>
-<outline htmlUrl="http://whatspinksthinks.com" xmlUrl="http://whatspinksthinks.com/feed/" type="rss" description="" text="What Spinks Thinks"/>
 </outline>
 <outline text="Fitness">
 <outline htmlUrl="http://www.hulsestrength.com" xmlUrl="http://www.hulsestrength.com/feed/" type="rss" description="" text="(Untitled Feed)"/>
@@ -144,9 +141,16 @@ You can also follow me on Twitter: @zulfishah
 <outline htmlUrl="http://www.jamesaltucher.com" xmlUrl="http://feeds.feedburner.com/jamesaltucher" type="rss" description="Ideas for a World Out of Balance" text="Altucher Confidential"/>
 <outline htmlUrl="http://abetterlife.quora.com" xmlUrl="https://abetterlife.quora.com/rss" type="rss" description="Leading a better life on Quora" text="Leading a better life on Quora"/>
 <outline htmlUrl="http://learningfundamentals.com.au" xmlUrl="http://feeds2.feedburner.com/LearningFundamentals" type="rss" description="" text="Learning Fundamentals"/>
-<outline htmlUrl="http://oliveremberton.com" xmlUrl="http://oliveremberton.com/feed/" type="rss" description="" text="Oliver Emberton"/>
 <outline htmlUrl="http://calnewport.com" xmlUrl="http://feeds.feedburner.com/StudyHacks" type="rss" description="Author - Study Hacks" text="Study Hacks"/>
 <outline htmlUrl="http://jamesaltucher.quora.com" xmlUrl="https://jamesaltucher.quora.com/rss" type="rss" description="The Altucher Confidential on Quora" text="The Altucher Confidential on Quora"/>
+</outline>
+<outline text="MustReads">
+<outline htmlUrl="http://sivers.org/" xmlUrl="https://sivers.org/en.atom" type="rss" description="" text="Derek Sivers"/>
+<outline htmlUrl="http://jacquesmattheij.com/" xmlUrl="http://jacquesmattheij.com/rss.xml" type="rss" description="" text="jacquesmattheij.com -"/>
+<outline htmlUrl="http://oliveremberton.com" xmlUrl="http://oliveremberton.com/feed/" type="rss" description="" text="Oliver Emberton"/>
+<outline htmlUrl="http://www.sparringmind.com" xmlUrl="http://www.sparringmind.com/feed/" type="rss" description="Behavioral Psychology Blog" text="Sparring Mind"/>
+<outline htmlUrl="http://us7.campaign-archive.com/feed?u=c79d409422057897558c7320f&amp;id=dba0e151cb" xmlUrl="http://us7.campaign-archive2.com/feed?u=c79d409422057897558c7320f&amp;id=dba0e151cb" type="rss" description="" text="Startup Edition Archive Feed"/>
+<outline htmlUrl="http://whatspinksthinks.com" xmlUrl="http://whatspinksthinks.com/feed/" type="rss" description="" text="What Spinks Thinks"/>
 </outline>
 <outline text="News">
 <outline text="Articles">
@@ -207,12 +211,10 @@ You can also follow me on Twitter: @zulfishah
 </outline>
 <outline htmlUrl="http://svbtle.com" xmlUrl="https://svbtle.com/feed" type="rss" description="" text="Svbtle Featured"/>
 <outline text="Think">
-<outline htmlUrl="http://sivers.org/" xmlUrl="https://sivers.org/en.atom" type="rss" description="" text="Derek Sivers"/>
 <outline htmlUrl="http://www.motokoindepth.com/" xmlUrl="http://www.motokoindepth.com/feeds/posts/default?alt=rss" type="rss" description="Motoko Kusanagi in the Ghost in the Shell Anime Films, Manga and TV Series" text="Motoko in Depth"/>
 <outline htmlUrl="http://www.goodreads.com/quotes_of_the_day" xmlUrl="http://www.goodreads.com/quotes_of_the_day/rss" type="rss" description="Selected daily at Goodreads.com" text="Quotes of the Day"/>
 <outline htmlUrl="http://www.roughtype.com" xmlUrl="http://www.roughtype.com/?feed=rss2" type="rss" description="Nicholas Carr&apos;s Blog" text="Rough Type"/>
 <outline htmlUrl="http://www.roughtype.com/" xmlUrl="http://feeds.feedburner.com/roughtype/unGc" type="rss" description="" text="Rough Type: Nicholas Carr&apos;s Blog"/>
-<outline htmlUrl="http://www.sparringmind.com" xmlUrl="http://www.sparringmind.com/feed/" type="rss" description="Behavioral Psychology Blog" text="Sparring Mind"/>
 <outline htmlUrl="http://successfulsoftware.net" xmlUrl="http://successfulsoftware.net/feed/" type="rss" description="...requires more than just good programming." text="Successful Software"/>
 <outline htmlUrl="http://zenpencils.com" xmlUrl="http://feeds.feedburner.com/zenpencils" type="rss" description="Cartoon quotes from inspirational folks" text="ZEN PENCILS"/>
 </outline>
