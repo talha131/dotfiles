@@ -2,7 +2,7 @@
 <opml version="1.0">
 <head>
 <title>Vienna Subscriptions</title>
-<dateCreated>2014-01-07 21:17:09 +0500</dateCreated>
+<dateCreated>2014-01-07 21:20:12 +0500</dateCreated>
 </head>
 <body>
 <outline htmlUrl="http://1000thingsaboutjapan.blogspot.com/" xmlUrl="http://1000thingsaboutjapan.blogspot.com/feeds/posts/default" type="rss" description="...that I will and won&apos;t miss." text="1000 Things About Japan"/>
@@ -145,6 +145,7 @@ You can also follow me on Twitter: @zulfishah
 <outline htmlUrl="http://jamesaltucher.quora.com" xmlUrl="https://jamesaltucher.quora.com/rss" type="rss" description="The Altucher Confidential on Quora" text="The Altucher Confidential on Quora"/>
 </outline>
 <outline text="MustReads">
+<outline htmlUrl="http://www.aworkoutroutine.com" xmlUrl="http://www.aworkoutroutine.com/feed/" type="rss" description="" text="A Workout Routine"/>
 <outline htmlUrl="http://sivers.org/" xmlUrl="https://sivers.org/en.atom" type="rss" description="" text="Derek Sivers"/>
 <outline htmlUrl="http://jacquesmattheij.com/" xmlUrl="http://jacquesmattheij.com/rss.xml" type="rss" description="" text="jacquesmattheij.com -"/>
 <outline htmlUrl="http://oliveremberton.com" xmlUrl="http://oliveremberton.com/feed/" type="rss" description="" text="Oliver Emberton"/>
