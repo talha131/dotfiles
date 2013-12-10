@@ -108,6 +108,7 @@ syntax on
 set autoindent
 set softtabstop=4
 set shiftwidth=4
+set tabstop=4
 
 " write undo history to file so that undo history remains persistent
 set undofile
