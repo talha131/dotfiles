@@ -1,55 +1,55 @@
 [user]
-        name = Talha Mansoor
-        email = talha131@gmail.com
+    name = Talha Mansoor
+    email = talha131@gmail.com
 [core]
-        quotepath = false
-        whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-        excludesfile = /Users/talha/.gitignore
-	trustctime = false
-	pager = less -x1,5
+    quotepath = false
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    excludesfile = /Users/talha/.gitignore
+    trustctime = false
+    pager = less -x1,5
 [color]
-	ui = always
+    ui = always
 [color "branch"]
-        current = green 
-        local = magenta
-        remote = yellow 
+    current = green
+    local = magenta
+    remote = yellow
 [color "diff"]
-        meta = yellow bold
-        frag = magenta
-        old = red
-        new = green 
-        whitespace = white reverse
-        commit = blue reverse
-        plain = black
+    meta = yellow bold
+    frag = magenta
+    old = red
+    new = green
+    whitespace = white reverse
+    commit = blue reverse
+    plain = black
 [color "status"]
-        added = yellow
-        changed = green
-        untracked = cyan reverse
-        branch = magenta
+    added = yellow
+    changed = green
+    untracked = cyan reverse
+    branch = magenta
 [push]
-	default = simple
+    default = simple
 [alias]
-	sb = status -sb
-        l = "!source ~/.githelper && pretty_git_log"
-        ls = "!source ~/.githelper && pretty_git_log_stats"
-        la = "!git l --all"
-        lr = !git l -50 --graph
-        lra = !git lr --all
-        lg = !git l --graph
-	lp = log --patch --decorate
-	d = diff
-	dc = diff --cached
-	c = commit -v
-	ca = !git c -a
-	caa = !git c -a --amend
-	cm = !git c --amend
-	s = status --short
-	ap = add -p
-	ai = add -i
-	ln = log --name-only
-	dw = diff --word-diff=color
-	chm = checkout master
-	chb = checkout -b
-	ch = checkout
+    sb = status -sb
+    l = "!source ~/.githelper && pretty_git_log"
+    ls = "!source ~/.githelper && pretty_git_log_stats"
+    la = "!git l --all"
+    lr = !git l -50 --graph
+    lra = !git lr --all
+    lg = !git l --graph
+    lp = log --patch --decorate
+    d = diff
+    dc = diff --cached
+    c = commit -v
+    ca = !git c -a
+    caa = !git c -a --amend
+    cm = !git c --amend
+    s = status --short
+    ap = add -p
+    ai = add -i
+    ln = log --name-only
+    dw = diff --word-diff=color
+    chm = checkout master
+    chb = checkout -b
+    ch = checkout
 [merge]
-	conflictstyle = diff3
+    conflictstyle = diff3
