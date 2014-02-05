@@ -19,7 +19,6 @@ Bundle 'VOoM'
 " to quickly find file in the path and buffers with fuzzy find support
 Bundle 'kien/ctrlp.vim'
 " to have auto close feature
-"Bundle 'Townk/vim-autoclose'
 Bundle 'Raimondi/delimitMate'
 " to make quoting and parenthesizing easier
 Bundle 'tpope/vim-surround'
