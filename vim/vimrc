@@ -319,11 +319,15 @@ function! SetBackground()
         if &background != 'light'
             set background=light
         endif
+        unlet g:zenburn_old_Visual
+        unlet g:zenburn_alternate_Visual
         colorscheme beauty256Talha
     else
         if &background != 'dark'
             set background=dark
         endif
+        let g:zenburn_old_Visual = 1
+        let g:zenburn_alternate_Visual = 1
         colorscheme zenburn
     endif
 endfunction
