@@ -129,8 +129,6 @@ set undodir^=~/.vimTemp//
 " remember x number of commands executed previously
 set history=100
 
-colorscheme beauty256Talha
-
 "Always show current position
 set ruler
 
@@ -313,3 +311,24 @@ let g:tagbar_type_css = {
         \ 'i:identities'
     \ ]
 \ }
+
+" Theme
+" Change the background depending upon the time of day
+function! SetBackground()
+    if strftime("%H") >= 5 && strftime("%H") < 19
+        if &background != 'light'
+            set background=light
+        endif
+        colorscheme beauty256Talha
+    else
+        if &background != 'dark'
+            set background=dark
+        endif
+        colorscheme zenburn
+    endif
+endfunction
+
+if has("autocmd")
+    autocmd WinEnter * call SetBackground()
+endif
+
