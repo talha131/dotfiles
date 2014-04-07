@@ -316,27 +316,20 @@ let g:tagbar_type_css = {
 
 " Theme
 " Change the background depending upon the time of day
+colorscheme solarized
 function! SetBackground()
     if strftime("%H") >= 5 && strftime("%H") < 19
         if &background != 'light'
             set background=light
         endif
-        let g:zenburn_old_Visual = 0
-        let g:zenburn_alternate_Visual = 0
-        colorscheme beauty256Talha
     else
         if &background != 'dark'
             set background=dark
         endif
-        let g:zenburn_old_Visual = 1
-        let g:zenburn_alternate_Visual = 1
-        colorscheme zenburn
     endif
 endfunction
 
 if has("autocmd")
-    autocmd WinEnter * call SetBackground()
+    autocmd VimEnter, WinEnter * call SetBackground()
 endif
-
-call SetBackground()
 
