@@ -79,7 +79,9 @@ Bundle 'xolox/vim-session'
 Bundle 'xolox/vim-misc'
 " Delete buffers and close files without messing up your layout
 Bundle 'moll/vim-bbye'
+" Themes
 Bundle 'jnurmine/Zenburn'
+Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on     " required!
 
