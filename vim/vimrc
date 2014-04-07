@@ -336,3 +336,5 @@ if has("autocmd")
     autocmd WinEnter * call SetBackground()
 endif
 
+call SetBackground()
+
