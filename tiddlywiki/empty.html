@@ -4991,6 +4991,105 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div created="20140904181209383" modified="20140904181235895" tags="$:/tags/stylesheet" title="$:/themes/tiddlywiki/starlight/styles.tid">
+<pre>\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline
+\define border-radius(radius)
+```
+  -webkit-border-radius: $radius$;
+     -moz-border-radius: $radius$;
+          border-radius: $radius$;
+```
+\end
+\define box-shadow(shadow)
+```
+  -webkit-box-shadow: $shadow$;
+     -moz-box-shadow: $shadow$;
+          box-shadow: $shadow$;
+```
+\end
+\define filter(filter)
+```
+  -webkit-filter: $filter$;
+     -moz-filter: $filter$;
+          filter: $filter$;
+```
+\end
+\define background-linear-gradient(gradient)
+```
+background-image: linear-gradient($gradient$);
+background-image: -o-linear-gradient($gradient$);
+background-image: -moz-linear-gradient($gradient$);
+background-image: -webkit-linear-gradient($gradient$);
+background-image: -ms-linear-gradient($gradient$);
+```
+\end
+\define datauri(title)
+&lt;$macrocall $name=&quot;makedatauri&quot; type={{$title$!!type}} text={{$title$}}/&gt;
+\end
+
+/*
+Placeholder for a more thorough refinement of Snow White
+*/
+
+@font-face {
+  font-family: &quot;Arvo&quot;;
+  font-style: normal;
+  font-weight: 400;
+  src: local(&quot;Arvo&quot;), url(&lt;&lt;datauri &quot;$:/themes/tiddlywiki/starlight/arvo.woff&quot;&gt;&gt;) format(&quot;woff&quot;);
+}
+
+html body {
+	font-family: &quot;Arvo&quot;, &quot;Times&quot;;
+  background: url(&lt;&lt;datauri &quot;$:/themes/tiddlywiki/starlight/ltbg.jpg&quot;&gt;&gt;);
+}
+
+.tc-page-controls svg {
+  &lt;&lt;filter &quot;drop-shadow(1px 1px 2px rgba(255,255,255,0.9))&quot;&gt;&gt;
+}
+
+/*
+** Some rainbow icon colours
+*/
+
+svg.tc-image-new-button {
+  fill: #5eb95e; /* Green */
+}
+
+svg.tc-image-options-button {
+  fill: rgb(128, 88, 165); /* Purple */
+}
+
+svg.tc-image-save-button {
+  fill: #0e90d2; /* Light blue */
+}
+
+.tc-tiddler-controls button svg.tc-image-info-button {
+  fill: #0e90d2; /* Light blue */
+}
+
+.tc-tiddler-controls button svg.tc-image-edit-button {
+  fill: rgb(243, 123, 29); /* Orange */
+}
+
+.tc-tiddler-controls button svg.tc-image-close-button {
+  fill: #dd514c; /* Red */
+}
+
+.tc-tiddler-controls button svg.tc-image-delete-button {
+  fill: #dd514c; /* Red */
+}
+
+.tc-tiddler-controls button svg.tc-image-cancel-button {
+  fill: rgb(243, 123, 29); /* Orange */
+}
+
+.tc-tiddler-controls button svg.tc-image-done-button {
+  fill: #5eb95e; /* Green */
+}
+
+
+</pre>
+</div>
 <div created="20140205182043381" dependents="$:/themes/tiddlywiki/snowwhite" description="Experimental theme with titles that stick to the top of the window" modified="20140205182043381" name="Sticky Titles" plugin-type="theme" title="$:/themes/tiddlywiki/stickytitles" type="application/json" version="5.0.7-beta">
 <pre>{
     &quot;tiddlers&quot;: {
