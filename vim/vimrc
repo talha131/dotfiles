@@ -315,21 +315,6 @@ let g:tagbar_type_css = {
 \ }
 
 " Theme
-" Change the background depending upon the time of day
 colorscheme solarized
-function! SetBackground()
-    if strftime("%H") >= 5 && strftime("%H") < 19
-        if &background != 'light'
-            set background=light
-        endif
-    else
-        if &background != 'dark'
-            set background=dark
-        endif
-    endif
-endfunction
-
-if has("autocmd")
-    autocmd VimEnter, WinEnter * call SetBackground()
-endif
+set background=light
 
