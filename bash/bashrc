@@ -10,6 +10,7 @@ alias vim='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim'
 alias vimdiff='/Applications/MacPorts/MacVim.app/Contents/MacOS/Vim -d'
 alias vi='mvim --remote-tab'
 alias git-root='if [ "`git rev-parse --show-cdup`" != "" ]; then cd `git rev-parse --show-cdup`; fi'
+alias git-forest='git-forest |less -FXRS'
 
 md () { mkdir -p "$@" && cd "$_" ; } 
 
