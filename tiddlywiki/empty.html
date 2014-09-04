@@ -5159,6 +5159,26 @@ svg.tc-image-save-button {
     }
 }</pre>
 </div>
+<div created="20140904182632175" modified="20140904182651426" title="Todo List">
+<pre>TiddlyWiki5 can be used as a simple task management system without further customisation. The idea is that tasks be tagged `task`, with those that are completed also tagged `done`. In this way it is straightforward to generate task lists.
+
+! Outstanding tasks
+
+&lt;$list filter=&quot;[!has[draft.of]tag[task]!tag[done]sort[created]]&quot;&gt;
+
+&lt;$checkbox tag=&quot;done&quot;&gt; &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/$checkbox&gt;
+
+&lt;/$list&gt;
+
+! Completed tasks
+
+&lt;$list filter=&quot;[!has[draft.of]tag[task]tag[done]sort[created]]&quot;&gt;
+
+&lt;$checkbox tag=&quot;done&quot;&gt; ~~&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;~~&lt;/$checkbox&gt;
+
+&lt;/$list&gt;
+</pre>
+</div>
 
 </div>
 
