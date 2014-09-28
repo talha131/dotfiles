@@ -71,8 +71,8 @@ if [ ! -d "$VIRTUALENVWRAPPER_HOOK_DIR" ] ; then
   mkdir -p "$VIRTUALENVWRAPPER_HOOK_DIR"
 fi
 
-if [ -f /usr/local/bin/virtualenvwrapper.sh ] ; then
-  source /usr/local/bin/virtualenvwrapper.sh
+if [ -f /opt/local/bin/virtualenvwrapper.sh ] ; then
+  source /opt/local/bin/virtualenvwrapper.sh
 fi
 
 export HISTCONTROL=ignorespace 
