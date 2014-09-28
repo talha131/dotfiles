@@ -76,7 +76,7 @@ if [ -f /opt/local/bin/virtualenvwrapper.sh ] ; then
 fi
 
 export HISTCONTROL=ignorespace 
-function gi() { curl http://www.gitignore.io/api/$@ ;}
+function gi() { curl -s https://www.gitignore.io/api/$@ ;}
 
 shopt -s cdspell
 shopt -s dirspell
