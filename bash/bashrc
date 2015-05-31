@@ -86,3 +86,4 @@ if [ -f /opt/local/etc/profile.d/autojump.bash ]; then
     . /opt/local/etc/profile.d/autojump.bash
 fi
 
+complete -W "$(teamocil --list)" teamocil
