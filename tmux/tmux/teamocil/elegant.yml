@@ -1,0 +1,50 @@
+windows:
+    - name: dev
+      root: ~/Repos
+      focus: true
+      layout: tiled
+      panes:
+        - commands:
+            - workon pelican-dev-34
+            - cd pelican
+            - pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U
+            - git fetch upstream
+            - git merge --ff-only upstream/master
+            - git push
+            - python setup.py install
+            - cd ../pelican-plugins
+            - git fetch upstream
+            - git merge --ff-only upstream/master
+            - git push
+            - cd ../pelican-themes/elegant
+            - pelican-themes -s ~/Repos/pelican-themes/elegant
+            - cd ../../onCrashReboot
+            - make stopserver
+            - make devserver
+        - commands:
+            - cd pelican-themes/elegant
+            - workon pelican-dev-34
+          focus: true
+    - name: misc
+      root: ~/Repos
+      layout: tiled
+      panes:
+        - commands:
+            - cd pelican
+            - workon pelican-dev-34
+        - commands:
+            - cd pelican-plugins
+            - workon pelican-dev-34
+        - commands:
+            - cd onCrashReboot
+            - workon pelican-dev-34
+        - commands:
+            - cd onCrashReboot
+            - workon pelican-dev-34
+        - commands:
+            - brackets ~/Repos/pelican-themes/elegant
+            - /Applications/Firefox.app/Contents/MacOS/firefox-bin ~/Library/Application\ Support/Firefox/profiles/v2f08jt7.default/sessions/Elegant\ Development.session
+        - commands:
+            - cd pelican-themes/elegant
+            - workon pelican-dev-34
+          focus: true
