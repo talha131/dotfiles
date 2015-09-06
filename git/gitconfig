@@ -29,6 +29,7 @@
     default = simple
 [alias]
     sb = status -sb
+    sc = diff --name-only --diff-filter=U
     l = "!source ~/.githelper && pretty_git_log"
     ls = "!source ~/.githelper && pretty_git_log_stats"
     la = "!git l --all"
