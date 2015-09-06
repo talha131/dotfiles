@@ -101,7 +101,7 @@ autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 if has("win32")
    set guifont=Lucida_Console:h11:cANSI
 else
-  set guifont=Menlo\ Regular\ for\ Powerline:h14
+  set guifont=Menlo\ Regular\ for\ Powerline:h11
 endif
 
 " make sure horizontal scroll bar is visible
