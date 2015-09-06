@@ -37,16 +37,18 @@ Bundle 'talha131/todo-plus'
 Bundle 'dahu/Vimazing'
 " WriteRoom like env in Vim http://projects.mikewest.org/vimroom/
 Bundle 'mikewest/vimroom'
+Bundle 'junegunn/goyo.vim'
+Bundle 'junegunn/limelight.vim'
 " Syntax checking
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 " integrates Python documentation system into Vim
 Bundle 'fs111/pydoc.vim'
 " Use rope -Python refactoring library
-Bundle 'sontek/rope-vim'
+" Bundle 'sontek/rope-vim'
 " tree explorer
 Bundle 'scrooloose/nerdtree'
 " style checker
-Bundle 'nvie/vim-flake8'
+" Bundle 'nvie/vim-flake8'
 " Airline statusline
 Bundle 'bling/vim-airline'
 " Easy motion. Allows you to jump to motion or search targets with single key
@@ -82,6 +84,12 @@ Bundle 'moll/vim-bbye'
 " Themes
 Bundle 'jnurmine/Zenburn'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'klen/python-mode'
+" Vim plugin for Todo.txt
+Bundle 'freitass/todo.txt-vim'
+Bundle 'jinja'
+" Enhanced Diff for git diff --patience
+Bundle 'chrisbra/vim-diff-enhanced'
 
 filetype plugin indent on     " required!
 
