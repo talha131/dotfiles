@@ -7,44 +7,50 @@ windows:
         - commands:
             - workon pelican-dev-34
             - cd pelican
-            - pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U
-            - git fetch upstream
-            - git merge --ff-only upstream/master
-            - git push
-            - python setup.py install
+              #            - pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U
+              #            - git fetch upstream
+              #            - git merge --ff-only upstream/master
+              #            - git push
+              #            - python setup.py install
             - cd ../pelican-plugins
             - git fetch upstream
             - git merge --ff-only upstream/master
             - git push
-            - cd ../pelican-themes/elegant
+              #            - cd ../pelican-themes/elegant
             - pelican-themes -s ~/Repos/pelican-themes/elegant
-            - cd ../../onCrashReboot
-            - make stopserver
-            - make devserver
+            - cd ../onCrashReboot
+            - sh t.sh
+            # - make stopserver
+            # - make devserver
         - commands:
-            - cd pelican-themes/elegant
             - workon pelican-dev-34
+            - cd onCrashReboot/output
+            # - python -m http.server
+            - python -m pelican.server
+        - commands:
+            - workon pelican-dev-34
+            - cd pelican-themes/elegant
           focus: true
     - name: misc
       root: ~/Repos
       layout: tiled
       panes:
         - commands:
+            - workon pelican-dev-34
             - cd pelican
-            - workon pelican-dev-34
         - commands:
+            - workon pelican-dev-34
             - cd pelican-plugins
-            - workon pelican-dev-34
         - commands:
-            - cd onCrashReboot
             - workon pelican-dev-34
+            - cd onCrashReboot
         - commands:
-            - cd onCrashReboot
             - workon pelican-dev-34
+            - cd onCrashReboot
         - commands:
             - brackets ~/Repos/pelican-themes/elegant
-            - /Applications/Firefox.app/Contents/MacOS/firefox-bin ~/Library/Application\ Support/Firefox/profiles/v2f08jt7.default/sessions/Elegant\ Development.session
+            - /Applications/Firefox.app/Contents/MacOS/firefox-bin ~/Library/Application\ Support/Firefox/profiles/v2f08jt7.default/sessions/Elegant\ Development.session &
         - commands:
-            - cd pelican-themes/elegant
             - workon pelican-dev-34
+            - cd pelican-themes/elegant
           focus: true
