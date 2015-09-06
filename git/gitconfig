@@ -53,3 +53,5 @@
     ch = checkout
 [merge]
     conflictstyle = diff3
+[diff]
+	algorithm = patience
