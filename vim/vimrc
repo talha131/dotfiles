@@ -85,7 +85,6 @@ filetype plugin indent on     " required!
 
 " End Vundle section }}}
 
-autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 
 " set fonts
 if has("win32")
@@ -159,6 +158,9 @@ set wildmode=longest,list,full
 set wildmenu
 "}}}
 
+autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
+autocmd FileType gitcommit set colorcolumn=72 " highlight 72th column in git commit
+
 "{{{ CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -189,9 +191,6 @@ let g:gundo_close_on_revert=1
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
 "}}}
-
-" highlight 72th column in git commit
-autocmd FileType gitcommit set colorcolumn=72
 
 "{{{ NERDTree
 let NERDTreeIgnore = ['\.pyc$', '\.jpg$']
