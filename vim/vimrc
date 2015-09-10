@@ -119,6 +119,9 @@ set writebackup
 " Use a swapfile for the buffer.
 set swapfile
 
+if !isdirectory($HOME.'/.vimTemp')
+    silent call mkdir ($HOME.'/.vimTemp', 'p')
+endif
 " directory for backup files
 set backupdir^=~/.vimTemp//
 " directory for swap files
