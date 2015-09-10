@@ -5,7 +5,3 @@
 [submodule "emacs/emacs.d"]
 	path = emacs/emacs.d
 	url = http://github.com/eschulte/emacs24-starter-kit.git
-[submodule "tmux/tmux/plugins/tpm"]
-	path = tmux/tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
-    ignore = untracked
