@@ -235,15 +235,17 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'my_UltiSnips' ]
 set rtp+=~/.vim/my_snippets
 
-" Voom
+"{{{ Voom
 let g:voom_tree_placement = 'right'
 let g:voom_ft_modes = {'markdown': 'markdown', 'pandoc': 'markdown'}
 let g:voom_always_allow_move_left = 1
 autocmd FileType voomtree setlocal nonumber
+"}}}
 
-" You Complete me
+"{{{ You Complete me
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+"}}}
 
 " Vim Session
 :let g:session_autosave = 'no'
