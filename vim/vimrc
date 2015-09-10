@@ -1,4 +1,4 @@
-" Begin Vundle section
+"{{{ Begin Vundle section
 
 set nocompatible               " be iMproved
 filetype on
@@ -93,7 +93,7 @@ Bundle 'chrisbra/vim-diff-enhanced'
 
 filetype plugin indent on     " required!
 
-" End Vundle section
+" End Vundle section }}}
 
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 
