@@ -188,6 +188,7 @@ let g:gundo_close_on_revert=1
 "{{{ Airline statusline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
+set laststatus=2 " solves vim-airline status bar not shown when only single file is open
 "}}}
 
 "{{{ NERDTree
