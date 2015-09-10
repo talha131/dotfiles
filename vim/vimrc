@@ -224,8 +224,9 @@ autocmd FileType voomtree setlocal nonumber
 "}}}
 
 "{{{ You Complete Me
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+let g:ycm_server_keep_logfiles=1
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 "}}}
 
 " Vim Session
@@ -316,6 +317,5 @@ let g:tagbar_type_css = {
 " Theme
 colorscheme github
 set background=light
-let g:ycm_server_keep_logfiles=1
 
 set autochdir
