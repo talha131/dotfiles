@@ -31,8 +31,6 @@ Bundle 'dahu/VimRegexTutor'
 Bundle 'zaiste/tmux.vim'
 " to browse the undo tree
 Bundle 'sjl/gundo.vim'
-" my todo plugin
-Bundle 'talha131/todo-plus'
 " maze generator for practising hjkl in Vim
 Bundle 'dahu/Vimazing'
 Bundle 'junegunn/goyo.vim'
@@ -57,10 +55,6 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'sjl/clam.vim'
 " A Suggested Path for Learning Vim
 Bundle 'dahu/LearnVim'
-" Create a new file, write .LOG as the first line and save it. Every time you reopen
-" the file, a new line with the current timestamp is added, so you can easily maintain
-" a chronologic log of your tasks.
-Bundle 'talha131/logpad-plus-duration'
 " focus on a region and make the rest inaccessible
 Bundle 'chrisbra/NrrwRgn'
 " Git wrapper
@@ -83,8 +77,6 @@ Bundle 'moll/vim-bbye'
 Bundle 'jnurmine/Zenburn'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'klen/python-mode'
-" Vim plugin for Todo.txt
-Bundle 'freitass/todo.txt-vim'
 Bundle 'jinja'
 " Enhanced Diff for git diff --patience
 Bundle 'chrisbra/vim-diff-enhanced'
@@ -208,11 +200,6 @@ let g:airline_theme = 'solarized'
 
 " highlight 72th column in git commit
 autocmd FileType gitcommit set colorcolumn=72
-
-" execute :startinsert when a new log entry is created.
-" default for plugin is to start insertmode.
-let LogpadInsert = 1
-let LogpadLogDuration = 1
 
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$', '\.jpg$']
