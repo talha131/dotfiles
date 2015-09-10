@@ -82,17 +82,6 @@ filetype plugin indent on     " required!
 
 " End Vundle section }}}
 
-" set fonts
-if has("win32")
-    set guifont=Lucida_Console:h11:cANSI
-else
-    set guifont=Menlo\ for\ Powerline:h12
-endif
-
-if !has("gui_running")
-  set term=screen-256color
-endif
-
 syntax on
 set autochdir
 set autoindent
@@ -156,6 +145,19 @@ set wildmenu
 set noerrorbells visualbell t_vb=
 if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
+endif
+"}}}
+
+"{{{ Set theme and font
+colorscheme github
+if has("win32")
+    set guifont=Lucida_Console:h11:cANSI
+else
+    set guifont=Menlo\ for\ Powerline:h12
+endif
+
+if !has("gui_running")
+  set term=screen-256color
 endif
 "}}}
 
@@ -310,8 +312,4 @@ let g:tagbar_type_css = {
     \ ]
 \ }
 "}}}
-
-" Theme
-colorscheme github
-set background=light
 
