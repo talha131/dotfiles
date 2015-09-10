@@ -160,6 +160,7 @@ set wildmenu
 
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 autocmd FileType gitcommit set colorcolumn=72 " highlight 72th column in git commit
+autocmd FileType vim set foldmethod=marker
 
 "{{{ CtrlP
 let g:ctrlp_map = '<c-p>'
