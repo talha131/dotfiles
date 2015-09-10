@@ -1,8 +1,0 @@
-# default window
-send-keys -t 0 "workon pelican-dev && cd ~/Repos/onCrashReboot/ && make devserver" C-m
-
-# create new window for editor
-neww -a 
-send-keys -t 0 "workon pelican-dev && cd ~/Repos/onCrashReboot/" C-m
-send-keys -t 0 "mvim -c \"OpenSession onCrashReboot\"" C-m
-send-keys -t 0 "git s" C-m
