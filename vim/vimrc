@@ -170,7 +170,7 @@ set wildmenu
 " > __git_ps1: command not found
 set shell=bash\ --rcfile\ ~/.bashrc
 
-" for ctrlp
+"{{{ CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 nmap <c-p>o :CtrlPBuffer<CR>
@@ -188,11 +188,13 @@ let g:ctrlp_custom_ignore = {
             \ |mp3|mp4|mov|avi|flv|torrent|wmv
             \ |pdf|epub|mobi|chm|doc|docx|lit|gdoc)$'
             \ }
+"}}}
 
-" for gundo plugin
+"{{{ Gundo
 let g:gundo_preview_bottom=1
 let g:gundo_preview_height=25
 let g:gundo_close_on_revert=1
+"}}}
 
 " add angle bracket and pipe to the list to auto close pairs
 let g:AutoClosePairs_add = "<> |"
@@ -238,7 +240,7 @@ let g:voom_always_allow_move_left = 1
 autocmd FileType voomtree setlocal nonumber
 "}}}
 
-"{{{ You Complete me
+"{{{ You Complete Me
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 "}}}
@@ -250,7 +252,7 @@ let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 
-" add a definition for Objective-C to TagBar
+"{{{ TagBar definitions for Obj-C and CSS
 let g:tagbar_type_objc = {
     \ 'ctagstype' : 'ObjectiveC',
     \ 'kinds'     : [
@@ -325,6 +327,7 @@ let g:tagbar_type_css = {
         \ 'i:identities'
     \ ]
 \ }
+"}}}
 
 " Theme
 colorscheme github
