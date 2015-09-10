@@ -185,10 +185,6 @@ let g:gundo_preview_height=25
 let g:gundo_close_on_revert=1
 "}}}
 
-" Vim as Python IDE
-set foldmethod=indent
-set foldlevel=99
-
 "{{{ Airline statusline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
