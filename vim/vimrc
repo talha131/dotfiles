@@ -92,8 +92,6 @@ else
   set guifont=Menlo\ Regular\ for\ Powerline:h11
 endif
 
-" make sure horizontal scroll bar is visible
-set guioptions+=b
 
 if !has("gui_running")
   set term=screen-256color
@@ -103,6 +101,7 @@ syntax on
 set autochdir
 set autoindent
 set expandtab
+set guioptions+=b " make sure horizontal scroll bar is visible
 set history=100 " remember x number of commands executed previously
 set number
 set ruler "Always show current position
