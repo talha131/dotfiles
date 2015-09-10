@@ -155,6 +155,13 @@ set wildmode=longest,list,full
 set wildmenu
 "}}}
 
+"{{{ Disable Beeping
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
+"}}}
+
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 autocmd FileType gitcommit set colorcolumn=72 " highlight 72th column in git commit
 autocmd FileType vim set foldmethod=marker
