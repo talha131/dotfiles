@@ -85,7 +85,6 @@ filetype plugin indent on     " required!
 
 " End Vundle section }}}
 
-
 " set fonts
 if has("win32")
    set guifont=Lucida_Console:h11:cANSI
@@ -223,8 +222,9 @@ let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 "}}}
 
-" Vim Session
+"{{{ xolox/vim-session
 :let g:session_autosave = 'no'
+"}}}
 
 "{{{ Limelight and Goyo - Distraction Free Writing
 autocmd User GoyoEnter Limelight
