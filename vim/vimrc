@@ -73,9 +73,6 @@ Bundle 'xolox/vim-session'
 Bundle 'xolox/vim-misc'
 " Delete buffers and close files without messing up your layout
 Bundle 'moll/vim-bbye'
-" Themes
-Bundle 'jnurmine/Zenburn'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'klen/python-mode'
 Bundle 'jinja'
 " Enhanced Diff for git diff --patience
