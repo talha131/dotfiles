@@ -110,6 +110,7 @@ set softtabstop=4
 set shiftwidth=4
 set tabstop=4
 
+"{{{ Save command history, file backup and swap in a directory
 " write undo history to file so that undo history remains persistent
 set undofile
 " Make a backup before overwriting a file.  Leave it around after the file has been successfully written.
@@ -128,6 +129,7 @@ set backupdir^=~/.vimTemp//
 set directory^=~/.vimTemp//
 " directory for undo history
 set undodir^=~/.vimTemp//
+"}}}
 
 " remember x number of commands executed previously
 set history=100
@@ -193,27 +195,30 @@ let g:gundo_close_on_revert=1
 set foldmethod=indent
 set foldlevel=99
 
-" Airline statusline
+"{{{ Airline statusline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
+"}}}
 
 " highlight 72th column in git commit
 autocmd FileType gitcommit set colorcolumn=72
 
-" NERDTree
+"{{{ NERDTree
 let NERDTreeIgnore = ['\.pyc$', '\.jpg$']
 let blacklist = ['gitcommit',  'gitrebase', 'diff']
 autocmd vimenter * if index(blacklist, &ft) < 0 | NERDTree
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"}}}
 
-" ultisnips
+"{{{ ultisnips
 let g:UltiSnipsExpandTrigger = '<c-tab>'
 let g:UltiSnipsListSnippets = '<m-tab>'
 let g:UltiSnipsJumpForwardTrigger = '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'my_UltiSnips' ]
 set rtp+=~/.vim/my_snippets
+"}}}
 
 "{{{ Voom
 let g:voom_tree_placement = 'right'
