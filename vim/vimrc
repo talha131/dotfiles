@@ -101,14 +101,23 @@ if !has("gui_running")
   set term=screen-256color
 endif
 
-set number
-set expandtab
-set wrap
 syntax on
+set autochdir
 set autoindent
-set softtabstop=4
+set expandtab
+set history=100 " remember x number of commands executed previously
+set number
+set ruler "Always show current position
 set shiftwidth=4
+set softtabstop=4
 set tabstop=4
+set wrap
+
+"{{{ Search settings
+set hlsearch " highlight search results
+set incsearch " Makes search incremental
+set ignorecase
+"}}}
 
 "{{{ Save command history, file backup and swap in a directory
 " write undo history to file so that undo history remains persistent
@@ -131,34 +140,24 @@ set directory^=~/.vimTemp//
 set undodir^=~/.vimTemp//
 "}}}
 
-" remember x number of commands executed previously
-set history=100
-
-"Always show current position
-set ruler
-
-" highlight search results
-set hlsearch
-" Makes search incremental
-set incsearch
-set ignorecase
-
-" Enable spell check
-set spell
-" highlight spelling mistakes
+"{{{ Spell Check
+set spell " Enable spell check
 highlight clear SpellBad
 highlight SpellBad cterm=underline, ctermfg=red
 highlight SpellBad gui=undercurl, guisp=red
 highlight clear SpellCap
 highlight SpellCap cterm=underline,bold, ctermfg=green
 highlight SpellCap gui=undercurl guisp=DarkCyan
+"}}}
 
+"{{{ Command Line Completion
 " from [SO answer](http://stackoverflow.com/a/526940/177116)
 " When you type the first tab hit will complete as much as possible, the
 " second tab hit will provide a list, the third and subsequent tabs will cycle
 " through completion options so you can complete the file without further keys
 set wildmode=longest,list,full
 set wildmenu
+"}}}
 
 "{{{ CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -317,4 +316,3 @@ let g:tagbar_type_css = {
 colorscheme github
 set background=light
 
-set autochdir
