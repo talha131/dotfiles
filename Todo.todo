@@ -1,3 +1,0 @@
-Make sure Vim temp directory path is valid for Windows machines @vim
-Modify CtrlP ignore rules to make it work on Windows and Linux machines    @vim
-Make script that will create soft links to the respective folders and files 
