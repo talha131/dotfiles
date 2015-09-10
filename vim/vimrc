@@ -160,11 +160,6 @@ highlight SpellCap gui=undercurl guisp=DarkCyan
 set wildmode=longest,list,full
 set wildmenu
 
-" for :shell, from [SO answer](http://stackoverflow.com/a/12273438/177116)
-" Otherwise I get error
-" > __git_ps1: command not found
-set shell=bash\ --rcfile\ ~/.bashrc
-
 "{{{ CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
