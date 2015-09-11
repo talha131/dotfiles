@@ -10,6 +10,7 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-sensible'
 "{{{ Plugins - Code Complete and Snippets
 " A code-completion engine
 Bundle 'Valloric/YouCompleteMe'
@@ -17,6 +18,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
 " collection of code snippets
 Bundle 'honza/vim-snippets'
+Bundle 'mattn/emmet-vim'
 "}}}
 "{{{ Plugins - Document Outline
 " View and change file outline
@@ -35,6 +37,7 @@ Bundle 'chrisbra/NrrwRgn'
 Bundle 'kien/ctrlp.vim'
 " Tree explorer
 Bundle 'scrooloose/nerdtree'
+Bundle 'Xuyuanp/nerdtree-git-plugin'
 "}}}
 "{{{ Plugins - Learn Vim
 " A Suggested Path for Learning Vim
@@ -56,20 +59,15 @@ Bundle 'xolox/vim-misc'
 Bundle 'moll/vim-bbye'
 "}}}
 "{{{ Plugins - Syntax files and Programming Languages
-" Vim syntax file for tmux configuration
 Bundle 'zaiste/tmux.vim'
-" to add Vim-markdown support
 Bundle 'tpope/vim-markdown'
 Bundle 'jinja'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'groenewege/vim-less'
+Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'klen/python-mode'
-" integrates Python documentation system into Vim
-Bundle 'fs111/pydoc.vim'
-" Syntax checking
-" Bundle 'scrooloose/syntastic'
-" Use rope -Python refactoring library
-" Bundle 'sontek/rope-vim'
-" style checker
-" Bundle 'nvie/vim-flake8'
+Bundle 'dag/vim-fish'
+Bundle 'fatih/vim-go'
 "}}}
 "{{{ Plugins - Typing Utilities
 " Auto close feature
@@ -79,10 +77,13 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 " comments plugin
 Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-endwise'
 "}}}
 "{{{ Plugins - User Interface
 " Airline statusline
 Bundle 'bling/vim-airline'
+" Add font icons
+Bundle 'ryanoasis/vim-devicons'
 "}}}
 "{{{ Plugins - Utilities and Wrappers
 " Draw ASCII art in Vim
@@ -91,6 +92,7 @@ Bundle 'DrawIt'
 Bundle 'sjl/clam.vim'
 " Git wrapper
 Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
 "}}}
 "{{{ Plugins - Version Control and File Comparision
 " Enhanced Diff for git diff --patience
