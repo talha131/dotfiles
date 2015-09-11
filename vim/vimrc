@@ -171,7 +171,7 @@ endif
 "}}}
 
 "{{{ Set theme and font
-colorscheme github
+colorscheme lucario
 if has("win32")
     set guifont=Lucida_Console:h11:cANSI
 else
