@@ -176,7 +176,7 @@ colorscheme github
 if has("win32")
     set guifont=Lucida_Console:h11:cANSI
 else
-    set guifont=Menlo\ for\ Powerline:h12
+    set guifont=Inconsolata\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14
 endif
 
 if !has("gui_running")
