@@ -10,73 +10,94 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
-" to add Vim-markdown support
-Bundle 'tpope/vim-markdown'
+"{{{ Plugins - Code Complete and Snippets
 " A code-completion engine
 Bundle 'Valloric/YouCompleteMe'
-" to view and change file outline
-Bundle 'VOoM'
-" to quickly find file in the path and buffers with fuzzy find support
-Bundle 'kien/ctrlp.vim'
-" to have auto close feature
-Bundle 'Raimondi/delimitMate'
-" to make quoting and parenthesizing easier
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-" to draw ASCII art in Vim
-Bundle 'DrawIt'
-" Vim regex tutor
-Bundle 'dahu/VimRegexTutor'
-" Vim syntax file for tmux configuration
-Bundle 'zaiste/tmux.vim'
-" to browse the undo tree
-Bundle 'sjl/gundo.vim'
-" maze generator for practising hjkl in Vim
-Bundle 'dahu/Vimazing'
-Bundle 'junegunn/goyo.vim'
-Bundle 'junegunn/limelight.vim'
-" Syntax checking
-" Bundle 'scrooloose/syntastic'
-" integrates Python documentation system into Vim
-Bundle 'fs111/pydoc.vim'
-" Use rope -Python refactoring library
-" Bundle 'sontek/rope-vim'
-" tree explorer
-Bundle 'scrooloose/nerdtree'
-" style checker
-" Bundle 'nvie/vim-flake8'
-" Airline statusline
-Bundle 'bling/vim-airline'
-" Easy motion. Allows you to jump to motion or search targets with single key
-" press
-Bundle 'Lokaltog/vim-easymotion'
-" Work with shell commands inside Vim. Pipe file contents to shell commands or
-" run shell commands on file content.
-Bundle 'sjl/clam.vim'
-" A Suggested Path for Learning Vim
-Bundle 'dahu/LearnVim'
-" focus on a region and make the rest inaccessible
-Bundle 'chrisbra/NrrwRgn'
-" Git wrapper
-Bundle 'tpope/vim-fugitive'
 " inserts code snippets
 Bundle 'SirVer/ultisnips'
 " collection of code snippets
 Bundle 'honza/vim-snippets'
+"}}}
+"{{{ Plugins - Document Outline
+" View and change file outline
+Bundle 'VOoM'
 " browse the tags of source code files. TagbarToggle
 Bundle 'majutsushi/tagbar'
-" comments plugin
-Bundle 'tomtom/tcomment_vim'
-" session management
+"}}}
+"{{{ Plugins - Distraction Free Writing
+Bundle 'junegunn/goyo.vim'
+Bundle 'junegunn/limelight.vim'
+" focus on a region and make the rest inaccessible
+Bundle 'chrisbra/NrrwRgn'
+"}}}
+"{{{ Plugins - File Navigation
+" Quickly find file in the path and buffers with fuzzy find support
+Bundle 'kien/ctrlp.vim'
+" Tree explorer
+Bundle 'scrooloose/nerdtree'
+"}}}
+"{{{ Plugins - Learn Vim
+" A Suggested Path for Learning Vim
+Bundle 'dahu/LearnVim'
+" Vim regex tutor
+Bundle 'dahu/VimRegexTutor'
+" maze generator for practising hjkl in Vim
+Bundle 'dahu/Vimazing'
+"}}}
+"{{{ Plugins - Motion Enhancements
+" Easy motion. Allows you to jump to motion or search targets with single key press
+Bundle 'Lokaltog/vim-easymotion'
+"}}}
+"{{{ Plugins - Session Management
 Bundle 'xolox/vim-session'
 " vim-session requirement
 Bundle 'xolox/vim-misc'
 " Delete buffers and close files without messing up your layout
 Bundle 'moll/vim-bbye'
-Bundle 'klen/python-mode'
+"}}}
+"{{{ Plugins - Syntax files and Programming Languages
+" Vim syntax file for tmux configuration
+Bundle 'zaiste/tmux.vim'
+" to add Vim-markdown support
+Bundle 'tpope/vim-markdown'
 Bundle 'jinja'
+Bundle 'klen/python-mode'
+" integrates Python documentation system into Vim
+Bundle 'fs111/pydoc.vim'
+" Syntax checking
+" Bundle 'scrooloose/syntastic'
+" Use rope -Python refactoring library
+" Bundle 'sontek/rope-vim'
+" style checker
+" Bundle 'nvie/vim-flake8'
+"}}}
+"{{{ Plugins - Typing Utilities
+" Auto close feature
+Bundle 'Raimondi/delimitMate'
+" to make quoting and parenthesizing easier
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+" comments plugin
+Bundle 'tomtom/tcomment_vim'
+"}}}
+"{{{ Plugins - User Interface
+" Airline statusline
+Bundle 'bling/vim-airline'
+"}}}
+"{{{ Plugins - Utilities and Wrappers
+" Draw ASCII art in Vim
+Bundle 'DrawIt'
+" Work with shell commands inside Vim. Pipe file contents to shell commands or run shell commands on file content.
+Bundle 'sjl/clam.vim'
+" Git wrapper
+Bundle 'tpope/vim-fugitive'
+"}}}
+"{{{ Plugins - Version Control and File Comparision
 " Enhanced Diff for git diff --patience
 Bundle 'chrisbra/vim-diff-enhanced'
+" Browse the undo tree
+Bundle 'sjl/gundo.vim'
+"}}}
 
 filetype plugin indent on     " required!
 
