@@ -1,3 +1,7 @@
+-- Constants
+
+local hyper = { "cmd", "alt", "shift", "ctrl" }
+
 -- Reload Configuration
 --- http://www.hammerspoon.org/go/#fancyreload
 function reloadConfig(files)
