@@ -40,6 +40,8 @@ if caffeine then
     setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
 
+hs.hotkey.bind(hyper, 'Q', function() hs.caffeinate.lockScreen() end)
+
 -- Launch applications
 hs.hotkey.bind(hyper, '0', function() hs.application.launchOrFocus("iterm") end)
 
