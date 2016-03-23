@@ -1,6 +1,7 @@
 -- Constants
 
 local hyper = { "cmd", "alt", "shift", "ctrl" }
+require "window"
 
 hs.hotkey.bind(hyper, 'Q', function() hs.caffeinate.lockScreen() end)
 
