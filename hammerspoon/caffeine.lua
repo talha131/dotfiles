@@ -1,11 +1,16 @@
 -- Caffeine replacement
+local imagePath =  os.getenv("HOME") .. '/.hammerspoon/assets/';
+local iconAwake = imagePath .."caffeine-on.pdf"
+local iconSleep = imagePath .."caffeine-off.pdf"
+
 local caffeine = hs.menubar.new()
+
 function setCaffeineDisplay(state)
     if state then
-        caffeine:setIcon("caffeine-on.pdf")
-        caffeine:setTooltip("Awake - machine will refuse to sleep")
+        caffeine:setIcon(iconAwake)
+        caffeine:setTooltip(imagePath .."Awake - machine will refuse to sleep")
     else
-        caffeine:setIcon("caffeine-off.pdf")
+        caffeine:setIcon(iconSleep)
         caffeine:setTooltip("Sleepy - machine is allowed to sleep")
     end
 end
