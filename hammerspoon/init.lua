@@ -1,15 +1,15 @@
 hyper = { "cmd", "alt", "shift", "ctrl" }
-hyper_space = { "cmd", "alt", "shift", "ctrl", "space" }
 
-loggerInfo = hs.logger.new('battery', 'info')
+loggerInfo = hs.logger.new('My Settings', 'info')
 
-require "reload-config"
-require "window"
-require "battery"
-require "caffeine"
-require "clipboard"
-require 'red-shift'
+require 'battery'
+require 'pomodoor'
+require 'caffeine'
+require 'clipboard'
 require 'launch-applications'
+require 'red-shift'
+require 'reload-config'
+require 'window'
 
 -- Lock System
 hs.hotkey.bind(hyper, 'Q', function() hs.caffeinate.lockScreen() end)
