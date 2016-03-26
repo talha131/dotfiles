@@ -9,7 +9,7 @@ require 'clipboard'
 require 'launch-applications'
 require 'red-shift'
 require 'reload-config'
-require 'window'
+require 'window-management'
 
 -- Lock System
 hs.hotkey.bind(hyper, 'Q', function() hs.caffeinate.lockScreen() end)
