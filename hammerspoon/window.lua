@@ -19,4 +19,5 @@ hs.hotkey.bind(hyper, 'G', hs.grid.show)
 
 -- Window Hints
 hs.hotkey.bind(hyper, 'A', hs.hints.windowHints)
+hs.hints.style = 'vimperator'
 
