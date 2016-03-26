@@ -10,7 +10,7 @@ local lastKey = nil
 
 function flux(key)
 
-    if lastKey == key then
+    if lastKey == key or key == 'C' then
         
         hs.redshift.stop()
         lastKey = nil
@@ -63,4 +63,5 @@ modalKey:bind('', '7', function() flux('7') end, function() modalKey:exit() end)
 modalKey:bind('', '8', function() flux('8') end, function() modalKey:exit() end)
 modalKey:bind('', '9', function() flux('9') end, function() modalKey:exit() end)
 modalKey:bind('', '0', function() flux('0') end, function() modalKey:exit() end)
+modalKey:bind('', 'C', function() flux('C') end, function() modalKey:exit() end)
 
