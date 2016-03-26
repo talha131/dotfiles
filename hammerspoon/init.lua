@@ -1,4 +1,7 @@
 hyper = { "cmd", "alt", "shift", "ctrl" }
+hyper_space = { "cmd", "alt", "shift", "ctrl", "space" }
+
+loggerInfo = hs.logger.new('battery', 'info')
 
 require "reload-config"
 require "window"
