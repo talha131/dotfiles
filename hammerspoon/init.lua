@@ -8,6 +8,7 @@ require "window"
 require "battery"
 require "caffeine"
 require "clipboard"
+require 'red-shift'
 
 -- Lock System
 hs.hotkey.bind(hyper, 'Q', function() hs.caffeinate.lockScreen() end)
@@ -15,5 +16,5 @@ hs.hotkey.bind(hyper, 'Q', function() hs.caffeinate.lockScreen() end)
 hs.hotkey.bind(hyper, 'W', function() hs.caffeinate.systemSleep() end)
 
 -- Launch applications
-hs.hotkey.bind(hyper, '0', function() hs.application.launchOrFocus("iterm") end)
+hs.hotkey.bind(hyper_space, 'i', function() hs.application.launchOrFocus("iterm") end)
 
