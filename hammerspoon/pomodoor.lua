@@ -31,6 +31,13 @@ pom.var = {
     max_time_sec     = pom.config.work_period_sec
 }
 
+local notification = hs.notify.new({
+                    title        = "Work Complete",
+                    subTitle     = 'Take Rest',
+                    autoWithdraw = false,
+                    soundName    = 'Glass'
+                })
+
 --------------------------------------------------------------------------------
 -- Color bar for pomodoor
 --------------------------------------------------------------------------------
@@ -168,7 +175,9 @@ local function pom_update_time()
         if (pom.var.time_left <= 0 ) then
             pom_disable()
             if pom.var.curr_active_type == "W" then 
-                hs.alert.show("Work Complete!", 2)
+
+                notification:send()
+                hs.alert.show("Work Complete. Take Rest", 20)
                 pom.var.work_count        =  pom.var.work_count + 1 
                 pom.var.curr_active_type  = "R"
                 -- pom.var.time_left         = pom.config.rest_period_sec
