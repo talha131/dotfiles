@@ -47,15 +47,20 @@ function flux(key)
     end
 end
 
-modalKey = hs.hotkey.modal.new(hyper, 'R', 'Red Shift mode')
-modalKey:bind('', '1', function() flux('1') end)
-modalKey:bind('', '2', function() flux('2') end)
-modalKey:bind('', '3', function() flux('3') end)
-modalKey:bind('', '4', function() flux('4') end)
-modalKey:bind('', '5', function() flux('5') end)
-modalKey:bind('', '6', function() flux('6') end)
-modalKey:bind('', '7', function() flux('7') end)
-modalKey:bind('', '8', function() flux('8') end)
-modalKey:bind('', '9', function() flux('9') end)
-modalKey:bind('', '0', function() flux('0') end)
+local modalKey = hs.hotkey.modal.new(hyper, 'R', 'Red Shift mode')
+modalKey:bind('', 'escape', function() modalKey:exit() end)
+function modalKey:exited()
+    hs.alert.show('Red Shift mode exited', 1)
+end
+
+modalKey:bind('', '1', function() flux('1') end, function() modalKey:exit() end)
+modalKey:bind('', '2', function() flux('2') end, function() modalKey:exit() end)
+modalKey:bind('', '3', function() flux('3') end, function() modalKey:exit() end)
+modalKey:bind('', '4', function() flux('4') end, function() modalKey:exit() end)
+modalKey:bind('', '5', function() flux('5') end, function() modalKey:exit() end)
+modalKey:bind('', '6', function() flux('6') end, function() modalKey:exit() end)
+modalKey:bind('', '7', function() flux('7') end, function() modalKey:exit() end)
+modalKey:bind('', '8', function() flux('8') end, function() modalKey:exit() end)
+modalKey:bind('', '9', function() flux('9') end, function() modalKey:exit() end)
+modalKey:bind('', '0', function() flux('0') end, function() modalKey:exit() end)
 
