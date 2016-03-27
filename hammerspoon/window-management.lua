@@ -88,10 +88,13 @@ modalKey:bind('', '-', 'Decrease window height', function() yank(0, -sizeDelta) 
 modalKey:bind('', ']', 'Increase window width', function() yank(sizeDelta, 0) end)
 modalKey:bind('', '[', 'Decrease window width', function() yank(-sizeDelta, 0) end)
 
--- grid
-modalKey:bind('', 'G', hs.grid.show)
+-- Grid Management
 
--- Window Hints
-hs.hints.style = 'vimperator'
--- modalKey:bind('', 'P', hs.hints.windowHints)
+hs.grid.MARGINX 	= 0
+hs.grid.MARGINY 	= 0
+hs.grid.GRIDWIDTH 	= 7
+hs.grid.GRIDHEIGHT 	= 4
+
+modalKey:bind('', 'G', 'Show Grid', function() hs.grid.show() end)
+modalKey:bind('', 'S', 'Snap active window to grid', function() hs.grid.snap(hs.window.focusedWindow()) end)
 
