@@ -12,7 +12,11 @@ require 'reload-config'
 require 'window-management'
 
 -- Lock System
-hs.hotkey.bind(hyper, 'Q', function() hs.caffeinate.lockScreen() end)
+hs.hotkey.bind(hyper, 'Q', 'Lock system', function() hs.caffeinate.lockScreen() end)
 -- Sleep system
-hs.hotkey.bind(hyper, 'S', function() hs.caffeinate.systemSleep() end)
+hs.hotkey.bind(hyper, 'S', 'Put system to sleep',function() hs.caffeinate.systemSleep() end)
+
+-- Window Hints
+hs.hints.style = 'vimperator'
+hs.hotkey.bind(hyper, 'H', 'Show window hints', hs.hints.windowHints)
 
