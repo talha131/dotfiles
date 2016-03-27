@@ -14,5 +14,5 @@ require 'window-management'
 -- Lock System
 hs.hotkey.bind(hyper, 'Q', function() hs.caffeinate.lockScreen() end)
 -- Sleep system
-hs.hotkey.bind(hyper, 'W', function() hs.caffeinate.systemSleep() end)
+hs.hotkey.bind(hyper, 'S', function() hs.caffeinate.systemSleep() end)
 
