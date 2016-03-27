@@ -1,3 +1,4 @@
+-- Following code is based on https://github.com/ztomer/.hammerspoon/blob/master/pomodoor.lua
 -- Pomodoro module
 
 --------------------------------------------------------------------------------
