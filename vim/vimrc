@@ -68,6 +68,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'klen/python-mode'
 Plugin 'dag/vim-fish'
 Plugin 'fatih/vim-go'
+Plugin 'Chiel92/vim-autoformat'
 "}}}
 "{{{ Plugins - Typing Utilities
 " Auto close feature
@@ -78,6 +79,7 @@ Plugin 'tpope/vim-repeat'
 " comments plugin
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
+Plugin 'terryma/vim-multiple-cursors'
 "}}}
 "{{{ Plugins - User Interface
 " Airline statusline
