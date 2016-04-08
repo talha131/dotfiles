@@ -34,7 +34,7 @@ Plugin 'chrisbra/NrrwRgn'
 "}}}
 "{{{ Plugins - File Navigation
 " Quickly find file in the path and buffers with fuzzy find support
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 " Tree explorer
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
