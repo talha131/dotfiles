@@ -90,9 +90,6 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'DrawIt'
 " Work with shell commands inside Vim. Pipe file contents to shell commands or run shell commands on file content.
 Plugin 'sjl/clam.vim'
-" Git wrapper
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
 "}}}
 "{{{ Plugins - Version Control and File Comparision
 " Enhanced Diff for git diff --patience
