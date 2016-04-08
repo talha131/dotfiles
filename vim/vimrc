@@ -207,6 +207,12 @@ let g:ctrlp_custom_ignore = {
             \ }
 "}}}
 
+"{{{ vim-autoformat
+let g:formatdef_fmt_custom_xml = '"tidy -xml -q --show-errors 0 --show-warnings 0 --indent-attributes 1"'
+let g:formatters_xml = ['fmt_custom_xml']
+let g:autoformat_verbosemode=1
+"}}}
+
 "{{{ Gundo
 let g:gundo_preview_bottom=1
 let g:gundo_preview_height=25
