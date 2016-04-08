@@ -9,8 +9,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-sensible'
-" Live browser editing for Vim
-Plugin 'jaxbot/browserlink.vim'
 "{{{ Plugins - Code Complete and Snippets
 " A code-completion engine
 Plugin 'Valloric/YouCompleteMe'
