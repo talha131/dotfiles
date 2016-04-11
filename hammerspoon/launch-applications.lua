@@ -5,14 +5,17 @@ modalKey:bind('', 'escape', function() modalKey:exit() end)
 
 local appShortCuts = {
 
+    A = 'App Code',
     D = 'Dash',
     E = 'evernote',
     F = 'firefox',
     G = 'Github Desktop',
     I = 'iterm',
+    J = 'Jump Desktop',
     O = 'Microsoft Onenote',
     S = 'slack',
     V = 'MacVim',
+    X = 'Xcode'
 }
 
 for key, app in pairs(appShortCuts) do
