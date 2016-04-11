@@ -20,7 +20,7 @@ local appShortCuts = {
 
 for key, app in pairs(appShortCuts) do
 
-    modalKey:bind('', key, function() hs.application.launchOrFocus(app) end, function() modalKey:exit() end)
+    modalKey:bind('', key, 'Launching '..app, function() hs.application.launchOrFocus(app) end, function() modalKey:exit() end)
 end
 
 
