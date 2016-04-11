@@ -1,6 +1,6 @@
 -- Launch applications
 
-local modalKey = hs.hotkey.modal.new(hyper, 'A', 'Launch Application  mode')
+local modalKey = hs.hotkey.modal.new(hyper, 'A', 'Launch Application mode')
 modalKey:bind('', 'escape', function() modalKey:exit() end)
 
 local appShortCuts = {
