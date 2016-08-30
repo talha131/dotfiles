@@ -98,6 +98,9 @@ Plugin 'chrisbra/vim-diff-enhanced'
 " Browse the undo tree
 Plugin 'sjl/gundo.vim'
 "}}}
+"{{{ Plugins - Theme
+Plugin 'dracula/vim'
+"}}}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -171,7 +174,7 @@ endif
 "}}}
 
 "{{{ Set theme and font
-colorscheme lucario
+color dracula
 if has("win32")
     set guifont=Lucida_Console:h11:cANSI
 else
