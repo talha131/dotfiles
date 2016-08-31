@@ -57,16 +57,8 @@ Plug 'xolox/vim-misc'
 Plug 'moll/vim-bbye'
 "}}}
 "{{{ Plugins - Syntax files and Programming Languages
-Plug 'zaiste/tmux.vim'
-Plug 'tpope/vim-markdown'
-Plug 'jinja'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'groenewege/vim-less'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'klen/python-mode'
-Plug 'dag/vim-fish'
-Plug 'fatih/vim-go'
 Plug 'Chiel92/vim-autoformat'
+Plug 'sheerun/vim-polyglot'
 "}}}
 "{{{ Plugins - Typing Utilities
 " Auto close feature
