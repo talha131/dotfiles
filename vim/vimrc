@@ -34,9 +34,8 @@ Plug 'chrisbra/NrrwRgn'
 "{{{ Plugins - File Navigation
 " Quickly find file in the path and buffers with fuzzy find support
 Plug 'ctrlpvim/ctrlp.vim'
-" Tree explorer
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimfiler.vim'
 "}}}
 "{{{ Plugins - Learn Vim
 " A Suggested Path for Learning Vim
@@ -225,14 +224,6 @@ let g:gundo_close_on_revert=1
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'dark'
 set laststatus=2 " solves vim-airline status bar not shown when only single file is open
-"}}}
-
-"{{{ NERDTree
-let NERDTreeIgnore = ['\.pyc$', '\.jpg$']
-let blacklist = ['gitcommit',  'gitrebase', 'diff']
-autocmd vimenter * if index(blacklist, &ft) < 0 | NERDTree
-" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "}}}
 
 "{{{ ultisnips
