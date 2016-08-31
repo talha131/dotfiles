@@ -33,9 +33,10 @@ Plug 'chrisbra/NrrwRgn'
 "}}}
 "{{{ Plugins - File Navigation
 " Quickly find file in the path and buffers with fuzzy find support
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 "}}}
 "{{{ Plugins - Learn Vim
 " A Suggested Path for Learning Vim
@@ -179,26 +180,6 @@ endif
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 autocmd FileType gitcommit set colorcolumn=72 " highlight 72th column in git commit
 autocmd FileType vim set foldmethod=marker
-
-"{{{ CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-nmap <c-p>o :CtrlPBuffer<CR>
-nmap <c-p>l :CtrlPMRUFiles<CR>
-let g:ctrlp_by_filename = 1
-let g:ctrlp_max_height = 30
-let b:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_dotfiles = 0
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn)$
-            \ |(Desktop|Libary|Music|Movies|Pictures)',
-            \ 'file': '\v\.(jpg|png|gif|psd|jpeg
-            \ |exe|so|o|dat|dmg|nib|xib|bat|egg|cer|DS_Store|pkg
-            \ |tar|bz|gz|zip|rar|iso|cdr|bz2
-            \ |mp3|mp4|mov|avi|flv|torrent|wmv
-            \ |pdf|epub|mobi|chm|doc|docx|lit|gdoc)$'
-            \ }
-"}}}
 
 "{{{ vim-autoformat
 let g:formatdef_fmt_custom_xml = '"tidy -xml -q --show-errors 0 --show-warnings 0 --indent-attributes 1"'
