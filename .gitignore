@@ -8,3 +8,4 @@ emacs/emacs.d/url/cookies
 vim/vim/sessions
 tmux/tmux/plugins/
 tmux/tmux/resurrect/
+vim/vim/plugged
