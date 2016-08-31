@@ -6,116 +6,107 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 "}}}
 
-"{{{ Begin Vundle section
+"{{{ Begin Plugins section
+call plug#begin('~/.vim/plugged')
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 "{{{ Plugins - Code Complete and Snippets
 " A code-completion engine
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 " inserts code snippets
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " collection of code snippets
-Plugin 'honza/vim-snippets'
-Plugin 'mattn/emmet-vim'
+Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim'
 "}}}
 "{{{ Plugins - Document Outline
 " View and change file outline
-Plugin 'VOoM'
+Plug 'VOoM'
 " browse the tags of source code files. TagbarToggle
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 "}}}
 "{{{ Plugins - Distraction Free Writing
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 " focus on a region and make the rest inaccessible
-Plugin 'chrisbra/NrrwRgn'
+Plug 'chrisbra/NrrwRgn'
 "}}}
 "{{{ Plugins - File Navigation
 " Quickly find file in the path and buffers with fuzzy find support
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Tree explorer
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 "}}}
 "{{{ Plugins - Learn Vim
 " A Suggested Path for Learning Vim
-Plugin 'dahu/LearnVim'
+Plug 'dahu/LearnVim'
 " Vim regex tutor
-Plugin 'dahu/VimRegexTutor'
+Plug 'dahu/VimRegexTutor'
 " maze generator for practising hjkl in Vim
-Plugin 'dahu/Vimazing'
+Plug 'dahu/Vimazing'
 "}}}
 "{{{ Plugins - Motion Enhancements
 " Easy motion. Allows you to jump to motion or search targets with single key press
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 "}}}
 "{{{ Plugins - Session Management
-Plugin 'xolox/vim-session'
+Plug 'xolox/vim-session'
 " vim-session requirement
-Plugin 'xolox/vim-misc'
+Plug 'xolox/vim-misc'
 " Delete buffers and close files without messing up your layout
-Plugin 'moll/vim-bbye'
+Plug 'moll/vim-bbye'
 "}}}
 "{{{ Plugins - Syntax files and Programming Languages
-Plugin 'zaiste/tmux.vim'
-Plugin 'tpope/vim-markdown'
-Plugin 'jinja'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'groenewege/vim-less'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'klen/python-mode'
-Plugin 'dag/vim-fish'
-Plugin 'fatih/vim-go'
-Plugin 'Chiel92/vim-autoformat'
+Plug 'zaiste/tmux.vim'
+Plug 'tpope/vim-markdown'
+Plug 'jinja'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'groenewege/vim-less'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'klen/python-mode'
+Plug 'dag/vim-fish'
+Plug 'fatih/vim-go'
+Plug 'Chiel92/vim-autoformat'
 "}}}
 "{{{ Plugins - Typing Utilities
 " Auto close feature
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 " to make quoting and parenthesizing easier
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 " comments plugin
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-endwise'
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-endwise'
+Plug 'terryma/vim-multiple-cursors'
 "}}}
 "{{{ Plugins - User Interface
 " Airline statusline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Add font icons
-Plugin 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 "}}}
 "{{{ Plugins - Utilities and Wrappers
 " Draw ASCII art in Vim
-Plugin 'DrawIt'
+Plug 'DrawIt'
 " Work with shell commands inside Vim. Pipe file contents to shell commands or run shell commands on file content.
-Plugin 'sjl/clam.vim'
+Plug 'sjl/clam.vim'
 "}}}
 "{{{ Plugins - Version Control and File Comparision
 " Enhanced Diff for git diff --patience
-Plugin 'chrisbra/vim-diff-enhanced'
+Plug 'chrisbra/vim-diff-enhanced'
 " Browse the undo tree
-Plugin 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 "}}}
 "{{{ Plugins - Theme
-Plugin 'dracula/vim'
+Plug 'dracula/vim'
 "}}}
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" End Vundle section }}}
+call plug#end()            " required
+" End Plugins section }}}
 
-syntax on
 set autochdir
 set autoindent
 set expandtab
