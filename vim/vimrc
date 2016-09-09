@@ -37,6 +37,7 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-dirvish'
 "}}}
 "{{{ Plugins - Learn Vim
 " A Suggested Path for Learning Vim
@@ -62,6 +63,9 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
 "}}}
 "{{{ Plugins - Typing Utilities
+Plug 'tpope/vim-rsi' "Readline key bindings
+Plug 'tommcdo/vim-lion' "Align text by some character
+Plug 'tpope/vim-characterize' "press ga to reveal characters representation in decimal, octal and hex
 " Auto close feature
 Plug 'Raimondi/delimitMate'
 " to make quoting and parenthesizing easier
@@ -89,7 +93,7 @@ Plug 'sjl/clam.vim'
 " Enhanced Diff for git diff --patience
 Plug 'chrisbra/vim-diff-enhanced'
 " Browse the undo tree
-Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
 "}}}
 "{{{ Plugins - Theme
 Plug 'dracula/vim'
