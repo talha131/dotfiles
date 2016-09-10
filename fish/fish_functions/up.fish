@@ -4,8 +4,9 @@ function up -d "Update software to the latest versions"
     and begin
         echo "Updating Brew"
         brew update 
-        echo "Upgrading Brew"
+        echo "Updating NeoVim"
         brew reinstall --HEAD neovim
+        echo "Upgrading Brew"
         brew upgrade --all
         echo "Cleanup Brew"
         brew linkapps --local
