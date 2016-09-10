@@ -46,7 +46,7 @@ Plug 'dahu/VimRegexTutor'
 Plug 'dahu/Vimazing'
 "}}}
 "{{{ Plugins - Motion Enhancements
-Plug 'easymotion/vim-easymotion' " Easy motion. Allows you to jump to motion or search targets with single key press
+Plug 'justinmk/vim-sneak' "Use s{char}{char} or S{char}{char} 
 "}}}
 "{{{ Plugins - Session Management
 Plug 'xolox/vim-session'
