@@ -98,20 +98,15 @@ call plug#end()            " required
 " End Plugins section }}}
 
 set autochdir
-set autoindent
 set expandtab
 set guioptions+=b " make sure horizontal scroll bar is visible
-set history=100 " remember x number of commands executed previously
 set number
-set ruler "Always show current position
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set wrap
 
 "{{{ Search settings
-set hlsearch " highlight search results
-set incsearch " Makes search incremental
 set ignorecase
 "}}}
 
