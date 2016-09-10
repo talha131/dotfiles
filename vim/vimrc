@@ -74,13 +74,6 @@ Plug 'tpope/vim-commentary' "toggle comments
 Plug 'tpope/vim-endwise'
 Plug 'terryma/vim-multiple-cursors'
 "}}}
-"{{{ Plugins - User Interface
-" Airline statusline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Add font icons
-Plug 'ryanoasis/vim-devicons'
-"}}}
 "{{{ Plugins - Utilities and Wrappers
 " Draw ASCII art in Vim
 Plug 'DrawIt'
@@ -194,12 +187,6 @@ let g:autoformat_verbosemode=1
 let g:gundo_preview_bottom=1
 let g:gundo_preview_height=25
 let g:gundo_close_on_revert=1
-"}}}
-
-"{{{ Airline statusline
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'dark'
-set laststatus=2 " solves vim-airline status bar not shown when only single file is open
 "}}}
 
 "{{{ ultisnips
