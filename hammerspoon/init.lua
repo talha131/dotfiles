@@ -2,8 +2,6 @@ hyper = { "cmd", "alt", "shift", "ctrl" }
 
 loggerInfo = hs.logger.new('My Settings', 'info')
 
-require 'battery'
-require 'pomodoor'
 require 'caffeine'
 require 'clipboard'
 require 'launch-applications'
