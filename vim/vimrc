@@ -33,9 +33,6 @@ Plug 'chrisbra/NrrwRgn'
 "}}}
 "{{{ Plugins - File Navigation
 " Quickly find file in the path and buffers with fuzzy find support
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimfiler.vim'
-Plug 'Shougo/neomru.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
