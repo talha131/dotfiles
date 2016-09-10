@@ -97,7 +97,6 @@ Plug 'dracula/vim'
 call plug#end()            " required
 " End Plugins section }}}
 
-set autochdir
 set expandtab
 set guioptions+=b " make sure horizontal scroll bar is visible
 set number
