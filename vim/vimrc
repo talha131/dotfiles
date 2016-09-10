@@ -183,12 +183,6 @@ let g:formatters_xml = ['fmt_custom_xml']
 let g:autoformat_verbosemode=1
 "}}}
 
-"{{{ Gundo
-let g:gundo_preview_bottom=1
-let g:gundo_preview_height=25
-let g:gundo_close_on_revert=1
-"}}}
-
 "{{{ ultisnips
 let g:UltiSnipsExpandTrigger = '<c-tab>'
 let g:UltiSnipsListSnippets = '<m-tab>'
