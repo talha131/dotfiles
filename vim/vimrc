@@ -78,6 +78,9 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'DrawIt'
 Plug 'tpope/vim-eunuch' "Wrapper for UNIX shell commands
 Plug 'henrik/vim-indexed-search' "Show 'Match 123 of 456 <search term>' in Vim searches
+Plug 'osyo-manga/vim-over' " :substitute preview
+Plug 'romainl/vim-qf' "a collection of settings, commands and mappings for the quickfix window
+Plug 'romainl/vim-qlist' "make include-search and definition-search populate in the quickfix window
 "}}}
 "{{{ Plugins - Version Control and File Comparision
 " Enhanced Diff for git diff --patience
