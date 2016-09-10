@@ -46,8 +46,7 @@ Plug 'dahu/VimRegexTutor'
 Plug 'dahu/Vimazing'
 "}}}
 "{{{ Plugins - Motion Enhancements
-" Easy motion. Allows you to jump to motion or search targets with single key press
-Plug 'Lokaltog/vim-easymotion'
+Plug 'easymotion/vim-easymotion' " Easy motion. Allows you to jump to motion or search targets with single key press
 "}}}
 "{{{ Plugins - Session Management
 Plug 'xolox/vim-session'
