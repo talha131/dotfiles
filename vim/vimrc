@@ -98,40 +98,28 @@ call plug#end()            " required
 " End Plugins section }}}
 
 set expandtab
-set guioptions+=b " make sure horizontal scroll bar is visible
+set guioptions+=b "make sure horizontal scroll bar is visible
 set number
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set wrap
-
-"{{{ Search settings
-set ignorecase
-"}}}
-
-"{{{ Save command history, file backup and swap in a directory
-" write undo history to file so that undo history remains persistent
-set undofile
-" Make a backup before overwriting a file.  Leave it around after the file has been successfully written.
-set backup
-" Make a backup before overwriting a file.  The backup is removed after the file was successfully written, unless the 'backup' option is also on.
-set writebackup
-" Use a swapfile for the buffer.
-set swapfile
+set ignorecase "Search settings
+set spell "Enable spell check
+set undofile "write undo history to file so that undo history remains persistent
+set backup "Make a backup before overwriting a file.  Lcave it around after the file has been successfully written.
+set writebackup "Make a backup before overwriting a file.  The backup is removed after the file was successfully written, unless the 'backup' option is also on.
+set swapfile "Use a swapfile for the buffer.
 
 if !isdirectory($HOME.'/.vimTemp')
     silent call mkdir ($HOME.'/.vimTemp', 'p')
 endif
-" directory for backup files
-set backupdir^=~/.vimTemp//
-" directory for swap files
-set directory^=~/.vimTemp//
-" directory for undo history
-set undodir^=~/.vimTemp//
-"}}}
+
+set backupdir^=~/.vimTemp// "directory for backup files
+set directory^=~/.vimTemp// "directory for swap files
+set undodir^=~/.vimTemp// "directory for undo history
 
 "{{{ Spell Check
-set spell " Enable spell check
 highlight clear SpellBad
 highlight SpellBad cterm=underline, ctermfg=red
 highlight SpellBad gui=undercurl, guisp=red
