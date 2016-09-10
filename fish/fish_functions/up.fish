@@ -39,7 +39,7 @@ function up -d "Update software to the latest versions"
     which pyenv > /dev/null
     and begin
         echo "Update Vim Plugins"
-        vim -i NONE -c VundleUpdate -c quitall
+        vim -i NONE -c PlugUpgrade -c PlugUpdate -c PlugClean! -c quitall
     end
 
     which npm > /dev/null
