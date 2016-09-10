@@ -67,13 +67,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rsi' "Readline key bindings
 Plug 'tommcdo/vim-lion' "Align text by some character
 Plug 'tpope/vim-characterize' "press ga to reveal characters representation in decimal, octal and hex
+Plug 'junegunn/vim-peekaboo' "show content of register
 " Auto close feature
 Plug 'Raimondi/delimitMate'
 " to make quoting and parenthesizing easier
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-" comments plugin
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary' "toggle comments
 Plug 'tpope/vim-endwise'
 Plug 'terryma/vim-multiple-cursors'
 "}}}
@@ -87,14 +87,15 @@ Plug 'ryanoasis/vim-devicons'
 "{{{ Plugins - Utilities and Wrappers
 " Draw ASCII art in Vim
 Plug 'DrawIt'
-" Work with shell commands inside Vim. Pipe file contents to shell commands or run shell commands on file content.
-Plug 'sjl/clam.vim'
+Plug 'tpope/vim-eunuch' "Wrapper for UNIX shell commands
+Plug 'henrik/vim-indexed-search' "Show 'Match 123 of 456 <search term>' in Vim searches
 "}}}
 "{{{ Plugins - Version Control and File Comparision
 " Enhanced Diff for git diff --patience
 Plug 'chrisbra/vim-diff-enhanced'
 " Browse the undo tree
 Plug 'mbbill/undotree'
+Plug 'junegunn/gv.vim' "Git commit browser
 "}}}
 "{{{ Plugins - Theme
 Plug 'dracula/vim'
