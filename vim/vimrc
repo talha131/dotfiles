@@ -113,7 +113,7 @@ set spell " Enable spell check
 set undofile " write undo history to file so that undo history remains persistent
 set backup " Make a backup before overwriting a file.  Leave it around after the file has been successfully written.
 set writebackup " Make a backup before overwriting a file.  The backup is removed after the file was successfully written, unless the 'backup' option is also on.
-set swapfile " Use a swapfile for the buffer.
+set swapfile " Use a swap file for the buffer.
 
 if !isdirectory($HOME.'/.vimTemp')
     silent call mkdir ($HOME.'/.vimTemp', 'p')
@@ -155,7 +155,7 @@ highlight Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c g
 "}}}
 
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
-autocmd FileType gitcommit set colorcolumn=72 " highlight 72th column in git commit
+autocmd FileType gitcommit set colorcolumn=72 " highlight 72nd column in git commit
 autocmd FileType vim set foldmethod=marker
 
 "{{{ vim-autoformat
@@ -194,5 +194,4 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 "}}}
-
 
