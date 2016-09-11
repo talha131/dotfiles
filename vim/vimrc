@@ -19,76 +19,64 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim'
 "}}}
-"{{{ Plugins - Document Outline
-" View and change file outline
-Plug 'VOoM'
-" browse the tags of source code files. TagbarToggle
-Plug 'majutsushi/tagbar'
-"}}}
-"{{{ Plugins - Distraction Free Writing
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-" focus on a region and make the rest inaccessible
-Plug 'chrisbra/NrrwRgn'
-"}}}
 "{{{ Plugins - File Navigation
-" Quickly find file in the path and buffers with fuzzy find support
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Quickly find file in the path and buffers with fuzzy find support
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
 "}}}
 "{{{ Plugins - Learn Vim
-" A Suggested Path for Learning Vim
-Plug 'dahu/LearnVim'
-" Vim regex tutor
-Plug 'dahu/VimRegexTutor'
-" maze generator for practising hjkl in Vim
-Plug 'dahu/Vimazing'
+Plug 'dahu/LearnVim' " A Suggested Path for Learning Vim
+Plug 'dahu/VimRegexTutor' " Vim regex tutor
+Plug 'dahu/Vimazing' " maze generator for practising hjkl in Vim
 "}}}
 "{{{ Plugins - Motion Enhancements
-Plug 'justinmk/vim-sneak' "Use s{char}{char} or S{char}{char} 
+Plug 'justinmk/vim-sncak' " Use s{char}{char} or S{char}{char} 
 "}}}
 "{{{ Plugins - Session Management
 Plug 'xolox/vim-session'
-" vim-session requirement
-Plug 'xolox/vim-misc'
-" Delete buffers and close files without messing up your layout
-Plug 'moll/vim-bbye'
+Plug 'xolox/vim-misc' " vim-session requirement
+Plug 'moll/vim-bbye' " Delete buffers and close files without messing up your layout
 "}}}
 "{{{ Plugins - Syntax files and Programming Languages
 Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
 "}}}
 "{{{ Plugins - Typing Utilities
-Plug 'tpope/vim-rsi' "Readline key bindings
-Plug 'tommcdo/vim-lion' "Align text by some character
-Plug 'tpope/vim-characterize' "press ga to reveal characters representation in decimal, octal and hex
-Plug 'junegunn/vim-peekaboo' "show content of register
-" Auto close feature
-Plug 'Raimondi/delimitMate'
-" to make quoting and parenthesizing easier
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-rsi' " Readline key bindings
+Plug 'tommcdo/vim-lion' " Align text by some character
+Plug 'tpope/vim-characterize' " press ga to reveal characters representation in decimal, octal and hex
+Plug 'junegunn/vim-peekaboo' " show content of register
+Plug 'Raimondi/delimitMate' " Auto close feature
+Plug 'tpope/vim-surround' " to make quoting and parenthesizing easier
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary' "toggle comments
+Plug 'tpope/vim-commentary' " toggle comments
 Plug 'tpope/vim-endwise'
 Plug 'terryma/vim-multiple-cursors'
+"{{{ Plugins - Distraction Free Writing
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'chrisbra/NrrwRgn' " focus on a region and make the rest inaccessible. Select and call :NR
+"}}}
+"{{{ Plugins - Document Outline
+Plug 'VOoM' " View and change file outline
+Plug 'taglist.vim' " browse the tags of source code files. TagbarToggle
+Plug 'majutsushi/tagbar'
+"}}}
 "}}}
 "{{{ Plugins - Utilities and Wrappers
-" Draw ASCII art in Vim
-Plug 'DrawIt'
-Plug 'tpope/vim-eunuch' "Wrapper for UNIX shell commands
-Plug 'henrik/vim-indexed-search' "Show 'Match 123 of 456 <search term>' in Vim searches
+Plug 'DrawIt' " Draw ASCII art in Vim
+Plug 'tpope/vim-eunuch' " Wrapper for UNIX shell commands
+Plug 'henrik/vim-indexed-search' " Show 'Match 123 of 456 <search term>' in Vim searches
 Plug 'osyo-manga/vim-over' " :substitute preview
-Plug 'romainl/vim-qf' "a collection of settings, commands and mappings for the quickfix window
-Plug 'romainl/vim-qlist' "make include-search and definition-search populate in the quickfix window
+Plug 'romainl/vim-qf' " a collection of settings, commands and mappings for the quickfix window
+Plug 'romainl/vim-qlist' " make include-search and definition-search populate in the quickfix window
 Plug 'wakatime/vim-wakatime'
 "}}}
-"{{{ Plugins - Version Control and File Comparision
-" Enhanced Diff for git diff --patience
-Plug 'chrisbra/vim-diff-enhanced'
-" Browse the undo tree
-Plug 'mbbill/undotree'
-Plug 'junegunn/gv.vim' "Git commit browser
+"{{{ Plugins - Version Control and File Comparison
+Plug 'chrisbra/vim-diff-enhanced' " Enhanced Diff for git diff --patience
+Plug 'tpope/vim-fugitive' " Git wrapper
+Plug 'junegunn/gv.vim' " Git commit browser
+Plug 'mbbill/undotree' " Browse the undo tree
 "}}}
 "{{{ Plugins - Theme
 Plug 'dracula/vim'
@@ -99,26 +87,26 @@ call plug#end()            " required
 " End Plugins section }}}
 
 set expandtab
-set guioptions+=b "make sure horizontal scroll bar is visible
+set guioptions+=b " make sure horizontal scroll bar is visible
 set number
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set wrap
-set ignorecase "Search settings
-set spell "Enable spell check
-set undofile "write undo history to file so that undo history remains persistent
-set backup "Make a backup before overwriting a file.  Lcave it around after the file has been successfully written.
-set writebackup "Make a backup before overwriting a file.  The backup is removed after the file was successfully written, unless the 'backup' option is also on.
-set swapfile "Use a swapfile for the buffer.
+set ignorecase " Search settings
+set spell " Enable spell check
+set undofile " write undo history to file so that undo history remains persistent
+set backup " Make a backup before overwriting a file.  Lcave it around after the file has been successfully written.
+set writebackup " Make a backup before overwriting a file.  The backup is removed after the file was successfully written, unless the 'backup' option is also on.
+set swapfile " Use a swapfile for the buffer.
 
 if !isdirectory($HOME.'/.vimTemp')
     silent call mkdir ($HOME.'/.vimTemp', 'p')
 endif
 
-set backupdir^=~/.vimTemp// "directory for backup files
-set directory^=~/.vimTemp// "directory for swap files
-set undodir^=~/.vimTemp// "directory for undo history
+set backupdir^=~/.vimTemp// " directory for backup files
+set directory^=~/.vimTemp// " directory for swap files
+set undodir^=~/.vimTemp// " directory for undo history
 
 "{{{ Spell Check
 highlight clear SpellBad
