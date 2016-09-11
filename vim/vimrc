@@ -139,22 +139,14 @@ if has('autocmd')
 endif
 "}}}
 
-"{{{ Set theme and font
+"{{{ Theme Settings
 color dracula
 set guifont=Inconsolata:h14
 
-hi StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272a4 gui=bold
+highlight StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272a4 gui=bold
 set statusline=%F\ %m%r%h%w\ [%L][%p%%][%04l,%04v]\ [%{&ff}]%y
 
-"{{{ Custom styles
-highlight clear SpellBad
-highlight SpellBad cterm=underline, ctermfg=red
-highlight SpellBad gui=undercurl, guisp=red
-highlight clear SpellCap
-highlight SpellCap cterm=underline,bold, ctermfg=green
-highlight SpellCap gui=undercurl guisp=DarkCyan
 highlight Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE " Use IncSearch style of dracula
-"}}}
 "}}}
 
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
