@@ -99,6 +99,7 @@ set softtabstop=4
 set tabstop=4
 set wrap
 set ignorecase " Search settings
+set hlsearch " Highlight search results
 set spell " Enable spell check
 set undofile " write undo history to file so that undo history remains persistent
 set backup " Make a backup before overwriting a file.  Leave it around after the file has been successfully written.
@@ -140,13 +141,14 @@ endif
 if !has("gui_running")
   set term=screen-256color
 endif
-"{{{ Spell Check
+"{{{ Custom styles
 highlight clear SpellBad
 highlight SpellBad cterm=underline, ctermfg=red
 highlight SpellBad gui=undercurl, guisp=red
 highlight clear SpellCap
 highlight SpellCap cterm=underline,bold, ctermfg=green
 highlight SpellCap gui=undercurl guisp=DarkCyan
+highlight Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE " Use IncSearch style of dracula
 "}}}
 "}}}
 
