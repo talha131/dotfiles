@@ -100,6 +100,8 @@ function! <SID>SynStack()
 endfunction
 "}}}
 
+"{{{ Customize Vim
+"{{{ Miscellaneous Variables
 set expandtab
 set guioptions+=b " make sure horizontal scroll bar is visible
 set number
@@ -110,6 +112,9 @@ set wrap
 set ignorecase " Search settings
 set hlsearch " Highlight search results
 set spell " Enable spell check
+"}}}
+
+"{{{ Preserve file history
 set undofile " write undo history to file so that undo history remains persistent
 set backup " Make a backup before overwriting a file.  Leave it around after the file has been successfully written.
 set writebackup " Make a backup before overwriting a file.  The backup is removed after the file was successfully written, unless the 'backup' option is also on.
@@ -122,6 +127,14 @@ endif
 set backupdir^=~/.vimTemp// " directory for backup files
 set directory^=~/.vimTemp// " directory for swap files
 set undodir^=~/.vimTemp// " directory for undo history
+"}}}
+
+"{{{ Disable Beeping
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
+"}}}
 
 "{{{ Command Line Completion
 " from [SO answer](http://stackoverflow.com/a/526940/177116)
@@ -130,13 +143,6 @@ set undodir^=~/.vimTemp// " directory for undo history
 " through completion options so you can complete the file without further keys
 set wildmode=longest,list,full
 set wildmenu
-"}}}
-
-"{{{ Disable Beeping
-set noerrorbells visualbell t_vb=
-if has('autocmd')
-  autocmd GUIEnter * set visualbell t_vb=
-endif
 "}}}
 
 "{{{ Theme Settings
@@ -149,8 +155,11 @@ set statusline=%F\ %m%r%h%w\ [%L][%p%%][%04l,%04v]\ [%{&ff}]%y
 highlight Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE " Use IncSearch style of dracula
 "}}}
 
+"{{{ Set Default settings for file types
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 autocmd FileType gitcommit set colorcolumn=72 " highlight 72nd column in git commit
+"}}}
+"}}}
 
 "{{{ vim-autoformat
 let g:formatdef_fmt_custom_xml = '"tidy -xml -q --show-errors 0 --show-warnings 0 --indent-attributes 1"'
