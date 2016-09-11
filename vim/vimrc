@@ -24,13 +24,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Quickly find
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
 "}}}
-"{{{ Plugins - Learn Vim
-Plug 'dahu/LearnVim' " A Suggested Path for Learning Vim
-Plug 'dahu/VimRegexTutor' " Vim regex tutor
-Plug 'dahu/Vimazing' " maze generator for practising hjkl in Vim
-"}}}
 "{{{ Plugins - Motion Enhancements
-Plug 'justinmk/vim-sncak' " Use s{char}{char} or S{char}{char} 
+Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char} 
 "}}}
 "{{{ Plugins - Session Management
 Plug 'xolox/vim-session'
