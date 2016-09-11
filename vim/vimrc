@@ -86,6 +86,19 @@ Plug 'dracula/vim'
 call plug#end()            " required
 " End Plugins section }}}
 
+"{{{ Custom Functions
+" from https://www.vi-improved.org/recommendations/
+function! StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    %s/\s\+$//e
+    normal 'yz<CR>
+    normal `z
+  endif
+endfunction
+"}}}
+
 set expandtab
 set guioptions+=b " make sure horizontal scroll bar is visible
 set number
