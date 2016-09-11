@@ -195,6 +195,7 @@ autocmd User GoyoLeave Limelight!
 "}}}
 
 "{{{ TagBar definitions for Obj-C and CSS
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_type_objc = {
     \ 'ctagstype' : 'ObjectiveC',
     \ 'kinds'     : [
