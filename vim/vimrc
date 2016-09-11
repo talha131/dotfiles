@@ -53,8 +53,6 @@ Plug 'chrisbra/NrrwRgn' " focus on a region and make the rest inaccessible. Sele
 "}}}
 "{{{ Plugins - Document Outline
 Plug 'VOoM' " View and change file outline
-Plug 'taglist.vim' " browse the tags of source code files. TagbarToggle
-Plug 'majutsushi/tagbar'
 "}}}
 "}}}
 "{{{ Plugins - Utilities and Wrappers
@@ -194,93 +192,4 @@ autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 "}}}
 
-"{{{ TagBar definitions for Obj-C and CSS
-let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
-let g:tagbar_type_objc = {
-    \ 'ctagstype' : 'ObjectiveC',
-    \ 'kinds'     : [
-        \ 'i:interface',
-        \ 'I:implementation',
-        \ 'p:Protocol',
-        \ 'm:Object_method',
-        \ 'c:Class_method',
-        \ 'v:Global_variable',
-        \ 'F:Object field',
-        \ 'f:function',
-        \ 'p:property',
-        \ 't:type_alias',
-        \ 's:type_structure',
-        \ 'e:enumeration',
-        \ 'M:preprocessor_macro',
-    \ ],
-    \ 'sro'        : ' ',
-    \ 'kind2scope' : {
-        \ 'i' : 'interface',
-        \ 'I' : 'implementation',
-        \ 'p' : 'Protocol',
-        \ 's' : 'type_structure',
-        \ 'e' : 'enumeration'
-    \ },
-    \ 'scope2kind' : {
-        \ 'interface'      : 'i',
-        \ 'implementation' : 'I',
-        \ 'Protocol'       : 'p',
-        \ 'type_structure' : 's',
-        \ 'enumeration'    : 'e'
-    \ }
-\ }
-let g:tagbar_type_objcpp = {
-    \ 'ctagstype' : 'ObjectiveC',
-    \ 'kinds'     : [
-        \ 'i:interface',
-        \ 'I:implementation',
-        \ 'p:Protocol',
-        \ 'm:Object_method',
-        \ 'c:Class_method',
-        \ 'v:Global_variable',
-        \ 'F:Object field',
-        \ 'f:function',
-        \ 'p:property',
-        \ 't:type_alias',
-        \ 's:type_structure',
-        \ 'e:enumeration',
-        \ 'M:preprocessor_macro',
-    \ ],
-    \ 'sro'        : ' ',
-    \ 'kind2scope' : {
-        \ 'i' : 'interface',
-        \ 'I' : 'implementation',
-        \ 'p' : 'Protocol',
-        \ 's' : 'type_structure',
-        \ 'e' : 'enumeration'
-    \ },
-    \ 'scope2kind' : {
-        \ 'interface'      : 'i',
-        \ 'implementation' : 'I',
-        \ 'Protocol'       : 'p',
-        \ 'type_structure' : 's',
-        \ 'enumeration'    : 'e'
-    \ }
-\ }
-let g:tagbar_type_css = {
-\ 'ctagstype' : 'Css',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 's:selectors',
-        \ 'i:identities'
-    \ ]
-\ }
-let g:tagbar_type_less = {
-\ 'ctagstype' : 'less',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 'i:identities',
-        \ 'f:mixins',
-        \ 'm:medias',
-        \ 's:selectors',
-        \ 't:tags',
-        \ 'v:variables'
-    \ ]
-\ }
-"}}}
 
