@@ -156,7 +156,6 @@ highlight Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c g
 
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 autocmd FileType gitcommit set colorcolumn=72 " highlight 72nd column in git commit
-autocmd FileType vim set foldmethod=marker
 
 "{{{ vim-autoformat
 let g:formatdef_fmt_custom_xml = '"tidy -xml -q --show-errors 0 --show-warnings 0 --indent-attributes 1"'
@@ -195,3 +194,4 @@ autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 "}}}
 
+" vim:set foldmethod=marker:
