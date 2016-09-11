@@ -89,6 +89,15 @@ function! StripTrailingWhitespace()
     normal `z
   endif
 endfunction
+
+" from https://jordanelver.co.uk/blog/2015/05/27/working-with-vim-colorschemes/#showing-highlight-groups
+nmap <leader>hg :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunction
 "}}}
 
 set expandtab
