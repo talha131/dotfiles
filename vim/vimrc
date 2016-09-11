@@ -101,7 +101,7 @@ set wrap
 set ignorecase " Search settings
 set spell " Enable spell check
 set undofile " write undo history to file so that undo history remains persistent
-set backup " Make a backup before overwriting a file.  Lcave it around after the file has been successfully written.
+set backup " Make a backup before overwriting a file.  Leave it around after the file has been successfully written.
 set writebackup " Make a backup before overwriting a file.  The backup is removed after the file was successfully written, unless the 'backup' option is also on.
 set swapfile " Use a swapfile for the buffer.
 
