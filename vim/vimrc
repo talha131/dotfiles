@@ -13,10 +13,7 @@ Plug 'tpope/vim-sensible'
 "{{{ Plugins - Code Complete and Snippets
 " A code-completion engine
 Plug 'Valloric/YouCompleteMe'
-" inserts code snippets
-Plug 'SirVer/ultisnips'
-" collection of code snippets
-Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " inserts code snippets | collection of code snippets
 Plug 'mattn/emmet-vim'
 "}}}
 "{{{ Plugins - File Navigation
