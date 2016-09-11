@@ -28,8 +28,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char} 
 "}}}
 "{{{ Plugins - Session Management
-Plug 'xolox/vim-session'
-Plug 'xolox/vim-misc' " vim-session requirement
+Plug 'xolox/vim-misc' | Plug 'xolox/vim-session' 
 Plug 'moll/vim-bbye' " Delete buffers and close files without messing up your layout
 "}}}
 "{{{ Plugins - Syntax files and Programming Languages
