@@ -159,6 +159,13 @@ highlight Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c g
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
 autocmd FileType gitcommit set colorcolumn=72 " highlight 72nd column in git commit
 "}}}
+
+"{{{ Use ag instead of grep
+if executable("ag")
+    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+"}}}
 "}}}
 
 "{{{ vim-autoformat
