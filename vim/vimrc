@@ -270,5 +270,17 @@ let g:tagbar_type_css = {
         \ 'i:identities'
     \ ]
 \ }
+let g:tagbar_type_less = {
+\ 'ctagstype' : 'less',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 'i:identities',
+        \ 'f:mixins',
+        \ 'm:medias',
+        \ 's:selectors',
+        \ 't:tags',
+        \ 'v:variables'
+    \ ]
+\ }
 "}}}
 
