@@ -143,6 +143,9 @@ endif
 color dracula
 set guifont=Inconsolata:h14
 
+hi StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272a4 gui=bold
+set statusline=%F\ %m%r%h%w\ [%L][%p%%][%04l,%04v]\ [%{&ff}]%y
+
 "{{{ Custom styles
 highlight clear SpellBad
 highlight SpellBad cterm=underline, ctermfg=red
