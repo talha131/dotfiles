@@ -11,8 +11,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 "{{{ Plugins - Code Complete and Snippets
-" A code-completion engine
-Plug 'Valloric/YouCompleteMe'
+" The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
+Plug 'ajh17/VimCompletesMe'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " inserts code snippets | collection of code snippets
 Plug 'mattn/emmet-vim'
 "}}}
@@ -201,12 +201,6 @@ let g:voom_always_allow_move_left = 1
 autocmd FileType voomtree setlocal nonumber
 "}}}
 
-"{{{ You Complete Me
-let g:ycm_server_keep_logfiles=1
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
-"}}}
-
 "{{{ xolox/vim-session
 :let g:session_autosave = 'no'
 "}}}
@@ -214,6 +208,10 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 "{{{ Limelight and Goyo - Distraction Free Writing
 autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
+"}}}
+
+"{{{ Vim Completes Me
+autocmd FileType text,markdown let b:vcm_tab_complete = 'dict' "Offer tab completion from dictionary
 "}}}
 
 " vim:set foldmethod=marker:
