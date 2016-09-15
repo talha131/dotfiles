@@ -27,7 +27,7 @@ function up -d "Update software to the latest versions"
         echo "Updating gems"
         gem update (eval gem outdated | cut -d ' ' -f 1)
         echo "Cleaning up old versions of Gem"
-        brew cleanup
+        gem cleanup
     end
 
     which pyenv > /dev/null
