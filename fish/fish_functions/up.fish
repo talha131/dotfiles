@@ -30,6 +30,12 @@ function up -d "Update software to the latest versions"
         gem cleanup
     end
 
+    which rbenv > /dev/null
+    and begin
+        echo "Rebuild rbenv shim"
+        rbenv rehash
+    end
+
     which pyenv > /dev/null
     and begin
         echo "Rebuild pyenv shim binaries"
