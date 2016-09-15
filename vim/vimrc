@@ -153,7 +153,7 @@ set wildmenu
 "}}}
 
 "{{{ Theme Settings
-color dracula
+color dracula " https://github.com/dracula/vim/blob/master/colors/dracula.vim
 set guifont=Inconsolata:h14
 
 highlight StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272a4 gui=bold
