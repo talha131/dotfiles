@@ -4,8 +4,9 @@
 emacs/emacs.d/bookmarks
 emacs/emacs.d/elpa/archives/marmalade/archive-contents
 emacs/emacs.d/url/cookies
-vim/vim/sessions
 tmux/tmux/plugins/
 tmux/tmux/resurrect/
-vim/vim/plugged
-**/spell/*.spl
+**/vim/autoload/plug*
+**/vim/plugged
+**/vim/sessions
+**/vim/spell/*.spl
