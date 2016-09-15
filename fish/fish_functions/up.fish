@@ -9,7 +9,7 @@ function up -d "Update software to the latest versions"
         echo "Upgrading Brew"
         brew upgrade --all
         echo "Cleanup Brew"
-        brew linkapps --local
+        brew linkapps
         brew cleanup
         brew cask cleanup
     end
