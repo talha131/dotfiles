@@ -3,7 +3,7 @@ function up -d "Update software to the latest versions"
     which brew >/dev/null
     and begin
         echo "Updating Brew"
-        brew update 
+        brew update
         echo "Updating NeoVim"
         brew reinstall --HEAD neovim
         echo "Upgrading Brew"
