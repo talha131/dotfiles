@@ -8,3 +8,4 @@ vim/vim/sessions
 tmux/tmux/plugins/
 tmux/tmux/resurrect/
 vim/vim/plugged
+**/spell/*.spl
