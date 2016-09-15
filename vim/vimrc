@@ -49,6 +49,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'chrisbra/NrrwRgn' " focus on a region and make the rest inaccessible. Select and call :NR
 "}}}
 "{{{ Plugins - Document Outline
+" |Voom|
 Plug 'VOoM' " View and change file outline
 "}}}
 "}}}
@@ -193,6 +194,7 @@ set rtp+=~/.vim/my_snippets
 "}}}
 
 "{{{ Voom
+"*Voom*
 let g:voom_tree_placement = 'right'
 let g:voom_ft_modes = {'markdown': 'markdown', 'pandoc': 'markdown'}
 let g:voom_always_allow_move_left = 1
