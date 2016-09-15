@@ -30,7 +30,9 @@ Plug 'moll/vim-bbye' " Delete buffers and close files without messing up your la
 "}}}
 "{{{ Plugins - Syntax files and Programming Languages
 Plug 'Chiel92/vim-autoformat'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'ihacklog/HiCursorWords' " highlights words under the cursor like many IDEs
 "}}}
 "{{{ Plugins - Typing Utilities
 Plug 'tpope/vim-rsi' " Readline key bindings
