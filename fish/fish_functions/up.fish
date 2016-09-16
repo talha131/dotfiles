@@ -50,6 +50,13 @@ end
 
 complete -c up -a "all brew fish gem npm nvim pip vim"
 
+function _printMessage
+    for arg in $argv
+        set_color -o yellow; echo "📌  "$arg
+    end
+    set_color normal
+end
+
 function _updateBrew
     which brew >/dev/null
     and begin
