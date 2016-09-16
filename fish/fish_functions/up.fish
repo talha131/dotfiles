@@ -35,7 +35,7 @@ function up -d "Update software to the latest versions"
 
     set i (count $argv)
     if contains "all" $argv; or math "$i == 0" > /dev/null
-        echo "Update all packages. Except NeoVim"
+        _printMessage "Update all packages. Except NeoVim"
         # _updateBrew
         # _updateBrewPackages
         # _updatePipPackages
@@ -60,7 +60,7 @@ end
 function _updateBrew
     which brew >/dev/null
     and begin
-        echo "Updating Brew"
+        _printMessage "Updating Brew"
         brew update
     end
     functions -e _updateBrew
@@ -69,10 +69,10 @@ end
 function _updateBrewPackages
     which brew >/dev/null
     and begin
-        echo "Upgrading Brew"
+        _printMessage "Upgrading Brew"
         brew upgrade --all
         brew linkapps
-        echo "Cleanup Brew"
+        _printMessage "Cleanup Brew"
         brew cleanup
         brew cask cleanup
     end
@@ -82,7 +82,7 @@ end
 function _updateNeoVim
     which brew >/dev/null
         and begin
-        echo "Updating NeoVim"
+        _printMessage "Updating NeoVim"
         brew reinstall --HEAD neovim
     end
     functions -e _updateNeoVim
@@ -91,9 +91,9 @@ end
 function _updatePipPackages
     which pip > /dev/null
     and begin
-        echo "Updating pip"
+        _printMessage "Updating pip"
         pip install --upgrade pip
-        echo "Updating pip packages"
+        _printMessage "Updating pip packages"
         pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U
     end
     functions -e _updatePip
@@ -102,9 +102,9 @@ end
 function _updateGems
     which gem > /dev/null
     and begin
-        echo "Updating gems"
+        _printMessage "Updating gems"
         gem update (eval gem outdated | cut -d ' ' -f 1)
-        echo "Cleaning up old versions of Gem"
+        _printMessage "Cleaning up old versions of Gem"
         gem cleanup
     end
     functions -e _updateGems
@@ -113,7 +113,7 @@ end
 function _updateRbenvShims
     which rbenv > /dev/null
     and begin
-        echo "Rebuild rbenv shim"
+        _printMessage "Rebuild rbenv shim"
         rbenv rehash
     end
     functions -e _updateRbenvShims
@@ -122,7 +122,7 @@ end
 function _updatePyenvShims
     which pyenv > /dev/null
     and begin
-        echo "Rebuild pyenv shim binaries"
+        _printMessage "Rebuild pyenv shim binaries"
         pyenv rehash
     end
     functions -e _updatePyenvShims
@@ -131,7 +131,7 @@ end
 function _updateVimPlugins
     which vim > /dev/null
     and begin
-        echo "Update Vim Plugins"
+        _printMessage "Update Vim Plugins"
         vim -i NONE -c PlugUpgrade -c PlugUpdate -c PlugClean! -c quitall
     end
     functions -e _updateVimPlugins
@@ -140,7 +140,7 @@ end
 function _updateNpmPackages
     which npm > /dev/null
     and begin
-        echo "Update NPM global packages"
+        _printMessage "Update NPM global packages"
         npm outdated -g
         npm update -g
         npm outdated -g
@@ -149,7 +149,7 @@ function _updateNpmPackages
 end
 
 function _updateFishCompletions
-    echo "Updating completions"
+    _printMessage "Updating completions"
     fish_update_completions
     functions -e _updateFishCompletions
 end
