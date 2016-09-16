@@ -1,40 +1,50 @@
 function up -d "Update software to the latest versions"
 
-    if contains "brew" $argv or contains "nvim" $argv
+    set argument all brew fish gem npm nvim pip vim
+    set validArgument "false"
+
+    if contains $argument[2] $argv or contains $argument[6] $argv
+        set validArgument "true"
         _updateBrew
 
-        if contains "brew" $argv
+        if contains $argument[2] $argv
             _updateBrewPackages
         end
-        if contains "nvim" $argv
+        if contains $argument[6] $argv
             _updateNeoVim
         end
     end
 
-    if contains "pip" $argv
+    if contains $argument[7] $argv
+        set validArgument "true"
         _updatePipPackages
         _updatePyenvShims
     end
 
-    if contains "gem" $argv
+    if contains $argument[4] $argv
+        set validArgument "true"
         _updateGems
         _updateRbenvShims
     end
 
-    if contains "vim" $argv
+    if contains $argument[8] $argv
+        set validArgument "true"
         _updateVimPlugins
     end
 
-    if contains "npm" $argv
+    if contains $argument[5] $argv
+        set validArgument "true"
         _updateNpmPackages
     end
 
-    if contains "fish" $argv
+    if contains $argument[3] $argv
+        set validArgument "true"
         _updateFishCompletions
     end
 
     set i (count $argv)
-    if contains "all" $argv; or math "$i == 0" > /dev/null
+    if contains $argument[1] $argv; or math "$i == 0" > /dev/null
+        set validArgument "true"
         _printMessage "Update all packages. Except NeoVim"
         _updateBrew
         _updateBrewPackages
@@ -45,6 +55,13 @@ function up -d "Update software to the latest versions"
         _updateVimPlugins
         _updateNpmPackages
         _updateFishCompletions
+    end
+
+    if [ $validArgument = "false" ]
+        set_color -o red
+        echo "⚠️  Incorrent argument. Valid values are"
+        echo "🚩  "$argument
+        set_color normal
     end
 end
 
