@@ -29,13 +29,13 @@ function update -d 'Update software to the latest versions'
         functions -e _updateBrewPackages
     end
 
-    function _updateNeoVim
+    function _updateNeovim
         which brew >/dev/null
             and begin
-            _printMessage 'Updating NeoVim'
+            _printMessage 'Updating Neovim'
             brew reinstall --HEAD neovim
         end
-        functions -e _updateNeoVim
+        functions -e _updateNeovim
     end
 
     function _updatePipPackages
@@ -116,7 +116,7 @@ function update -d 'Update software to the latest versions'
             _updateBrewPackages
         end
         if contains $argument[6] $argv
-            _updateNeoVim
+            _updateNeovim
         end
     end
 
@@ -150,7 +150,7 @@ function update -d 'Update software to the latest versions'
     set i (count $argv)
     if contains $argument[1] $argv; or math "$i == 0" > /dev/null
         set validArgument 'true'
-        _printMessage 'Update all packages. Except NeoVim'
+        _printMessage 'Update all packages. Except Neovim'
         _updateBrew
         _updateBrewPackages
         _updatePipPackages
@@ -172,12 +172,12 @@ function update -d 'Update software to the latest versions'
 
 end
 
-complete --no-files -c update -a all  -d 'Update all packages. Except NeoVim'
+complete --no-files -c update -a all  -d 'Update all packages. Except Neovim'
 complete --no-files -c update -a brew -d 'Update brew, upgrade and cleanup installed packages'
 complete --no-files -c update -a fish -d 'Update fish completions'
 complete --no-files -c update -a gem  -d 'Update and cleanup installed gems. Update rbenv shims'
 complete --no-files -c update -a npm  -d 'Update global npm packages'
-complete --no-files -c update -a nvim -d 'Install NeoVim from HEAD of its git repository'
+complete --no-files -c update -a nvim -d 'Install Neovim from HEAD of its git repository'
 complete --no-files -c update -a pip  -d 'Update pip and installed packages. Update pyenv shims'
 complete --no-files -c update -a vim  -d 'Update and clean up Vim plugins. Requires vim-plug'
 
