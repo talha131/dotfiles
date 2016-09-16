@@ -165,6 +165,7 @@ function update -d 'Update software to the latest versions'
     if [ $validArgument = 'false' ]
         set_color -o red
         echo '⚠️  Incorrent argument. Valid values are'
+        echo
         echo '🚩  '$argument
         set_color normal
     end
