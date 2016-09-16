@@ -2,7 +2,8 @@ function update -d 'Update software to the latest versions'
 
     function _printMessage
         for arg in $argv
-            set_color -o yellow; echo '📌  '$arg
+            set_color -o yellow
+            echo '📌  '$arg
         end
         set_color normal
     end
