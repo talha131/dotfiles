@@ -36,15 +36,15 @@ function up -d "Update software to the latest versions"
     set i (count $argv)
     if contains "all" $argv; or math "$i == 0" > /dev/null
         _printMessage "Update all packages. Except NeoVim"
-        # _updateBrew
-        # _updateBrewPackages
-        # _updatePipPackages
-        # _updatePyenvShims
-        # _updateGems
-        # _updateRbenvShims
-        # _updateVimPlugins
-        # _updateNpmPackages
-        # _updateFishCompletions
+        _updateBrew
+        _updateBrewPackages
+        _updatePipPackages
+        _updatePyenvShims
+        _updateGems
+        _updateRbenvShims
+        _updateVimPlugins
+        _updateNpmPackages
+        _updateFishCompletions
     end
 end
 
