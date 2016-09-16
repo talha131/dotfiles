@@ -22,7 +22,7 @@ function update -d 'Update software to the latest versions'
             _printMessage 'Upgrading Brew'
             brew upgrade --all
             brew linkapps
-            _printMessage 'Cleanup Brew'
+            _printMessage 'Cleaning up Brew'
             brew cleanup
             brew cask cleanup
         end
@@ -63,7 +63,7 @@ function update -d 'Update software to the latest versions'
     function _updateRbenvShims
         which rbenv > /dev/null
         and begin
-            _printMessage 'Rebuild rbenv shim'
+            _printMessage 'Rebuilding rbenv shims'
             rbenv rehash
         end
         functions -e _updateRbenvShims
@@ -72,7 +72,7 @@ function update -d 'Update software to the latest versions'
     function _updatePyenvShims
         which pyenv > /dev/null
         and begin
-            _printMessage 'Rebuild pyenv shim binaries'
+            _printMessage 'Rebuilding pyenv shims'
             pyenv rehash
         end
         functions -e _updatePyenvShims
@@ -81,7 +81,7 @@ function update -d 'Update software to the latest versions'
     function _updateVimPlugins
         which vim > /dev/null
         and begin
-            _printMessage 'Update Vim Plugins'
+            _printMessage 'Updating Vim Plugins'
             vim -i NONE -c PlugUpgrade -c PlugUpdate -c PlugClean! -c quitall
         end
         functions -e _updateVimPlugins
@@ -90,7 +90,7 @@ function update -d 'Update software to the latest versions'
     function _updateNpmPackages
         which npm > /dev/null
         and begin
-            _printMessage 'Update NPM global packages'
+            _printMessage 'Updating global NPM packages'
             npm outdated -g
             npm update -g
             npm outdated -g
@@ -172,12 +172,12 @@ function update -d 'Update software to the latest versions'
 
 end
 
-complete --no-files -c update -a all  -d 'Update all packages. Except nvim'
+complete --no-files -c update -a all  -d 'Update all packages. Except NeoVim'
 complete --no-files -c update -a brew -d 'Update brew, upgrade and cleanup installed packages'
 complete --no-files -c update -a fish -d 'Update fish completions'
 complete --no-files -c update -a gem  -d 'Update and cleanup installed gems. Update rbenv shims'
 complete --no-files -c update -a npm  -d 'Update global npm packages'
 complete --no-files -c update -a nvim -d 'Install NeoVim from HEAD of its git repository'
 complete --no-files -c update -a pip  -d 'Update pip and installed packages. Update pyenv shims'
-complete --no-files -c update -a vim  -d 'Update and clean up Vim plugins. Require vim-plug'
+complete --no-files -c update -a vim  -d 'Update and clean up Vim plugins. Requires vim-plug'
 
