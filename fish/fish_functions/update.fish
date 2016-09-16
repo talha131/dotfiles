@@ -109,7 +109,7 @@ function update -d 'Update software to the latest versions'
     set argument all brew fish gem npm nvim pip vim
     set validArgument 'false'
 
-    if contains $argument[2] $argv or contains $argument[6] $argv
+    if contains $argument[2] $argv; or contains $argument[6] $argv
         set validArgument 'true'
         _updateBrew
 
