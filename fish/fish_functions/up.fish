@@ -65,7 +65,14 @@ function up -d "Update software to the latest versions"
     end
 end
 
-complete -c up -a "all brew fish gem npm nvim pip vim"
+complete --no-files -c up -a all  -d 'Update all packages. Except nvim'
+complete --no-files -c up -a brew -d 'Update brew, upgrade and cleanup installed packages'
+complete --no-files -c up -a fish -d 'Update fish completions'
+complete --no-files -c up -a gem  -d 'Update and cleanup installed gems. Update rbenv shims'
+complete --no-files -c up -a npm  -d 'Update global npm packages'
+complete --no-files -c up -a nvim -d 'Install NeoVim from HEAD of its git repository'
+complete --no-files -c up -a pip  -d 'Update pip and installed packages. Update pyenv shims'
+complete --no-files -c up -a vim  -d 'Update and clean up Vim plugins. Require vim-plug'
 
 function _printMessage
     for arg in $argv
