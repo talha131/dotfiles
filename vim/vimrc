@@ -99,13 +99,17 @@ set wrap
 set ignorecase " Search settings
 set hlsearch " Highlight search results
 "{{{2 Spelling
-set spell " Enable spell check
 set spellfile=~/.vim/spell/en.utf-8.add " Store all good words in this file
 " Generate a binary spell file from text spell file. Vim does it automatically
 " whenever a word is added. But when spell file is added externally, you
 " need to generate it once
 if empty(glob(&spellfile.'.spl'))
     exec 'mkspell!' &spellfile
+endif
+
+" Use <C-P> to toogle spell check in the current buffer
+if maparg('<C-P>', 'n') ==# ''
+  nnoremap <silent> <C-P> :setlocal spell!<CR>
 endif
 "{{{2 Preserve file history
 set undofile " write undo history to file so that undo history remains persistent
