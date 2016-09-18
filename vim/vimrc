@@ -14,6 +14,7 @@ Plug 'tpope/vim-sensible'
 Plug 'ajh17/VimCompletesMe'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " inserts code snippets | collection of code snippets
 Plug 'mattn/emmet-vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "{{{2 Plugins - File Navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Quickly find file in the path and buffers with fuzzy find support
 Plug 'junegunn/fzf.vim'
@@ -188,11 +189,15 @@ autocmd User GoyoLeave Limelight!
 
 "{{{2 Vim Completes Me
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict' "Offer tab completion from dictionary
+
 "{{{2 Vim Easy Align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap gl <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap gl <Plug>(EasyAlign)
+
+"{{{2 deoplete
+let g:deoplete#enable_at_startup = 1
 
 "{{{1 Vim modeline 
 " vim:set foldmethod=marker:
