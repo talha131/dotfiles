@@ -7,3 +7,6 @@ findfile
 endif
 gui
 win32
+Plugins
+plugins
+Neovim
