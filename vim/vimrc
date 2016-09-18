@@ -30,7 +30,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ihacklog/HiCursorWords' " highlights words under the cursor like many IDEs
 "{{{2 Plugins - Typing Utilities
 Plug 'tpope/vim-rsi' " Readline key bindings
-Plug 'tommcdo/vim-lion' " Align text by some character
+Plug 'junegunn/vim-easy-align' " Vim alignment"
 Plug 'tpope/vim-characterize' " press ga to reveal characters representation in decimal, octal and hex
 Plug 'junegunn/vim-peekaboo' " show content of register
 Plug 'Raimondi/delimitMate' " Auto close feature
@@ -184,6 +184,11 @@ autocmd User GoyoLeave Limelight!
 
 "{{{2 Vim Completes Me
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict' "Offer tab completion from dictionary
+"{{{2 Vim Easy Align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "{{{1 Vim modeline 
 " vim:set foldmethod=marker:
