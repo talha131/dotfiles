@@ -1,4 +1,5 @@
-hyper = { "cmd", "alt", "shift", "ctrl" }
+-- hyper = { "cmd", "alt", "shift", "ctrl" }
+hyper = { "alt" }
 
 loggerInfo = hs.logger.new('My Settings', 'info')
 
