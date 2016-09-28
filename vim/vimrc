@@ -173,14 +173,20 @@ set rtp+=~/.vim/my_snippets
 let g:voom_tree_placement = 'right'
 let g:voom_ft_modes = {'markdown': 'markdown', 'pandoc': 'markdown'}
 let g:voom_always_allow_move_left = 1
-autocmd FileType voomtree setlocal nonumber
+augroup plugin_voom
+    autocmd!
+    autocmd FileType voomtree setlocal nonumber
+augroup END
 
 " xolox/vim-session                                                           {{{2
 let g:session_autosave = 'no'
 
 " Limelight and Goyo - Distraction Free Writing                               {{{2
-autocmd User GoyoEnter Limelight
-autocmd User GoyoLeave Limelight!
+augroup plugin_goyo
+    autocmd!
+    autocmd User GoyoEnter Limelight
+    autocmd User GoyoLeave Limelight!
+augroup END
 
 " Vim Completes Me                                                            {{{2
 autocmd FileType text,markdown let b:vcm_tab_complete = 'dict' "Offer tab completion from dictionary
