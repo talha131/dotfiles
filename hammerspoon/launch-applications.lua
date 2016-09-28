@@ -16,7 +16,7 @@ local appShortCuts = {
     P = '1Password 6',
     S = 'Slack',
     V = 'MacVim',
-    X = 'Xcode 8 GM',
+    X = 'Xcode-beta',
     Z = 'Franz'
 }
 
