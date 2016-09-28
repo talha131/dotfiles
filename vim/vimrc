@@ -148,7 +148,6 @@ highlight Pmenu ctermfg=NONE ctermbg=242 cterm=NONE guifg=NONE guibg=NONE gui=NO
 
 " Set Default settings for file types                                         {{{2
 autocmd BufRead,BufNewFile  *.txt,*.TXT set filetype=markdown
-autocmd FileType gitcommit set colorcolumn=72 " highlight 72nd column in git commit
 
 " Use ag instead of grep                                                      {{{2
 if executable("ag")
@@ -187,9 +186,6 @@ augroup plugin_goyo
     autocmd User GoyoEnter Limelight
     autocmd User GoyoLeave Limelight!
 augroup END
-
-" Vim Completes Me                                                            {{{2
-autocmd FileType text,markdown let b:vcm_tab_complete = 'dict' "Offer tab completion from dictionary
 
 " Vim Easy Align                                                              {{{2
 " Start interactive EasyAlign in visual mode (e.g. vipga)
