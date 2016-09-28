@@ -148,7 +148,7 @@ highlight StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272
 highlight StatusLineNC ctermfg=231 ctermbg=243 cterm=NONE guifg=#f8f8f2 guibg=#64666d gui=NONE
 set statusline=%F\ %m%r%h%w\ [%L][%p%%][%04l,%04v]\ [%{&ff}]%y
 
-highlight Search ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE " Use IncSearch style of dracula
+highlight Search ctermfg=17 ctermbg=250 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE
 highlight Pmenu ctermfg=NONE ctermbg=242 cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 " Set Default settings for file types                                         {{{2
