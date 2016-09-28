@@ -45,7 +45,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'chrisbra/NrrwRgn' " focus on a region and make the rest inaccessible. Select and call :NR
 " Plugins - Document Outline                                                  {{{2
-" |Voom|
 Plug 'VOoM' " View and change file outline
 " Plugins - Utilities and Wrappers                                            {{{2
 Plug 'guns/xterm-color-table.vim' " :XtermColorTable to show all 256 xterm colors with their RGB equivalents
@@ -175,7 +174,6 @@ let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'my_UltiSnips' ]
 set rtp+=~/.vim/my_snippets
 
 " Voom                                                                        {{{2
-"*Voom*
 let g:voom_tree_placement = 'right'
 let g:voom_ft_modes = {'markdown': 'markdown', 'pandoc': 'markdown'}
 let g:voom_always_allow_move_left = 1
