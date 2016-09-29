@@ -52,6 +52,7 @@
     chm = checkout master
     chb = checkout -b
     ch = checkout
+	dcw = diff --cached --word-diff
 [merge]
     conflictstyle = diff3
 [diff]
