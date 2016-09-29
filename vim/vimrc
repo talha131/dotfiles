@@ -194,5 +194,11 @@ nmap gl <Plug>(EasyAlign)
 " deoplete                                                                    {{{2
 let g:deoplete#enable_at_startup = 1
 
+" FileType related settings                                                   {{{1
+augroup filetype_related_settings
+    autocmd!
+    autocmd FileType gitcommit setlocal colorcolumn=72 " highlight 72nd column in git commit
+augroup END
+
 " Vim modeline                                                                {{{1
 " vim:set foldmethod=marker:
