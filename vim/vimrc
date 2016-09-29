@@ -197,7 +197,7 @@ let g:deoplete#enable_at_startup = 1
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
     autocmd!
-    autocmd FileType objc,objcpp setlocal foldmethod=indent
+    autocmd FileType objc,objcpp,cpp,c setlocal foldmethod=syntax
     autocmd FileType gitcommit setlocal colorcolumn=72 " highlight 72nd column in git commit
 augroup END
 
