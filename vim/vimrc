@@ -199,6 +199,10 @@ augroup filetype_related_settings
     autocmd!
     autocmd FileType objc,objcpp,cpp,c setlocal foldmethod=syntax
     autocmd FileType gitcommit setlocal colorcolumn=72 " highlight 72nd column in git commit
+    if (has('mac'))
+        " vcm_tab_complete Vim Completes Me
+        autocmd FileType gitcommit,markdown,text setlocal dictionary=/usr/share/dict/words | let b:vcm_tab_complete = 'dict'
+    endif
 augroup END
 
 " Vim modeline                                                                {{{1
