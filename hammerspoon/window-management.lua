@@ -67,9 +67,9 @@ modalKey:bind('', 'R', 'Resize window to quarter of screen, center vertically, a
 modalKey:bind('', 'T', 'Resize window to quarter of screen, center horizontally, align to top', function() push(0.25, 0, 0.5, 0.5) end)
 modalKey:bind('', 'Y', 'Resize window to quarter of screen, center horizontally, align to bottom', function() push(0.25, 0.5, 0.5, 0.5) end)
 
-modalKey:bind('', 'U', 'Resize window to top left quarter of screen', function() push(0, 0, 0.5, 0.5) end)
-modalKey:bind('', 'I', 'Resize window to top right quarter of screen', function() push(0.5, 0, 0.5, 0.5) end)
-modalKey:bind('', 'O', 'Resize window to bottom left quarter of screen', function() push(0, 0.5, 0.5, 0.5) end)
+modalKey:bind('', 'I', 'Resize window to top left quarter of screen', function() push(0, 0, 0.5, 0.5) end)
+modalKey:bind('', 'O', 'Resize window to top right quarter of screen', function() push(0.5, 0, 0.5, 0.5) end)
+modalKey:bind('', 'U', 'Resize window to bottom left quarter of screen', function() push(0, 0.5, 0.5, 0.5) end)
 modalKey:bind('', 'P', 'Resize window to bottom right quarter of screen', function() push(0.5, 0.5, 0.5, 0.5) end)
 
 modalKey:bind('', 'C', 'Resize window to center', function() push(0.15, 0.15, 0.7, 0.7) end)
