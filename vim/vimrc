@@ -193,11 +193,18 @@ nmap gl <Plug>(EasyAlign)
 
 " deoplete                                                                    {{{2
 let g:deoplete#enable_at_startup = 1
+if (has('mac'))
+	let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+	let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
+endif
+let g:deoplete#sources#clang#std = {'c': 'c11', 'cpp': 'c++1z', 'objc': 'c11', 'objcpp': 'c++1z'}
+let g:deoplete#sources#clang#sort_algo = 'priority'
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
     autocmd!
     autocmd FileType objc,objcpp,cpp,c setlocal foldmethod=syntax
+    autocmd FileType objcpp setlocal cindent
     autocmd FileType gitcommit setlocal colorcolumn=72 " highlight 72nd column in git commit
     if (has('mac'))
         autocmd FileType gitcommit,markdown,text setlocal dictionary=/usr/share/dict/words complete+=k
