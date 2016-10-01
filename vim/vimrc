@@ -57,8 +57,9 @@ Plug 'romainl/vim-qlist' " make include-search and definition-search populate in
 Plug 'wakatime/vim-wakatime'
 " Plugins - Version Control and File Comparison                               {{{2
 Plug 'chrisbra/vim-diff-enhanced' " Enhanced Diff for git diff --patience
-Plug 'tpope/vim-fugitive' " Git wrapper
-Plug 'junegunn/gv.vim' " Git commit browser
+" Git wrapper Plug
+Plug 'tpope/vim-fugitive'
+            \ | Plug 'junegunn/gv.vim'
 Plug 'mbbill/undotree' " Browse the undo tree
 " Plugins - Theme                                                             {{{2
 Plug 'dracula/vim'
