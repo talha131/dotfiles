@@ -21,7 +21,7 @@ function update -d 'Update software to the latest versions'
         which brew >/dev/null
         and begin
             _printMessage 'Upgrading Brew'
-            brew upgrade --all
+            brew upgrade
             brew linkapps
             _printMessage 'Cleaning up Brew'
             brew cleanup
