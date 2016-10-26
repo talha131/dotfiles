@@ -13,7 +13,6 @@ Plug 'gkirilov/hardmode'
 " Plugins - Code Complete and Snippets                                        {{{2
 " The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
 Plug 'ajh17/VimCompletesMe'
-Plug 'mattn/emmet-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
             \ | Plug 'zchee/deoplete-clang'
             \ | Plug 'Shougo/neoinclude.vim'
