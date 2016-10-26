@@ -14,12 +14,14 @@ Plug 'embear/vim-localvimrc'
 " Plugins - Code Complete and Snippets                                        {{{2
 " The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
 Plug 'ajh17/VimCompletesMe'
+if (has('nvim'))
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
             \ | Plug 'zchee/deoplete-clang'
             \ | Plug 'Shougo/neoinclude.vim'
             \ | Plug 'Shougo/neco-syntax'
             \ | Plug 'Shougo/neco-vim'
             \ | Plug 'carlitux/deoplete-ternjs'
+endif
 " Plugins - File Navigation                                                   {{{2
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Quickly find file in the path and buffers with fuzzy find support
 Plug 'junegunn/fzf.vim'
@@ -191,7 +193,7 @@ xmap gl <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap gl <Plug>(EasyAlign)
 
-
+if (has('nvim'))
 " deoplete                                                                    {{{2
 let g:deoplete#enable_at_startup = 1
 if (has('mac'))
@@ -200,6 +202,7 @@ if (has('mac'))
 endif
 let g:deoplete#sources#clang#std = {'c': 'c11', 'cpp': 'c++1z', 'objc': 'c11', 'objcpp': 'c++1z'}
 let g:deoplete#sources#clang#sort_algo = 'priority'
+endif
 
 " gitgutter                                                                   {{{2
 set updatetime=200
