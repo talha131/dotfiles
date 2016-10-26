@@ -217,7 +217,7 @@ augroup filetype_related_settings
     autocmd FileType objcpp setlocal cindent
     autocmd FileType gitcommit setlocal colorcolumn=72 " highlight 72nd column in git commit
     if (has('mac'))
-        autocmd FileType gitcommit,markdown,text setlocal dictionary=/usr/share/dict/words complete+=k
+        autocmd FileType gitcommit,markdown,text setlocal dictionary=/usr/share/dict/words
     endif
 augroup END
 
