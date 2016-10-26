@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'gkirilov/hardmode'
+Plug 'embear/vim-localvimrc'
 " Plugins - Code Complete and Snippets                                        {{{2
 " The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
 Plug 'ajh17/VimCompletesMe'
