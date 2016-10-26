@@ -37,7 +37,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ihacklog/HiCursorWords' " highlights words under the cursor like many IDEs
 " Plugins - Typing Utilities                                                  {{{2
 Plug 'tpope/vim-rsi' " Readline key bindings
-Plug 'junegunn/vim-easy-align' " Vim alignment"
+Plug 'junegunn/vim-easy-align' " Vim alignment
 Plug 'tpope/vim-characterize' " press ga to reveal characters representation in decimal, octal and hex
 Plug 'junegunn/vim-peekaboo' " show content of register
 Plug 'Raimondi/delimitMate' " Auto close feature
