@@ -207,7 +207,6 @@ nnoremap <Leader>hl :GitGutterLineHighlightsToggle <CR>
 
 " HardMode                                                                    {{{2
 let g:hardmode = 1 " Always enable hard mode
-let g:HardMode_level = 'wannabe' " Disable arrow keys but not hjkl
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
