@@ -221,4 +221,4 @@ augroup filetype_related_settings
 augroup END
 
 " Vim modeline                                                                {{{1
-" vim:set foldmethod=marker:
+" vim:set foldmethod=marker foldlevel=1:
