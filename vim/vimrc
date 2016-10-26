@@ -9,6 +9,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
+Plug 'gkirilov/hardmode'
 " Plugins - Code Complete and Snippets                                        {{{2
 " The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
 Plug 'ajh17/VimCompletesMe'
@@ -204,6 +205,10 @@ call deoplete#custom#set('ultisnips', 'rank', 1000)
 " gitgutter                                                                   {{{2
 set updatetime=200
 nnoremap <Leader>hl :GitGutterLineHighlightsToggle <CR>
+
+" HardMode                                                                    {{{2
+let g:hardmode = 1 " Always enable hard mode
+let g:HardMode_level = 'wannabe' " Disable arrow keys but not hjkl
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
