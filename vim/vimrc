@@ -8,6 +8,7 @@ endif
 " Begin Plugins section                                                       {{{1
 call plug#begin('~/.vim/plugged')
 
+Plug 'dahu/bisectly'
 Plug 'tpope/vim-sensible'
 Plug 'gkirilov/hardmode'
 Plug 'embear/vim-localvimrc'
