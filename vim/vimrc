@@ -14,15 +14,15 @@ Plug 'gkirilov/hardmode'
 Plug 'embear/vim-localvimrc'
 " Plugins - Code Complete and Snippets                                        {{{2
 " The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
-Plug 'ajh17/VimCompletesMe'
-if (has('nvim'))
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-            \ | Plug 'zchee/deoplete-clang'
-            \ | Plug 'Shougo/neoinclude.vim'
-            \ | Plug 'Shougo/neco-syntax'
-            \ | Plug 'Shougo/neco-vim'
-            \ | Plug 'carlitux/deoplete-ternjs'
-endif
+" Plug 'ajh17/VimCompletesMe'
+" if (has('nvim'))
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"             \ | Plug 'zchee/deoplete-clang'
+"             \ | Plug 'Shougo/neoinclude.vim'
+"             \ | Plug 'Shougo/neco-syntax'
+"             \ | Plug 'Shougo/neco-vim'
+"             \ | Plug 'carlitux/deoplete-ternjs'
+" endif
 " Plugins - File Navigation                                                   {{{2
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Quickly find file in the path and buffers with fuzzy find support
 Plug 'junegunn/fzf.vim'
