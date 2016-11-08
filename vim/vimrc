@@ -56,6 +56,7 @@ Plug 'VOoM' " View and change file outline
 Plug 'guns/xterm-color-table.vim' " :XtermColorTable to show all 256 xterm colors with their RGB equivalents
 Plug 'DrawIt' " Draw ASCII art in Vim
 Plug 'tpope/vim-eunuch' " Wrapper for UNIX shell commands
+Plug 'haya14busa/incsearch.vim' " Incrementally highlight all pattern matches
 Plug 'henrik/vim-indexed-search' " Show 'Match 123 of 456 <search term>' in Vim searches
 Plug 'romainl/vim-qf' " a collection of settings, commands and mappings for the quickfix window
 Plug 'romainl/vim-qlist' " make include-search and definition-search populate in the quickfix window
