@@ -46,7 +46,6 @@ Plug 'tpope/vim-surround' " to make quoting and parenthesizing easier
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary' " toggle comments
 Plug 'tpope/vim-endwise'
-Plug 'terryma/vim-multiple-cursors'
 " Plugins - Distraction Free Writing                                          {{{2
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -58,7 +57,6 @@ Plug 'guns/xterm-color-table.vim' " :XtermColorTable to show all 256 xterm color
 Plug 'DrawIt' " Draw ASCII art in Vim
 Plug 'tpope/vim-eunuch' " Wrapper for UNIX shell commands
 Plug 'henrik/vim-indexed-search' " Show 'Match 123 of 456 <search term>' in Vim searches
-Plug 'osyo-manga/vim-over' " :substitute preview
 Plug 'romainl/vim-qf' " a collection of settings, commands and mappings for the quickfix window
 Plug 'romainl/vim-qlist' " make include-search and definition-search populate in the quickfix window
 Plug 'wakatime/vim-wakatime'
