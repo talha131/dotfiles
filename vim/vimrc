@@ -69,6 +69,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mbbill/undotree' " Browse the undo tree
 " Plugins - Theme                                                             {{{2
+Plug 'morhetz/gruvbox'
 Plug 'dracula/vim'
 
 " All of your Plugins must be added before the following line
@@ -144,15 +145,13 @@ set wildmode=longest,list,full
 set wildmenu
 
 " Theme Settings                                                              {{{2
-color dracula " https://github.com/dracula/vim/blob/master/colors/dracula.vim
+color gruvbox 
+set background=dark
 set guifont=Inconsolata:h14
 
 highlight StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272a4 gui=bold
 highlight StatusLineNC ctermfg=231 ctermbg=243 cterm=NONE guifg=#f8f8f2 guibg=#64666d gui=NONE
 set statusline=%F\ %m%r%h%w\ [%L][%p%%][%04l,%04v]\ [%{&ff}]%y\ %{fugitive#statusline()}
-
-highlight Search ctermfg=17 ctermbg=250 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE
-highlight Pmenu ctermfg=NONE ctermbg=242 cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 set cursorline
 set cursorcolumn
