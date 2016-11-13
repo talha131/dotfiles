@@ -147,7 +147,7 @@ set wildmenu
 " Theme Settings                                                              {{{2
 color gruvbox 
 set background=dark
-set guifont=Inconsolata:h14
+set guifont=InconsolataLGC:h12
 
 highlight StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272a4 gui=bold
 highlight StatusLineNC ctermfg=231 ctermbg=243 cterm=NONE guifg=#f8f8f2 guibg=#64666d gui=NONE
