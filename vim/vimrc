@@ -8,8 +8,10 @@ endif
 " Begin Plugins section                                                       {{{1
 call plug#begin('~/.vim/plugged')
 
+if !has('nvim')
+    Plug 'tpope/vim-sensible'
+endif
 Plug 'dahu/bisectly'
-Plug 'tpope/vim-sensible'
 Plug 'gkirilov/hardmode'
 Plug 'embear/vim-localvimrc'
 Plug 'tpope/vim-speeddating'
@@ -75,6 +77,7 @@ Plug 'dracula/vim'
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 " End Plugins section }}}
+
 " Custom Functions                                                            {{{1
 " from https://www.vi-improved.org/recommendations/
 function! StripTrailingWhitespace()
@@ -97,6 +100,11 @@ function! <SID>SynStack()
 endfunction
 
 " Customize Vim                                                               {{{1
+" Python package for Neovim                                                   {{{2
+if has('nvim')
+    let g:python_host_prog = $HOME.'/.pyenv/versions/2.7.10/bin/python'
+    let g:python3_host_prog = $HOME.'/.pyenv/versions/3.4.3/bin/python'
+endif
 " Miscellaneous Variables                                                     {{{2
 set expandtab
 set guioptions+=b " make sure horizontal scroll bar is visible
