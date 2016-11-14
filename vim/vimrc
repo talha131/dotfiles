@@ -116,6 +116,7 @@ set wrap
 set ignorecase " Search settings
 set hlsearch " Highlight search results
 set noerrorbells visualbell t_vb= " Disable Beeping
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro rnu' " Except nu and rnu, all are netrw default values
 " Spelling                                                                    {{{2
 set spellfile=~/.vim/spell/en.utf-8.add " Store all good words in this file
 " Generate a binary spell file from text spell file. Vim does it automatically
