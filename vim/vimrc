@@ -157,7 +157,7 @@ set wildignorecase
 set wildmenu
 
 " Theme Settings                                                              {{{2
-color gruvbox 
+color gruvbox
 set background=dark
 set guifont=InconsolataLGC:h12
 
