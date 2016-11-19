@@ -159,7 +159,11 @@ set wildmenu
 " Theme Settings                                                              {{{2
 color gruvbox
 set background=dark
-set guifont=InconsolataLGC:h12
+if has('mac')
+    set guifont=InconsolataLGC:h12
+elseif has('win32')
+    set guifont=Inconsolata:h12
+endif
 
 highlight StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272a4 gui=bold
 highlight StatusLineNC ctermfg=231 ctermbg=243 cterm=NONE guifg=#f8f8f2 guibg=#64666d gui=NONE
