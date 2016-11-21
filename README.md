@@ -1,29 +1,65 @@
-# Windows
+# Setup Development Environment on Windows
+
+## Install Fonts
+
+https://github.com/DeLaGuardo/Inconsolata-LGC
+
+## Set %PATH%
+
+Create `%HOME%\bin` folder, referred to as `bin` henceforth. 
+
+Edit `%PATH%` variable and add `bin` to it.
+
+Also add any folder, that is copied into `bin`, to `%PATH%`.
+
+You can check path of each command using `where` command. For example,
+
+```
+> where gvim
+C:\Users\talha\bin\complete-x64\gvim.exe
+```
+
+You can use it to test each downloaded program is available from `%PATH%`.
 
 ## Setup Vim
 
-Get Vim compiled with Python, Ruby and Lua support from [this link](https://tuxproject.de/projects/vim/).
+Downland Vim compiled with Python, Ruby and Lua support from [this link](https://tuxproject.de/projects/vim/).
 
-Create `%HOME%\bin` folder and put Vim folder in it.
+Put Vim folder in `bin`.
 
-Install Python, Ruby. Install Git for Windows.
-Get Lua and curl.
+Download and install [Python](https://www.python.org/downloads/windows/), Ruby. 
 
-Put Lua and curl in `%HOME%\bin` folder. 
+Download Lua and [curl](https://curl.haxx.se/download.html).
 
-Edit `%PATH%` so that Vim, curl and Lua are accessible.
-
-You can check path of each command using `where` command.
+Put Lua and curl in `bin`.
 
 curl comes with `git` but in some older version `--create-dirs` does not work so it is better to have the latest version of curl running.
 
-## Create Soft Links to Vim Configuration
+My preferred plugin manager is vim-plug. `.vimrc` automatically downloads it using curl, which is why I need curl.
 
-Start `cmd` with administrative privilege.
+vim-plug needs Python or Ruby for downloading plugins in parallel.
+
+vim-plug also requires Git.
+
+### Create Soft Links to Vim Configuration
+
+Start `cmd` with administrative privilege. Create symbolic links thusly,
 
 ```
 mklink %HOME%\.vimrc %HOME%\Repos\dotfiles\vim\vimrc
 mklink /d %HOME%\.vim\ %HOME%\Repos\dotfiles\vim\vim\
+```
+
+## Setup Git
+
+Download and install [Git for Windows](https://git-for-windows.github.io/). It is shipped with [Git Credential Manager for Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows/).
+
+Start `cmd` with administrative privilege. Create symbolic links thusly,
+
+```
+mklink %HOME%\.gitconfig %HOME%\Repos\dotfiles\git\gitconfig
+mklink %HOME%\.githelper %HOME%\Repos\dotfiles\git\githelper
+mklink %HOME%\bin\diff-highlight %HOME%\Repos\dotfiles\bin\diff-highlight
 ```
 
 ## Change Direction of Scrolling
@@ -57,6 +93,13 @@ Then use [AutoHotKey](https://autohotkey.com/) to map
 1. Left Control + Tab to Alt Tab
 
 Combined with mappings done with SharpKeys, Left Windows + Tab will act like Alt + Tab, which is easier on my left thumb.
+
+## Install AutoJump
+
+1. Install [Clink](https://mridgers.github.io/clink/)
+1. Clone [AutoJump](https://github.com/wting/autojump)
+1. Add [patch](https://github.com/wting/autojump/issues/436)
+1. Install AutoJump
 
 # I need to review following portion of this file. It's outdated
 Overview of my dotfiles
