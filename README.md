@@ -1,3 +1,26 @@
+# Table of Contents
+
+<!-- vim-markdown-toc GFM -->
+* [Setup Development Environment on Windows](#setup-development-environment-on-windows)
+    * [Install Fonts](#install-fonts)
+    * [Set %PATH%](#set-path)
+    * [Setup Vim](#setup-vim)
+        * [Create Soft Links to Vim Configuration](#create-soft-links-to-vim-configuration)
+    * [Setup Git](#setup-git)
+    * [Change Direction of Scrolling](#change-direction-of-scrolling)
+    * [Remap Keys](#remap-keys)
+    * [Install AutoJump](#install-autojump)
+* [I need to review following portion of this file. It's outdated](#i-need-to-review-following-portion-of-this-file-its-outdated)
+* [Overview of my dotfiles](#overview-of-my-dotfiles)
+* [Git](#git)
+* [Vim](#vim)
+    * [Auto Close](#auto-close)
+    * [Vim Markdown](#vim-markdown)
+    * [Fuzzy File Finder](#fuzzy-file-finder)
+* [Bash](#bash)
+
+<!-- vim-markdown-toc -->
+
 # Setup Development Environment on Windows
 
 ## Install Fonts
