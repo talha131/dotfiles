@@ -11,6 +11,7 @@
     * [Remap Keys](#remap-keys)
         * [Remap keycombinations](#remap-keycombinations)
     * [Install AutoJump](#install-autojump)
+    * [Color Codes](#color-codes)
 * [Outdated Content](#outdated-content)
     * [Overview of my dotfiles](#overview-of-my-dotfiles)
     * [Git](#git)
@@ -135,6 +136,15 @@ mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\key-mappings.ahk
 1. Clone [AutoJump](https://github.com/wting/autojump)
 1. Add [patch](https://github.com/wting/autojump/issues/436)
 1. Install AutoJump
+
+## Color Codes
+
+To have [Gruvbox](https://github.com/morhetz/gruvbox) dark theme like background in `cmd` or Git shell, use following color codes:
+
+|   Color Values    | Red | Green | Blue |
+|        ---        | --- |  ---  | ---  |
+| Screen Background | 44  |  44   |  44  |
+|    Screen Text    | 218 |  198  | 144  |
 
 # Outdated Content
 
