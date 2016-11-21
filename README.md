@@ -123,6 +123,12 @@ Note that SharpKeys maps Left Windows to Left Control. Therefore, with AutoHotKe
 Left Windows + Tab to switch between all windows, Left Windows + `` ` `` to switch between windows of the same application.
 It resembles macOS shortcuts, `Command ⌘` + Tab and `` ` ``.
 
+To auto start the AutoHotKey script everytime windows starts. Start `cmd` with administrative privilege. Create symbolic links thusly,
+
+```
+mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\key-mappings.ahk" %HOME%\Repos\dotfiles\autohotkey\key-mappings.ahk
+```
+
 ## Install AutoJump
 
 1. Install [Clink](https://mridgers.github.io/clink/)
