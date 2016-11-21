@@ -9,15 +9,16 @@
     * [Setup Git](#setup-git)
     * [Change Direction of Scrolling](#change-direction-of-scrolling)
     * [Remap Keys](#remap-keys)
+        * [Remap keycombinations](#remap-keycombinations)
     * [Install AutoJump](#install-autojump)
-* [I need to review following portion of this file. It's outdated](#i-need-to-review-following-portion-of-this-file-its-outdated)
-* [Overview of my dotfiles](#overview-of-my-dotfiles)
-* [Git](#git)
-* [Vim](#vim)
-    * [Auto Close](#auto-close)
-    * [Vim Markdown](#vim-markdown)
-    * [Fuzzy File Finder](#fuzzy-file-finder)
-* [Bash](#bash)
+* [Outdated Content](#outdated-content)
+    * [Overview of my dotfiles](#overview-of-my-dotfiles)
+    * [Git](#git)
+    * [Vim](#vim)
+        * [Auto Close](#auto-close)
+        * [Vim Markdown](#vim-markdown)
+        * [Fuzzy File Finder](#fuzzy-file-finder)
+    * [Bash](#bash)
 
 <!-- vim-markdown-toc -->
 
@@ -29,7 +30,7 @@ https://github.com/DeLaGuardo/Inconsolata-LGC
 
 ## Set %PATH%
 
-Create `%HOME%\bin` folder, referred to as `bin` henceforth. 
+Create `%HOME%\bin` folder, referred to as `bin` henceforth.
 
 Edit `%PATH%` variable and add `bin` to it.
 
@@ -50,7 +51,7 @@ Downland Vim compiled with Python, Ruby and Lua support from [this link](https:/
 
 Put Vim folder in `bin`.
 
-Download and install [Python](https://www.python.org/downloads/windows/), Ruby. 
+Download and install [Python](https://www.python.org/downloads/windows/), Ruby.
 
 Download Lua and [curl](https://curl.haxx.se/download.html).
 
@@ -111,11 +112,16 @@ Map,
 1. Left Control to Left Windows
 1. Left Windows to Left Control
 
-Then use [AutoHotKey](https://autohotkey.com/) to map
+### Remap keycombinations
+
+Download and install [AutoHotKey](https://autohotkey.com/) to map
 
 1. Left Control + Tab to Alt Tab
+1. Left Control + `` ` `` to switch between windows of same application
 
-Combined with mappings done with SharpKeys, Left Windows + Tab will act like Alt + Tab, which is easier on my left thumb.
+Note that SharpKeys maps Left Windows to Left Control. Therefore, with AutoHotKey script, I use
+Left Windows + Tab to switch between all windows, Left Windows + `` ` `` to switch between windows of the same application.
+It resembles macOS shortcuts, `Command ⌘` + Tab and `` ` ``.
 
 ## Install AutoJump
 
@@ -124,51 +130,51 @@ Combined with mappings done with SharpKeys, Left Windows + Tab will act like Alt
 1. Add [patch](https://github.com/wting/autojump/issues/436)
 1. Install AutoJump
 
-# I need to review following portion of this file. It's outdated
+# Outdated Content
+
+I need to review and update following portion of this file.
+
 Overview of my dotfiles
-=======================
+-----------------------
 
 These configuration files do not work out of the box. These are specific to my Mac OSX system.
 
 Following are my not so comprehensive and perhaps out of date notes.
 
 Git
-===
+---
 
 1.  [David DeSandro](http://dropshado.ws/post/7844857440/gitconfig-colors) blog entry is a good start point.
 2.  [Cheat sheets](http://cheat.errtheblog.com/s/git) has more comprehensive entry.
 
 Vim
-===
+---
 
 1.  [Vrome](https://chrome.google.com/webstore/detail/godjoomfiimiddapohpmfklhgmbfffjj) is a Google Chrome extension.
 2.  I use [Vundle](https://github.com/gmarik/vundle) to manage Vim packages.
 3.  [vimoutliner/vimoutliner](https://github.com/vimoutliner/vimoutliner) is the only complete repo of VimOutliner plugin. More details are in [this commit message](https://github.com/talha131/dotfiles/commit/42a19d07581087f274c3b461f6908ec5b75af6a7).
 
-Auto Close
-----------
+### Auto Close
 
 1.  [SO thread](http://stackoverflow.com/q/883437/177116) has got some good comments.
 1.  I decided to use Thiago Alves/Townk's [plugin](https://github.com/Townk/vim-autoclose).
 1.  [Townk's plugin tutorial](http://www.vim.org/scripts/script.php?script_id=2009).
 
-Vim Markdown
-------------
+### Vim Markdown
 
 1.  [tpope/vim-markdown](https://github.com/tpope/vim-markdown) is mostly used. But it does not conceal text markers in Markdown file.
 2.  [xolox/vim-markdown](https://github.com/xolox/vim-markdown) does the concealing. See [this image](https://github.com/tpope/vim-markdown/pull/9#issuecomment-3098050) for example.
 3.  But you have to switch to xolox/vim-markdown `conceal` branch to get his code. Use `git checkout -b conceal remotes/origin/conceal` to
     checkout the branch.
 
-Fuzzy File Finder
------------------
+### Fuzzy File Finder
 
 1.  I tried [command-t](https://wincent.com/products/command-t/) but I could not make it work. It requires that your copy of Vim should be compiled with the same version of ruby with which you compiled command-t, which effectively means you have to compile Vim yourself.
 2.  I took the easier way, use [CtrlP](http://kien.github.com/ctrlp.vim/). It is basically the same as Command-T but written in pure Vimscript. This means it neither requires Ruby support enabled in Vim nor does it require the compilation of some Ruby extension implemented in C.
 3.  Other extensions are either not what I wanted, for example, [LustyJuggler](http://www.vim.org/scripts/script.php?script_id%3D2050), or not actively maintained any more like [FuzzyFinder](http://www.vim.org/scripts/script.php?script_id%3D1984) and [fuzzy file finder](https://github.com/jamis/fuzzy_file_finder).
 
 Bash
-====
+----
 
 1.  Bash completion depends on bash\_completion package. MacPorts users can do `sudo port install git-core +bash_completion`.
 2.  [Git Utilities You Can't Live Without](http://blog.bitfluent.com/post/27983389/git-utilities-you-cant-live-without) blog entry has an entry for Git aware PS1.
