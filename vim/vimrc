@@ -20,6 +20,7 @@ endif
 Plug 'dahu/bisectly'
 Plug 'embear/vim-localvimrc'
 Plug 'tpope/vim-speeddating'
+Plug 'mzlogin/vim-markdown-toc' " Generate table of contents for Markdown files. `:GenTocGFM`
 " Plugins - Code Complete and Snippets                                        {{{2
 " The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
 " Plug 'ajh17/VimCompletesMe'
