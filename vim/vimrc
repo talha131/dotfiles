@@ -158,10 +158,13 @@ set wildmenu
 
 " Theme Settings                                                              {{{2
 color gruvbox
-set background=dark
 if has('mac')
+    set background=dark
     set guifont=InconsolataLGC:h12
 elseif has('win32')
+    " On my windows system I cannot set brightness due to missing Apple driver.
+    " Dark backgrounds show reflection on the laptop retina screen
+    set background=light
     set guifont=Inconsolata:h12
 endif
 
