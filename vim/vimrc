@@ -18,7 +18,6 @@ if !has('nvim')
     Plug 'tpope/vim-sensible'
 endif
 Plug 'dahu/bisectly'
-Plug 'gkirilov/hardmode'
 Plug 'embear/vim-localvimrc'
 Plug 'tpope/vim-speeddating'
 " Plugins - Code Complete and Snippets                                        {{{2
