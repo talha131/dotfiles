@@ -45,7 +45,7 @@ Plug 'ihacklog/HiCursorWords' " highlights words under the cursor like many IDEs
 Plug 'tpope/vim-rsi' " Readline key bindings
 Plug 'junegunn/vim-easy-align' " Vim alignment
 Plug 'tpope/vim-characterize' " press ga to reveal characters representation in decimal, octal and hex
-Plug 'Raimondi/delimitMate' " Auto close feature
+Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround' " to make quoting and parenthesizing easier
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary' " toggle comments
