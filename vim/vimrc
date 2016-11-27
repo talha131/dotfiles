@@ -39,7 +39,6 @@ Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
 Plug 'moll/vim-bbye' " Delete buffers and close files without messing up your layout
 " Plugins - Syntax files and Programming Languages                            {{{2
 Plug 'Chiel92/vim-autoformat'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ihacklog/HiCursorWords' " highlights words under the cursor like many IDEs
 " Plugins - Typing Utilities                                                  {{{2
