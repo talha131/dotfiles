@@ -83,7 +83,7 @@ function update -d 'Update software to the latest versions'
         which vim > /dev/null
         and begin
             _printMessage 'Updating Vim Plugins'
-            nvim -i NONE -c PlugUpgrade -c PlugUpdate -c PlugClean! -c quitall
+            vim -i NONE -c PlugUpgrade -c PlugUpdate -c PlugClean! -c quitall
         end
         functions -e _updateVimPlugins
     end
