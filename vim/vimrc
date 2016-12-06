@@ -233,8 +233,6 @@ endif
 set updatetime=200
 nnoremap <Leader>hl :GitGutterLineHighlightsToggle <CR>
 
-" HardMode                                                                    {{{2
-let g:hardmode = 1 " Always enable hard mode
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
