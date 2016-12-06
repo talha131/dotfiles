@@ -233,6 +233,9 @@ endif
 set updatetime=200
 nnoremap <Leader>hl :GitGutterLineHighlightsToggle <CR>
 
+" undotree                                                                    {{{2
+let g:undotree_SplitWidth = 45
+let g:undotree_SetFocusWhenToggle = 1
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
