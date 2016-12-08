@@ -102,6 +102,10 @@ endfunction
 
 " Customize Vim                                                               {{{1
 if has('nvim')
+    " Use <C-L> to clear the highlighting of :set hlsearch. From sensible.vim
+    if maparg('<C-L>', 'n') ==# ''
+        nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+    endif
     set inccommand=split
     " Python package for Neovim                                                   {{{2
     let g:python_host_prog = $HOME.'/.pyenv/versions/2.7.10/bin/python'
