@@ -33,6 +33,10 @@ LWin & v::
 send, {ctrl down}v{ctrl up}
 Return
 
+LWin & w:: 
+send, {ctrl down}w{ctrl up}
+Return
+
 LWin & x:: 
 send, {ctrl down}x{ctrl up}
 Return
