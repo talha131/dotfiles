@@ -17,7 +17,7 @@
             * [Install Vim-Plug](#install-vim-plug)
             * [Install Plugins](#install-plugins)
             * [Diff](#diff)
-        * [Remap keycombinations](#remap-keycombinations)
+        * [AutoHotKey](#autohotkey)
     * [Install AutoJump](#install-autojump)
     * [Color Codes](#color-codes)
 * [Outdated Content](#outdated-content)
@@ -135,7 +135,7 @@ Create a `Repos` directory in `%HOMEPATH%`. Clone [dotfiles repository](https://
 
 ### Git
 
-Start a `cmd` tab with administrative privilege in cmder. Create symbolic links thusly,
+Start a `cmd` tab with administrative privilege in Cmder. Create symbolic links thusly,
 
 ```
 mklink %HOME%\.gitconfig %HOME%\Repos\dotfiles\git\gitconfig
@@ -156,7 +156,7 @@ Open Vim and check you have Python2, Python3, Ruby, and Lua working, using follo
 
 #### Link to Vim Configuration
 
-Start `cmd` with administrative privilege in cmder. Create symbolic links thusly,
+Start `cmd` with administrative privilege in Cmder. Create symbolic links thusly,
 
 ```
 mklink %HOME%\.vimrc %HOME%\Repos\dotfiles\vim\vimrc
@@ -191,7 +191,7 @@ Check output of
 
 If the result is empty or Gdiff is not working then copy `diff.exe` from Git into Vim program files folder.
 
-In cmder,
+In Cmder,
 
 ```
 cp C:\Program Files\Git\usr\bin\diff.exe    %HOME%\bin\complete-x64
@@ -199,18 +199,9 @@ cp C:\Program Files\Git\usr\bin\diff.exe    %HOME%\bin\complete-x64
 
 See this [Github issue](https://github.com/tpope/vim-fugitive/issues/680#issuecomment-134650380) for details.
 
-### Remap keycombinations
+### AutoHotKey
 
-Download and install [AutoHotKey](https://autohotkey.com/) to map
-
-1. Left Control + Tab to Alt Tab
-1. Left Control + `` ` `` to switch between windows of same application
-
-Note that SharpKeys maps Left Windows to Left Control. Therefore, with AutoHotKey script, I use
-Left Windows + Tab to switch between all windows, Left Windows + `` ` `` to switch between windows of the same application.
-It resembles macOS shortcuts, `Command ⌘` + Tab and `` ` ``.
-
-To auto start the AutoHotKey script everytime windows starts. Start `cmd` with administrative privilege. Create symbolic links thusly,
+To auto start the AutoHotKey script everytime windows starts. Start `cmd` with administrative privilege in Cmder. Create symbolic links thusly,
 
 ```
 mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\key-mappings.ahk" %HOME%\Repos\dotfiles\autohotkey\key-mappings.ahk
