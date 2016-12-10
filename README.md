@@ -2,31 +2,32 @@
 
 <!-- vim-markdown-toc GFM -->
 * [Development Environment on Windows](#development-environment-on-windows)
-	* [Change Computer Name](#change-computer-name)
-	* [Set Time](#set-time)
-	* [Install Applications](#install-applications)
-	* [Download Applications](#download-applications)
-	* [Configure](#configure)
-		* [Map Keys](#map-keys)
-		* [Track Pad](#track-pad)
-		* [Mouse Properties](#mouse-properties)
-	* [Dotfiles](#dotfiles)
-		* [Git](#git)
-		* [Vim](#vim)
-			* [Link to Vim Configuration](#link-to-vim-configuration)
-			* [Install Vim-Plug](#install-vim-plug)
-			* [Install Plugins](#install-plugins)
-		* [Remap keycombinations](#remap-keycombinations)
-	* [Install AutoJump](#install-autojump)
-	* [Color Codes](#color-codes)
+    * [Change Computer Name](#change-computer-name)
+    * [Set Time](#set-time)
+    * [Install Applications](#install-applications)
+    * [Download Applications](#download-applications)
+    * [Configure](#configure)
+        * [Map Keys](#map-keys)
+        * [Track Pad](#track-pad)
+        * [Mouse Properties](#mouse-properties)
+    * [Dotfiles](#dotfiles)
+        * [Git](#git)
+        * [Vim](#vim)
+            * [Link to Vim Configuration](#link-to-vim-configuration)
+            * [Install Vim-Plug](#install-vim-plug)
+            * [Install Plugins](#install-plugins)
+            * [Diff](#diff)
+        * [Remap keycombinations](#remap-keycombinations)
+    * [Install AutoJump](#install-autojump)
+    * [Color Codes](#color-codes)
 * [Outdated Content](#outdated-content)
-	* [Overview of my dotfiles](#overview-of-my-dotfiles)
-	* [Git](#git-1)
-	* [Vim](#vim-1)
-		* [Auto Close](#auto-close)
-		* [Vim Markdown](#vim-markdown)
-		* [Fuzzy File Finder](#fuzzy-file-finder)
-	* [Bash](#bash)
+    * [Overview of my dotfiles](#overview-of-my-dotfiles)
+    * [Git](#git-1)
+    * [Vim](#vim-1)
+        * [Auto Close](#auto-close)
+        * [Vim Markdown](#vim-markdown)
+        * [Fuzzy File Finder](#fuzzy-file-finder)
+    * [Bash](#bash)
 
 <!-- vim-markdown-toc -->
 
@@ -174,6 +175,26 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 Open Vim, ignore errors and issue `:PlugInstall!` to install all plugins and themes.
 
 Restart Vim. This time there should be no errors.
+
+#### Diff
+
+It is possible that diff or Gdiff (from Vim Fugitive) will not. Tuxproject Vim does not include a `diff.exe`.
+
+Check output of
+
+```
+:!where diff
+```
+
+If the result is empty or Gdiff is not working then copy `diff.exe` from Git into Vim program files folder.
+
+In cmder,
+
+```
+cp C:\Program Files\Git\usr\bin\diff.exe    %HOME%\bin\complete-x64
+```
+
+See this [Github issue](https://github.com/tpope/vim-fugitive/issues/680#issuecomment-134650380) for details.
 
 ### Remap keycombinations
 
