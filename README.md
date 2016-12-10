@@ -54,6 +54,9 @@ After installing a fresh copy of Windows 10, do following steps.
 1. Install [1Password](https://1password.com/downloads/)
 1. Install [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
     1. Enable Firefox sync
+    1. Login to RescueTime plugin
+    1. Configure Pray Times plugin
+1. Install [RescueTime](https://www.rescuetime.com/get_rescuetime)
 1. Install [SharpKeys](https://sharpkeys.codeplex.com/)
 1. Install [Git for Windows](https://git-for-windows.github.io/)
 1. Setup [Qt](https://download.qt.io/archive/qt/)
