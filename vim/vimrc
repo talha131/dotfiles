@@ -4,13 +4,6 @@ if has('win32') && !has('nvim')
      set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
-" Install Vim-Plug                                                            {{{1
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent execute '!curl -fLo ' . expand($HOME . '/.vim/autoload/plug.vim') . ' --create-dirs ' .
-                \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
 " Begin Plugins section                                                       {{{1
 call plug#begin('~/.vim/plugged')
 
@@ -63,7 +56,6 @@ Plug 'tpope/vim-eunuch' " Wrapper for UNIX shell commands
 Plug 'henrik/vim-indexed-search' " Show 'Match 123 of 456 <search term>' in Vim searches
 Plug 'romainl/vim-qf' " a collection of settings, commands and mappings for the quickfix window
 Plug 'romainl/vim-qlist' " make include-search and definition-search populate in the quickfix window
-Plug 'wakatime/vim-wakatime'
 " Plugins - Version Control and File Comparison                               {{{2
 Plug 'chrisbra/vim-diff-enhanced' " Enhanced Diff for git diff --patience
 " Git wrapper Plug
