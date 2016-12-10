@@ -248,8 +248,6 @@ Vim
 ---
 
 1.  [Vrome](https://chrome.google.com/webstore/detail/godjoomfiimiddapohpmfklhgmbfffjj) is a Google Chrome extension.
-2.  I use [Vundle](https://github.com/gmarik/vundle) to manage Vim packages.
-3.  [vimoutliner/vimoutliner](https://github.com/vimoutliner/vimoutliner) is the only complete repo of VimOutliner plugin. More details are in [this commit message](https://github.com/talha131/dotfiles/commit/42a19d07581087f274c3b461f6908ec5b75af6a7).
 
 ### Auto Close
 
