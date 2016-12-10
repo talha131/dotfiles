@@ -37,12 +37,14 @@ After installing a fresh copy of Windows 10, do following steps.
 
 ## Change Computer Name 
 
-1. Search for and then open *Advanced System Settings* 
-1. Click on *Computer Name* tab 
+Open *Advanced System Settings* using `rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,1`.
+
 1. Click on *Change* button
 1. Rename
 
 ## Set Time
+
+Open time and date settings using `control timedate.cpl`.
 
 1. Set time zone
 1. Use 24 hour time format
@@ -84,6 +86,8 @@ Create a folder `bin` in `%HOMEPATH%`, using `mkdir %HOMEPATH%\bin` command. Thi
 
 Download following apps and extract them in `bin` folder, and add their path to `%PATH%` variable.
 
+To edit `%PATH%` variable, open Environment Variables using `rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,3`.
+
 1. [Cmder Mini](http://cmder.net/)
 1. [Vim](https://tuxproject.de/projects/vim/)
 1. [Lua](http://luabinaries.sourceforge.net/)
@@ -122,7 +126,7 @@ Natural direction of scrolling is how you scroll on iPhone, Android and other to
 
 ### Mouse Properties
 
-Open mouse properties,
+Open mouse properties using `control main.cpl`.
 
 1. In *Buttons* tab, turn on *ClickLock*
 	1. In *Settings*, set duration to the shortest possible
@@ -194,7 +198,7 @@ If the result is empty or Gdiff is not working then copy `diff.exe` from Git int
 In Cmder,
 
 ```
-cp C:\Program Files\Git\usr\bin\diff.exe    %HOME%\bin\complete-x64
+cp "C:\Program Files\Git\usr\bin\diff.exe"    %HOME%\bin\complete-x64
 ```
 
 See this [Github issue](https://github.com/tpope/vim-fugitive/issues/680#issuecomment-134650380) for details.
