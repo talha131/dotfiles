@@ -18,7 +18,7 @@
             * [Install Plugins](#install-plugins)
             * [Diff](#diff)
         * [AutoHotKey](#autohotkey)
-    * [Install AutoJump](#install-autojump)
+        * [Install AutoJump](#install-autojump)
     * [Color Codes](#color-codes)
 * [Outdated Content](#outdated-content)
     * [Overview of my dotfiles](#overview-of-my-dotfiles)
@@ -211,12 +211,14 @@ To auto start the AutoHotKey script everytime windows starts. Start `cmd` with a
 mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\key-mappings.ahk" %HOME%\Repos\dotfiles\autohotkey\key-mappings.ahk
 ```
 
-## Install AutoJump
+### Install AutoJump
 
-1. Install [Clink](https://mridgers.github.io/clink/)
+Cmder already has [Clink](https://mridgers.github.io/clink/). If you are not using Cmder then you must install Clink manually.
+
 1. Clone [AutoJump](https://github.com/wting/autojump)
 1. Add [patch](https://github.com/wting/autojump/issues/436)
 1. Install AutoJump
+1. Successful installation will output a path, add this path your `%PATH%`.
 
 ## Color Codes
 
