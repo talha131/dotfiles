@@ -226,7 +226,7 @@ See this [Github issue](https://github.com/tpope/vim-fugitive/issues/680#issueco
 To auto start the AutoHotKey script everytime windows starts. Start `cmd` with administrative privilege in Cmder. Create symbolic links thusly,
 
 ```
-mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\key-mappings.ahk" %HOME%\Repos\dotfiles\autohotkey\key-mappings.ahk
+mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOME%\Repos\dotfiles\autohotkey\init.ahk
 ```
 
 ### Install AutoJump
