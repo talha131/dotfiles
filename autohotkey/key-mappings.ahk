@@ -4,16 +4,16 @@
 ; is same as
 ; LWin & a::
 ; Using LWin is better because it leaves RWin to be used in default Windows shortcuts
-; So 
-; LWin & a:: 
+; So
+; LWin & a::
 ; is for select all
 ; RWin & a::
 ; is for Windows Action Center
 
 ; Win + Tab behave as Alt Tab
-LWin & Tab:: AltTab 
+LWin & Tab:: AltTab
 
-LWin & a:: 
+LWin & a::
 send, {ctrl down}a{ctrl up}
 Return
 
@@ -21,27 +21,27 @@ LWin & c::
 send, {ctrl down}c{ctrl up}
 Return
 
-LWin & f:: 
+LWin & f::
 send, {ctrl down}f{ctrl up}
 Return
 
 LWin & t::
-send, {ctrl down}t{ctrl up} 
+send, {ctrl down}t{ctrl up}
 Return
 
-LWin & v:: 
+LWin & v::
 send, {ctrl down}v{ctrl up}
 Return
 
-LWin & w:: 
+LWin & w::
 send, {ctrl down}w{ctrl up}
 Return
 
-LWin & x:: 
+LWin & x::
 send, {ctrl down}x{ctrl up}
 Return
 
-LWin & z:: 
+LWin & z::
 send, {ctrl down}z{ctrl up}
 Return
 
