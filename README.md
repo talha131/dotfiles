@@ -76,6 +76,8 @@ Also download [this tool](https://support.microsoft.com/en-us/kb/3073930) from M
     1. Configure Pray Times plugin
     1. Install [1Password extension](https://agilebits.com/onepassword/extensions)
 1. Install [RescueTime](https://www.rescuetime.com/get_rescuetime)
+1. Install [ConEmu Windows Terminal](https://conemu.github.io/en/)
+    1. Open *Settings* -> *Integration*. Click on *Register* to add ConEmu to context menu
 1. Install [Revo Uninstaller Freeware](http://www.revouninstaller.com/download-freeware-version.php)
 1. Install [SharpKeys](https://sharpkeys.codeplex.com/)
 1. Install [Git for Windows](https://git-for-windows.github.io/)
@@ -111,7 +113,6 @@ Download following apps and extract them in `bin` folder, and add their path to 
 
 To edit `%PATH%` variable, open Environment Variables using `rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,3`.
 
-1. [Cmder Mini](http://cmder.net/)
 1. [Vim](https://tuxproject.de/projects/vim/)
 1. [Lua](http://luabinaries.sourceforge.net/)
 	1. Navigate and download from `Windows Libraries/Dynamic` folder
@@ -135,7 +136,7 @@ Use SharpKeys to,
 
 ### Track Pad
 
-To invert the direction of scrolling (natural scrolling on macOS), run following command in PowerShell with adminstrative privileges.
+To invert the direction of scrolling (natural scrolling on macOS), run following command in PowerShell with administrative privileges.
 
 ```powershell
 Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Enum\HID\*\*\Device` Parameters FlipFlopWheel -EA 0 | ForEach-Object { Set-ItemProperty $_.PSPath FlipFlopWheel 1 }
@@ -162,7 +163,7 @@ Create a `Repos` directory in `%HOMEPATH%`. Clone [dotfiles repository](https://
 
 ### Git
 
-Start a `cmd` tab with administrative privilege in Cmder. Create symbolic links thusly,
+Start a `cmd` tab with administrative privilege in ConEmu. Create symbolic links thusly,
 
 ```
 mklink %HOMEPATH%\.gitconfig %HOMEPATH%\Repos\dotfiles\git\gitconfig
@@ -183,7 +184,7 @@ Open Vim and check you have Python2, Python3, Ruby, and Lua working, using follo
 
 #### Link to Vim Configuration
 
-Start `cmd` with administrative privilege in Cmder. Create symbolic links thusly,
+Start `cmd` with administrative privilege in ConEmu. Create symbolic links thusly,
 
 ```
 mklink %HOMEPATH%\.vimrc %HOMEPATH%\Repos\dotfiles\vim\vimrc
@@ -218,7 +219,7 @@ Check output of
 
 If the result is empty or Gdiff is not working then copy `diff.exe` from Git into Vim program files folder.
 
-In Cmder,
+In ConEmu,
 
 ```
 cp "C:\Program Files\Git\usr\bin\diff.exe"    %HOMEPATH%\bin\complete-x64
@@ -228,7 +229,7 @@ See this [Github issue](https://github.com/tpope/vim-fugitive/issues/680#issueco
 
 ### AutoHotKey
 
-To auto start the AutoHotKey script everytime windows starts. Start `cmd` with administrative privilege in Cmder. Create symbolic links thusly,
+To auto start the AutoHotKey script every time windows starts. Start `cmd` with administrative privilege in ConEmu. Create symbolic links thusly,
 
 ```
 mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOMEPATH%\Repos\dotfiles\autohotkey\init.ahk
@@ -236,7 +237,7 @@ mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOMEP
 
 ### Install AutoJump
 
-Cmder already has [Clink](https://mridgers.github.io/clink/). If you are not using Cmder then you must install Clink manually.
+You must have Clink installed before you install AutoJump
 
 1. Clone [AutoJump](https://github.com/wting/autojump)
 1. Add [patch](https://github.com/wting/autojump/issues/436)
