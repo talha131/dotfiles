@@ -199,7 +199,9 @@ augroup plugin_voom
 augroup END
 
 " xolox/vim-session                                                           {{{2
-let g:session_autosave = 'no'
+let g:session_autosave = 'yes'
+let g:session_autosave_periodic = 5
+let g:session_default_overwrite = 1
 
 " Limelight and Goyo - Distraction Free Writing                               {{{2
 augroup plugin_goyo
