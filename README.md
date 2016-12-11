@@ -36,7 +36,7 @@
 
 After installing a fresh copy of Windows 10, do following steps.
 
-## Change Computer Name 
+## Change Computer Name
 
 Open *Advanced System Settings* using `rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,1`.
 
@@ -129,7 +129,7 @@ Use SharpKeys to,
 1. Map Caps Lock to Ctrl key
 
 ### Track Pad
- 
+
 To invert the direction of scrolling (natural scrolling on macOS), run following command in PowerShell with adminstrative privileges.
 
 ```powershell
