@@ -105,7 +105,7 @@ Also download [this tool](https://support.microsoft.com/en-us/kb/3073930) from M
 
 ## Download Applications
 
-Create a folder `bin` in `%HOMEPATH%`, using `mkdir %HOMEPATH%\bin` command. This folder is reffered to as `bin`, henceforth.
+Create a folder `bin` in `%HOMEPATH%`, using `mkdir %HOMEPATH%\bin` command. This folder is referred to as `bin`, henceforth.
 
 Download following apps and extract them in `bin` folder, and add their path to `%PATH%` variable.
 
@@ -165,9 +165,9 @@ Create a `Repos` directory in `%HOMEPATH%`. Clone [dotfiles repository](https://
 Start a `cmd` tab with administrative privilege in Cmder. Create symbolic links thusly,
 
 ```
-mklink %HOME%\.gitconfig %HOME%\Repos\dotfiles\git\gitconfig
-mklink %HOME%\.githelper %HOME%\Repos\dotfiles\git\githelper
-mklink %HOME%\bin\diff-highlight %HOME%\Repos\dotfiles\bin\diff-highlight
+mklink %HOMEPATH%\.gitconfig %HOMEPATH%\Repos\dotfiles\git\gitconfig
+mklink %HOMEPATH%\.githelper %HOMEPATH%\Repos\dotfiles\git\githelper
+mklink %HOMEPATH%\bin\diff-highlight %HOMEPATH%\Repos\dotfiles\bin\diff-highlight
 ```
 
 ### Vim
@@ -186,8 +186,8 @@ Open Vim and check you have Python2, Python3, Ruby, and Lua working, using follo
 Start `cmd` with administrative privilege in Cmder. Create symbolic links thusly,
 
 ```
-mklink %HOME%\.vimrc %HOME%\Repos\dotfiles\vim\vimrc
-mklink /d %HOME%\.vim\ %HOME%\Repos\dotfiles\vim\vim\
+mklink %HOMEPATH%\.vimrc %HOMEPATH%\Repos\dotfiles\vim\vimrc
+mklink /d %HOMEPATH%\.vim\ %HOMEPATH%\Repos\dotfiles\vim\vim\
 ```
 
 #### Install Vim-Plug
@@ -221,7 +221,7 @@ If the result is empty or Gdiff is not working then copy `diff.exe` from Git int
 In Cmder,
 
 ```
-cp "C:\Program Files\Git\usr\bin\diff.exe"    %HOME%\bin\complete-x64
+cp "C:\Program Files\Git\usr\bin\diff.exe"    %HOMEPATH%\bin\complete-x64
 ```
 
 See this [Github issue](https://github.com/tpope/vim-fugitive/issues/680#issuecomment-134650380) for details.
@@ -231,7 +231,7 @@ See this [Github issue](https://github.com/tpope/vim-fugitive/issues/680#issueco
 To auto start the AutoHotKey script everytime windows starts. Start `cmd` with administrative privilege in Cmder. Create symbolic links thusly,
 
 ```
-mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOME%\Repos\dotfiles\autohotkey\init.ahk
+mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOMEPATH%\Repos\dotfiles\autohotkey\init.ahk
 ```
 
 ### Install AutoJump
