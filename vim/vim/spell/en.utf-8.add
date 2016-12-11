@@ -10,3 +10,5 @@ win32
 Plugins
 plugins
 Neovim
+Lua
+SharpKeys
