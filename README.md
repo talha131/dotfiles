@@ -18,6 +18,7 @@
             * [Install Vim-Plug](#install-vim-plug)
             * [Install Plugins](#install-plugins)
             * [Diff](#diff)
+            * [Add gVim to Context Menu](#add-gvim-to-context-menu)
         * [AutoHotKey](#autohotkey)
         * [Install AutoJump](#install-autojump)
     * [Color Codes](#color-codes)
@@ -223,6 +224,21 @@ If the result is empty or Gdiff is not working then add `diff.exe` from Git inst
 Open your Environment Variables, edit `%PATH%` to add `C:\Program Files\Git\usr\bin`.
 
 See this [Github issue](https://github.com/tpope/vim-fugitive/issues/680#issuecomment-134650380) for details.
+
+#### Add gVim to Context Menu
+
+I am using portable version of Vim from Tuxproject which does not come with an installer. It does not get added to the Windows context automatically.
+
+To add gVim to context menu, open registry `regedit`.
+
+1. Navigate to `HKEY_CLASSES_ROOT\*\shell`.
+1. Add new key under it `gVim`.
+1. Change value of `Default` to `Open with gVim`
+1. Add a new string value, named `Icon`. Set it's value to gVim executable, in this case `"C:\Users\talha\bin\complete-x64\gvim.exe"`
+1. Add a new sub key under `gVim`. Name it `command`
+1. Set `command`'s default value to gVim executable, in this case `"C:\Users\talha\bin\complete-x64\gvim.exe" "%1"`
+
+See [this link](http://superuser.com/a/37923/42415) for details.
 
 ### AutoHotKey
 
