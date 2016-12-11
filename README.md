@@ -21,6 +21,7 @@
             * [Add gVim to Context Menu](#add-gvim-to-context-menu)
         * [AutoHotKey](#autohotkey)
         * [Install AutoJump](#install-autojump)
+        * [Clink](#clink)
     * [Color Codes](#color-codes)
 * [Outdated Content](#outdated-content)
     * [Overview of my dotfiles](#overview-of-my-dotfiles)
@@ -259,6 +260,10 @@ You must have Clink installed before you install AutoJump
 1. Switch to AutoJump directory
 1. Install AutoJump using `python install.py`
 1. Successful installation will output a path, add this path your `%PATH%`.
+
+### Clink
+
+You can view Clink settings and configuration directory using `clink set` command.
 
 ## Color Codes
 
