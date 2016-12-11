@@ -98,6 +98,10 @@ Also download [this tool](https://support.microsoft.com/en-us/kb/3073930) from M
 1. Install [Inconsolata fonts](https://github.com/google/fonts/tree/master/ofl/inconsolata)
 1. Install [Evernote](https://evernote.com/download/get.php?file=Win)
 1. Install [CopyQ Clipboard Manager](https://hluk.github.io/CopyQ/)
+1. Install [Don't Sleep Utility](http://www.softwareok.com/?Download=DontSleep)
+    1. Alternate is [Caffeinated](http://desmondbrand.com/caffeinated/) but it requires .Net 3.5
+    1. Another alternate is [Caffeine](http://www.zhornsoftware.co.uk/caffeine/) but it [keeps inserting `<F15>` in Vim](http://vi.stackexchange.com/questions/3342/using-vim-and-caffeine-on-the-same-machine)
+    1. Set options in Don't Sleep to Start Minimized and Start with Windows
 
 ## Download Applications
 
