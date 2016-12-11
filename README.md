@@ -210,7 +210,7 @@ Restart Vim. This time there should be no errors.
 
 #### Diff
 
-It is possible that diff or Gdiff (from Vim Fugitive) will not. Tuxproject Vim does not include a `diff.exe`.
+It is possible that diff or Gdiff (in Vim Fugitive) will not work. Tuxproject Vim does not include a `diff.exe`.
 
 Check output of
 
@@ -218,13 +218,9 @@ Check output of
 :!where diff
 ```
 
-If the result is empty or Gdiff is not working then copy `diff.exe` from Git into Vim program files folder.
+If the result is empty or Gdiff is not working then add `diff.exe` from Git installation to your `%PATH%`.
 
-In ConEmu,
-
-```
-cp "C:\Program Files\Git\usr\bin\diff.exe"    %HOMEPATH%\bin\complete-x64
-```
+Open your Environment Variables, edit `%PATH%` to add `C:\Program Files\Git\usr\bin`.
 
 See this [Github issue](https://github.com/tpope/vim-fugitive/issues/680#issuecomment-134650380) for details.
 
