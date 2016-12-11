@@ -4,6 +4,7 @@
 * [Development Environment on Windows](#development-environment-on-windows)
     * [Change Computer Name](#change-computer-name)
     * [Set Time](#set-time)
+    * [Disable Automatic Updates](#disable-automatic-updates)
     * [Install Applications](#install-applications)
     * [Download Applications](#download-applications)
     * [Configure](#configure)
@@ -49,8 +50,23 @@ Open time and date settings using `control timedate.cpl`.
 1. Set time zone
 1. Use 24 hour time format
 
+## Disable Automatic Updates
+
+Windows 10 automatic updates mess up with drivers, rendering my machine unstable. I had to reinstall Windows 10 at least 10 times before learning my lesson to never to trust Windows 10 automatic updates.
+
+1. Open `services.msc`. Stop and disable *Windows Update Service*
+1. Open driver update setting. Run `rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,2`. Click on *Device Installation Settings* and disable drivers updates.
+1. Open `gpedit.msc`. *Computer Configuration* -> *Administrative Templates* -> *Windows Components* -> *Windows Update* -> *Configure Automatic Updates*
+    1. Enable it
+    1. Choose *Notify to download and notify to install*
+
+Update Windows Defender manually. Later use *Windows Update MiniTool* for installing selective updates.
+
+Also download [this tool](https://support.microsoft.com/en-us/kb/3073930) from Microsoft support website. It hasn't been of any use at the time of writing but just keep it in case it may prove useful.
+
 ## Install Applications
 
+1. Install [Windows Update MiniTool](http://www.majorgeeks.com/files/details/windows_update_minitool.html)
 1. Install [SyncTazor](https://github.com/canton7/SyncTrayzor)
 	1. Sync with other computers
 1. Install [1Password](https://1password.com/downloads/)
