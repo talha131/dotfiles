@@ -80,6 +80,7 @@ Open time and date settings using `control timedate.cpl`.
     1. Download Visual Studio Code settings
 1. Install [Inconsolata fonts](https://github.com/google/fonts/tree/master/ofl/inconsolata)
 1. Install [Evernote](https://evernote.com/download/get.php?file=Win)
+1. Install [Ditto Clipboard Manager](http://ditto-cp.sourceforge.net/index.php)
 
 ## Download Applications
 
