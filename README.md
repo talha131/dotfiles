@@ -78,6 +78,7 @@ Also download [this tool](https://support.microsoft.com/en-us/kb/3073930) from M
 1. Install [RescueTime](https://www.rescuetime.com/get_rescuetime)
 1. Install [ConEmu Windows Terminal](https://conemu.github.io/en/)
     1. Open *Settings* -> *Integration*. Click on *Register* to add ConEmu to context menu
+1. Install [Clink](https://mridgers.github.io/clink/).
 1. Install [Revo Uninstaller Freeware](http://www.revouninstaller.com/download-freeware-version.php)
 1. Install [SharpKeys](https://sharpkeys.codeplex.com/)
 1. Install [Git for Windows](https://git-for-windows.github.io/)
@@ -241,7 +242,10 @@ You must have Clink installed before you install AutoJump
 
 1. Clone [AutoJump](https://github.com/wting/autojump)
 1. Add [patch](https://github.com/wting/autojump/issues/436)
-1. Install AutoJump
+1. Open `cmd`
+1. Make sure Clink is working in `cmd`
+1. Switch to AutoJump directory
+1. Install AutoJump using `python install.py`
 1. Successful installation will output a path, add this path your `%PATH%`.
 
 ## Color Codes
