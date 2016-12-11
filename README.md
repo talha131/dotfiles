@@ -58,6 +58,7 @@ Open time and date settings using `control timedate.cpl`.
     1. Enable Firefox sync
     1. Login to RescueTime plugin
     1. Configure Pray Times plugin
+    1. Install [1Password extension](https://agilebits.com/onepassword/extensions)
 1. Install [RescueTime](https://www.rescuetime.com/get_rescuetime)
 1. Install [SharpKeys](https://sharpkeys.codeplex.com/)
 1. Install [Git for Windows](https://git-for-windows.github.io/)
