@@ -76,6 +76,7 @@ Also download [this tool](https://support.microsoft.com/en-us/kb/3073930) from M
     1. Configure Pray Times plugin
     1. Install [1Password extension](https://agilebits.com/onepassword/extensions)
 1. Install [RescueTime](https://www.rescuetime.com/get_rescuetime)
+1. Install [Revo Uninstaller Freeware](http://www.revouninstaller.com/download-freeware-version.php)
 1. Install [SharpKeys](https://sharpkeys.codeplex.com/)
 1. Install [Git for Windows](https://git-for-windows.github.io/)
 1. Setup [Qt](https://download.qt.io/archive/qt/)
