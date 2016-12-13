@@ -87,6 +87,11 @@ Also download [this tool](https://support.microsoft.com/en-us/kb/3073930) from M
 1. Setup [Qt](https://download.qt.io/archive/qt/)
 	1. Install [Latest Qt Creator](https://www.qt.io/download-open-source/#section-9)
     1. Install [Qt `5.5.1` for Windows 32bit (VS 2013)](https://download.qt.io/archive/qt/5.5/5.5.1/)
+1. Install CDB debugger for Qt
+    1. Download [Windows 10 SDK online installer](https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk). Offline installer is [not available](http://superuser.com/a/1020752/42415)
+    1. Either install it directly or choose to download only
+    1. Installer will present a menu of features. Select *Debugging Tools for Windows* (~100MB)
+    1. Install it manually from download folder, if you had opted for download option
 1. Install Visual Studio 2013
 1. Install [Win32 OpenSSL `1.0.1` Light](https://slproweb.com/products/Win32OpenSSL.html) into Windows System folders
 1. Install [AutoHotKey](https://autohotkey.com/)
