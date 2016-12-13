@@ -202,6 +202,7 @@ augroup END
 let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 5
 let g:session_default_overwrite = 1
+let g:session_autoload = 'no'
 
 " Limelight and Goyo - Distraction Free Writing                               {{{2
 augroup plugin_goyo
