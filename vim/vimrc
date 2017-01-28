@@ -125,9 +125,9 @@ if empty(glob(&spellfile.'.spl'))
 endif
 
 " Key Mappings                                                                {{{2
-" Use <C-P> to toogle spell check in the current buffer
-if maparg('<C-P>', 'n') ==# ''
-  nnoremap <silent> <C-P> :setlocal spell!<CR>
+" Use <F7> to toggle spell check in the current buffer
+if maparg('<F7>', 'n') ==# ''
+  nnoremap <silent> <F7> :setlocal spell!<CR>
 endif
 
 " Preserve file history                                                       {{{2
