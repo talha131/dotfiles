@@ -208,7 +208,9 @@ let g:session_autoload = 'no'
 augroup plugin_goyo
     autocmd!
     autocmd User GoyoEnter Limelight
+    autocmd User GoyoEnter set nocursorline nocursorcolumn
     autocmd User GoyoLeave Limelight!
+    autocmd User GoyoLeave set cursorline cursorcolumn
 augroup END
 
 " Vim Easy Align                                                              {{{2
