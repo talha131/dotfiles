@@ -163,11 +163,24 @@ function! SetStatusLineColor()
     highlight StatusLineNC ctermfg=231 ctermbg=243 cterm=NONE guifg=#f8f8f2 guibg=#64666d gui=NONE
 endfunction
 
+function! SetLimelightConcealColor()
+    if (&background == 'dark')
+        " bg3 from gruvbox dark mode
+        let g:limelight_conceal_ctermfg = '241'
+        let g:limelight_conceal_guifg = '#665c54'
+    else
+        " bg3 from gruvbox light mode
+        let g:limelight_conceal_ctermfg = '248'
+        let g:limelight_conceal_guifg = '#bdae93'
+    endif
+endfunction
+
 augroup theme_related_settings
     autocmd!
     " Preserve the custom colors set in SetStatusLineColor() whenever
     " colorscheme or background is changed
     autocmd ColorScheme * call SetStatusLineColor()
+    autocmd ColorScheme * call SetLimelightConcealColor()
 augroup END
 
 set statusline=%F\ %m%r%h%w\ [%L][%p%%][%04l,%04v]\ [%{&ff}]%y\ %{fugitive#statusline()}
