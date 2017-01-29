@@ -94,6 +94,10 @@ Also download [this tool](https://support.microsoft.com/en-us/kb/3073930) from M
     1. Install it manually from download folder, if you had opted for download option
 1. Install Visual Studio 2013
 1. Install [Win32 OpenSSL `1.0.1` Light](https://slproweb.com/products/Win32OpenSSL.html) into Windows System folders
+1. Install [Zeal Documentation Explorer](https://zealdocs.org/
+)
+    1. Download Qt5 documentation
+    1. Download C++ documentation
 1. Install [AutoHotKey](https://autohotkey.com/)
 1. Install [7-Zip](http://www.7-zip.org/download.html)
 1. Install [Slack](https://slack.com/downloads)
