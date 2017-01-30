@@ -3,3 +3,4 @@
 #Include lcmd-mappings.ahk
 #Include date-expansions.ahk
 #Include readline-mappings.ahk
+#Include jump-word-mappings.ahk
