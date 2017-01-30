@@ -144,7 +144,9 @@ You can use it to test each downloaded program is available from `%PATH%`.
 
 Use SharpKeys to,
 
-1. Map Caps Lock to Ctrl key
+1. Map Caps Lock to Left Ctrl key
+1. Map Left Ctrl to Left Win key
+1. Map Left Win to Right Ctrl key
 
 ### Track Pad
 
