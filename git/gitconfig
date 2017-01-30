@@ -8,6 +8,7 @@
     trustctime = false
     pager = less -x1,5
 	editor = vim
+	autocrlf = input
 [color]
     ui = always
 [color "branch"]
