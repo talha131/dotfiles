@@ -162,6 +162,14 @@ set wildmode=list:full
 
 " Leader Key                                                                  {{{2
 let mapleader = '<Space>'
+" git patch write. 
+" Horizontal Split. Top window is git status.
+" Bottom of Horizontal Split has a vertical split.
+" Right is for original file. Left is for Git stage.
+" When you are in the Git stage split `:wq|$q` closes stage and original file,
+" leaving just the Git status split
+nnoremap <Leader>pw :wq \| $q<CR>
+
 " Theme Settings                                                              {{{2
 if has('mac')
     set guifont=Inconsolata:h14
