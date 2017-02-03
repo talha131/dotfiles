@@ -150,7 +150,7 @@ set backupdir^=~/.vimTemp// " directory for backup files
 set directory^=~/.vimTemp// " directory for swap files
 set undodir^=~/.vimTemp// " directory for undo history
 
-" Command Line Completion and find                                            {{{2
+" Command Line Completion                                                     {{{2
 " from [SO answer](http://stackoverflow.com/a/526940/177116)
 " When you type the first tab hit will complete as much as possible, the
 " second tab hit will provide a list, the third and subsequent tabs will cycle
