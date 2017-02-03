@@ -125,17 +125,6 @@ if empty(glob(&spellfile.'.spl'))
     exec 'mkspell!' &spellfile
 endif
 
-" Key Mappings                                                                {{{2
-" Use <F7> to toggle spell check in the current buffer
-if maparg('<F7>', 'n') ==# ''
-  nnoremap <silent> <F7> :setlocal spell!<CR>
-endif
-
-" Use <F8> to toggle relative number in the current buffer
-if maparg('<F8>', 'n') ==# ''
-  nnoremap <silent> <F8> :setlocal relativenumber!<CR>
-endif
-
 " Preserve file history                                                       {{{2
 set undofile " write undo history to file so that undo history remains persistent
 set backup " Make a backup before overwriting a file.  Leave it around after the file has been successfully written.
@@ -159,6 +148,17 @@ set wildignorecase
 set wildmenu
 " Show a list and then choose from the wild menu
 set wildmode=list:full
+
+" Key Mappings                                                                {{{2
+" Use <F7> to toggle spell check in the current buffer
+if maparg('<F7>', 'n') ==# ''
+  nnoremap <silent> <F7> :setlocal spell!<CR>
+endif
+
+" Use <F8> to toggle relative number in the current buffer
+if maparg('<F8>', 'n') ==# ''
+  nnoremap <silent> <F8> :setlocal relativenumber!<CR>
+endif
 
 " Leader Key                                                                  {{{2
 " To map to space key, either use ' ' or "\<Space>"
