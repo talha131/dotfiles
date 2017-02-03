@@ -29,7 +29,6 @@ Plug 'mzlogin/vim-markdown-toc' " Generate table of contents for Markdown files.
 Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char}
 " Plugins - Session Management                                                {{{2
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
-Plug 'moll/vim-bbye' " Delete buffers and close files without messing up your layout
 " Plugins - Syntax files and Programming Languages                            {{{2
 Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
@@ -165,6 +164,10 @@ endif
 if maparg('<F8>', 'n') ==# ''
   nnoremap <silent> <F8> :setlocal relativenumber!<CR>
 endif
+
+" Delete buffers and close files without messing up layout
+" Why it is needed? See this discussion http://superuser.com/q/289285/42415
+command! Bd bp | sp | bn | bd
 
 " Leader Key                                                                  {{{2
 " To map to space key, either use ' ' or "\<Space>"
