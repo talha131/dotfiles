@@ -188,6 +188,8 @@ nnoremap <Leader>F :find <C-R>=expand('%:p:h').'/**/*'<CR>
 nnoremap <Leader>v :vert sfind *
 nnoremap <Leader>V :vert sfind <C-R>=expand('%:p:h').'/**/*'<CR>
 nnoremap <Leader>t :tabfind *
+" For switching between open buffers
+nnoremap <Leader>b :ls<CR>:b<Space>
 
 " Theme Settings                                                              {{{2
 if has('mac')
