@@ -160,6 +160,8 @@ set wildmenu
 " Show a list and then choose from the wild menu
 set wildmode=list:full
 
+" Leader Key                                                                  {{{2
+let mapleader = '<Space>'
 " Theme Settings                                                              {{{2
 if has('mac')
     set guifont=Inconsolata:h14
