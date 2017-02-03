@@ -161,7 +161,12 @@ set wildmenu
 set wildmode=list:full
 
 " Leader Key                                                                  {{{2
-let mapleader = '<Space>'
+" To map to space key, either use ' ' or "\<Space>"
+" '<Space>' or '\<Space>' does not work
+" For details see http://vi.stackexchange.com/a/282/5643
+" :help expr-quote
+" Some commands like map understand <Space> but for others you need "\<Space>"
+let mapleader = ' '
 " git patch write. 
 " Horizontal Split. Top window is git status.
 " Bottom of Horizontal Split has a vertical split.
