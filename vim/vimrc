@@ -169,6 +169,9 @@ let mapleader = '<Space>'
 " When you are in the Git stage split `:wq|$q` closes stage and original file,
 " leaving just the Git status split
 nnoremap <Leader>pw :wq \| $q<CR>
+" Write and quit silently. Useful for quiting Git commit from Vim fugitive
+" which always writes message
+nnoremap <Leader>wq :silent wq<CR>
 
 " Command Line Completion and find                                            {{{2
 " Add folder of current file and every folder under it to Vim's path
