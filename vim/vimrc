@@ -152,6 +152,10 @@ set wildmenu
 set wildmode=list:full
 
 " Key Mappings                                                                {{{2
+" It is better to use <CR> instead  or <C-R> instead of  in key mappings.
+" It makes it easier to copy paste, makes the intetion clear that it's a
+" single character. Sometimes when copy paste ^M gets translated into enter
+" instead of being pasted as a literal
 " Use <F7> to toggle spell check in the current buffer
 if maparg('<F7>', 'n') ==# ''
   nnoremap <silent> <F7> :setlocal spell!<CR>
