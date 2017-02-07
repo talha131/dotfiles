@@ -82,6 +82,16 @@ function! StripTrailingWhitespace()
   endif
 endfunction
 
+function! RemoveZeroWidthSpace()
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    %s/\%u200b//g
+    normal 'yz<CR>
+    normal `z
+  endif
+endfunction
+
 " from https://jordanelver.co.uk/blog/2015/05/27/working-with-vim-colorschemes/#showing-highlight-groups
 nmap <leader>hg :call <SID>SynStack()<CR>
 function! <SID>SynStack()
