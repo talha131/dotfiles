@@ -166,7 +166,7 @@ set wildignore+=*.png,*.pxm,*.psd,*.pdf,*.jpg,*.gif,*.rtf,*.ico,*.icns,*.tiff
 set wildignore+=*.svg,*.woff,*.ttf,*.eot,*.woff2
 set wildignore+=*.exe,*.bin,*.crl,*.pem,*.crt
 set wildignore+=*.plist,*.xcodeproj/**,*.framework/**/*
-set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
+set wildignore+=*/.hg/**/*,*/.svn/**/*
 set wildignore+=tags,cscope.*
 set wildignore+=*.tar.*
 
