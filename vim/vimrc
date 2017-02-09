@@ -257,7 +257,21 @@ augroup theme_related_settings
     autocmd ColorScheme * call SetLimelightConcealColor()
 augroup END
 
-set statusline=%F\ %m%r%h%w\ [%L][%p%%][%04l,%04v]\ [%{&ff}]%y\ %{fugitive#statusline()}
+set statusline=%F " full path to file in the buffer
+set statusline+=\ " separator
+set statusline+=%m " modified flag
+set statusline+=%r " read-only flag
+set statusline+=%h " help buffer flag
+set statusline+=%w " preview flag
+set statusline+=\ " separator
+set statusline+=[%L] " total number of lines in buffer
+set statusline+=[%p%%] " percentage through file in lines
+set statusline+=[%04l,%04v] " current line, current column
+set statusline+=\ " separator
+set statusline+=[%{&ff}] " current file format
+set statusline+=%y " file type
+set statusline+=\ " separator
+set statusline+=%{fugitive#statusline()} " the current branch and the currently edited file's commit
 
 set cursorline
 set cursorcolumn
