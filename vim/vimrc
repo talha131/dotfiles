@@ -27,8 +27,6 @@ Plug 'mzlogin/vim-markdown-toc' " Generate table of contents for Markdown files.
 " endif
 " Plugins - Motion Enhancements                                               {{{2
 Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char}
-" Plugins - Session Management                                                {{{2
-Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
 " Plugins - Syntax files and Programming Languages                            {{{2
 Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
@@ -46,9 +44,9 @@ Plug 'tpope/vim-endwise'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'chrisbra/NrrwRgn' " focus on a region and make the rest inaccessible. Select and call :NR
-" Plugins - Document Outline                                                  {{{2
-Plug 'VOoM' " View and change file outline
 " Plugins - Utilities and Wrappers                                            {{{2
+Plug 'xolox/vim-misc' | Plug 'xolox/vim-session' " Plugins - Session Management
+Plug 'VOoM' " View and change file outline
 Plug 'guns/xterm-color-table.vim' " :XtermColorTable to show all 256 xterm colors with their RGB equivalents
 Plug 'DrawIt' " Draw ASCII art in Vim
 Plug 'tpope/vim-eunuch' " Wrapper for UNIX shell commands
@@ -56,10 +54,9 @@ Plug 'henrik/vim-indexed-search' " Show 'Match 123 of 456 <search term>' in Vim 
 Plug 'romainl/vim-qf' " a collection of settings, commands and mappings for the quickfix window
 Plug 'romainl/vim-qlist' " make include-search and definition-search populate in the quickfix window
 " Plugins - Version Control and File Comparison                               {{{2
-Plug 'chrisbra/vim-diff-enhanced' " Enhanced Diff for git diff --patience
-" Git wrapper Plug
 Plug 'tpope/vim-fugitive'
             \ | Plug 'junegunn/gv.vim'
+Plug 'chrisbra/vim-diff-enhanced' " Enhanced Diff for git diff --patience
 Plug 'airblade/vim-gitgutter'
 Plug 'mbbill/undotree' " Browse the undo tree
 " Plugins - Theme                                                             {{{2
