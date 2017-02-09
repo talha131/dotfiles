@@ -257,6 +257,12 @@ augroup theme_related_settings
     autocmd ColorScheme * call SetLimelightConcealColor()
 augroup END
 
+set cursorline
+set cursorcolumn
+
+colorscheme gruvbox
+
+" Status line                                                                 {{{2
 set statusline=%F " full path to file in the buffer
 set statusline+=\ " separator
 set statusline+=%m " modified flag
@@ -272,11 +278,6 @@ set statusline+=[%{&ff}] " current file format
 set statusline+=%y " file type
 set statusline+=\ " separator
 set statusline+=%{fugitive#statusline()} " the current branch and the currently edited file's commit
-
-set cursorline
-set cursorcolumn
-
-colorscheme gruvbox
 
 " Use ag instead of grep                                                      {{{2
 if executable("ag")
