@@ -53,6 +53,9 @@ Plug 'tpope/vim-eunuch' " Wrapper for UNIX shell commands
 Plug 'henrik/vim-indexed-search' " Show 'Match 123 of 456 <search term>' in Vim searches
 Plug 'romainl/vim-qf' " a collection of settings, commands and mappings for the quickfix window
 Plug 'romainl/vim-qlist' " make include-search and definition-search populate in the quickfix window
+" Delete buffers and close files without messing up layout
+" Why it is needed? See this discussion http://superuser.com/q/289285/42415
+Plug 'moll/vim-bbye'
 " Plugins - Version Control and File Comparison                               {{{2
 Plug 'tpope/vim-fugitive'
             \ | Plug 'junegunn/gv.vim'
@@ -181,10 +184,6 @@ endif
 if maparg('<F8>', 'n') ==# ''
   nnoremap <silent> <F8> :setlocal relativenumber!<CR>
 endif
-
-" Delete buffers and close files without messing up layout
-" Why it is needed? See this discussion http://superuser.com/q/289285/42415
-command! Bd bp | sp | bn | bd
 
 " Leader Key                                                                  {{{2
 " To map to space key, either use ' ' or "\<Space>"
