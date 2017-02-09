@@ -343,6 +343,9 @@ let g:undotree_SetFocusWhenToggle = 1
 " Reply with upper case Y/N/A for .lvimrc that you trust
 let g:localvimrc_persistent = 1
 
+" vim-bbye                                                                    {{{2
+nnoremap <Leader>q :Bdelete<CR>
+
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
     autocmd!
