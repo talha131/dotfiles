@@ -203,7 +203,7 @@ nnoremap <Leader>gw :wq \| $q<CR>
 " which always gives following propmt after :wq
 " Press ENTER or type command to continue
 " See :help hit-enter
-nnoremap <Leader>wq :silent wq<CR>
+nnoremap <Leader>swq :silent wq<CR>
 " I want to open Gstatus in a new tab. If I use Gstatus in the current tab or
 " window, my file order gets mangled up after I am done with Gstatus.
 " tab split = is necessary. Git fugitive commands work only if a file from Git
