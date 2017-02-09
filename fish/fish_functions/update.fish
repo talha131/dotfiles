@@ -22,7 +22,6 @@ function update -d 'Update software to the latest versions'
         and begin
             _printMessage 'Upgrading Brew'
             brew upgrade
-            brew linkapps
             _printMessage 'Cleaning up Brew'
             brew cleanup
             brew cask cleanup
