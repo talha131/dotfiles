@@ -291,6 +291,8 @@ set statusline+=[%04l,%04v] " current line, current column
 set statusline+=\ " separator
 set statusline+=[%{&ff}] " current file format
 set statusline+=%y " file type
+set statusline+=\ " separator
+set statusline+=(%{winnr()}) " window number. Useful for {count}<C-W>q
 
 " Use ag instead of grep                                                      {{{2
 if executable("ag")
