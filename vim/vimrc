@@ -95,7 +95,6 @@ function! RemoveZeroWidthSpace()
 endfunction
 
 " from https://jordanelver.co.uk/blog/2015/05/27/working-with-vim-colorschemes/#showing-highlight-groups
-nmap <leader>hg :call <SID>SynStack()<CR>
 function! <SID>SynStack()
   if !exists("*synstack")
     return
@@ -229,6 +228,10 @@ nnoremap <Leader>V :vert sfind <C-R>=expand('%:p:h').'/**/*'<CR>
 nnoremap <Leader>t :tabfind *
 " For switching between open buffers
 nnoremap <Leader>b :ls<CR>:b<Space>
+nnoremap <Leader>hl :GitGutterLineHighlightsToggle <CR> " git gutter
+nnoremap <Leader>q :Bdelete<CR> " vim-bbye
+nnoremap <leader>hg :call <SID>SynStack()<CR> " show highlight group
+
 
 " Theme Settings                                                              {{{2
 if has('mac')
@@ -339,7 +342,6 @@ endif
 
 " gitgutter                                                                   {{{2
 set updatetime=200
-nnoremap <Leader>hl :GitGutterLineHighlightsToggle <CR>
 
 " undotree                                                                    {{{2
 let g:undotree_SplitWidth = 45
@@ -350,8 +352,6 @@ let g:undotree_SetFocusWhenToggle = 1
 let g:localvimrc_persistent = 1
 let g:localvimrc_disable_upward_search = 1
 
-" vim-bbye                                                                    {{{2
-nnoremap <Leader>q :Bdelete<CR>
 
 " vim-diff-enhanced                                                                    {{{2
 let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
