@@ -278,6 +278,8 @@ colorscheme gruvbox
 " Status line                                                                 {{{2
 set statusline=%F " full path to file in the buffer
 set statusline+=\ " separator
+set statusline+=%{fugitive#statusline()} " the current branch and the currently edited file's commit
+set statusline+=\ " separator
 set statusline+=%m " modified flag
 set statusline+=%r " read-only flag
 set statusline+=%h " help buffer flag
@@ -289,8 +291,6 @@ set statusline+=[%04l,%04v] " current line, current column
 set statusline+=\ " separator
 set statusline+=[%{&ff}] " current file format
 set statusline+=%y " file type
-set statusline+=\ " separator
-set statusline+=%{fugitive#statusline()} " the current branch and the currently edited file's commit
 
 " Use ag instead of grep                                                      {{{2
 if executable("ag")
