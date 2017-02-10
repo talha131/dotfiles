@@ -11,7 +11,8 @@ if !has('nvim')
     Plug 'tpope/vim-sensible'
 endif
 Plug 'dahu/bisectly'
-Plug 'embear/vim-localvimrc'
+" Plug 'embear/vim-localvimrc'
+Plug 'talha131/vim-localvimrc'
 Plug 'tpope/vim-speeddating'
 Plug 'mzlogin/vim-markdown-toc' " Generate table of contents for Markdown files. `:GenTocGFM`
 " Plugins - Code Complete and Snippets                                        {{{2
@@ -342,6 +343,7 @@ let g:undotree_SetFocusWhenToggle = 1
 " localvimrc                                                                  {{{2
 " Reply with upper case Y/N/A for .lvimrc that you trust
 let g:localvimrc_persistent = 1
+let g:localvimrc_disable_upward_search = 1
 
 " vim-bbye                                                                    {{{2
 nnoremap <Leader>q :Bdelete<CR>
