@@ -196,13 +196,6 @@ endif
 " :help expr-quote
 " Some commands like map understand <Space> but for others you need "\<Space>"
 let mapleader = ' '
-" git patch write.
-" Horizontal Split. Top window is git status.
-" Bottom of Horizontal Split has a vertical split.
-" Right is for original file. Left is for Git stage.
-" When you are in the Git stage split `:wq|$q` closes stage and original file,
-" leaving just the Git status split
-" nnoremap <Leader>gw :wq \| $q<CR>
 " Write and quit silently. Useful for quiting Git commit from Vim fugitive
 " which always gives following propmt after :wq
 " Press ENTER or type command to continue
