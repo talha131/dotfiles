@@ -220,6 +220,7 @@ nnoremap <Leader>gs :tab split \| 0tabmove \| Gstatus \| $q <CR>
 nnoremap <Leader>gc :Gcommit -v<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gwq :Gwq <CR>
 " vim-gitgutter
 " h for hunk
 nnoremap <Leader>ghh :GitGutterLineHighlightsToggle <CR>
