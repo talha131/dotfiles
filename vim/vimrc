@@ -343,6 +343,8 @@ endif
 " vim-gitgutter                                                               {{{2
 set updatetime=200
 let g:gitgutter_map_keys = 0
+nmap [c <Plug>GitGutterPrevHunk
+nmap ]c <Plug>GitGutterNextHunk
 
 " undotree                                                                    {{{2
 let g:undotree_SplitWidth = 45
