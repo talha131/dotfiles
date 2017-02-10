@@ -200,7 +200,7 @@ let mapleader = ' '
 " Right is for original file. Left is for Git stage.
 " When you are in the Git stage split `:wq|$q` closes stage and original file,
 " leaving just the Git status split
-nnoremap <Leader>gw :wq \| $q<CR>
+" nnoremap <Leader>gw :wq \| $q<CR>
 " Write and quit silently. Useful for quiting Git commit from Vim fugitive
 " which always gives following propmt after :wq
 " Press ENTER or type command to continue
@@ -214,6 +214,9 @@ nnoremap <Leader>wq :silent wq<CR>
 " Gstatus = opens Git status
 " $q = closes the split that has file from tab split
 nnoremap <Leader>gs :tab split \| 0tabmove \| Gstatus \| $q <CR>
+nnoremap <Leader>gc :Gcommit -v<CR>
+nnoremap <Leader>gd :Gvdiff<CR>
+nnoremap <Leader>gw :Gwrite<CR>
 
 " Command Line Completion and find                                            {{{2
 " Add folder of current file and every folder under it to Vim's path
