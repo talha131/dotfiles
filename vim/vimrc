@@ -228,7 +228,7 @@ nnoremap <Leader>V :vert sfind <C-R>=expand('%:p:h').'/**/*'<CR>
 nnoremap <Leader>t :tabfind *
 " For switching between open buffers
 nnoremap <Leader>b :ls<CR>:b<Space>
-nnoremap <Leader>hl :GitGutterLineHighlightsToggle <CR> " git gutter
+nnoremap <Leader>hl :GitGutterLineHighlightsToggle <CR> " vim-gitgutter
 nnoremap <Leader>q :Bdelete<CR> " vim-bbye
 nnoremap <leader>hg :call <SID>SynStack()<CR> " show highlight group
 
@@ -340,7 +340,7 @@ let g:deoplete#sources#clang#std = {'c': 'c11', 'cpp': 'c++1z', 'objc': 'c11', '
 let g:deoplete#sources#clang#sort_algo = 'priority'
 endif
 
-" gitgutter                                                                   {{{2
+" vim-gitgutter                                                               {{{2
 set updatetime=200
 
 " undotree                                                                    {{{2
