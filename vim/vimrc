@@ -348,6 +348,9 @@ let g:localvimrc_disable_upward_search = 1
 " vim-bbye                                                                    {{{2
 nnoremap <Leader>q :Bdelete<CR>
 
+" vim-diff-enhanced                                                                    {{{2
+let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
+
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
     autocmd!
