@@ -220,7 +220,12 @@ nnoremap <Leader>gs :tab split \| 0tabmove \| Gstatus \| $q <CR>
 nnoremap <Leader>gc :Gcommit -v<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gw :Gwrite<CR>
-nnoremap <Leader>gdl :GitGutterLineHighlightsToggle <CR> " vim-gitgutter
+" vim-gitgutter
+" h for hunk
+nnoremap <Leader>ghh :GitGutterLineHighlightsToggle <CR>
+nnoremap <Leader>ghs :GitGutterStageHunk <CR>
+nnoremap <Leader>ghu :GitGutterUndoHunk <CR>
+nnoremap <Leader>ghp :GitGutterPreviewHunk <CR>
 " For quickly opening files
 nnoremap <Leader>f :find *
 nnoremap <Leader>F :find <C-R>=expand('%:p:h').'/**/*'<CR>
