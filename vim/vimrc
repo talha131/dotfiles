@@ -162,6 +162,9 @@ set wildmenu
 " Show a list and then choose from the wild menu
 set wildmode=list:full
 
+" :find                                                                       {{{2
+" Add folder of current file and every folder under it to Vim's path
+set path=.,**
 set wildignore+=*.swp,*.bak
 set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.dll,*.pdb
 set wildignore+=*.png,*.pxm,*.psd,*.pdf,*.jpg,*.gif,*.rtf,*.ico,*.icns,*.tiff
@@ -206,8 +209,9 @@ let mapleader = ' '
 " Press ENTER or type command to continue
 " See :help hit-enter
 nnoremap <Leader>wq :silent wq<CR>
-" I want to open Gstatus in a new tab. If I use Gstatus in the current tab or
-" window, my file order gets mangled up after I am done with Gstatus.
+" I want to open Gstatus in a new tab. 
+" Fugitive opens diff from Gstatus in the current window.
+" My file order gets mangled up after I am done with Gstatus.
 " tab split = is necessary. Git fugitive commands work only if a file from Git
 " repository is open. tab split opens current file in a new tab.
 " 0tabmove = moves the tab to the 0th position
@@ -217,10 +221,7 @@ nnoremap <Leader>gs :tab split \| 0tabmove \| Gstatus \| $q <CR>
 nnoremap <Leader>gc :Gcommit -v<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gw :Gwrite<CR>
-
-" Command Line Completion and find                                            {{{2
-" Add folder of current file and every folder under it to Vim's path
-set path=.,**
+" For quickly opening files
 nnoremap <Leader>f :find *
 nnoremap <Leader>F :find <C-R>=expand('%:p:h').'/**/*'<CR>
 nnoremap <Leader>v :vert sfind *
