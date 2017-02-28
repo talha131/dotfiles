@@ -23,6 +23,7 @@
         * [Install AutoJump](#install-autojump)
         * [Clink](#clink)
     * [Color Codes](#color-codes)
+    * [Urdu Support](#urdu-support)
 * [Outdated Content](#outdated-content)
     * [Overview of my dotfiles](#overview-of-my-dotfiles)
     * [Git](#git-1)
@@ -284,6 +285,20 @@ To have [Gruvbox](https://github.com/morhetz/gruvbox) dark theme like background
 |        ---        | --- |  ---  | ---  |
 | Screen Background | 44  |  44   |  44  |
 |    Screen Text    | 218 |  198  | 144  |
+
+## Urdu Support
+
+1. Add Urdu language support to Windows 10
+1. Install [Phonetic Keyboard](https://urdu.ca/2)
+1. Install fonts
+    1. [DecoType Naskh Regular](http://font.urduweb.org/downloads/357-decotype-naskh-regular)
+    1. [Diwani Letter Regular](http://font.urduweb.org/downloads/363-diwani-letter-regular)
+    1. [Khat-e-Sulas Regular](http://font.urduweb.org/downloads/243-khat-e-sulas-regular)
+    1. [Khat-e-Sulas Shipped Regular](http://font.urduweb.org/downloads/244-khat-e-sulas-shipped-regular)
+    1. [Old Antic Bold Regular](http://font.urduweb.org/downloads/376-old-antic-bold-regular)
+    1. [NooreHuda](http://www.noorehidayat.org/index.php?p=cnt&c=noorehuda.ttf)
+    1. [Jameel Noori Nastaleeq Regular](http://font.urduweb.org/downloads/249-jameel-noori-nastaleeq-regular)
+    1. [FS Diwani](https://brushez.com/free_download/10eoM/39610)
 
 # Outdated Content
 
