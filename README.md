@@ -117,6 +117,20 @@ Also download [this tool](https://support.microsoft.com/en-us/kb/3073930) from M
     1. Alternate is [Caffeinated](http://desmondbrand.com/caffeinated/) but it requires .Net 3.5
     1. Another alternate is [Caffeine](http://www.zhornsoftware.co.uk/caffeine/) but it [keeps inserting `<F15>` in Vim](http://vi.stackexchange.com/questions/3342/using-vim-and-caffeine-on-the-same-machine)
     1. Set options in Don't Sleep to Start Minimized and Start with Windows
+1. Install [Franz](http://meetfranz.com/)
+    1. Clone [fork of plugins repository](https://github.com/talha131/plugins.git)
+    1. Paste plugins
+        1. Google Calendar
+        1. Google Spreadsheets
+        1. Facebook
+    1. Setup 
+        1. Inbox for personal email
+        1. Inbox for office email
+        1. Personal Google Calendar
+        1. Google Spreadsheets
+        1. WhatsApp
+        1. Telegram
+        1. IRC Cloud
 
 ## Download Applications
 
