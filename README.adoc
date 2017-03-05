@@ -29,6 +29,8 @@ Install a fresh copy of Windows 10. Then follow these steps.
 
 === Disable Automatic Updates
 
+WARNING: This section may not be relevant after Windows 10 anniversary update
+
 Windows 10 automatic updates mess up with drivers, rendering my machine unstable. I had to reinstall Windows 10 at least 10 times before learning my lesson to never to trust Windows 10 automatic updates.
 
 1. Open `services.msc`. Stop and disable __Windows Update Service__
