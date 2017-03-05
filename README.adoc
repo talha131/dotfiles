@@ -288,10 +288,24 @@ You can view Clink settings and configuration directory using `clink set` comman
 
 To have https://github.com/morhetz/gruvbox[Gruvbox] dark theme like background in `cmd` or Git shell, use following color codes:
 
-|   Color Values    | Red | Green | Blue |
-|        ---        | --- |  ---  | ---  |
-| Screen Background | 44  |  44   |  44  |
-|    Screen Text    | 218 |  198  | 144  |
+.Color Codes
+[cols="4", options="header"]
+|===
+|Color Values
+|Red
+|Green
+|Blue
+
+|Screen Background,
+|44
+|44
+|44
+
+|Screen Text
+|218
+|198
+|144
+|===
 
 === Urdu Support
 
