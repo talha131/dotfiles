@@ -171,10 +171,10 @@ Natural direction of scrolling is how you scroll on iPhone, Android and other to
 
 Open mouse properties using `control main.cpl`.
 
-1. In __Buttons__ tab, turn on __ClickLock__
-	1. In __Settings__, set duration to the shortest possible
-2. In __Pointer Options__ tab, enable __Show Location of Pointer__
-3. In __Wheel__ tab, change scroll speed to 1
+. In __Buttons__ tab, turn on __ClickLock__
+.. In __Settings__, set duration to the shortest possible
+. In __Pointer Options__ tab, enable __Show Location of Pointer__
+. In __Wheel__ tab, change scroll speed to 1
 
 === Dotfiles
 
@@ -184,57 +184,60 @@ Create a `Repos` directory in `%HOMEPATH%`. Clone https://github.com/talha131/do
 
 Start a `cmd` tab with administrative privilege in ConEmu. Create symbolic links thusly,
 
-```
+----
 mklink %HOMEPATH%\.gitconfig %HOMEPATH%\Repos\dotfiles\git\gitconfig
 mklink %HOMEPATH%\.githelper %HOMEPATH%\Repos\dotfiles\git\githelper
 mklink %HOMEPATH%\bin\diff-highlight %HOMEPATH%\Repos\dotfiles\bin\diff-highlight
-```
+----
 
 ===== Vim
 
 Open Vim and check you have Python2, Python3, Ruby, and Lua working, using following commands,
 
-```
+----
 :echo has('python3')
 :echo has('python')
 :echo has('ruby')
 :echo has('lua')
-```
+----
 
-=====# Link to Vim Configuration
+.Link to Vim Configuration
 
 Start `cmd` with administrative privilege in ConEmu. Create symbolic links thusly,
 
-```
+----
 mklink %HOMEPATH%\.vimrc %HOMEPATH%\Repos\dotfiles\vim\vimrc
 mklink /d %HOMEPATH%\.vim\ %HOMEPATH%\Repos\dotfiles\vim\vim\
-```
+----
 
-=====# Install Vim-Plug
+.Install Vim-Plug
 
 Open Powershell and type these commands
 
-```powershell
+[source,powershell]
+----
 md ~\.vim\autoload
 $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 (New-Object Net.WebClient).DownloadFile($uri, $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("~\.vim\autoload\plug.vim"))
-```
+----
 
-=====# Install Plugins
+.Install Plugins
 
 Open Vim, ignore errors and issue `:PlugInstall!` to install all plugins and themes.
 
 Restart Vim. This time there should be no errors.
 
-=====# Diff
+.Diff
 
-It is possible that diff or Gdiff (in Vim Fugitive) will not work. Tuxproject Vim does not include a `diff.exe`.
+IMPORTANT: It is possible that diff or Gdiff (in Vim Fugitive) will not work.
+
+Tuxproject Vim does not include a `diff.exe`.
 
 Check output of
 
-```
+----
 :!where diff
-```
+----
 
 If the result is empty or Gdiff is not working then add `diff.exe` from Git installation to your `%PATH%`.
 
