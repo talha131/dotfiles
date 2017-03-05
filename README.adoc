@@ -306,7 +306,7 @@ To have https://github.com/morhetz/gruvbox[Gruvbox] dark theme like background i
 
 == Outdated Content
 
-I need to review and update following portion of this file.
+CAUTION: I need to review and update following portion of this file.
 
 === Overview of my dotfiles
 
