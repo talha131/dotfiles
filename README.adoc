@@ -33,11 +33,25 @@ WARNING: This section may not be relevant after Windows 10 anniversary update
 
 Windows 10 automatic updates mess up with drivers, rendering my machine unstable. I had to reinstall Windows 10 at least 10 times before learning my lesson to never to trust Windows 10 automatic updates.
 
-1. Open `services.msc`. Stop and disable __Windows Update Service__
-1. Open driver update setting. Run `rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,2`. Click on __Device Installation Settings__ and disable drivers updates.
-1. Open `gpedit.msc`. __Computer Configuration__ -> __Administrative Templates__ -> __Windows Components__ -> __Windows Update__ -> __Configure Automatic Updates__
-    1. Enable it
-    1. Choose __Notify to download and notify to install__
+.Disable Windows Update Service
+
+. Open `services.msc`
+. Stop and disable __Windows Update Service__
+
+.Disable Windows Driver Update
+
+. Open driver update setting, using
+    rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,2
+. Click on __Device Installation Settings__ and disable drivers updates
+
+.Edit Group Policy
+
+. Open `gpedit.msc`+
+  __Computer Configuration__ -> __Administrative Templates__ -> __Windows Components__ -> __Windows Update__ -> __Configure Automatic Updates__
+. Enable it
+. Choose __Notify to download and notify to install__
+
+. Download Windows Update Manually
 
 Update Windows Defender manually. Later use __Windows Update MiniTool__ for installing selective updates.
 
