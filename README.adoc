@@ -55,60 +55,60 @@ Windows 10 automatic updates mess up with drivers, rendering my machine unstable
 
 Update Windows Defender manually. Later use __Windows Update MiniTool__ for installing selective updates.
 
-Also download [this tool](https://support.microsoft.com/en-us/kb/3073930) from Microsoft support website. It hasn't been of any use at the time of writing but just keep it in case it may prove useful.
+Also download https://support.microsoft.com/en-us/kb/3073930[this tool] from Microsoft support website. It hasn't been of any use at the time of writing but just keep it in case it may prove useful.
 
 === Install Applications
 
-. Install [Windows Update MiniTool](http://www.majorgeeks.com/files/details/windows_update_minitool.html)
-. Install [SyncTazor](https://github.com/canton7/SyncTrayzor)
+. Install http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows Update MiniTool]
+. Install https://github.com/canton7/SyncTrayzor[SyncTazor]
 .. Sync with other computers
-. Install [1Password](https://1password.com/downloads/)
-. Install [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
+. Install https://1password.com/downloads/[1Password]
+. Install https://www.mozilla.org/en-US/firefox/developer/[Firefox Developer Edition]
 .. Enable Firefox sync
 .. Login to RescueTime plugin
 .. Configure Pray Times plugin
-.. Install [1Password extension](https://agilebits.com/onepassword/extensions)
-. Install [RescueTime](https://www.rescuetime.com/get_rescuetime)
-. Install [ConEmu Windows Terminal](https://conemu.github.io/en/)
+.. Install https://agilebits.com/onepassword/extensions[1Password extension]
+. Install https://www.rescuetime.com/get_rescuetime[RescueTime]
+. Install https://conemu.github.io/en/[ConEmu Windows Terminal]
 .. Open __Settings__ -> __Integration__. Click on __Register__ to add ConEmu to context menu
-. Install [Clink](https://mridgers.github.io/clink/).
-. Install [Revo Uninstaller Freeware](http://www.revouninstaller.com/download-freeware-version.php)
-. Install [SharpKeys](https://sharpkeys.codeplex.com/)
-. Install [Git for Windows](https://git-for-windows.github.io/)
-. Setup [Qt](https://download.qt.io/archive/qt/)
-.. Install [Latest Qt Creator](https://www.qt.io/download-open-source/#section-9)
-.. Install [Qt `5.5.1` for Windows 32bit (VS 2013)](https://download.qt.io/archive/qt/5.5/5.5.1/)
+. Install https://mridgers.github.io/clink/[Clink].
+. Install http://www.revouninstaller.com/download-freeware-version.php[Revo Uninstaller Freeware]
+. Install https://sharpkeys.codeplex.com/[SharpKeys]
+. Install https://git-for-windows.github.io/[Git for Windows]
+. Setup https://download.qt.io/archive/qt/[Qt]
+.. Install https://www.qt.io/download-open-source/#section-9[Latest Qt Creator]
+.. Install (https://download.qt.io/archive/qt/5.5/5.5.1/)[Qt `5.5.1` for Windows 32bit VS 2013]
 . Install CDB debugger for Qt
-.. Download [Windows 10 SDK online installer](https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk). Offline installer is [not available](http://superuser.com/a/1020752/42415)
+.. Download https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk[Windows 10 SDK online installer]. Offline installer is http://superuser.com/a/1020752/42415[not available]
 .. Either install it directly or choose to download only
 .. Installer will present a menu of features. Select __Debugging Tools for Windows__ (~100MB)
 .. Install it manually from download folder, if you had opted for download option
 . Install Visual Studio 2013
-. Install [Win32 OpenSSL `1.0.1` Light](https://slproweb.com/products/Win32OpenSSL.html) into Windows System folders
-. Install [Zeal Documentation Explorer](https://zealdocs.org/
+. Install https://slproweb.com/products/Win32OpenSSL.html[Win32 OpenSSL `1.0.1` Light] into Windows System folders
+. Install (https://zealdocs.org/
 )
 .. Download Qt5 documentation
 .. Download C++ documentation
-. Install [AutoHotKey](https://autohotkey.com/)
-. Install [7-Zip](http://www.7-zip.org/download.html)
-. Install [Slack](https://slack.com/downloads)
+. Install https://autohotkey.com/[AutoHotKey]
+. Install http://www.7-zip.org/download.html[7-Zip]
+. Install https://slack.com/downloads[Slack]
 . Install Chocolatey Packages
-.. Install [Chocolatey](https://chocolatey.org/install)
-.. Install [Ag - The Silver Searcher](https://github.com/ggreer/the_silver_searcher/wiki/Windows)
-. Install [Python2 and Python3](https://www.python.org/downloads/windows/)
-. Install [Ruby](https://rubyinstaller.org/)
-. [Visual Studio Code](https://code.visualstudio.com/)
-.. Install [Visual Studio Code Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
+.. Install https://chocolatey.org/install[Chocolatey]
+.. Install https://github.com/ggreer/the_silver_searcher/wiki/Windows[Ag - The Silver Searcher]
+. Install https://www.python.org/downloads/windows/[Python2 and Python3]
+. Install https://rubyinstaller.org/[Ruby]
+. https://code.visualstudio.com/[Visual Studio Code]
+.. Install https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync[Visual Studio Code Settings Sync]
 .. Download Visual Studio Code settings
-. Install [Inconsolata fonts](https://github.com/google/fonts/tree/master/ofl/inconsolata)
-. Install [Evernote](https://evernote.com/download/get.php?file=Win)
-. Install [CopyQ Clipboard Manager](https://hluk.github.io/CopyQ/)
-. Install [Don't Sleep Utility](http://www.softwareok.com/?Download=DontSleep)
-.. Alternate is [Caffeinated](http://desmondbrand.com/caffeinated/) but it requires .Net 3.5
-.. Another alternate is [Caffeine](http://www.zhornsoftware.co.uk/caffeine/) but it [keeps inserting `<F15>` in Vim](http://vi.stackexchange.com/questions/3342/using-vim-and-caffeine-on-the-same-machine)
+. Install https://github.com/google/fonts/tree/master/ofl/inconsolata[Inconsolata fonts]
+. Install https://evernote.com/download/get.php?file=Win[Evernote]
+. Install https://hluk.github.io/CopyQ/[CopyQ Clipboard Manager]
+. Install http://www.softwareok.com/?Download=DontSleep[Don't Sleep Utility]
+.. Alternate is http://desmondbrand.com/caffeinated/[Caffeinated] but it requires .Net 3.5
+.. Another alternate is http://www.zhornsoftware.co.uk/caffeine/[Caffeine] but it http://vi.stackexchange.com/questions/3342/using-vim-and-caffeine-on-the-same-machine[keeps inserting `<F15>` in Vim]
 .. Set options in Don't Sleep to Start Minimized and Start with Windows
-. Install [Franz](http://meetfranz.com/)
-.. Clone [fork of plugins repository](https://github.com/talha131/plugins.git)
+. Install http://meetfranz.com/[Franz]
+.. Clone https://github.com/talha131/plugins.git[fork of plugins repository]
 .. Paste plugins
 ... Google Calendar
 ... Google Spreadsheets
@@ -130,8 +130,8 @@ Download following apps and extract them in `bin` folder, and add their path to 
 
 To edit `%PATH%` variable, open Environment Variables using `rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,3`.
 
-1. [Vim](https://tuxproject.de/projects/vim/)
-1. [Lua](http://luabinaries.sourceforge.net/)
+1. https://tuxproject.de/projects/vim/[Vim]
+1. http://luabinaries.sourceforge.net/[Lua]
 	1. Navigate and download from `Windows Libraries/Dynamic` folder
 
 You can check path of each command using `where` command. For example,
@@ -163,7 +163,7 @@ Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Enum\HID\__\__\Device` Parameter
 
 ```
 
-See [SuperUser answer](http://superuser.com/a/364353/42415) for details.
+See http://superuser.com/a/364353/42415[SuperUser answer] for details.
 
 Natural direction of scrolling is how you scroll on iPhone, Android and other touch devices. Content scrolls in the direction of your fingers.
 
@@ -178,7 +178,7 @@ Open mouse properties using `control main.cpl`.
 
 === Dotfiles
 
-Create a `Repos` directory in `%HOMEPATH%`. Clone [dotfiles repository](https://github.com/talha131/dotfiles).
+Create a `Repos` directory in `%HOMEPATH%`. Clone https://github.com/talha131/dotfiles[dotfiles repository].
 
 ===== Git
 
@@ -240,7 +240,7 @@ If the result is empty or Gdiff is not working then add `diff.exe` from Git inst
 
 Open your Environment Variables, edit `%PATH%` to add `C:\Program Files\Git\usr\bin`.
 
-See this [Github issue](https://github.com/tpope/vim-fugitive/issues/680#issuecomment-134650380) for details.
+See this https://github.com/tpope/vim-fugitive/issues/680#issuecomment-134650380[Github issue] for details.
 
 =====# Add gVim to Context Menu
 
@@ -255,7 +255,7 @@ To add gVim to context menu, open registry `regedit`.
 1. Add a new sub key under `gVim`. Name it `command`
 1. Set `command`'s default value to gVim executable, in this case `"C:\Users\talha\bin\complete-x64\gvim.exe" "%1"`
 
-See [this link](http://superuser.com/a/37923/42415) for details.
+See http://superuser.com/a/37923/42415[this link] for details.
 
 ===== AutoHotKey
 
@@ -269,8 +269,8 @@ mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOMEP
 
 You must have Clink installed before you install AutoJump
 
-1. Clone [AutoJump](https://github.com/wting/autojump)
-1. Add [patch](https://github.com/wting/autojump/issues/436)
+1. Clone https://github.com/wting/autojump[AutoJump]
+1. Add https://github.com/wting/autojump/issues/436[patch]
 1. Open `cmd`
 1. Make sure Clink is working in `cmd`
 1. Switch to AutoJump directory
@@ -283,7 +283,7 @@ You can view Clink settings and configuration directory using `clink set` comman
 
 === Color Codes
 
-To have [Gruvbox](https://github.com/morhetz/gruvbox) dark theme like background in `cmd` or Git shell, use following color codes:
+To have https://github.com/morhetz/gruvbox[Gruvbox] dark theme like background in `cmd` or Git shell, use following color codes:
 
 |   Color Values    | Red | Green | Blue |
 |        ---        | --- |  ---  | ---  |
@@ -293,16 +293,16 @@ To have [Gruvbox](https://github.com/morhetz/gruvbox) dark theme like background
 === Urdu Support
 
 1. Add Urdu language support to Windows 10
-1. Install [Phonetic Keyboard](https://urdu.ca/2)
+1. Install https://urdu.ca/2[Phonetic Keyboard]
 1. Install fonts
-    1. [DecoType Naskh Regular](http://font.urduweb.org/downloads/357-decotype-naskh-regular)
-    1. [Diwani Letter Regular](http://font.urduweb.org/downloads/363-diwani-letter-regular)
-    1. [Khat-e-Sulas Regular](http://font.urduweb.org/downloads/243-khat-e-sulas-regular)
-    1. [Khat-e-Sulas Shipped Regular](http://font.urduweb.org/downloads/244-khat-e-sulas-shipped-regular)
-    1. [Old Antic Bold Regular](http://font.urduweb.org/downloads/376-old-antic-bold-regular)
-    1. [NooreHuda](http://www.noorehidayat.org/index.php?p=cnt&c=noorehuda.ttf)
-    1. [Jameel Noori Nastaleeq Regular](http://font.urduweb.org/downloads/249-jameel-noori-nastaleeq-regular)
-    1. [FS Diwani](https://brushez.com/free_download/10eoM/39610)
+    1. http://font.urduweb.org/downloads/357-decotype-naskh-regular[DecoType Naskh Regular]
+    1. http://font.urduweb.org/downloads/363-diwani-letter-regular[Diwani Letter Regular]
+    1. http://font.urduweb.org/downloads/243-khat-e-sulas-regular[Khat-e-Sulas Regular]
+    1. http://font.urduweb.org/downloads/244-khat-e-sulas-shipped-regular[Khat-e-Sulas Shipped Regular]
+    1. http://font.urduweb.org/downloads/376-old-antic-bold-regular[Old Antic Bold Regular]
+    1. http://www.noorehidayat.org/index.php?p=cnt&c=noorehuda.ttf[NooreHuda]
+    1. http://font.urduweb.org/downloads/249-jameel-noori-nastaleeq-regular[Jameel Noori Nastaleeq Regular]
+    1. https://brushez.com/free_download/10eoM/39610[FS Diwani]
 
 # Outdated Content
 
@@ -318,35 +318,35 @@ Following are my not so comprehensive and perhaps out of date notes.
 Git
 ---
 
-1.  [David DeSandro](http://dropshado.ws/post/7844857440/gitconfig-colors) blog entry is a good start point.
-2.  [Cheat sheets](http://cheat.errtheblog.com/s/git) has more comprehensive entry.
+1.  http://dropshado.ws/post/7844857440/gitconfig-colors[David DeSandro] blog entry is a good start point.
+2.  http://cheat.errtheblog.com/s/git[Cheat sheets] has more comprehensive entry.
 
 Vim
 ---
 
-1.  [Vrome](https://chrome.google.com/webstore/detail/godjoomfiimiddapohpmfklhgmbfffjj) is a Google Chrome extension.
+1.  https://chrome.google.com/webstore/detail/godjoomfiimiddapohpmfklhgmbfffjj[Vrome] is a Google Chrome extension.
 
 ===== Auto Close
 
-1.  [SO thread](http://stackoverflow.com/q/883437/177116) has got some good comments.
-1.  I decided to use Thiago Alves/Townk's [plugin](https://github.com/Townk/vim-autoclose).
-1.  [Townk's plugin tutorial](http://www.vim.org/scripts/script.php?script_id=2009).
+1.  http://stackoverflow.com/q/883437/177116[SO thread] has got some good comments.
+1.  I decided to use Thiago Alves/Townk's https://github.com/Townk/vim-autoclose[plugin].
+1.  http://www.vim.org/scripts/script.php?script_id=2009[Townk's plugin tutorial].
 
 ===== Vim Markdown
 
-1.  [tpope/vim-markdown](https://github.com/tpope/vim-markdown) is mostly used. But it does not conceal text markers in Markdown file.
-2.  [xolox/vim-markdown](https://github.com/xolox/vim-markdown) does the concealing. See [this image](https://github.com/tpope/vim-markdown/pull/9#issuecomment-3098050) for example.
+1.  https://github.com/tpope/vim-markdown[tpope/vim-markdown] is mostly used. But it does not conceal text markers in Markdown file.
+2.  https://github.com/xolox/vim-markdown[xolox/vim-markdown] does the concealing. See https://github.com/tpope/vim-markdown/pull/9#issuecomment-3098050[this image] for example.
 3.  But you have to switch to xolox/vim-markdown `conceal` branch to get his code. Use `git checkout -b conceal remotes/origin/conceal` to
     checkout the branch.
 
 ===== Fuzzy File Finder
 
-1.  I tried [command-t](https://wincent.com/products/command-t/) but I could not make it work. It requires that your copy of Vim should be compiled with the same version of ruby with which you compiled command-t, which effectively means you have to compile Vim yourself.
-2.  I took the easier way, use [CtrlP](http://kien.github.com/ctrlp.vim/). It is basically the same as Command-T but written in pure Vimscript. This means it neither requires Ruby support enabled in Vim nor does it require the compilation of some Ruby extension implemented in C.
-3.  Other extensions are either not what I wanted, for example, [LustyJuggler](http://www.vim.org/scripts/script.php?script_id%3D2050), or not actively maintained any more like [FuzzyFinder](http://www.vim.org/scripts/script.php?script_id%3D1984) and [fuzzy file finder](https://github.com/jamis/fuzzy_file_finder).
+1.  I tried https://wincent.com/products/command-t/[command-t] but I could not make it work. It requires that your copy of Vim should be compiled with the same version of ruby with which you compiled command-t, which effectively means you have to compile Vim yourself.
+2.  I took the easier way, use http://kien.github.com/ctrlp.vim/[CtrlP]. It is basically the same as Command-T but written in pure Vimscript. This means it neither requires Ruby support enabled in Vim nor does it require the compilation of some Ruby extension implemented in C.
+3.  Other extensions are either not what I wanted, for example, http://www.vim.org/scripts/script.php?script_id%3D2050[LustyJuggler], or not actively maintained any more like http://www.vim.org/scripts/script.php?script_id%3D1984[FuzzyFinder] and https://github.com/jamis/fuzzy_file_finder[fuzzy file finder].
 
 Bash
 ----
 
 1.  Bash completion depends on bash\_completion package. MacPorts users can do `sudo port install git-core +bash_completion`.
-2.  [Git Utilities You Can't Live Without](http://blog.bitfluent.com/post/27983389/git-utilities-you-cant-live-without) blog entry has an entry for Git aware PS1.
+2.  http://blog.bitfluent.com/post/27983389/git-utilities-you-cant-live-without[Git Utilities You Can't Live Without] blog entry has an entry for Git aware PS1.
