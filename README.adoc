@@ -59,68 +59,68 @@ Also download [this tool](https://support.microsoft.com/en-us/kb/3073930) from M
 
 === Install Applications
 
-1. Install [Windows Update MiniTool](http://www.majorgeeks.com/files/details/windows_update_minitool.html)
-1. Install [SyncTazor](https://github.com/canton7/SyncTrayzor)
-	1. Sync with other computers
-1. Install [1Password](https://1password.com/downloads/)
-1. Install [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
-    1. Enable Firefox sync
-    1. Login to RescueTime plugin
-    1. Configure Pray Times plugin
-    1. Install [1Password extension](https://agilebits.com/onepassword/extensions)
-1. Install [RescueTime](https://www.rescuetime.com/get_rescuetime)
-1. Install [ConEmu Windows Terminal](https://conemu.github.io/en/)
-    1. Open __Settings__ -> __Integration__. Click on __Register__ to add ConEmu to context menu
-1. Install [Clink](https://mridgers.github.io/clink/).
-1. Install [Revo Uninstaller Freeware](http://www.revouninstaller.com/download-freeware-version.php)
-1. Install [SharpKeys](https://sharpkeys.codeplex.com/)
-1. Install [Git for Windows](https://git-for-windows.github.io/)
-1. Setup [Qt](https://download.qt.io/archive/qt/)
-	1. Install [Latest Qt Creator](https://www.qt.io/download-open-source/#section-9)
-    1. Install [Qt `5.5.1` for Windows 32bit (VS 2013)](https://download.qt.io/archive/qt/5.5/5.5.1/)
-1. Install CDB debugger for Qt
-    1. Download [Windows 10 SDK online installer](https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk). Offline installer is [not available](http://superuser.com/a/1020752/42415)
-    1. Either install it directly or choose to download only
-    1. Installer will present a menu of features. Select __Debugging Tools for Windows__ (~100MB)
-    1. Install it manually from download folder, if you had opted for download option
-1. Install Visual Studio 2013
-1. Install [Win32 OpenSSL `1.0.1` Light](https://slproweb.com/products/Win32OpenSSL.html) into Windows System folders
-1. Install [Zeal Documentation Explorer](https://zealdocs.org/
+. Install [Windows Update MiniTool](http://www.majorgeeks.com/files/details/windows_update_minitool.html)
+. Install [SyncTazor](https://github.com/canton7/SyncTrayzor)
+.. Sync with other computers
+. Install [1Password](https://1password.com/downloads/)
+. Install [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/)
+.. Enable Firefox sync
+.. Login to RescueTime plugin
+.. Configure Pray Times plugin
+.. Install [1Password extension](https://agilebits.com/onepassword/extensions)
+. Install [RescueTime](https://www.rescuetime.com/get_rescuetime)
+. Install [ConEmu Windows Terminal](https://conemu.github.io/en/)
+.. Open __Settings__ -> __Integration__. Click on __Register__ to add ConEmu to context menu
+. Install [Clink](https://mridgers.github.io/clink/).
+. Install [Revo Uninstaller Freeware](http://www.revouninstaller.com/download-freeware-version.php)
+. Install [SharpKeys](https://sharpkeys.codeplex.com/)
+. Install [Git for Windows](https://git-for-windows.github.io/)
+. Setup [Qt](https://download.qt.io/archive/qt/)
+.. Install [Latest Qt Creator](https://www.qt.io/download-open-source/#section-9)
+.. Install [Qt `5.5.1` for Windows 32bit (VS 2013)](https://download.qt.io/archive/qt/5.5/5.5.1/)
+. Install CDB debugger for Qt
+.. Download [Windows 10 SDK online installer](https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk). Offline installer is [not available](http://superuser.com/a/1020752/42415)
+.. Either install it directly or choose to download only
+.. Installer will present a menu of features. Select __Debugging Tools for Windows__ (~100MB)
+.. Install it manually from download folder, if you had opted for download option
+. Install Visual Studio 2013
+. Install [Win32 OpenSSL `1.0.1` Light](https://slproweb.com/products/Win32OpenSSL.html) into Windows System folders
+. Install [Zeal Documentation Explorer](https://zealdocs.org/
 )
-    1. Download Qt5 documentation
-    1. Download C++ documentation
-1. Install [AutoHotKey](https://autohotkey.com/)
-1. Install [7-Zip](http://www.7-zip.org/download.html)
-1. Install [Slack](https://slack.com/downloads)
-1. Install Chocolatey Packages
-	1. Install [Chocolatey](https://chocolatey.org/install)
-    1. Install [Ag - The Silver Searcher](https://github.com/ggreer/the_silver_searcher/wiki/Windows)
-1. Install [Python2 and Python3](https://www.python.org/downloads/windows/)
-1. Install [Ruby](https://rubyinstaller.org/)
-1. [Visual Studio Code](https://code.visualstudio.com/)
-	1. Install [Visual Studio Code Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
-    1. Download Visual Studio Code settings
-1. Install [Inconsolata fonts](https://github.com/google/fonts/tree/master/ofl/inconsolata)
-1. Install [Evernote](https://evernote.com/download/get.php?file=Win)
-1. Install [CopyQ Clipboard Manager](https://hluk.github.io/CopyQ/)
-1. Install [Don't Sleep Utility](http://www.softwareok.com/?Download=DontSleep)
-    1. Alternate is [Caffeinated](http://desmondbrand.com/caffeinated/) but it requires .Net 3.5
-    1. Another alternate is [Caffeine](http://www.zhornsoftware.co.uk/caffeine/) but it [keeps inserting `<F15>` in Vim](http://vi.stackexchange.com/questions/3342/using-vim-and-caffeine-on-the-same-machine)
-    1. Set options in Don't Sleep to Start Minimized and Start with Windows
-1. Install [Franz](http://meetfranz.com/)
-    1. Clone [fork of plugins repository](https://github.com/talha131/plugins.git)
-    1. Paste plugins
-        1. Google Calendar
-        1. Google Spreadsheets
-        1. Facebook
-    1. Setup
-        1. Inbox for personal email
-        1. Inbox for office email
-        1. Personal Google Calendar
-        1. Google Spreadsheets
-        1. WhatsApp
-        1. Telegram
-        1. IRC Cloud
+.. Download Qt5 documentation
+.. Download C++ documentation
+. Install [AutoHotKey](https://autohotkey.com/)
+. Install [7-Zip](http://www.7-zip.org/download.html)
+. Install [Slack](https://slack.com/downloads)
+. Install Chocolatey Packages
+.. Install [Chocolatey](https://chocolatey.org/install)
+.. Install [Ag - The Silver Searcher](https://github.com/ggreer/the_silver_searcher/wiki/Windows)
+. Install [Python2 and Python3](https://www.python.org/downloads/windows/)
+. Install [Ruby](https://rubyinstaller.org/)
+. [Visual Studio Code](https://code.visualstudio.com/)
+.. Install [Visual Studio Code Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
+.. Download Visual Studio Code settings
+. Install [Inconsolata fonts](https://github.com/google/fonts/tree/master/ofl/inconsolata)
+. Install [Evernote](https://evernote.com/download/get.php?file=Win)
+. Install [CopyQ Clipboard Manager](https://hluk.github.io/CopyQ/)
+. Install [Don't Sleep Utility](http://www.softwareok.com/?Download=DontSleep)
+.. Alternate is [Caffeinated](http://desmondbrand.com/caffeinated/) but it requires .Net 3.5
+.. Another alternate is [Caffeine](http://www.zhornsoftware.co.uk/caffeine/) but it [keeps inserting `<F15>` in Vim](http://vi.stackexchange.com/questions/3342/using-vim-and-caffeine-on-the-same-machine)
+.. Set options in Don't Sleep to Start Minimized and Start with Windows
+. Install [Franz](http://meetfranz.com/)
+.. Clone [fork of plugins repository](https://github.com/talha131/plugins.git)
+.. Paste plugins
+... Google Calendar
+... Google Spreadsheets
+... Facebook
+.. Setup
+... Inbox for personal email
+... Inbox for office email
+... Personal Google Calendar
+... Google Spreadsheets
+... WhatsApp
+... Telegram
+... IRC Cloud
 
 === Download Applications
 
