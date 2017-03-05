@@ -304,25 +304,24 @@ To have https://github.com/morhetz/gruvbox[Gruvbox] dark theme like background i
     1. http://font.urduweb.org/downloads/249-jameel-noori-nastaleeq-regular[Jameel Noori Nastaleeq Regular]
     1. https://brushez.com/free_download/10eoM/39610[FS Diwani]
 
-# Outdated Content
+== Outdated Content
 
 I need to review and update following portion of this file.
 
-Overview of my dotfiles
------------------------
+=== Overview of my dotfiles
+
 
 These configuration files do not work out of the box. These are specific to my Mac OSX system.
 
 Following are my not so comprehensive and perhaps out of date notes.
 
-Git
----
+=== Git
+
 
 1.  http://dropshado.ws/post/7844857440/gitconfig-colors[David DeSandro] blog entry is a good start point.
 2.  http://cheat.errtheblog.com/s/git[Cheat sheets] has more comprehensive entry.
 
-Vim
----
+=== Vim
 
 1.  https://chrome.google.com/webstore/detail/godjoomfiimiddapohpmfklhgmbfffjj[Vrome] is a Google Chrome extension.
 
@@ -345,8 +344,7 @@ Vim
 2.  I took the easier way, use http://kien.github.com/ctrlp.vim/[CtrlP]. It is basically the same as Command-T but written in pure Vimscript. This means it neither requires Ruby support enabled in Vim nor does it require the compilation of some Ruby extension implemented in C.
 3.  Other extensions are either not what I wanted, for example, http://www.vim.org/scripts/script.php?script_id%3D2050[LustyJuggler], or not actively maintained any more like http://www.vim.org/scripts/script.php?script_id%3D1984[FuzzyFinder] and https://github.com/jamis/fuzzy_file_finder[fuzzy file finder].
 
-Bash
-----
+=== Bash
 
 1.  Bash completion depends on bash\_completion package. MacPorts users can do `sudo port install git-core +bash_completion`.
 2.  http://blog.bitfluent.com/post/27983389/git-utilities-you-cant-live-without[Git Utilities You Can't Live Without] blog entry has an entry for Git aware PS1.
