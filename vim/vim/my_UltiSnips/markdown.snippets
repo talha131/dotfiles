@@ -1,5 +1,5 @@
 snippet pel "Pelican metadata" bs
-Title: ${1:title}
+Title: ${1:`!p snip.rv = snip.basename.replace('-', ' ').capitalize()`}
 Tags: $2
 Category: $3
 Date: `date '+%Y-%m-%d %H:%M'`
