@@ -2,8 +2,7 @@
 :toc:
 :numbered:
 
-This is a brief guide I wrote and keep updated for my benefit.
-It servers me any time I have to setup a new Windows or Mac machine for personal use.
+This guide is written to help me setup new Windows and Mac machines.
 
 == Windows
 
