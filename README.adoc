@@ -68,68 +68,73 @@ Install
 
 === Install Applications
 
-. Install http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows Update MiniTool]
-. Install https://github.com/canton7/SyncTrayzor[SyncTazor]
-.. Sync with other computers
-. Install https://1password.com/downloads/[1Password]
-. Install https://www.mozilla.org/en-US/firefox/developer/[Firefox Developer Edition]
+. http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows Update MiniTool]
+. https://github.com/canton7/SyncTrayzor[SyncTazor]
+.. Setup sync with other computers
+. https://1password.com/downloads/[1Password]
+. https://www.mozilla.org/en-US/firefox/developer/[Firefox Developer Edition]
 .. Enable Firefox sync
 .. Login to RescueTime plugin
 .. Configure Pray Times plugin
 .. Install https://agilebits.com/onepassword/extensions[1Password extension]
-. Install https://www.rescuetime.com/get_rescuetime[RescueTime]
-. Install https://conemu.github.io/en/[ConEmu Windows Terminal]
-.. Open __Settings__ -> __Integration__. Click on __Register__ to add ConEmu to context menu
-. Install https://mridgers.github.io/clink/[Clink].
-. Install http://www.revouninstaller.com/download-freeware-version.php[Revo Uninstaller Freeware]
-. Install https://sharpkeys.codeplex.com/[SharpKeys]
-. Install https://git-for-windows.github.io/[Git for Windows]
+. https://www.rescuetime.com/get_rescuetime[RescueTime]
+. https://conemu.github.io/en/[ConEmu Windows Terminal]
+.. Open __Settings__ -> __Integration__
+.. Click on __Register__ to add ConEmu to context menu
+. https://mridgers.github.io/clink/[Clink].
+. http://www.revouninstaller.com/download-freeware-version.php[Revo Uninstaller Freeware]
+. https://sharpkeys.codeplex.com/[SharpKeys]
+. https://git-for-windows.github.io/[Git for Windows]
 . Setup https://download.qt.io/archive/qt/[Qt]
-.. Install https://www.qt.io/download-open-source/#section-9[Latest Qt Creator]
-.. Install (https://download.qt.io/archive/qt/5.5/5.5.1/)[Qt `5.5.1` for Windows 32bit VS 2013]
-. Install CDB debugger for Qt
-.. Download https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk[Windows 10 SDK online installer]. Offline installer is http://superuser.com/a/1020752/42415[not available]
-.. Either install it directly or choose to download only
-.. Installer will present a menu of features. Select __Debugging Tools for Windows__ (~100MB)
-.. Install it manually from download folder, if you had opted for download option
-. Install Visual Studio 2013
-. Install https://slproweb.com/products/Win32OpenSSL.html[Win32 OpenSSL `1.0.1` Light] into Windows System folders
-. Install (https://zealdocs.org/
-)
+.. https://www.qt.io/download-open-source/#section-9[Latest Qt Creator]
+.. https://download.qt.io/archive/qt/5.5/5.5.1/[Qt `5.5.1` for Windows 32bit VS 2013]
+.. CDB debugger for Qt
+... Download
+ https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk[Windows
+ 10 SDK online installer]. Offline installer is
+ http://superuser.com/a/1020752/42415[not available]
+... Either install it directly or choose to download only
+... Installer will present a menu of features. Select __Debugging Tools for Windows__ (~100MB)
+... Install it manually from download folder, if you had opted for download option
+. Visual Studio 2013
+. https://slproweb.com/products/Win32OpenSSL.html[Win32 OpenSSL 1.0.1 Light] into Windows System folders
+. https://zealdocs.org/[ZealDocs]
 .. Download Qt5 documentation
 .. Download C++ documentation
-. Install https://autohotkey.com/[AutoHotKey]
-. Install http://www.7-zip.org/download.html[7-Zip]
-. Install https://slack.com/downloads[Slack]
+. https://autohotkey.com/[AutoHotKey]
+. http://www.7-zip.org/download.html[7-Zip]
+. https://code.visualstudio.com/[Visual Studio Code]
+.. https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync[Visual Studio Code Settings Sync Extension]
+.. Download Visual Studio Code settings using Gist ID and Personal Access
+ Token stored in 1Password
+. Install https://www.python.org/downloads/windows/[Python2 and Python3]
+. Install https://rubyinstaller.org/[Ruby]
+. Install https://evernote.com/download/get.php?file=Win[Evernote]
+. Install https://hluk.github.io/CopyQ/[CopyQ Clipboard Manager]
+. Install http://rambox.pro/[Rambox] 
+.. Enable and Setup
+... Slack
+... Inbox (Personal)
+... Inbox (Work)
+... Gmail (University)
+... WhatsApp
+... Telegram
+... IRC Clound
+.. Setup Google Calendar
+... Url: http://google.com/calendar
+... Logo: https://i.imgur.com/taT0Yxn.png
+.. Setup Google Spreadsheets
+... Url: https://docs.google.com/spreadsheets
+... Logo: https://i.imgur.com/Ny6YHlK.png 
+. http://www.softwareok.com/?Download=DontSleep[Don't Sleep Utility]
+.. Set __Options__ to __Start Minimized__ and __Start with Windows__
 . Install Chocolatey Packages
 .. Install https://chocolatey.org/install[Chocolatey]
 .. Install https://github.com/ggreer/the_silver_searcher/wiki/Windows[Ag - The Silver Searcher]
-. Install https://www.python.org/downloads/windows/[Python2 and Python3]
-. Install https://rubyinstaller.org/[Ruby]
-. https://code.visualstudio.com/[Visual Studio Code]
-.. Install https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync[Visual Studio Code Settings Sync]
-.. Download Visual Studio Code settings
+
+=== Fonts
+
 . Install https://github.com/google/fonts/tree/master/ofl/inconsolata[Inconsolata fonts]
-. Install https://evernote.com/download/get.php?file=Win[Evernote]
-. Install https://hluk.github.io/CopyQ/[CopyQ Clipboard Manager]
-. Install http://www.softwareok.com/?Download=DontSleep[Don't Sleep Utility]
-.. Alternate is http://desmondbrand.com/caffeinated/[Caffeinated] but it requires .Net 3.5
-.. Another alternate is http://www.zhornsoftware.co.uk/caffeine/[Caffeine] but it http://vi.stackexchange.com/questions/3342/using-vim-and-caffeine-on-the-same-machine[keeps inserting `<F15>` in Vim]
-.. Set options in Don't Sleep to Start Minimized and Start with Windows
-. Install http://meetfranz.com/[Franz]
-.. Clone https://github.com/talha131/plugins.git[fork of plugins repository]
-.. Paste plugins
-... Google Calendar
-... Google Spreadsheets
-... Facebook
-.. Setup
-... Inbox for personal email
-... Inbox for office email
-... Personal Google Calendar
-... Google Spreadsheets
-... WhatsApp
-... Telegram
-... IRC Cloud
 
 === Download Applications
 
