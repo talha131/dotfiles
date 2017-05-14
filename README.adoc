@@ -26,7 +26,7 @@ Install a fresh copy of Windows 10. Then follow these steps.
 . Set time zone
 . Use 24 hour time format
 
-=== Disable Automatic Updates
+=== [line-through]#Disable Automatic Updates#
 
 WARNING: This section may not be relevant after Windows 10 anniversary
  update
