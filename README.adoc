@@ -128,6 +128,9 @@ Install
 ... Logo: https://i.imgur.com/Ny6YHlK.png 
 . http://www.softwareok.com/?Download=DontSleep[Don't Sleep Utility]
 .. Set __Options__ to __Start Minimized__ and __Start with Windows__
+. MS Office
+. https://www.sumatrapdfreader.org/free-pdf-reader.html[Sumatra PDF]
+. https://www.dropbox.com/install[Dropbox]
 . Install Chocolatey Packages
 .. Install https://chocolatey.org/install[Chocolatey]
 .. Install https://github.com/ggreer/the_silver_searcher/wiki/Windows[Ag - The Silver Searcher]
