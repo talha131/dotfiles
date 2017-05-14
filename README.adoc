@@ -28,9 +28,12 @@ Install a fresh copy of Windows 10. Then follow these steps.
 
 === Disable Automatic Updates
 
-WARNING: This section may not be relevant after Windows 10 anniversary update
+WARNING: This section may not be relevant after Windows 10 anniversary
+ update
 
-Windows 10 automatic updates mess up with drivers, rendering my machine unstable. I had to reinstall Windows 10 at least 10 times before learning my lesson to never to trust Windows 10 automatic updates.
+Windows 10 automatic updates messed up device drivers, rendering my machine
+ unstable. I had to reinstall Windows 10 at least 10 times before learning my
+ lesson to not to trust Windows 10 automatic updates.
 
 .Disable Windows Update Service
 
@@ -40,21 +43,28 @@ Windows 10 automatic updates mess up with drivers, rendering my machine unstable
 .Disable Windows Driver Update
 
 . Open driver update setting, using
+
     rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,2
+
 . Click on __Device Installation Settings__ and disable drivers updates
+
+Help article on https://support.microsoft.com/en-us/kb/3073930[How to
+ temporarily prevent a driver update from reinstalling in Windows 10] may be
+ useful, though it didn't do much for me.
 
 .Edit Group Policy
 
-. Open `gpedit.msc`+
-  __Computer Configuration__ -> __Administrative Templates__ -> __Windows Components__ -> __Windows Update__ -> __Configure Automatic Updates__
-. Enable it
+. Open `gpedit.msc`
+. __Computer Configuration__ -> __Administrative Templates__ -> __Windows Components__
+-> __Windows Update__ -> __Configure Automatic Updates__
+. Enable __Configure Automatic Updates__
 . Choose __Notify to download and notify to install__
 
-. Download Windows Update Manually
+.Update Windows Manually
 
-Update Windows Defender manually. Later use __Windows Update MiniTool__ for installing selective updates.
-
-Also download https://support.microsoft.com/en-us/kb/3073930[this tool] from Microsoft support website. It hasn't been of any use at the time of writing but just keep it in case it may prove useful.
+Install
+ http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows
+ Update MiniTool] and use it to update Windows manually.
 
 === Install Applications
 
