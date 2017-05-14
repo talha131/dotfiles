@@ -119,7 +119,7 @@ Install
 ... Gmail (University)
 ... WhatsApp
 ... Telegram
-... IRC Clound
+... IRC Cloud
 .. Setup Google Calendar
 ... Url: http://google.com/calendar
 ... Logo: https://i.imgur.com/taT0Yxn.png
