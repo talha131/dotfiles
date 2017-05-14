@@ -120,6 +120,7 @@ Install
 ... WhatsApp
 ... Telegram
 ... IRC Cloud
+.. Setup https://github.com/saenzramiro/rambox/wiki/Inject-JavaScript-Code[auto reload for Slack]
 .. Setup Google Calendar
 ... Url: http://google.com/calendar
 ... Logo: https://i.imgur.com/taT0Yxn.png
