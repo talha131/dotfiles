@@ -140,7 +140,7 @@ Install
 
 . Install https://github.com/google/fonts/tree/master/ofl/inconsolata[Inconsolata fonts]
 
-=== Download Applications
+=== Download Portable Applications
 
 Create a folder `bin` in `%HOMEPATH%`, using `mkdir %HOMEPATH%\bin` command. This folder is referred to as `bin`, henceforth.
 
@@ -292,13 +292,14 @@ See http://superuser.com/a/37923/42415[this link] for details.
 
 ==== AutoHotKey
 
-To auto start the AutoHotKey script every time windows starts. Start `cmd` with administrative privilege in ConEmu. Create symbolic links thusly,
+To auto start the AutoHotKey script every time windows starts. Start `cmd`
+ with administrative privilege in ConEmu. Create symbolic links thusly,
 
-```
+```powershell
 mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOMEPATH%\Repos\dotfiles\autohotkey\init.ahk
 ```
 
-===== Install AutoJump
+==== Install AutoJump
 
 You must have Clink installed before you install AutoJump
 
@@ -310,7 +311,7 @@ You must have Clink installed before you install AutoJump
 1. Install AutoJump using `python install.py`
 1. Successful installation will output a path, add this path your `%PATH%`.
 
-===== Clink
+==== Clink
 
 You can view Clink settings and configuration directory using `clink set` command.
 
