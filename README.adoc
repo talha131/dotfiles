@@ -68,7 +68,6 @@ Install
 
 === Install Applications
 
-. http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows Update MiniTool]
 . https://github.com/canton7/SyncTrayzor[SyncTazor]
 .. Setup sync with other computers
 . https://1password.com/downloads/[1Password]
@@ -127,8 +126,6 @@ Install
 .. Setup Google Spreadsheets
 ... Url: https://docs.google.com/spreadsheets
 ... Logo: https://i.imgur.com/Ny6YHlK.png 
-. http://www.softwareok.com/?Download=DontSleep[Don't Sleep Utility]
-.. Set __Options__ to __Start Minimized__ and __Start with Windows__
 . MS Office
 . https://www.sumatrapdfreader.org/free-pdf-reader.html[Sumatra PDF]
 . https://www.dropbox.com/install[Dropbox]
@@ -142,22 +139,36 @@ Install
 
 === Download Portable Applications
 
-Create a folder `bin` in `%HOMEPATH%`, using `mkdir %HOMEPATH%\bin` command. This folder is referred to as `bin`, henceforth.
+Create a folder `bin` in `%HOMEPATH%`,
 
-Download following apps and extract them in `bin` folder, and add their path to `%PATH%` variable.
+----
+mkdir %HOMEPATH%\bin
+----
 
-To edit `%PATH%` variable, open Environment Variables using `rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,3`.
+This folder is referred to as `bin` henceforth.
 
-1. https://tuxproject.de/projects/vim/[Vim]
-1. http://luabinaries.sourceforge.net/[Lua]
-	1. Navigate and download from `Windows Libraries/Dynamic` folder
+Download following apps and extract them in `bin` folder,
+
+ . https://tuxproject.de/projects/vim/[Vim] 
+ . http://luabinaries.sourceforge.net/[Lua] 
+ .. Navigate and download from `Windows Libraries/Dynamic` folder
+. http://www.softwareok.com/?Download=DontSleep[Don't Sleep Utility]
+.. Set __Options__ to __Start Minimized__ and __Start with Windows__
+. http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows Update MiniTool]
+
+Add their path to `%PATH%` variable.
+
+To edit `%PATH%` variable, open Environment Variables using 
+ 
+----
+rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,3
+----
 
 You can check path of each command using `where` command. For example,
 
-```
-> where gvim
-C:\Users\talha\bin\complete-x64\gvim.exe
-```
+----
+> where gvim C:\Users\talha\bin\complete-x64\gvim.exe 
+----
 
 You can use it to test each downloaded program is available from `%PATH%`.
 
