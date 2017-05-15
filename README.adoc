@@ -41,6 +41,7 @@ Use `scoop install` to install following applications,
 . cmder
 . curl
 . git
+. llvm
 . lua
 . openssh
 . ruby
