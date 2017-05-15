@@ -337,7 +337,7 @@ To have https://github.com/morhetz/gruvbox[Gruvbox] dark theme like background i
 ==== Disable Automatic Updates
 
 WARNING: This section may not be relevant after Windows 10 anniversary
- update
+ update. I did not face issue with Windows update after anniversary update.
 
 Windows 10 automatic updates messed up device drivers, rendering my machine
  unstable. I had to reinstall Windows 10 at least 10 times before learning my
