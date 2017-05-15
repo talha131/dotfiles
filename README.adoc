@@ -28,7 +28,7 @@ Install a fresh copy of Windows 10. Then follow these steps.
 
 === Install Applications using `Scoop`
 
-For following applications, first install http://scoop.sh/[Scoop].
+Install http://scoop.sh/[Scoop].
 
 [source, powershell]
 ----
