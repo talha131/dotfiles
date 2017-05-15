@@ -28,16 +28,24 @@ Install a fresh copy of Windows 10. Then follow these steps.
 
 === Install Applications using `Scoop`
 
-. http://scoop.sh/[Scoop]
-.. ag
-.. cmder
-.. curl
-.. lua
-.. ruby
-.. vim
-.. wget
-.. yarn
-.. youtube-dl
+For following applications, first install http://scoop.sh/[Scoop].
+
+[source, powershell]
+----
+iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+----
+
+Use `scoop install` to install following applications,
+
+. ag
+. cmder
+. curl
+. lua
+. ruby
+. vim
+. wget
+. yarn
+. youtube-dl
 
 === Install Applications
 
