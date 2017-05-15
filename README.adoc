@@ -49,6 +49,61 @@ Use `scoop install` to install following applications,
 . yarn
 . youtube-dl
 
+==== Configure Git
+
+.Generate SSH Keys
+
+After installing `git` and `openssh`, run `ssh-keygen` command in Powershell.
+
+[source, powershell]
+----
+PS> ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/you//.ssh/id_rsa): [press enter]
+Enter passphrase (empty for no passphrase): [type your password]
+Enter same passphrase again: [and once more]
+...
+----
+
+https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/[Add
+ new SSH key to Github account].
+
+.Use Pshazz to remember SSH password
+
+Pshazz includes a plugin for SSH that can save your SSH key password in
+Windows Credential Manager so you don't need to re-type it every time you
+push to your Github repo. Install it like this:
+
+----
+scoop install pshazz
+----
+
+You should see a popup asking for your SSH key password. Enter it and check
+the box to save your password. Back in your Powershell session, you should
+see an Identity Added message. 
+ 
+Whenever you start a Powershell session from
+now on, Pshazz will make sure the ssh-agent is running and load your private
+key using your saved password
+
+.Test SSH connection
+
+To make sure everything's working, restart Powershell and then run this
+command
+
+----
+ssh -T git@github.com
+----
+
+After a warning or two, you should see a message like this:
+
+----
+Hi <username>! You've successfully authenticated, but GitHub does not provide shell access. 
+----
+
+https://help.github.com/articles/testing-your-ssh-connection/[Visit Github help]
+for details.
+
 === Install Applications
 
 . https://github.com/canton7/SyncTrayzor[SyncTazor]
@@ -151,9 +206,12 @@ You can check path of each command using `where` command. For example,
 
 You can use it to test each downloaded program is available from `%PATH%`.
 
-=== Configure
+=== Configure Keyboard and Mouse
 
 ==== Map Keys
+
+NOTE: My Windows machine is a Macbook. Left Win is actually Left Cmd key
+which is right next to the space bar.
 
 Use SharpKeys to,
 
