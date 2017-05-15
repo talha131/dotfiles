@@ -299,27 +299,6 @@ Open Vim, ignore errors and issue `:PlugInstall!` to install all plugins and
 
 Restart Vim. This time there should be no errors.
 
-===== Diff
-
-IMPORTANT: Tuxproject Vim does not include a `diff.exe`.
-`diff` or `Gdiff` (in Vim Fugitive) may not work.
-
-Check output of
-
-----
-:!where diff
-----
-
-If the result is empty or `Gdiff` is not working then add `diff.exe` from Git
- installation to your `%PATH%`.
-
-Open your Environment Variables, edit `%PATH%` to add `C:\Program
- Files\Git\usr\bin`.
-
-See this
- https://github.com/tpope/vim-fugitive/issues/680#issuecomment-134650380[Github
- issue] for details.
-
 ===== Add gVim to Context Menu
 
 Portable version of Vim from Tuxproject which does not come with an
@@ -453,6 +432,29 @@ manages them.
 . https://conemu.github.io/en/[ConEmu Windows Terminal]
 .. Open __Settings__ -> __Integration__
 .. Click on __Register__ to add ConEmu to context menu
+
+==== Diff for Vim
+
+IMPORTANT: Tuxproject Vim does not include a `diff.exe`.
+`diff` or `Gdiff` (in Vim Fugitive) may not work.
+On the other hand, https://github.com/vim/vim-win32-installer[Vim Win32
+Installer] is shipped with `diff`.
+
+Check output of
+
+----
+:!where diff
+----
+
+If the result is empty or `Gdiff` is not working then add `diff.exe` from Git
+ installation to your `%PATH%`.
+
+Open your Environment Variables, edit `%PATH%` to add `C:\Program
+ Files\Git\usr\bin`.
+
+See this
+ https://github.com/tpope/vim-fugitive/issues/680#issuecomment-134650380[Github
+ issue] for details.
 
 == Outdated Content
 
