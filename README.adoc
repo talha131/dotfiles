@@ -40,7 +40,9 @@ Use `scoop install` to install following applications,
 . ag
 . cmder
 . curl
+. git
 . lua
+. openssh
 . ruby
 . vim
 . wget
