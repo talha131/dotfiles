@@ -58,9 +58,6 @@ Use `scoop install` to install following applications,
 .. Configure Pray Times plugin
 .. Install https://agilebits.com/onepassword/extensions[1Password extension]
 . https://www.rescuetime.com/get_rescuetime[RescueTime]
-. https://conemu.github.io/en/[ConEmu Windows Terminal]
-.. Open __Settings__ -> __Integration__
-.. Click on __Register__ to add ConEmu to context menu
 . https://mridgers.github.io/clink/[Clink].
 . http://www.revouninstaller.com/download-freeware-version.php[Revo Uninstaller Freeware]
 . https://sharpkeys.codeplex.com/[SharpKeys]
@@ -345,6 +342,9 @@ To have https://github.com/morhetz/gruvbox[Gruvbox] dark theme like background i
 
 === Deprecated Notes
 
+Notes under this section are currently not in use. I keep them around for probable
+future use.
+
 ==== Disable Automatic Updates
 
 WARNING: This section may not be relevant after Windows 10 anniversary
@@ -385,6 +385,14 @@ Install
  http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows
  Update MiniTool] and use it to update Windows manually.
 
+==== Install Applications
+
+WARNING: Following applications have been replaced by their alternatives or `scoop`
+manages them.
+
+. https://conemu.github.io/en/[ConEmu Windows Terminal]
+.. Open __Settings__ -> __Integration__
+.. Click on __Register__ to add ConEmu to context menu
 
 == Outdated Content
 
