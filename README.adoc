@@ -26,6 +26,19 @@ Install a fresh copy of Windows 10. Then follow these steps.
 . Set time zone
 . Use 24 hour time format
 
+=== Install Applications using `Scoop`
+
+. http://scoop.sh/[Scoop]
+.. ag
+.. cmder
+.. curl
+.. lua
+.. ruby
+.. vim
+.. wget
+.. yarn
+.. youtube-dl
+
 === Install Applications
 
 . https://github.com/canton7/SyncTrayzor[SyncTazor]
@@ -89,16 +102,6 @@ Install a fresh copy of Windows 10. Then follow these steps.
 . MS Office
 . https://www.sumatrapdfreader.org/free-pdf-reader.html[Sumatra PDF]
 . https://www.dropbox.com/install[Dropbox]
-. http://scoop.sh/[Scoop]
-.. ag
-.. cmder
-.. curl
-.. lua
-.. ruby
-.. vim
-.. wget
-.. yarn
-.. youtube-dl
 . Install Chocolatey Packages
 .. Install https://chocolatey.org/install[Chocolatey]
 
