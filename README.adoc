@@ -129,9 +129,18 @@ Install
 . MS Office
 . https://www.sumatrapdfreader.org/free-pdf-reader.html[Sumatra PDF]
 . https://www.dropbox.com/install[Dropbox]
+. http://scoop.sh/[Scoop]
+.. ag
+.. cmder
+.. curl
+.. lua
+.. ruby
+.. vim
+.. wget
+.. yarn
+.. youtube-dl
 . Install Chocolatey Packages
 .. Install https://chocolatey.org/install[Chocolatey]
-.. Install https://github.com/ggreer/the_silver_searcher/wiki/Windows[Ag - The Silver Searcher]
 
 === Fonts
 
