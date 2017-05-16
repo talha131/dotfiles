@@ -38,7 +38,6 @@ iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 Use `scoop install` to install following applications,
 
 . ag
-. cmder
 . curl
 . git
 . llvm
