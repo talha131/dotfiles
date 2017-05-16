@@ -50,6 +50,23 @@ Use `scoop install` to install following applications,
 . yarn
 . youtube-dl
 
+==== Scoop Extras
+
+Add `scoop` "extras" bucket.
+
+----
+scoop bucket add extras
+---- 
+
+Then install following applications,
+
+. atom
+. conemu
+. sharex
+. SumatraPdf
+. vccode
+
+
 ==== Configure Git
 
 .Generate SSH Keys
