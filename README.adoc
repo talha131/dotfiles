@@ -67,7 +67,12 @@ Then install following applications,
 
 === Configure Applications Post Install
 
-==== Configure Git
+==== Add ConEmu to context menu
+
+. Open __Settings__ -> __Integration__
+. Click on __Register__ to add ConEmu to context menu
+
+==== Configure SSH keys for Git
 
 .Generate SSH Keys
 
@@ -448,8 +453,6 @@ WARNING: Following applications have been replaced by their alternatives or `sco
 manages them.
 
 . https://conemu.github.io/en/[ConEmu Windows Terminal]
-.. Open __Settings__ -> __Integration__
-.. Click on __Register__ to add ConEmu to context menu
 
 ==== Diff for Vim
 
