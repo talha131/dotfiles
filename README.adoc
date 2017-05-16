@@ -238,9 +238,9 @@ which is right next to the space bar.
 
 Use SharpKeys to,
 
-1. Map Caps Lock to Left Ctrl key
-1. Map Left Ctrl to Left Win key
-1. Map Left Win to Right Ctrl key
+. Map Caps Lock to Left Ctrl key
+. Map Left Ctrl to Left Win key
+. Map Left Win to Right Ctrl key
 
 ==== Track Pad
 
@@ -353,13 +353,13 @@ mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOMEP
 
 You must have Clink installed before you install AutoJump
 
-1. Clone https://github.com/wting/autojump[AutoJump]
-1. Add https://github.com/wting/autojump/issues/436[patch]
-1. Open `cmd`
-1. Make sure Clink is working in `cmd`
-1. Switch to AutoJump directory
-1. Install AutoJump using `python install.py`
-1. Successful installation will output a path, add this path your `%PATH%`.
+. Clone https://github.com/wting/autojump[AutoJump]
+. Add https://github.com/wting/autojump/issues/436[patch]
+. Open `cmd`
+. Make sure Clink is working in `cmd`
+. Switch to AutoJump directory
+. Install AutoJump using `python install.py`
+. Successful installation will output a path, add this path your `%PATH%`.
 
 ==== Clink
 
@@ -390,17 +390,17 @@ To have https://github.com/morhetz/gruvbox[Gruvbox] dark theme like background i
 
 === Urdu Support
 
-1. Add Urdu language support to Windows 10
-1. Install https://urdu.ca/2[Phonetic Keyboard]
-1. Install fonts
-    1. http://font.urduweb.org/downloads/357-decotype-naskh-regular[DecoType Naskh Regular]
-    1. http://font.urduweb.org/downloads/363-diwani-letter-regular[Diwani Letter Regular]
-    1. http://font.urduweb.org/downloads/243-khat-e-sulas-regular[Khat-e-Sulas Regular]
-    1. http://font.urduweb.org/downloads/244-khat-e-sulas-shipped-regular[Khat-e-Sulas Shipped Regular]
-    1. http://font.urduweb.org/downloads/376-old-antic-bold-regular[Old Antic Bold Regular]
-    1. http://www.noorehidayat.org/index.php?p=cnt&c=noorehuda.ttf[NooreHuda]
-    1. http://font.urduweb.org/downloads/249-jameel-noori-nastaleeq-regular[Jameel Noori Nastaleeq Regular]
-    1. https://brushez.com/free_download/10eoM/39610[FS Diwani]
+. Add Urdu language support to Windows 10
+. Install https://urdu.ca/2[Phonetic Keyboard]
+. Install fonts
+    . http://font.urduweb.org/downloads/357-decotype-naskh-regular[DecoType Naskh Regular]
+    . http://font.urduweb.org/downloads/363-diwani-letter-regular[Diwani Letter Regular]
+    . http://font.urduweb.org/downloads/243-khat-e-sulas-regular[Khat-e-Sulas Regular]
+    . http://font.urduweb.org/downloads/244-khat-e-sulas-shipped-regular[Khat-e-Sulas Shipped Regular]
+    . http://font.urduweb.org/downloads/376-old-antic-bold-regular[Old Antic Bold Regular]
+    . http://www.noorehidayat.org/index.php?p=cnt&c=noorehuda.ttf[NooreHuda]
+    . http://font.urduweb.org/downloads/249-jameel-noori-nastaleeq-regular[Jameel Noori Nastaleeq Regular]
+    . https://brushez.com/free_download/10eoM/39610[FS Diwani]
 
 === Deprecated Notes
 
@@ -491,33 +491,33 @@ Following are my not so comprehensive and perhaps out of date notes.
 === Git
 
 
-1.  http://dropshado.ws/post/7844857440/gitconfig-colors[David DeSandro] blog entry is a good start point.
-2.  http://cheat.errtheblog.com/s/git[Cheat sheets] has more comprehensive entry.
+. http://dropshado.ws/post/7844857440/gitconfig-colors[David DeSandro] blog entry is a good start point.
+. http://cheat.errtheblog.com/s/git[Cheat sheets] has more comprehensive entry.
 
 === Vim
 
-1.  https://chrome.google.com/webstore/detail/godjoomfiimiddapohpmfklhgmbfffjj[Vrome] is a Google Chrome extension.
+. https://chrome.google.com/webstore/detail/godjoomfiimiddapohpmfklhgmbfffjj[Vrome] is a Google Chrome extension.
 
-===== Auto Close
+==== Auto Close
 
-1.  http://stackoverflow.com/q/883437/177116[SO thread] has got some good comments.
-1.  I decided to use Thiago Alves/Townk's https://github.com/Townk/vim-autoclose[plugin].
-1.  http://www.vim.org/scripts/script.php?script_id=2009[Townk's plugin tutorial].
+. http://stackoverflow.com/q/883437/177116[SO thread] has got some good comments.
+. I decided to use Thiago Alves/Townk's https://github.com/Townk/vim-autoclose[plugin].
+. http://www.vim.org/scripts/script.php?script_id=2009[Townk's plugin tutorial].
 
-===== Vim Markdown
+==== Vim Markdown
 
-1.  https://github.com/tpope/vim-markdown[tpope/vim-markdown] is mostly used. But it does not conceal text markers in Markdown file.
-2.  https://github.com/xolox/vim-markdown[xolox/vim-markdown] does the concealing. See https://github.com/tpope/vim-markdown/pull/9#issuecomment-3098050[this image] for example.
-3.  But you have to switch to xolox/vim-markdown `conceal` branch to get his code. Use `git checkout -b conceal remotes/origin/conceal` to
+. https://github.com/tpope/vim-markdown[tpope/vim-markdown] is mostly used. But it does not conceal text markers in Markdown file.
+. https://github.com/xolox/vim-markdown[xolox/vim-markdown] does the concealing. See https://github.com/tpope/vim-markdown/pull/9#issuecomment-3098050[this image] for example.
+. But you have to switch to xolox/vim-markdown `conceal` branch to get his code. Use `git checkout -b conceal remotes/origin/conceal` to
     checkout the branch.
 
-===== Fuzzy File Finder
+==== Fuzzy File Finder
 
-1.  I tried https://wincent.com/products/command-t/[command-t] but I could not make it work. It requires that your copy of Vim should be compiled with the same version of ruby with which you compiled command-t, which effectively means you have to compile Vim yourself.
-2.  I took the easier way, use http://kien.github.com/ctrlp.vim/[CtrlP]. It is basically the same as Command-T but written in pure Vimscript. This means it neither requires Ruby support enabled in Vim nor does it require the compilation of some Ruby extension implemented in C.
-3.  Other extensions are either not what I wanted, for example, http://www.vim.org/scripts/script.php?script_id%3D2050[LustyJuggler], or not actively maintained any more like http://www.vim.org/scripts/script.php?script_id%3D1984[FuzzyFinder] and https://github.com/jamis/fuzzy_file_finder[fuzzy file finder].
+. I tried https://wincent.com/products/command-t/[command-t] but I could not make it work. It requires that your copy of Vim should be compiled with the same version of ruby with which you compiled command-t, which effectively means you have to compile Vim yourself.
+. I took the easier way, use http://kien.github.com/ctrlp.vim/[CtrlP]. It is basically the same as Command-T but written in pure Vimscript. This means it neither requires Ruby support enabled in Vim nor does it require the compilation of some Ruby extension implemented in C.
+. Other extensions are either not what I wanted, for example, http://www.vim.org/scripts/script.php?script_id%3D2050[LustyJuggler], or not actively maintained any more like http://www.vim.org/scripts/script.php?script_id%3D1984[FuzzyFinder] and https://github.com/jamis/fuzzy_file_finder[fuzzy file finder].
 
 === Bash
 
-1.  Bash completion depends on bash\_completion package. MacPorts users can do `sudo port install git-core +bash_completion`.
-2.  http://blog.bitfluent.com/post/27983389/git-utilities-you-cant-live-without[Git Utilities You Can't Live Without] blog entry has an entry for Git aware PS1.
+. Bash completion depends on bash\_completion package. MacPorts users can do `sudo port install git-core +bash_completion`.
+. http://blog.bitfluent.com/post/27983389/git-utilities-you-cant-live-without[Git Utilities You Can't Live Without] blog entry has an entry for Git aware PS1.
