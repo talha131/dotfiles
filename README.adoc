@@ -407,7 +407,7 @@ To have https://github.com/morhetz/gruvbox[Gruvbox] dark theme like background i
 Notes under this section are currently not in use. I keep them around for probable
 future use.
 
-==== Disable Automatic Updates
+==== [line-through]#Disable Automatic Updates#
 
 WARNING: This section may not be relevant after Windows 10 anniversary
  update. I did not face issue with Windows update after anniversary update.
@@ -447,14 +447,14 @@ Install
  http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows
  Update MiniTool] and use it to update Windows manually.
 
-==== Install Applications
+==== [line-through]#Install Applications#
 
 WARNING: Following applications have been replaced by their alternatives or `scoop`
 manages them.
 
 . https://conemu.github.io/en/[ConEmu Windows Terminal]
 
-==== Diff for Vim
+==== [line-through]#diff.exe for Vim#
 
 IMPORTANT: Tuxproject Vim does not include a `diff.exe`.
 `diff` or `Gdiff` (in Vim Fugitive) may not work.
