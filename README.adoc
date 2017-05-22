@@ -210,7 +210,7 @@ Then install following applications,
 . firefox-developer
 . rambox
 . sharex
-. Slack
+. slack
 . SumatraPdf
 . vscode
 
