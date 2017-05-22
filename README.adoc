@@ -85,7 +85,7 @@ Now restart machine and connect to internet.
 . Run 
 
     gpedit.msc
-    
+
 . Go to __Computer Configuration__ -> __Administrative Templates__ -> __OneDrive__
 . Disable all OneDrive  related settings
 
@@ -134,6 +134,25 @@ See http://superuser.com/a/364353/42415[SuperUser answer] for details.
 
 Natural direction of scrolling is how you scroll on iPhone, Android and
  other touch devices. Content scrolls in the direction of your fingers.
+
+.Natural Scrolling
+
+Sometimes I have a hard time to wrap my head around natural versus traditional scrolling.
+Following is a simple test to figure out if we have been successful in inverting the scroll direction.
+Basically, content scrolls oppositely to the direction in which you move your fingers on the trackpad.
+For example, moving fingers up will make content scroll downward.
+
+To test natural vertical scrolling is working,
+
+. Scroll to the bottom
+. Move your fingers upward on the trackpad
+. If scroll bar does not budge, then vertical scrolling is natural 
+
+To test natural horizontal scrolling is working, 
+
+. Scroll to extreme right
+. Move your fingers towards left on the trackpad
+. If scroll bar does not budge then horizontal scrolling is natural
 
 ==== Mouse Properties
 
