@@ -318,6 +318,16 @@ Login to sync account of
 . Login to RescueTime plugin
 . Configure Pray Times plugin
 
+==== Install Asciidoctor
+
+After `ruby` is installed, install http://asciidoctor.org/docs/install-toolchain/#install-using-code-gem-code[Asciidoctor]
+
+    gem install asciidoctor
+
+Update Asciidoctor using 
+
+    gem update asciidoctor
+
 === Install Applications
 
 . https://github.com/canton7/SyncTrayzor[SyncTazor]
