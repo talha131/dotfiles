@@ -19,17 +19,17 @@ Make sure you have Windows 10 Anniversary Update available for offline installat
 
 ==== Drivers
 
-For installing Windows on Macbook Pro, you need to download Bootcamp.
+For installing Windows on MacBook Pro, you need to download Bootcamp.
 
 . Clone https://github.com/timsutton/brigadier[Brigadier]
 
     git clone --depth 1  https://github.com/timsutton/brigadier.git
 
-. Use http://www.everymac.com/ultimate-mac-lookup/[EveryMac] online tool to find your Macbook
+. Use http://www.everymac.com/ultimate-mac-lookup/[EveryMac] online tool to find your MacBook
 model identifier using serial number
 . Download Bootcamp
 
-    mkdir MacbookPro10-1
+    mkdir MacBookPro10-1
     ./brigadier -m MacBookPro10,1 -o MacBookPro10-1
 
 === Install Windows 10
@@ -83,7 +83,7 @@ Now restart machine and connect to internet.
 
 ==== Map Keys
 
-NOTE: My Windows machine is a Macbook. Left Win is actually Left Cmd key
+NOTE: My Windows machine is a MacBook. Left Win is actually Left Cmd key
 which is right next to the space bar.
 
 Use SharpKeys to,
