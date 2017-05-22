@@ -73,13 +73,19 @@ Now restart machine and connect to internet.
 
 ==== Disable Cortana
 
-. Run `gpedit.msc`
+. Run 
+    
+    gpedit.msc
+
 . Go to __Computer Configuration__ -> __Administrative Templates__ -> __Search__
 . Disable all Cortana related settings
 
 ==== Disable OneDrive 
 
-. Run `gpedit.msc`
+. Run 
+
+    gpedit.msc
+    
 . Go to __Computer Configuration__ -> __Administrative Templates__ -> __OneDrive__
 . Disable all OneDrive  related settings
 
