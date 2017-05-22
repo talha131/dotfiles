@@ -167,6 +167,19 @@ Open mouse properties using `control main.cpl`.
 . In __Pointer Options__ tab, enable __Show Location of Pointer__
 . In __Wheel__ tab, change scroll speed to 1
 
+=== Install Password Manager
+
+Install following applications
+
+. https://1password.com/downloads/[1Password standalone version]
+. https://www.dropbox.com/install[Dropbox]
+
+==== Post Installation tasks
+
+. Enter 1Password license key
+. Login to Dropbox and start syncing
+. Enter Windows key and activate your copy
+
 === Install Applications using `Scoop`
 
 ==== Install `Scoop`
@@ -284,7 +297,6 @@ for details.
 
 . https://github.com/canton7/SyncTrayzor[SyncTazor]
 .. Setup sync with other computers
-. https://1password.com/downloads/[1Password]
 . https://www.mozilla.org/en-US/firefox/developer/[Firefox Developer Edition]
 .. Enable Firefox sync
 .. Login to RescueTime plugin
@@ -318,7 +330,6 @@ for details.
 . Install https://evernote.com/download/get.php?file=Win[Evernote]
 . Install https://hluk.github.io/CopyQ/[CopyQ Clipboard Manager]
 . MS Office
-. https://www.dropbox.com/install[Dropbox]
 
 === Fonts
 
