@@ -32,6 +32,11 @@ model identifier using serial number
     mkdir MacBookPro10-1
     ./brigadier -m MacBookPro10,1 -o MacBookPro10-1
 
+==== Password database
+
+Make sure you have a copy of your password database stored outside Dropbox so that it can be
+accessed on a fresh system which does not have Dropbox setup.
+
 === Install Windows 10
 
 Install a fresh copy of Windows 10. Make sure you do not enable network connection during or after
