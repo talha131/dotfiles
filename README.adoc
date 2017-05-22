@@ -180,6 +180,14 @@ Install following applications
 . Login to Dropbox and start syncing
 . Enter Windows key and activate your copy
 
+==== Check Windows activation status
+
+. Type following command in Powershell
+
+    slmgr /xpr 
+
+A window will pop up that will show Windows activation status.
+
 === Install Applications using `Scoop`
 
 ==== Install `Scoop`
