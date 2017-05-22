@@ -71,6 +71,16 @@ Now restart machine and connect to internet.
 . Set time zone
 . Use 24 hour time format
 
+==== Configure Edge
+
+. Install ublock origin for Edge from Store.
+. In Edge settings,
+.. Open Microsoft Edge with Previous pages
+.. Open new tabs with A blank page
+.. Disable offer to save password
+.. Enable Send Do Not Track requests
+.. Change search engine to Google
+
 ==== Map Keys
 
 NOTE: My Windows machine is a Macbook. Left Win is actually Left Cmd key
