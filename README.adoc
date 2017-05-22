@@ -343,9 +343,6 @@ Login to sync account of
 .. Download C++ documentation
 . https://autohotkey.com/[AutoHotKey]
 . http://www.7-zip.org/download.html[7-Zip]
-. https://code.visualstudio.com/[Visual Studio Code]
-.. Download Visual Studio Code settings using Gist ID and Personal Access
- Token stored in 1Password
 . Install https://evernote.com/download/get.php?file=Win[Evernote]
 . Install https://hluk.github.io/CopyQ/[CopyQ Clipboard Manager]
 . MS Office
