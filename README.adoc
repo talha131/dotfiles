@@ -293,7 +293,6 @@ for details.
 . https://www.rescuetime.com/get_rescuetime[RescueTime]
 . https://mridgers.github.io/clink/[Clink].
 . http://www.revouninstaller.com/download-freeware-version.php[Revo Uninstaller Freeware]
-. https://git-for-windows.github.io/[Git for Windows]
 . Setup https://download.qt.io/archive/qt/[Qt]
 .. https://www.qt.io/download-open-source/#section-9[Latest Qt Creator]
 .. https://download.qt.io/archive/qt/5.5/5.5.1/[Qt `5.5.1` for Windows 32bit VS 2013]
@@ -316,31 +315,10 @@ for details.
 .. https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync[Visual Studio Code Settings Sync Extension]
 .. Download Visual Studio Code settings using Gist ID and Personal Access
  Token stored in 1Password
-. Install https://www.python.org/downloads/windows/[Python2 and Python3]
-. Install https://rubyinstaller.org/[Ruby]
 . Install https://evernote.com/download/get.php?file=Win[Evernote]
 . Install https://hluk.github.io/CopyQ/[CopyQ Clipboard Manager]
-. Install http://rambox.pro/[Rambox] 
-.. Enable and Setup
-... Slack
-... Inbox (Personal)
-... Inbox (Work)
-... Gmail (University)
-... WhatsApp
-... Telegram
-... IRC Cloud
-.. Setup https://github.com/saenzramiro/rambox/wiki/Inject-JavaScript-Code[auto reload for Slack]
-.. Setup Google Calendar
-... Url: http://google.com/calendar
-... Logo: https://i.imgur.com/taT0Yxn.png
-.. Setup Google Spreadsheets
-... Url: https://docs.google.com/spreadsheets
-... Logo: https://i.imgur.com/Ny6YHlK.png 
 . MS Office
-. https://www.sumatrapdfreader.org/free-pdf-reader.html[Sumatra PDF]
 . https://www.dropbox.com/install[Dropbox]
-. Install Chocolatey Packages
-.. Install https://chocolatey.org/install[Chocolatey]
 
 === Fonts
 
@@ -524,7 +502,7 @@ future use.
 
 ==== [line-through]#Disable Automatic Updates#
 
-WARNING: This section may not be relevant after Windows 10 anniversary
+WARNING: This section is not relevant after Windows 10 anniversary
  update. I did not face issue with Windows update after anniversary update.
 
 Windows 10 automatic updates messed up device drivers, rendering my machine
@@ -568,6 +546,28 @@ WARNING: Following applications have been replaced by their alternatives or `sco
 manages them.
 
 . https://conemu.github.io/en/[ConEmu Windows Terminal]
+. Install http://rambox.pro/[Rambox] 
+.. Enable and Setup
+... Slack
+... Inbox (Personal)
+... Inbox (Work)
+... Gmail (University)
+... WhatsApp
+... Telegram
+... IRC Cloud
+.. Setup https://github.com/saenzramiro/rambox/wiki/Inject-JavaScript-Code[auto reload for Slack]
+.. Setup Google Calendar
+... Url: http://google.com/calendar
+... Logo: https://i.imgur.com/taT0Yxn.png
+.. Setup Google Spreadsheets
+... Url: https://docs.google.com/spreadsheets
+... Logo: https://i.imgur.com/Ny6YHlK.png 
+. Install Chocolatey Packages
+.. Install https://chocolatey.org/install[Chocolatey]
+. https://www.sumatrapdfreader.org/free-pdf-reader.html[Sumatra PDF]
+. Install https://www.python.org/downloads/windows/[Python2 and Python3]
+. Install https://rubyinstaller.org/[Ruby]
+. https://git-for-windows.github.io/[Git for Windows]
 
 ==== [line-through]#diff.exe for Vim#
 
