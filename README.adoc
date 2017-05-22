@@ -165,12 +165,17 @@ Open mouse properties using `control main.cpl`.
 
 === Install Applications using `Scoop`
 
+==== Install `Scoop`
+
 Install http://scoop.sh/[Scoop].
 
-[source, powershell]
-----
-iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
-----
+. Open Powershell
+. Run 
+
+    Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+    iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+
+==== Install applications from main bucket
 
 Use `scoop install` to install following applications,
 
@@ -180,27 +185,30 @@ Use `scoop install` to install following applications,
 . llvm
 . lua
 . openssh
+. python
 . ruby
+. shasum
 . vim
 . wget
 . yarn
 . youtube-dl
 
-==== Scoop Extras
+====  Install applications from extras bucket
 
 Add `scoop` "extras" bucket.
 
-----
-scoop bucket add extras
----- 
+    scoop bucket add extras
 
 Then install following applications,
 
 . atom
 . conemu
+. firefox-developer
+. rambox
 . sharex
+. Slack
 . SumatraPdf
-. vccode
+. vscode
 
 === Configure Applications Post Install
 
