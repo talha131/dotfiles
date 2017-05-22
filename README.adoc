@@ -301,6 +301,17 @@ Hi <username>! You've successfully authenticated, but GitHub does not provide sh
 https://help.github.com/articles/testing-your-ssh-connection/[Visit Github help]
 for details.
 
+==== Download Synced Settings
+
+Login to sync account of
+
+. Firefox Sync account
+. Rambox sync account
+. Install https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync[Visual Studio Code Settings Sync Extension] by Shan Khan
+.. Download synced settings
+. Install Atom sync settings package
+.. Download synced settings
+
 === Install Applications
 
 . https://github.com/canton7/SyncTrayzor[SyncTazor]
@@ -332,7 +343,6 @@ for details.
 . https://autohotkey.com/[AutoHotKey]
 . http://www.7-zip.org/download.html[7-Zip]
 . https://code.visualstudio.com/[Visual Studio Code]
-.. https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync[Visual Studio Code Settings Sync Extension]
 .. Download Visual Studio Code settings using Gist ID and Personal Access
  Token stored in 1Password
 . Install https://evernote.com/download/get.php?file=Win[Evernote]
