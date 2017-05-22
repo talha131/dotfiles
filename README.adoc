@@ -328,7 +328,7 @@ Update Asciidoctor using
 
     gem update asciidoctor
 
-=== Fonts
+=== Install Fonts
 
 . Install https://github.com/google/fonts/tree/master/ofl/inconsolata[Inconsolata fonts]
 
@@ -339,8 +339,7 @@ Update Asciidoctor using
 . https://hluk.github.io/CopyQ/[CopyQ Clipboard Manager]
 . https://evernote.com/download/get.php?file=Win[Evernote]
 . https://www.rescuetime.com/get_rescuetime[RescueTime]
-. https://github.com/canton7/SyncTrayzor[SyncTazor]
-.. Setup sync with other computers
+. https://github.com/canton7/SyncTrayzor[SyncTrayzor]
 . https://mridgers.github.io/clink/[Clink]
 . Setup https://download.qt.io/archive/qt/[Qt]
 .. https://www.qt.io/download-open-source/#section-9[Latest Qt Creator]
@@ -360,6 +359,11 @@ Update Asciidoctor using
 .. Download C++ documentation
 . https://autohotkey.com/[AutoHotKey]
 . MS Office
+
+==== Configure Applications Post Install
+
+. Setup sync with other computers using SyncTrayzor
+
 
 === Download Portable Applications
 
