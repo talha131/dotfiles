@@ -373,9 +373,6 @@ This folder is referred to as `bin` henceforth.
 
 Download following apps and extract them in `bin` folder,
 
- . https://tuxproject.de/projects/vim/[Vim] 
- . http://luabinaries.sourceforge.net/[Lua] 
- .. Navigate and download from `Windows Libraries/Dynamic` folder
 . http://www.softwareok.com/?Download=DontSleep[Don't Sleep Utility]
 .. Set __Options__ to __Start Minimized__ and __Start with Windows__
 . http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows Update MiniTool]
@@ -478,18 +475,6 @@ To auto start the AutoHotKey script every time windows starts. Start `cmd`
 ```powershell
 mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOMEPATH%\Repos\dotfiles\autohotkey\init.ahk
 ```
-
-==== Install AutoJump
-
-You must have Clink installed before you install AutoJump
-
-. Clone https://github.com/wting/autojump[AutoJump]
-. Add https://github.com/wting/autojump/issues/436[patch]
-. Open `cmd`
-. Make sure Clink is working in `cmd`
-. Switch to AutoJump directory
-. Install AutoJump using `python install.py`
-. Successful installation will output a path, add this path your `%PATH%`.
 
 ==== Clink
 
@@ -606,6 +591,12 @@ manages them.
 . Install https://rubyinstaller.org/[Ruby]
 . https://git-for-windows.github.io/[Git for Windows]
 
+==== [line-through]#Download Portable Applications#
+
+ . https://tuxproject.de/projects/vim/[Vim] 
+ . http://luabinaries.sourceforge.net/[Lua] 
+ .. Navigate and download from `Windows Libraries/Dynamic` folder
+
 ==== [line-through]#diff.exe for Vim#
 
 IMPORTANT: Tuxproject Vim does not include a `diff.exe`.
@@ -628,6 +619,20 @@ Open your Environment Variables, edit `%PATH%` to add `C:\Program
 See this
  https://github.com/tpope/vim-fugitive/issues/680#issuecomment-134650380[Github
  issue] for details.
+
+==== [line-through]#Install AutoJump#
+
+NOTE: https://github.com/lukesampson/pshazz[pshazz] comes with `z` that is AutoJump for Powershell.
+
+You must have Clink installed before you install AutoJump
+
+. Clone https://github.com/wting/autojump[AutoJump]
+. Add https://github.com/wting/autojump/issues/436[patch]
+. Open `cmd`
+. Make sure Clink is working in `cmd`
+. Switch to AutoJump directory
+. Install AutoJump using `python install.py`
+. Successful installation will output a path, add this path your `%PATH%`.
 
 == Outdated Content
 
