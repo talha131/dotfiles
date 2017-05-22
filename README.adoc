@@ -312,15 +312,16 @@ Login to sync account of
 . Install Atom sync settings package
 .. Download synced settings
 
+==== Add Firefox Addons
+
+. Install https://agilebits.com/onepassword/extensions[1Password extension]
+. Login to RescueTime plugin
+. Configure Pray Times plugin
+
 === Install Applications
 
 . https://github.com/canton7/SyncTrayzor[SyncTazor]
 .. Setup sync with other computers
-. https://www.mozilla.org/en-US/firefox/developer/[Firefox Developer Edition]
-.. Enable Firefox sync
-.. Login to RescueTime plugin
-.. Configure Pray Times plugin
-.. Install https://agilebits.com/onepassword/extensions[1Password extension]
 . https://www.rescuetime.com/get_rescuetime[RescueTime]
 . https://mridgers.github.io/clink/[Clink].
 . http://www.revouninstaller.com/download-freeware-version.php[Revo Uninstaller Freeware]
