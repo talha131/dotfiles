@@ -214,12 +214,17 @@ Then install following applications,
 . SumatraPdf
 . vscode
 
-=== Configure Applications Post Install
+==== Configure Applications Post Install
 
-==== Add ConEmu to context menu
+===== Add ConEmu to context menu
 
 . Open __Settings__ -> __Integration__
-. Click on __Register__ to add ConEmu to context menu
+.. Click on __Register__ to add ConEmu to context menu
+. Select __Keys & Macro__
+.. Search for number
+.. Change all __Win+[0-9]__ hotkey to RCtrl
+. Select __Keyboard__
+.. Check __Win+Numbers - activate console__
 
 ==== Configure SSH keys for Git
 
