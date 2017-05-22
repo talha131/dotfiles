@@ -127,7 +127,6 @@ To invert the direction of scrolling (natural scrolling on macOS), run following
 ```powershell
 Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Enum\HID\__\__\Device` Parameters FlipFlopWheel -EA 0 | ForEach-Object { Set-ItemProperty $_.PSPath FlipFlopWheel 1 }
 Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Enum\HID\__\__\Device` Parameters FlipFlopHScroll  -EA 0 | ForEach-Object { Set-ItemProperty $_.PSPath FlipFlopHScroll 1 }
-
 ```
 
 See http://superuser.com/a/364353/42415[SuperUser answer] for details.
