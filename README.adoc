@@ -37,7 +37,19 @@ model identifier using serial number
 Install a fresh copy of Windows 10. Make sure you do not enable network connection during or after
 installation until drivers have been installed.
 
-=== Change Computer Name
+. Select custom settings and disable all settings related to Cortana etc
+. Attach flash drive with Windows 10 Anniversary Update iso and install update 
+from it
+. Again disable all Cortana related options in settings
+. Attach flash drive with Bootcamp on it, click on __Setup.exe__ to start driver installation
+. Restart machine
+
+==== Configure Bootcamp
+
+. Under __Keyboard__, enable __Use all F1, F2...__ option
+. Under __Trackpad__, enable __Tap To Click__ and __Secondary __Tap__ 
+
+==== Change Computer Name
 
 . Open __Advanced System Settings__ using
 
@@ -45,6 +57,8 @@ installation until drivers have been installed.
 
 . Click on __Change__ button
 . Rename
+
+Now restart machine and connect to internet.
 
 === Set Time
 
