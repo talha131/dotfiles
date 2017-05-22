@@ -71,6 +71,18 @@ Now restart machine and connect to internet.
 . Set time zone
 . Use 24 hour time format
 
+==== Disable Cortana
+
+. Run `gpedit.msc`
+. Go to __Computer Configuration__ -> __Administrative Templates__ -> __Search__
+. Disable all Cortana related settings
+
+==== Disable OneDrive 
+
+. Run `gpedit.msc`
+. Go to __Computer Configuration__ -> __Administrative Templates__ -> __OneDrive__
+. Disable all OneDrive  related settings
+
 ==== Configure Edge
 
 . Install ublock origin for Edge from Store.
