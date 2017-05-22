@@ -355,15 +355,14 @@ Update Asciidoctor using
 . Visual Studio 2013
 . https://slproweb.com/products/Win32OpenSSL.html[Win32 OpenSSL 1.0.1 Light] into Windows System folders
 . https://zealdocs.org/[ZealDocs]
-.. Download Qt5 documentation
-.. Download C++ documentation
 . https://autohotkey.com/[AutoHotKey]
 . MS Office
 
 ==== Configure Applications Post Install
 
 . Setup sync with other computers using SyncTrayzor
-
+. Download Qt5 documentation in ZealDocs
+. Download C++ documentation in ZealDocs
 
 === Download Portable Applications
 
