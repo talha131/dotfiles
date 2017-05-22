@@ -83,6 +83,14 @@ Now restart machine and connect to internet.
 . Go to __Computer Configuration__ -> __Administrative Templates__ -> __OneDrive__
 . Disable all OneDrive  related settings
 
+==== Turn off bluetooth
+
+. Run 
+
+    ms-settings:bluetooth
+
+. Turn off bluetooth
+
 ==== Configure Edge
 
 . Install ublock origin for Edge from Store.
