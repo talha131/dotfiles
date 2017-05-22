@@ -60,7 +60,9 @@ from it
 
 Now restart machine and connect to internet.
 
-=== Set Time
+=== Post Installation Configuration
+
+==== Set Time
 
 . Open time and date settings using
 
@@ -68,6 +70,41 @@ Now restart machine and connect to internet.
 
 . Set time zone
 . Use 24 hour time format
+
+==== Map Keys
+
+NOTE: My Windows machine is a Macbook. Left Win is actually Left Cmd key
+which is right next to the space bar.
+
+Use SharpKeys to,
+
+. Map Caps Lock to Left Ctrl key
+. Map Left Ctrl to Left Win key
+. Map Left Win to Right Ctrl key
+
+==== Track Pad
+
+To invert the direction of scrolling (natural scrolling on macOS), run following command in PowerShell with administrative privileges.
+
+```powershell
+Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Enum\HID\__\__\Device` Parameters FlipFlopWheel -EA 0 | ForEach-Object { Set-ItemProperty $_.PSPath FlipFlopWheel 1 }
+Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Enum\HID\__\__\Device` Parameters FlipFlopHScroll  -EA 0 | ForEach-Object { Set-ItemProperty $_.PSPath FlipFlopHScroll 1 }
+
+```
+
+See http://superuser.com/a/364353/42415[SuperUser answer] for details.
+
+Natural direction of scrolling is how you scroll on iPhone, Android and
+ other touch devices. Content scrolls in the direction of your fingers.
+
+==== Mouse Properties
+
+Open mouse properties using `control main.cpl`.
+
+. In __Buttons__ tab, turn on __ClickLock__
+.. In __Settings__, set duration to the shortest possible
+. In __Pointer Options__ tab, enable __Show Location of Pointer__
+. In __Wheel__ tab, change scroll speed to 1
 
 === Install Applications using `Scoop`
 
@@ -271,43 +308,6 @@ You can check path of each command using `where` command. For example,
 ----
 
 You can use it to test each downloaded program is available from `%PATH%`.
-
-=== Configure Keyboard and Mouse
-
-==== Map Keys
-
-NOTE: My Windows machine is a Macbook. Left Win is actually Left Cmd key
-which is right next to the space bar.
-
-Use SharpKeys to,
-
-. Map Caps Lock to Left Ctrl key
-. Map Left Ctrl to Left Win key
-. Map Left Win to Right Ctrl key
-
-==== Track Pad
-
-To invert the direction of scrolling (natural scrolling on macOS), run following command in PowerShell with administrative privileges.
-
-```powershell
-Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Enum\HID\__\__\Device` Parameters FlipFlopWheel -EA 0 | ForEach-Object { Set-ItemProperty $_.PSPath FlipFlopWheel 1 }
-Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Enum\HID\__\__\Device` Parameters FlipFlopHScroll  -EA 0 | ForEach-Object { Set-ItemProperty $_.PSPath FlipFlopHScroll 1 }
-
-```
-
-See http://superuser.com/a/364353/42415[SuperUser answer] for details.
-
-Natural direction of scrolling is how you scroll on iPhone, Android and
- other touch devices. Content scrolls in the direction of your fingers.
-
-==== Mouse Properties
-
-Open mouse properties using `control main.cpl`.
-
-. In __Buttons__ tab, turn on __ClickLock__
-.. In __Settings__, set duration to the shortest possible
-. In __Pointer Options__ tab, enable __Show Location of Pointer__
-. In __Wheel__ tab, change scroll speed to 1
 
 === Dotfiles
 
