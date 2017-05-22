@@ -86,6 +86,8 @@ Now restart machine and connect to internet.
 NOTE: My Windows machine is a MacBook. Left Win is actually Left Cmd key
 which is right next to the space bar.
 
+. Download and install https://sharpkeys.codeplex.com/[SharpKeys]
+
 Use SharpKeys to,
 
 . Map Caps Lock to Left Ctrl key
@@ -230,7 +232,6 @@ for details.
 . https://www.rescuetime.com/get_rescuetime[RescueTime]
 . https://mridgers.github.io/clink/[Clink].
 . http://www.revouninstaller.com/download-freeware-version.php[Revo Uninstaller Freeware]
-. https://sharpkeys.codeplex.com/[SharpKeys]
 . https://git-for-windows.github.io/[Git for Windows]
 . Setup https://download.qt.io/archive/qt/[Qt]
 .. https://www.qt.io/download-open-source/#section-9[Latest Qt Creator]
