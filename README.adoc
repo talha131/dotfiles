@@ -335,6 +335,29 @@ Open Zeal and install following docsets,
 
 . Download Qt5 documentation in ZealDocs
 
+==== Configure ShareX
+
+. Open ShareX
+. Click on __Destinations__
+. Select Imgur for __Image Uploader__
+. Click on __Destination settings... __
+.. Authorize Imgur
+.. Refresh album list
+.. Select your album
+.. Check __Upload images to selected album__
+.. Press __OK__
+. Click on __After capture tasks__
+. Select only
+.. Upload image to host
+.. Delete file locally 
+. Click __After upload tasks__
+. Select only
+.. Copy URL to clipboard
+. Click on __Hotkey settings...__
+.. Capture region to `Ctrl+Shift_4`
+.. Capture entire screen to `Ctrl+Shift+3`
+.. Capture active window to `Ctrl+Shift+Space`
+
 === Install Fonts
 
 . Install https://github.com/google/fonts/tree/master/ofl/inconsolata[Inconsolata fonts]
