@@ -228,6 +228,7 @@ Then install following applications,
 
 . atom
 . conemu
+. dont-sleep
 . firefox-developer
 . rambox
 . sharex
@@ -358,6 +359,15 @@ Open Zeal and install following docsets,
 .. Capture entire screen to `Ctrl+Shift+3`
 .. Capture active window to `Ctrl+Shift+Space`
 
+==== Configure Don't Sleep
+
+. Click __Options__, check
+.. __Start Minimized__
+.. __Start with Windows__
+. Click __Don't Sleep__,  check
+.. __Minimize to tray if Minimize__ 
+.. __Minimize to tray if Close__ 
+
 === Install Fonts
 
 . Install https://github.com/google/fonts/tree/master/ofl/inconsolata[Inconsolata fonts]
@@ -396,8 +406,6 @@ This folder is referred to as `bin` henceforth.
 
 Download following apps and extract them in `bin` folder,
 
-. http://www.softwareok.com/?Download=DontSleep[Don't Sleep Utility]
-.. Set __Options__ to __Start Minimized__ and __Start with Windows__
 . http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows Update MiniTool]
 
 Add their path to `%PATH%` variable.
@@ -624,6 +632,7 @@ manages them.
  . https://tuxproject.de/projects/vim/[Vim] 
  . http://luabinaries.sourceforge.net/[Lua] 
  .. Navigate and download from `Windows Libraries/Dynamic` folder
+. http://www.softwareok.com/?Download=DontSleep[Don't Sleep Utility]
 
 ==== [line-through]#diff.exe for Vim#
 
