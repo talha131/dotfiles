@@ -234,6 +234,7 @@ Then install following applications,
 . slack
 . SumatraPdf
 . vscode
+. zeal
 
 ==== Configure Applications Post Install
 
@@ -328,6 +329,12 @@ Update Asciidoctor using
 
     gem update asciidoctor
 
+==== Install Docsets
+
+Open Zeal and install following docsets,
+
+. Download Qt5 documentation in ZealDocs
+
 === Install Fonts
 
 . Install https://github.com/google/fonts/tree/master/ofl/inconsolata[Inconsolata fonts]
@@ -354,15 +361,12 @@ Update Asciidoctor using
 ... Install it manually from download folder, if you had opted for download option
 . Visual Studio 2013
 . https://slproweb.com/products/Win32OpenSSL.html[Win32 OpenSSL 1.0.1 Light] into Windows System folders
-. https://zealdocs.org/[ZealDocs]
 . https://autohotkey.com/[AutoHotKey]
 . MS Office
 
 ==== Configure Applications Post Install
 
 . Setup sync with other computers using SyncTrayzor
-. Download Qt5 documentation in ZealDocs
-. Download C++ documentation in ZealDocs
 
 === Download Portable Applications
 
