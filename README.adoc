@@ -348,18 +348,11 @@ Open Zeal and install following docsets,
 . https://www.rescuetime.com/get_rescuetime[RescueTime]
 . https://github.com/canton7/SyncTrayzor[SyncTrayzor]
 . https://mridgers.github.io/clink/[Clink]
-. Setup https://download.qt.io/archive/qt/[Qt]
-.. https://www.qt.io/download-open-source/#section-9[Latest Qt Creator]
-.. https://download.qt.io/archive/qt/5.5/5.5.1/[Qt `5.5.1` for Windows 32bit VS 2013]
-.. CDB debugger for Qt
-... Download
- https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk[Windows
- 10 SDK online installer]. Offline installer is
- http://superuser.com/a/1020752/42415[not available]
-... Either install it directly or choose to download only
-... Installer will present a menu of features. Select __Debugging Tools for Windows__ (~100MB)
-... Install it manually from download folder, if you had opted for download option
 . Visual Studio 2013
+. https://download.qt.io/archive/qt/5.6/5.6.2/qt-opensource-windows-x86-msvc2013-5.6.2.exe.mirrorlist[Qt 5.6.2 for Windows 32bit VS 2013]
+. https://www.qt.io/download-open-source/#section-9[Qt Creator]
+. __Debugging Tools for Windows__ from https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk[Windows
+ 10 SDK online installer]. 
 . https://slproweb.com/products/Win32OpenSSL.html[Win32 OpenSSL 1.0.1 Light] into Windows System folders
 . https://autohotkey.com/[AutoHotKey]
 . MS Office
@@ -597,6 +590,11 @@ manages them.
 . Install https://www.python.org/downloads/windows/[Python2 and Python3]
 . Install https://rubyinstaller.org/[Ruby]
 . https://git-for-windows.github.io/[Git for Windows]
+. CDB debugger for Qt
+.. Offline installer is http://superuser.com/a/1020752/42415[not available]
+... Either install it directly or choose to download only
+... Installer will present a menu of features. Select __Debugging Tools for Windows__ (~100MB)
+... Install it manually from download folder, if you had opted for download option
 
 ==== [line-through]#Download Portable Applications#
 
