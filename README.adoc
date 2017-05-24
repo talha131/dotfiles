@@ -556,33 +556,6 @@ To auto start the AutoHotKey script every time windows starts. Start `cmd`
 mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOMEPATH%\Repos\dotfiles\autohotkey\init.ahk
 ```
 
-==== Clink
-
-You can view Clink settings and configuration directory using `clink set` command.
-
-=== Color Codes
-
-To have https://github.com/morhetz/gruvbox[Gruvbox] dark theme like background in `cmd` or Git shell, use following color codes:
-
-.Color Codes
-[cols="4", options="header"]
-|===
-|Color Values
-|Red
-|Green
-|Blue
-
-|Screen Background,
-|44
-|44
-|44
-
-|Screen Text
-|218
-|198
-|144
-|===
-
 === Urdu Support
 
 . Add Urdu language support to Windows 10
@@ -722,6 +695,33 @@ You must have Clink installed before you install AutoJump
 . Switch to AutoJump directory
 . Install AutoJump using `python install.py`
 . Successful installation will output a path, add this path your `%PATH%`.
+
+==== [line-through]#Clink#
+
+You can view Clink settings and configuration directory using `clink set` command.
+
+==== [line-through]#Color Codes#
+
+To have https://github.com/morhetz/gruvbox[Gruvbox] dark theme like background in `cmd` or Git shell, use following color codes:
+
+.Color Codes
+[cols="4", options="header"]
+|===
+|Color Values
+|Red
+|Green
+|Blue
+
+|Screen Background,
+|44
+|44
+|44
+
+|Screen Text
+|218
+|198
+|144
+|===
 
 == Mac
 
