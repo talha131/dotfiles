@@ -43,7 +43,7 @@ Install a fresh copy of Windows 10. Make sure you do not enable network connecti
 installation until drivers have been installed.
 
 . Select custom settings and disable all settings related to Cortana etc
-. Attach flash drive with Windows 10 Anniversary Update iso and install update 
+. Attach flash drive with Windows 10 Anniversary Update iso and install update
 from it
 . Again disable all Cortana related options in settings
 . Attach flash drive with Bootcamp on it, click on __Setup.exe__ to start driver installation
@@ -52,7 +52,7 @@ from it
 ==== Configure Bootcamp
 
 . Under __Keyboard__, enable __Use all F1, F2...__ option
-. Under __Trackpad__, enable __Tap To Click__ and __Secondary __Tap__ 
+. Under __Trackpad__, enable __Tap To Click__ and __Secondary __Tap__
 
 ==== Change Computer Name
 
@@ -78,16 +78,16 @@ Now restart machine and connect to internet.
 
 ==== Disable Cortana
 
-. Run 
-    
+. Run
+
     gpedit.msc
 
 . Go to __Computer Configuration__ -> __Administrative Templates__ -> __Search__
 . Disable all Cortana related settings
 
-==== Disable OneDrive 
+==== Disable OneDrive
 
-. Run 
+. Run
 
     gpedit.msc
 
@@ -96,7 +96,7 @@ Now restart machine and connect to internet.
 
 ==== Turn off bluetooth
 
-. Run 
+. Run
 
     ms-settings:bluetooth
 
@@ -150,9 +150,9 @@ To test natural vertical scrolling is working,
 
 . Scroll to the bottom
 . Move your fingers upward on the trackpad
-. If scroll bar does not budge, then vertical scrolling is natural 
+. If scroll bar does not budge, then vertical scrolling is natural
 
-To test natural horizontal scrolling is working, 
+To test natural horizontal scrolling is working,
 
 . Scroll to extreme right
 . Move your fingers towards left on the trackpad
@@ -184,7 +184,7 @@ Install following applications
 
 . Type following command in Powershell
 
-    slmgr /xpr 
+    slmgr /xpr
 
 A window will pop up that will show Windows activation status.
 
@@ -195,7 +195,7 @@ A window will pop up that will show Windows activation status.
 Install http://scoop.sh/[Scoop].
 
 . Open Powershell
-. Run 
+. Run
 
     Set-ExecutionPolicy RemoteSigned -scope CurrentUser
     iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
@@ -257,7 +257,7 @@ Then install following applications,
 . Run
 
     clink autorun install
-    
+
 ==== Configure SSH keys for Git
 
 .Generate SSH Keys
@@ -275,7 +275,7 @@ Enter same passphrase again: [and once more]
 ...
 ----
 
-Add new SSH key to Github account https://github.com/settings/keys[settings]. For details see this 
+Add new SSH key to Github account https://github.com/settings/keys[settings]. For details see this
 https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/[help article].
 
 .Use Pshazz to remember SSH password
@@ -288,8 +288,8 @@ push to your Github repo. Install it like this:
 
 You should see a popup asking for your SSH key password. Enter it and check
 the box to save your password. Back in your Powershell session, you should
-see an Identity Added message. 
- 
+see an Identity Added message.
+
 Whenever you start a Powershell session from
 now on, Pshazz will make sure the ssh-agent is running and load your private
 key using your saved password
@@ -306,7 +306,7 @@ ssh -T git@github.com
 After a warning or two, you should see a message like this:
 
 ----
-Hi <username>! You've successfully authenticated, but GitHub does not provide shell access. 
+Hi <username>! You've successfully authenticated, but GitHub does not provide shell access.
 ----
 
 https://help.github.com/articles/testing-your-ssh-connection/[Visit Github help]
@@ -335,7 +335,7 @@ After `ruby` is installed, install http://asciidoctor.org/docs/install-toolchain
 
     gem install asciidoctor
 
-Update Asciidoctor using 
+Update Asciidoctor using
 
     gem update asciidoctor
 
@@ -359,7 +359,7 @@ Open Zeal and install following docsets,
 . Click on __After capture tasks__
 . Select only
 .. Upload image to host
-.. Delete file locally 
+.. Delete file locally
 . Click __After upload tasks__
 . Select only
 .. Copy URL to clipboard
@@ -374,8 +374,8 @@ Open Zeal and install following docsets,
 .. __Start Minimized__
 .. __Start with Windows__
 . Click __Don't Sleep__,  check
-.. __Minimize to tray if Minimize__ 
-.. __Minimize to tray if Close__ 
+.. __Minimize to tray if Minimize__
+.. __Minimize to tray if Close__
 
 === Install Fonts
 
@@ -393,7 +393,7 @@ Open Zeal and install following docsets,
 . https://download.qt.io/archive/qt/5.6/5.6.2/qt-opensource-windows-x86-msvc2013-5.6.2.exe.mirrorlist[Qt 5.6.2 for Windows 32bit VS 2013]
 . https://www.qt.io/download-open-source/#section-9[Qt Creator]
 . __Debugging Tools for Windows__ from https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk[Windows
- 10 SDK online installer]. 
+ 10 SDK online installer].
 . https://autohotkey.com/[AutoHotKey]
 . MS Office
 
@@ -430,7 +430,7 @@ Open Zeal and install following docsets,
 ... Incremental search
 ... Use search dialog
 ... Use ignore case
-... Show line numbers relative to cursor 
+... Show line numbers relative to cursor
 
 === Download Portable Applications
 
@@ -448,8 +448,8 @@ Download following apps and extract them in `bin` folder,
 
 Add their path to `%PATH%` variable.
 
-To edit `%PATH%` variable, open Environment Variables using 
- 
+To edit `%PATH%` variable, open Environment Variables using
+
 ----
 rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,3
 ----
@@ -457,7 +457,7 @@ rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,3
 You can check path of each command using `where` command. For example,
 
 ----
-> where gvim C:\Users\talha\bin\complete-x64\gvim.exe 
+> where gvim C:\Users\talha\bin\complete-x64\gvim.exe
 ----
 
 You can use it to test each downloaded program is available from `%PATH%`.
@@ -638,7 +638,7 @@ manages them.
 
 . https://conemu.github.io/en/[ConEmu Windows Terminal]
 . https://mridgers.github.io/clink/[Clink]
-. Install http://rambox.pro/[Rambox] 
+. Install http://rambox.pro/[Rambox]
 .. Enable and Setup
 ... Slack
 ... Inbox (Personal)
@@ -653,7 +653,7 @@ manages them.
 ... Logo: https://i.imgur.com/taT0Yxn.png
 .. Setup Google Spreadsheets
 ... Url: https://docs.google.com/spreadsheets
-... Logo: https://i.imgur.com/Ny6YHlK.png 
+... Logo: https://i.imgur.com/Ny6YHlK.png
 . Install Chocolatey Packages
 .. Install https://chocolatey.org/install[Chocolatey]
 . https://www.sumatrapdfreader.org/free-pdf-reader.html[Sumatra PDF]
@@ -669,8 +669,8 @@ manages them.
 
 ==== [line-through]#Download Portable Applications#
 
- . https://tuxproject.de/projects/vim/[Vim] 
- . http://luabinaries.sourceforge.net/[Lua] 
+ . https://tuxproject.de/projects/vim/[Vim]
+ . http://luabinaries.sourceforge.net/[Lua]
  .. Navigate and download from `Windows Libraries/Dynamic` folder
 . http://www.softwareok.com/?Download=DontSleep[Don't Sleep Utility]
 
@@ -716,7 +716,7 @@ You must have Clink installed before you install AutoJump
 ==== Install macOS
 
 macOS Recovery installs different versions of macOS depending on the key
-combination you press while starting up. 
+combination you press while starting up.
 
 Hold down one of these combinations
 immediately after pressing the power button to turn on your Mac. Release
@@ -735,11 +735,11 @@ when you see the Apple logo or a spinning globe.
 | Upgrade to the latest macOS that is compatible with your Mac.2
 
 | Shift-Option-Command-R
-| Requires macOS Sierra 10.12.4 or later 	Reinstall the macOS that came with your Mac, or the version closest to it that is still available. 
+| Requires macOS Sierra 10.12.4 or later 	Reinstall the macOS that came with your Mac, or the version closest to it that is still available.
 
 |===
 
-After finishing installation you may have to download and install __macOS Sierra__ 
+After finishing installation you may have to download and install __macOS Sierra__
 from App Store.
 
 === Post Installation Configuration
