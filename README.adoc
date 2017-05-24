@@ -387,7 +387,6 @@ Open Zeal and install following docsets,
 . https://www.qt.io/download-open-source/#section-9[Qt Creator]
 . __Debugging Tools for Windows__ from https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk[Windows
  10 SDK online installer]. 
-. https://slproweb.com/products/Win32OpenSSL.html[Win32 OpenSSL 1.0.1 Light] into Windows System folders
 . https://autohotkey.com/[AutoHotKey]
 . MS Office
 
@@ -658,6 +657,7 @@ manages them.
 ... Either install it directly or choose to download only
 ... Installer will present a menu of features. Select __Debugging Tools for Windows__ (~100MB)
 ... Install it manually from download folder, if you had opted for download option
+. https://slproweb.com/products/Win32OpenSSL.html[Win32 OpenSSL 1.0.1 Light] into Windows System folders
 
 ==== [line-through]#Download Portable Applications#
 
