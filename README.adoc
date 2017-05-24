@@ -670,3 +670,43 @@ You must have Clink installed before you install AutoJump
 . Switch to AutoJump directory
 . Install AutoJump using `python install.py`
 . Successful installation will output a path, add this path your `%PATH%`.
+
+== Mac
+
+==== Install macOS
+
+macOS Recovery installs different versions of macOS depending on the key
+combination you press while starting up. 
+
+Hold down one of these combinations
+immediately after pressing the power button to turn on your Mac. Release
+when you see the Apple logo or a spinning globe.
+
+[cols="2", options="header"]
+|===
+
+| Shortcut
+| Description
+
+| command-R
+| Reinstall the latest macOS that was installed on your Mac, without upgrading to a later version.1
+
+| Option-Command-R
+| Upgrade to the latest macOS that is compatible with your Mac.2
+
+| Shift-Option-Command-R
+| Requires macOS Sierra 10.12.4 or later 	Reinstall the macOS that came with your Mac, or the version closest to it that is still available. 
+
+|===
+
+After finishing installation you may have to download and install __macOS Sierra__ 
+from App Store.
+
+=== Post Installation Configuration
+
+. Right click on battery icon and select __Show Percentage__
+. Download Xcode from the App Store
+
+	
+
+	
