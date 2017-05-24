@@ -389,6 +389,7 @@ Open Zeal and install following docsets,
 . https://evernote.com/download/get.php?file=Win[Evernote]
 . https://www.rescuetime.com/get_rescuetime[RescueTime]
 . https://github.com/canton7/SyncTrayzor[SyncTrayzor]
+. https://dynalist.io/download[Dynalist]
 . Visual Studio 2013
 . https://download.qt.io/archive/qt/5.6/5.6.2/qt-opensource-windows-x86-msvc2013-5.6.2.exe.mirrorlist[Qt 5.6.2 for Windows 32bit VS 2013]
 . https://www.qt.io/download-open-source/#section-9[Qt Creator]
