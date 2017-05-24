@@ -205,6 +205,7 @@ Install http://scoop.sh/[Scoop].
 Use `scoop install` to install following applications,
 
 . ag
+. clink
 . curl
 . git
 . llvm
@@ -250,6 +251,13 @@ Then install following applications,
 . Select __Keyboard__
 .. Check __Win+Numbers - activate console__
 
+==== Install Clink
+
+. Open cmd
+. Run
+
+    clink autorun install
+    
 ==== Configure SSH keys for Git
 
 .Generate SSH Keys
@@ -381,7 +389,6 @@ Open Zeal and install following docsets,
 . https://evernote.com/download/get.php?file=Win[Evernote]
 . https://www.rescuetime.com/get_rescuetime[RescueTime]
 . https://github.com/canton7/SyncTrayzor[SyncTrayzor]
-. https://mridgers.github.io/clink/[Clink]
 . Visual Studio 2013
 . https://download.qt.io/archive/qt/5.6/5.6.2/qt-opensource-windows-x86-msvc2013-5.6.2.exe.mirrorlist[Qt 5.6.2 for Windows 32bit VS 2013]
 . https://www.qt.io/download-open-source/#section-9[Qt Creator]
@@ -630,6 +637,7 @@ WARNING: Following applications have been replaced by their alternatives or `sco
 manages them.
 
 . https://conemu.github.io/en/[ConEmu Windows Terminal]
+. https://mridgers.github.io/clink/[Clink]
 . Install http://rambox.pro/[Rambox] 
 .. Enable and Setup
 ... Slack
