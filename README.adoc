@@ -433,6 +433,16 @@ Open Zeal and install following docsets,
 ... Use ignore case
 ... Show line numbers relative to cursor
 
+.Gruvbox theme for Qt Creator
+
+Download https://github.com/morhetz/gruvbox-contrib/tree/master/qtcreator[Gruvbox
+theme for Qt Creator]
+
+. Restart Qt Creator
+. Select Gruvbox theme
+. Set font to Inconsolata
+. Set font size
+
 === Download Portable Applications
 
 Create a folder `bin` in `%HOMEPATH%`,
