@@ -227,6 +227,7 @@ Add `scoop` "extras" bucket.
 Then install following applications,
 
 . atom
+. calibre
 . conemu
 . dont-sleep
 . firefox-developer
@@ -393,6 +394,37 @@ Open Zeal and install following docsets,
 ==== Configure Applications Post Install
 
 . Setup sync with other computers using SyncTrayzor
+
+===== Configure Qt Creator
+
+. Open Options
+. Click on __Environment__
+.. Click on __Keyboard__ tab
+... Set shortcut for __Options__ to `Ctrl+,`
+. Click on __Build & Run__
+.. Click on __General__ tab
+... Set project directory to `~\Repos`
+... Check __Save all files before build__
+.. Click on __Qt Versions__
+... Add Qt version by clicking __Add__ and navigating to `qmake.exe`. For example,
+`C:\Qt\Qt5.6.2\5.6\msvc2013\bin\qmake.exe`
+.. Click on __Compilers__ tab
+... Make sure MSVC compilers have been auto detected. Otherwise add them manually.
+.. Click on __Debuggers__ tab
+... If CDB has has not bee auto detected, then add it manually. For example,
+`C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\cdb.exe`
+.. Click on __Kits__ tab
+... Configure Kit for your project
+. Click on __FakeVim__
+.. __General Tab__
+... Enable Fake Vim
+... Enable Automatic indentation
+... Smart indentation
+... Expand tabulators
+... Incremental search
+... Use search dialog
+... Use ignore case
+... Show line numbers relative to cursor 
 
 === Download Portable Applications
 
