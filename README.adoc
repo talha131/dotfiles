@@ -382,67 +382,6 @@ Open Zeal and install following docsets,
 
 . Install https://github.com/google/fonts/tree/master/ofl/inconsolata[Inconsolata fonts]
 
-=== Install Applications
-
-. http://www.7-zip.org/download.html[7-Zip]
-. http://www.revouninstaller.com/download-freeware-version.php[Revo Uninstaller Freeware]
-. https://hluk.github.io/CopyQ/[CopyQ Clipboard Manager]
-. https://evernote.com/download/get.php?file=Win[Evernote]
-. https://www.rescuetime.com/get_rescuetime[RescueTime]
-. https://github.com/canton7/SyncTrayzor[SyncTrayzor]
-. https://dynalist.io/download[Dynalist]
-. Visual Studio 2013
-. https://download.qt.io/archive/qt/5.6/5.6.2/qt-opensource-windows-x86-msvc2013-5.6.2.exe.mirrorlist[Qt 5.6.2 for Windows 32bit VS 2013]
-. https://www.qt.io/download-open-source/#section-9[Qt Creator]
-. __Debugging Tools for Windows__ from https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk[Windows
- 10 SDK online installer].
-. MS Office
-
-==== Configure Applications Post Install
-
-. Setup sync with other computers using SyncTrayzor
-
-===== Configure Qt Creator
-
-. Open Options
-. Click on __Environment__
-.. Click on __Keyboard__ tab
-... Set shortcut for __Options__ to `Ctrl+,`
-. Click on __Build & Run__
-.. Click on __General__ tab
-... Set project directory to `~\Repos`
-... Check __Save all files before build__
-.. Click on __Qt Versions__
-... Add Qt version by clicking __Add__ and navigating to `qmake.exe`. For example,
-`C:\Qt\Qt5.6.2\5.6\msvc2013\bin\qmake.exe`
-.. Click on __Compilers__ tab
-... Make sure MSVC compilers have been auto detected. Otherwise add them manually.
-.. Click on __Debuggers__ tab
-... If CDB has has not bee auto detected, then add it manually. For example,
-`C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\cdb.exe`
-.. Click on __Kits__ tab
-... Configure Kit for your project
-. Click on __FakeVim__
-.. __General Tab__
-... Enable Fake Vim
-... Enable Automatic indentation
-... Smart indentation
-... Expand tabulators
-... Incremental search
-... Use search dialog
-... Use ignore case
-... Show line numbers relative to cursor
-
-.Gruvbox theme for Qt Creator
-
-Download https://github.com/morhetz/gruvbox-contrib/tree/master/qtcreator[Gruvbox
-theme for Qt Creator]
-
-. Restart Qt Creator
-. Select Gruvbox theme
-. Set font to Inconsolata
-. Set font size
-
 === Dotfiles
 
 Create a `Repos` directory in `%HOMEPATH%`. Clone https://github.com/talha131/dotfiles[dotfiles repository].
@@ -522,9 +461,70 @@ See http://superuser.com/a/37923/42415[this link] for details.
 To auto start the AutoHotKey script every time windows starts. Start `cmd`
  with administrative privilege in ConEmu. Create symbolic links thusly,
 
-```powershell
+```
 mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOMEPATH%\Repos\dotfiles\autohotkey\init.ahk
 ```
+
+=== Install Applications
+
+. http://www.7-zip.org/download.html[7-Zip]
+. http://www.revouninstaller.com/download-freeware-version.php[Revo Uninstaller Freeware]
+. https://hluk.github.io/CopyQ/[CopyQ Clipboard Manager]
+. https://evernote.com/download/get.php?file=Win[Evernote]
+. https://www.rescuetime.com/get_rescuetime[RescueTime]
+. https://github.com/canton7/SyncTrayzor[SyncTrayzor]
+. https://dynalist.io/download[Dynalist]
+. Visual Studio 2013
+. https://download.qt.io/archive/qt/5.6/5.6.2/qt-opensource-windows-x86-msvc2013-5.6.2.exe.mirrorlist[Qt 5.6.2 for Windows 32bit VS 2013]
+. https://www.qt.io/download-open-source/#section-9[Qt Creator]
+. __Debugging Tools for Windows__ from https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk[Windows
+ 10 SDK online installer].
+. MS Office
+
+==== Configure Applications Post Install
+
+. Setup sync with other computers using SyncTrayzor
+
+===== Configure Qt Creator
+
+. Open Options
+. Click on __Environment__
+.. Click on __Keyboard__ tab
+... Set shortcut for __Options__ to `Ctrl+,`
+. Click on __Build & Run__
+.. Click on __General__ tab
+... Set project directory to `~\Repos`
+... Check __Save all files before build__
+.. Click on __Qt Versions__
+... Add Qt version by clicking __Add__ and navigating to `qmake.exe`. For example,
+`C:\Qt\Qt5.6.2\5.6\msvc2013\bin\qmake.exe`
+.. Click on __Compilers__ tab
+... Make sure MSVC compilers have been auto detected. Otherwise add them manually.
+.. Click on __Debuggers__ tab
+... If CDB has has not bee auto detected, then add it manually. For example,
+`C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\cdb.exe`
+.. Click on __Kits__ tab
+... Configure Kit for your project
+. Click on __FakeVim__
+.. __General Tab__
+... Enable Fake Vim
+... Enable Automatic indentation
+... Smart indentation
+... Expand tabulators
+... Incremental search
+... Use search dialog
+... Use ignore case
+... Show line numbers relative to cursor
+
+.Gruvbox theme for Qt Creator
+
+Download https://github.com/morhetz/gruvbox-contrib/tree/master/qtcreator[Gruvbox
+theme for Qt Creator]
+
+. Restart Qt Creator
+. Select Gruvbox theme
+. Set font to Inconsolata
+. Set font size
 
 === Urdu Support
 
