@@ -443,36 +443,6 @@ theme for Qt Creator]
 . Set font to Inconsolata
 . Set font size
 
-=== Download Portable Applications
-
-Create a folder `bin` in `%HOMEPATH%`,
-
-----
-mkdir %HOMEPATH%\bin
-----
-
-This folder is referred to as `bin` henceforth.
-
-Download following apps and extract them in `bin` folder,
-
-. http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows Update MiniTool]
-
-Add their path to `%PATH%` variable.
-
-To edit `%PATH%` variable, open Environment Variables using
-
-----
-rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,3
-----
-
-You can check path of each command using `where` command. For example,
-
-----
-> where gvim C:\Users\talha\bin\complete-x64\gvim.exe
-----
-
-You can use it to test each downloaded program is available from `%PATH%`.
-
 === Dotfiles
 
 Create a `Repos` directory in `%HOMEPATH%`. Clone https://github.com/talha131/dotfiles[dotfiles repository].
@@ -722,6 +692,37 @@ To have https://github.com/morhetz/gruvbox[Gruvbox] dark theme like background i
 |198
 |144
 |===
+
+==== [line-through]#Download Portable Applications#
+
+Create a folder `bin` in `%HOMEPATH%`,
+
+----
+mkdir %HOMEPATH%\bin
+----
+
+This folder is referred to as `bin` henceforth.
+
+Download following apps and extract them in `bin` folder,
+
+. http://www.majorgeeks.com/files/details/windows_update_minitool.html[Windows Update MiniTool]
+
+Add their path to `%PATH%` variable.
+
+To edit `%PATH%` variable, open Environment Variables using
+
+----
+rundll32.exe shell32.dll,Control_RunDLL sysdm.cpl,,3
+----
+
+You can check path of each command using `where` command. For example,
+
+----
+> where gvim C:\Users\talha\bin\complete-x64\gvim.exe
+----
+
+You can use it to test each downloaded program is available from `%PATH%`.
+
 
 == Mac
 
