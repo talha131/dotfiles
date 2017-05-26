@@ -388,6 +388,10 @@ Open Zeal and install following docsets,
 .. __Minimize to tray if Minimize__
 .. __Minimize to tray if Close__
 
+==== Add VS Code to Context Menu
+
+See instructions in <<gvim-to-context-menu>>.
+
 === Install Fonts
 
 . Install https://github.com/google/fonts/tree/master/ofl/inconsolata[Inconsolata fonts]
@@ -462,6 +466,7 @@ Open Vim, ignore errors and issue `:PlugInstall!` to install all plugins and
 
 Restart Vim. This time there should be no errors.
 
+[[gvim-to-context-menu]]
 ===== Add gVim to Context Menu
 
 Portable version of Vim from Tuxproject which does not come with an
