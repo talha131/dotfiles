@@ -238,6 +238,17 @@ Then install following applications,
 . vscode
 . zeal
 
+==== Add versions bucket to scoop
+
+Run
+
+    scoop bucket add versions
+
+This bucket is help for running multiple versions of Python and Ruby on the same
+machine. For details see 
+https://github.com/lukesampson/scoop/wiki/Switching-Ruby-And-Python-Versions[Switching
+Ruby and Python Versions].
+
 ==== Configure Applications Post Install
 
 ===== Add ConEmu to context menu
