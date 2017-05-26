@@ -749,7 +749,7 @@ You can use it to test each downloaded program is available from `%PATH%`.
 
 == Mac
 
-==== Install macOS
+=== Install macOS
 
 macOS Recovery installs different versions of macOS depending on the key
 combination you press while starting up.
