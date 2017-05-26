@@ -857,10 +857,34 @@ Then use `brew cask install` to install following applications,
 . font-inconsolata
 . iterm2
 . rambox
+. rcdefaultapp
 . visual-studio-code
-
 
 ==== Configure Applications Post Install
 
 . Login to Dropbox
 . Activate 1Password using license key
+. Enable Firefox sync
+. Make Firefox default browser
+. Sync Visual Studio Code settings
+. Install 1Password browser extension
+
+===== Confiure iterm2
+
+. Open Preferences
+. General -> Preferences -> Load preferences from a custom folder
+. Browser to Dropbox folder
+. If asked **Do not copy local settings to the folder**
+. Restart iTerm2
+. Check if settings have been loaded perfectly
+
+===== Make fish default shell
+
+. `sudo vi /etc/shells`
+. Add `/usr/local/bin/fish`
+. Quit and run
+
+    chsh -s /usr/local/bin/fish
+
+===== Configure SSH keys for Git
+
