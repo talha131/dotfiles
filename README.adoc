@@ -209,9 +209,7 @@ Use `scoop install` to install following applications,
 . curl
 . git
 . llvm
-. lua
 . openssh
-. python
 . ruby
 . shasum
 . vim
