@@ -806,6 +806,13 @@ from App Store.
 . Right click on battery icon and select __Show Percentage__
 . Download Xcode from the App Store
 
-	
+==== Configure Trackpad
 
-	
+. Open __System Configuration__ -> __Trackpad__
+. __Point & Click__
+.. Enable __Tap to Click__
+.. Set __Click__ to __Light__
+.. Set __Tracking speed__ to __Fast__
+. Now open __Accessibility__
+.. __Mouse & Trackpad__ -> __Trackpad Options...__
+.. Enable dragging with three finger drag
