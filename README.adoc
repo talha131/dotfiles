@@ -544,6 +544,7 @@ mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\init.ahk" %HOMEP
 ... Use search dialog
 ... Use ignore case
 ... Show line numbers relative to cursor
+... Check __Pass control key__
 
 .Gruvbox theme for Qt Creator
 
