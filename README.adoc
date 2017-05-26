@@ -556,6 +556,22 @@ theme for Qt Creator]
 . Set font to Inconsolata
 . Set font size
 
+.C++ Beautifier
+
+. Click on __Help__
+. Click on __About Plugins__
+. Enable __C++ Beautifier__
+. Restart Qt Creator
+. Open __Options__
+. Click on __Beautifier__
+. Click on __General__ tab
+.. Enable __Auto Format on Save__
+.. Set tool to __Clang Format__
+. Click on __Clang Format__ tab
+.. Clink on __Use predefined style__
+.. Select __File__
+.. Select __Format entire file if no text is selected__
+
 === Urdu Support
 
 . Add Urdu language support to Windows 10
