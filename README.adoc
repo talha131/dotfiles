@@ -816,3 +816,50 @@ from App Store.
 . Now open __Accessibility__
 .. __Mouse & Trackpad__ -> __Trackpad Options...__
 .. Enable dragging with three finger drag
+
+=== Install Applications using `brew`
+
+==== Install brew
+
+Install https://brew.sh/[brew]
+
+. Open Terminal
+. Run this command
+
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+==== Install applications from core
+
+Use `brew install` to install following applications,
+
+. ag
+. curl
+. fish
+. fzf
+. git
+. wget
+. youtube-dl
+
+==== Install applications from `cask`
+
+First add taps
+
+    brew tap cask
+    brew tap versions
+    brew tap fonts
+
+Then use `brew cask install` to install following applications,
+
+. 1password
+. dropbox
+. firefoxdeveloperedition
+. font-inconsolata
+. iterm2
+. rambox
+. visual-studio-code
+
+
+==== Configure Applications Post Install
+
+. Login to Dropbox
+. Activate 1Password using license key
