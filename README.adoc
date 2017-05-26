@@ -1,6 +1,7 @@
 = Guide on Setting Up Development Environment
 :toc:
 :numbered:
+:sectanchors:
 
 This guide is written to help me setup new Windows and Mac machines.
 
