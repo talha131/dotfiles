@@ -208,6 +208,7 @@ Use `scoop install` to install following applications,
 . ag
 . clink
 . curl
+. fzf
 . git
 . llvm
 . openssh
