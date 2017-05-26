@@ -870,6 +870,7 @@ Then use `brew cask install` to install following applications,
 . Make Firefox default browser
 . Sync Visual Studio Code settings
 . Install 1Password browser extension
+. Login to RescueTime
 
 ===== Confiure iterm2
 
@@ -889,4 +890,7 @@ Then use `brew cask install` to install following applications,
     chsh -s /usr/local/bin/fish
 
 ===== Configure SSH keys for Git
+
+=== Dot Files
+
 
