@@ -855,9 +855,11 @@ Then use `brew cask install` to install following applications,
 . dropbox
 . firefoxdeveloperedition
 . font-inconsolata
+. hammerspoon
 . iterm2
 . rambox
 . rcdefaultapp
+. rescuetime
 . visual-studio-code
 
 ==== Configure Applications Post Install
