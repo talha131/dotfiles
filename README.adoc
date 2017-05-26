@@ -478,10 +478,10 @@ To add gVim to context menu, open registry using `regedit`.
 . Add new key `gVim` under it.
 . Change value of `Default` to `Open with gVim`
 . Add a *new string value*, named `Icon`. Set it's value to gVim executable,
-in this case `"C:\Users\talha\bin\complete-x64\gvim.exe"`
+in this case `"C:\Users\talha\scoop\apps\vim\current\gvim.exe"`
 . Add a *new sub key* under `gVim`. Name it `command`
 . Set `command` default value to gVim executable, in this case
- `"C:\Users\talha\bin\complete-x64\gvim.exe" "%1"`
+ `"C:\Users\talha\scoop\apps\vim\current\gvim.exe" "%1"`
 
 See http://superuser.com/a/37923/42415[this link] for details.
 
