@@ -245,7 +245,7 @@ Run
     scoop bucket add versions
 
 This bucket is help for running multiple versions of Python and Ruby on the same
-machine. For details see 
+machine. For details see
 https://github.com/lukesampson/scoop/wiki/Switching-Ruby-And-Python-Versions[Switching
 Ruby and Python Versions].
 
@@ -421,7 +421,7 @@ installed Python has the same build and version that Vim has in the output of
 
 Install https://www.python.org/downloads/release/python-353/[Python 3.5.3].
 
-===== Check Interpreters 
+===== Check Interpreters
 
 Open Vim and check you have Python2, Python3, Ruby, and Lua working, using following commands,
 
