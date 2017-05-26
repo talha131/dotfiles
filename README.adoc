@@ -409,6 +409,20 @@ mklink %HOMEPATH%\bin\diff-highlight %HOMEPATH%\Repos\dotfiles\bin\diff-highligh
 
 ==== Vim
 
+===== Python for Vim
+
+NOTE: Currently https://github.com/vim/vim-win32-installer/[Vim is compiled with
+Python 3.5.3]. For some reason https://github.com/lukesampson/scoop/issues/1515[
+    Python installed via scoop is not detected by Vim].
+
+https://stackoverflow.com/a/17963884/177116[You should make sure] that the
+installed Python has the same build and version that Vim has in the output of
+`:version` command.
+
+Install https://www.python.org/downloads/release/python-353/[Python 3.5.3].
+
+===== Check Interpreters 
+
 Open Vim and check you have Python2, Python3, Ruby, and Lua working, using following commands,
 
 ----
