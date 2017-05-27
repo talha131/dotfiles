@@ -942,3 +942,20 @@ https://github.com/junegunn/vim-plug[vim-plug]
 
 . https://dynalist.io/download[Dynalist]
 
+=== Emacs key bindings for OS X
+
+Create file
+
+    mkdir ~/Library/KeyBindings/
+    touch DefaultKeyBinding.dict
+
+Add to file `DefaultKeyBinding.dict`
+
+    {
+        "~d" = "deleteWordForward:";
+        "^w" = "deleteWordBackward:";
+        "~f" = "moveWordForward:";
+        "~b" = "moveWordBackward:";
+    }
+
+Restart applications to use these shortcuts.
