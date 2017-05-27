@@ -14,4 +14,4 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 # status --is-interactive; and . (rbenv init -|psub)
 
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-set -g fish_user_paths "~/bin/" $fish_user_paths
+set -g fish_user_paths "~/bin" $fish_user_paths
