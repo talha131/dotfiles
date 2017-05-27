@@ -863,6 +863,7 @@ Then use `brew cask install` to install following applications,
 . font-inconsolata
 . hammerspoon
 . iterm2
+. karabiner-elements
 . rambox
 . rcdefaultapp
 . rescuetime
