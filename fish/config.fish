@@ -1,4 +1,4 @@
-source ~/.config/fish/fish_functions/marks.fish
+source ~/.config/fish/functions/marks.fish
 
 # set PYENV_ROOT $HOME/.pyenv
 # set -x PATH $PYENV_ROOT/shims $PYENV_ROOT/bin $PATH
