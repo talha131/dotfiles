@@ -844,6 +844,7 @@ Use `brew install` to install following applications,
 . python
 . python3
 . ruby
+. vcprompt
 . wget
 . youtube-dl
 
