@@ -1,16 +1,16 @@
-source ~/.config/fish/functions/marks.fish
+source ~/.config/fish/fish_functions/marks.fish
 
-set PYENV_ROOT $HOME/.pyenv
-set -x PATH $PYENV_ROOT/shims $PYENV_ROOT/bin $PATH
-pyenv rehash
+# set PYENV_ROOT $HOME/.pyenv
+# set -x PATH $PYENV_ROOT/shims $PYENV_ROOT/bin $PATH
+# pyenv rehash
 
-eval (python -m virtualfish compat_aliases  auto_activation)
+# eval (python -m virtualfish compat_aliases  auto_activation)
 
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 # Load rbenv automatically by appending
-status --is-interactive; and . (rbenv init -|psub)
+# status --is-interactive; and . (rbenv init -|psub)
 
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
