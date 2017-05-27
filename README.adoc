@@ -834,10 +834,16 @@ Install https://brew.sh/[brew]
 Use `brew install` to install following applications,
 
 . ag
+. autojump
 . curl
 . fish
 . fzf
 . git
+. macvim --with-override-system-vim --with-python3
+. neovim/neovim/neovim
+. python
+. python3
+. ruby
 . wget
 . youtube-dl
 
@@ -891,6 +897,28 @@ Then use `brew cask install` to install following applications,
 
 ===== Configure SSH keys for Git
 
+. https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/[Generating
+a new SSH key and adding it to the ssh-agent]
+. https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/#platform-mac[Adding
+a new SSH key to your GitHub account]
+
+===== Pip and gem packages
+
+    pip2 install --upgrade neovim
+    pip3 install --upgrade neovim
+    gem install asciidoctor
+    gem install neovim
+
 === Dot Files
 
+Create a `Repos` directory in `~`. Clone https://github.com/talha131/dotfiles[dotfiles repository].
 
+     git clone https://github.com/talha131/dotfiles.git
+
+Then issue following commands
+
+    rm -r ~/.hammerspoon/
+    ln -s ~/Repos/dotfiles/hammerspoon/ ~/.hammerspoon/
+    ln -s ~/Repos/dotfiles/git/gitconfig ~/.gitconfig
+    ln -s ~/Repos/dotfiles/git/githelper ~/.githelper
+    ln -s ~/Repos/dotfiles/bin/diff-highlight ~/bin/diff-highlight
