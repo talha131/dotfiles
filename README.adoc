@@ -860,6 +860,7 @@ Then use `brew cask install` to install following applications,
 
 . 1password
 . dropbox
+. evernote
 . firefoxdeveloperedition
 . font-inconsolata
 . hammerspoon
@@ -936,3 +937,8 @@ https://github.com/junegunn/vim-plug[vim-plug]
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+=== Install Applications
+
+. https://dynalist.io/download[Dynalist]
+
