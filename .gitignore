@@ -11,3 +11,5 @@ vim/vim/autoload/plug*
 vim/vim/plugged
 vim/vim/sessions
 vim/vim/spell/*.spl
+
+**/fishd.*
