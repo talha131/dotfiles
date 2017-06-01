@@ -860,6 +860,7 @@ First add taps
 Then use `brew cask install` to install following applications,
 
 . 1password
+. dash
 . dropbox
 . evernote
 . firefoxdeveloperedition
@@ -871,6 +872,7 @@ Then use `brew cask install` to install following applications,
 . rambox
 . rcdefaultapp
 . rescuetime
+. the-clock
 . visual-studio-code
 
 ==== Configure Applications Post Install
