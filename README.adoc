@@ -866,6 +866,7 @@ Then use `brew cask install` to install following applications,
 . firefoxdeveloperedition
 . font-inconsolata
 . hammerspoon
+. imageoptim
 . iterm2
 . karabiner-elements
 . mac2imgur
