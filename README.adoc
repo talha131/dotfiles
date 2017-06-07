@@ -835,6 +835,7 @@ Use `brew install` to install following applications,
 
 . ag
 . autojump
+. clang-format
 . curl
 . fish
 . fzf
