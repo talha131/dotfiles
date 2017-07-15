@@ -608,6 +608,8 @@ Download and install fonts from following links,
 . http://www.noorehidayat.org/index.php?p=cnt&c=noorehuda.ttf[NooreHuda]
 . http://font.urduweb.org/downloads/249-jameel-noori-nastaleeq-regular[Jameel Noori Nastaleeq Regular]
 . https://brushez.com/free_download/10eoM/39610[FS Diwani]
+. https://fonts2u.com/nafees-web-naskh.font[Nafees Web Naskh]
+. http://font.urduweb.org/downloads/277-nafees-naskh-regular[Nafees Naskh Regular]
 
 === Deprecated Notes
 
