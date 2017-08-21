@@ -864,12 +864,14 @@ Use `brew install` to install following applications,
 . fish
 . fzf
 . git
+. golang
 . macvim --with-override-system-vim --with-python3
 . neovim/neovim/neovim
 . python
 . python3
 . ruby
 . trash
+. tree
 . vcprompt
 . wget
 . youtube-dl
@@ -899,6 +901,7 @@ Then use `brew cask install` to install following applications,
 . rcdefaultapp
 . rescuetime
 . the-clock
+. the-unarchiver
 . visual-studio-code
 
 ==== Configure Applications Post Install
