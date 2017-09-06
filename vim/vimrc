@@ -19,20 +19,25 @@ Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " :Files :Marks :Windows
 " Plugins - Code Complete and Snippets                                        {{{2
 " The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
 " Plug 'ajh17/VimCompletesMe'
-" if (has('nvim'))
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if (has('nvim'))
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "             \ | Plug 'zchee/deoplete-clang'
 "             \ | Plug 'Shougo/neoinclude.vim'
 "             \ | Plug 'Shougo/neco-syntax'
 "             \ | Plug 'Shougo/neco-vim'
 "             \ | Plug 'carlitux/deoplete-ternjs'
-" endif
+endif
 " Plugins - Motion Enhancements                                               {{{2
 Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char}
 " Plugins - Syntax files and Programming Languages                            {{{2
 Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'ihacklog/HiCursorWords' " highlights words under the cursor like many IDEs
+Plug 'HerringtonDarkholme/yats.vim' " TypeScript Syntax Highlighting
+Plug 'w0rp/ale' " Asynchronous Lint Engine
+if (has('nvim'))
+    Plug 'mhartington/nvim-typescript' " Typescript tooling for Neovim
+endif
 " Plugins - Typing Utilities                                                  {{{2
 Plug 'tpope/vim-rsi' " Readline key bindings
 Plug 'junegunn/vim-easy-align' " Vim alignment
