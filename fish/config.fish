@@ -15,3 +15,7 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 set -g fish_user_paths "~/bin" $fish_user_paths
+
+set -x GOPATH $HOME/Repos/GO
+set -x GOBIN $GOPATH/bin
+set -g fish_user_paths "$GOPATH/bin" $fish_user_paths
