@@ -338,6 +338,7 @@ nmap gl <Plug>(EasyAlign)
 
 if (has('nvim'))
 " deoplete                                                                    {{{2
+let g:python3_host_prog = '/Users/talha/.pyenv/versions/3.3.6/bin/python3' 
 let g:deoplete#enable_at_startup = 1
 if (has('mac'))
 	let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
