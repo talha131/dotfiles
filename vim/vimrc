@@ -66,6 +66,8 @@ Plug 'mbbill/undotree' " Browse the undo tree
 " Plugins - Theme                                                             {{{2
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim'
+Plug 'rakr/vim-one'
+Plug 'romainl/flattened'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
