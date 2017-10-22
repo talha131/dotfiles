@@ -1,7 +1,7 @@
 source ~/.config/fish/functions/marks.fish
 
 set PYENV_ROOT $HOME/.pyenv
-set -x PATH $PYENV_ROOT/shims $PYENV_ROOT/bin $PATH
+set -x PATH $PYENV_ROOT/shims $PATH
 pyenv rehash
 
 # eval (python -m virtualfish compat_aliases  auto_activation)
