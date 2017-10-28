@@ -7,17 +7,16 @@ local appShortCuts = {
 
     C = 'Visual Studio Code',
     D = 'Dash',
-    E = 'evernote',
+    E = 'emacs',
     F = 'FirefoxDeveloperEdition',
     G = 'GitKraken',
     I = 'iterm',
     J = 'Jump Desktop',
     O = 'Microsoft Onenote',
     P = '1Password 6',
-    S = 'Slack',
-    V = 'MacVim',
+    R = 'Rambox',
+    V = 'evernote',
     X = 'Xcode',
-    Z = 'Franz'
 }
 
 for key, app in pairs(appShortCuts) do
