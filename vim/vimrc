@@ -389,6 +389,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 " asyncrun                                                                                  {{{2
+" For vim-fugitive
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
 " FileType related settings                                                   {{{1
