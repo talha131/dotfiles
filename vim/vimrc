@@ -377,6 +377,16 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 " startify                                                                                  {{{2
 let g:startify_session_dir = '~/.vim/sessions'
 
+" vim-go                                                                                  {{{2
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
     autocmd!
