@@ -38,6 +38,7 @@ Plug 'w0rp/ale' " Asynchronous Lint Engine
 if (has('nvim'))
     Plug 'mhartington/nvim-typescript' " Typescript tooling for Neovim
 endif
+Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 " Plugins - Typing Utilities                                                  {{{2
 Plug 'tpope/vim-rsi' " Readline key bindings
 Plug 'junegunn/vim-easy-align' " Vim alignment
