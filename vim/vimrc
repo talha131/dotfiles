@@ -49,6 +49,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary' " toggle comments
 Plug 'tpope/vim-endwise'
 Plug 'kshenoy/vim-signature' " Shows marks
+Plug 'AndrewRadev/splitjoin.vim' " gS gJ to split and join lines
 " Plugins - Distraction Free Writing                                          {{{2
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
