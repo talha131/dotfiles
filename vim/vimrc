@@ -16,6 +16,7 @@ Plug 'talha131/vim-localvimrc'
 Plug 'tpope/vim-speeddating'
 Plug 'mzlogin/vim-markdown-toc' " Generate table of contents for Markdown files. `:GenTocGFM`
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " :Files :Marks :Windows
+Plug 'skywind3000/asyncrun.vim'
 " Plugins - Code Complete and Snippets                                        {{{2
 " The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
 " Plug 'ajh17/VimCompletesMe'
@@ -386,6 +387,9 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
+" asyncrun                                                                                  {{{2
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
