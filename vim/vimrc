@@ -133,7 +133,7 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set wrap
-set ignorecase " Search settings
+set smartcase " Search settings
 set hlsearch " Highlight search results
 set noerrorbells visualbell t_vb= " Disable Beeping
 set rnu " relative number
