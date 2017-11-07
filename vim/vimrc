@@ -173,6 +173,9 @@ set wildmenu
 " Show a list and then choose from the wild menu
 set wildmode=list:full
 
+" Insert Mode Completion                                                     {{{2
+set completeopt-=preview
+
 " :find                                                                       {{{2
 " Add folder of current file and every folder under it to Vim's path
 set path=.,**
