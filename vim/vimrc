@@ -371,9 +371,6 @@ let g:localvimrc_disable_upward_search = 1
 " vim-diff-enhanced                                                                    {{{2
 let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 
-" vim-fzf                                                                    {{{2
-" https://github.com/junegunn/fzf.vim/issues/121
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " startify                                                                                  {{{2
 let g:startify_session_dir = '~/.vim/sessions'
