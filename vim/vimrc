@@ -300,8 +300,8 @@ set statusline+=\ " separator
 set statusline+=(%{winnr()}) " window number. Useful for {count}<C-W>q
 
 " Use ag instead of grep                                                      {{{2
-if executable("ag")
-    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
+if executable("rg")
+    set grepprg=rg\ --vimgrep
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
