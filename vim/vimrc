@@ -45,7 +45,7 @@ Plug 'tpope/vim-rsi' " Readline key bindings
 Plug 'junegunn/vim-easy-align' " Vim alignment
 Plug 'tpope/vim-characterize' " press ga to reveal characters representation in decimal, octal and hex
 Plug 'cohama/lexima.vim'
-Plug 'tpope/vim-surround' " to make quoting and parenthesizing easier
+Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary' " toggle comments
 Plug 'tpope/vim-endwise'
@@ -411,6 +411,19 @@ augroup filetype_related_settings
         autocmd FileType gitcommit,markdown,text setlocal dictionary=/usr/share/dict/words
     endif
 augroup END
+
+" vim-sandwich                                                                                {{{2
+runtime macros/sandwich/keymap/surround.vim
+let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
+" add spaces inside braket
+let g:sandwich#recipes += [
+      \   {'buns': ['{ ', ' }'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['{']},
+      \   {'buns': ['[ ', ' ]'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['[']},
+      \   {'buns': ['( ', ' )'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['(']},
+      \   {'buns': ['{\s*', '\s*}'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['{']},
+      \   {'buns': ['\[\s*', '\s*\]'], 'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['[']},
+      \   {'buns': ['(\s*', '\s*)'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['(']},
+      \ ]
 
 " Vim modeline                                                                {{{1
 " vim:set foldmethod=marker foldlevel=1:
