@@ -380,6 +380,32 @@ let g:localvimrc_disable_upward_search = 1
 " vim-diff-enhanced                                                                    {{{2
 let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 
+" tsuquyomi/typescript                                                                    {{{2
+" let g:tsuquyomi_use_dev_node_module = 2
+" let g:tsuquyomi_tsserver_path = './node_modules/typescript/bin/tsserver'
+
+" steelsojka/deoplete-flow                                                                {{{2
+" function! StrTrim(txt)
+"   return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+" endfunction
+
+" let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH; and which flow'))
+
+" if g:flow_path != 'flow not found'
+"   let g:deoplete#sources#flow#flow_bin = g:flow_path
+" endif
+let g:flow_path = './node_modules/.bin/flow'
+
+
+" Ale                                                                                  {{{2
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['typescript'] = ['prettier']
+let g:ale_fixers['css'] = ['prettier']
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_linters = {}
+let g:ale_linters['typescript'] = ['tslint', 'tsserver']
+let g:ale_fix_on_save = 1
 
 " startify                                                                                  {{{2
 let g:startify_session_dir = '~/.vim/sessions'
