@@ -122,8 +122,10 @@ if has('nvim')
     endif
     set inccommand=split
     " Python package for Neovim                                                   {{{2
+    if has('mac')
     let g:python_host_prog = $HOME.'/.pyenv/versions/2.7.10/bin/python'
     let g:python3_host_prog = $HOME.'/.pyenv/versions/3.4.3/bin/python'
+    endif
 endif
 " Miscellaneous Variables                                                     {{{2
 set expandtab
