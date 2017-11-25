@@ -29,9 +29,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "             \ | Plug 'carlitux/deoplete-ternjs'
 endif
 " Plugins - Motion Enhancements                                               {{{2
-Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char}
+" Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char}
 " Plugins - Syntax files and Programming Languages                            {{{2
-Plug 'Chiel92/vim-autoformat'
+" Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'ihacklog/HiCursorWords' " highlights words under the cursor like many IDEs
 Plug 'HerringtonDarkholme/yats.vim' " TypeScript Syntax Highlighting
