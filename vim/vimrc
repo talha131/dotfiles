@@ -22,11 +22,15 @@ Plug 'skywind3000/asyncrun.vim'
 " Plug 'ajh17/VimCompletesMe'
 if (has('nvim'))
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+            \ | Plug 'Shougo/neoinclude.vim'
+            \ | Plug 'Shougo/neco-vim'
+Plug 'Shougo/neco-syntax'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+ \ | Plug 'Quramy/tsuquyomi'
+Plug 'steelsojka/deoplete-flow'
+" Plug 'carlitux/deoplete-ternjs'
 "             \ | Plug 'zchee/deoplete-clang'
-"             \ | Plug 'Shougo/neoinclude.vim'
 "             \ | Plug 'Shougo/neco-syntax'
-"             \ | Plug 'Shougo/neco-vim'
-"             \ | Plug 'carlitux/deoplete-ternjs'
 endif
 " Plugins - Motion Enhancements                                               {{{2
 " Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char}
@@ -354,6 +358,9 @@ nmap gl <Plug>(EasyAlign)
 if (has('nvim'))
 " deoplete                                                                    {{{2
 let g:deoplete#enable_at_startup = 1
+let g:echodoc_enable_at_startup = 1
+
+" let g:deoplete#enable_ignore_case = 1
 if (has('mac'))
 	let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 	let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
