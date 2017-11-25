@@ -250,6 +250,7 @@ nnoremap <leader>hg :call <SID>SynStack()<CR> " show highlight group
 " Theme Settings                                                              {{{2
 if has('mac')
     set guifont=Inconsolata:h14
+    set background=dark
 elseif has('win32')
     set guifont=Inconsolata:h12
 endif
