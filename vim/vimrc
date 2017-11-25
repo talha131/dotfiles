@@ -414,7 +414,6 @@ augroup filetype_related_settings
 augroup END
 
 " vim-sandwich                                                                                {{{2
-runtime macros/sandwich/keymap/surround.vim
 let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
 " add spaces inside braket
 let g:sandwich#recipes += [
