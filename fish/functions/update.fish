@@ -82,18 +82,16 @@ function update -d 'Update software to the latest versions'
         which vim > /dev/null
         and begin
             _printMessage 'Updating Vim Plugins'
-            vim -i NONE -c PlugUpgrade -c PlugUpdate -c PlugClean! -c quitall
+            nvim -i NONE -c PlugUpgrade -c PlugUpdate -c PlugClean! -c quitall
         end
         functions -e _updateVimPlugins
     end
 
     function _updateNpmPackages
-        which npm > /dev/null
+        which yarn > /dev/null
         and begin
             _printMessage 'Updating global NPM packages'
-            npm outdated -g
-            npm update -g
-            npm outdated -g
+            yarn global upgrade
         end
         functions -e _updateNpmPackages
     end
@@ -176,8 +174,8 @@ complete --no-files -c update -a all  -d 'Update all packages. Except Neovim'
 complete --no-files -c update -a brew -d 'Update brew, upgrade and cleanup installed packages'
 complete --no-files -c update -a fish -d 'Update fish completions'
 complete --no-files -c update -a gem  -d 'Update and cleanup installed gems. Update rbenv shims'
-complete --no-files -c update -a npm  -d 'Update global npm packages'
+complete --no-files -c update -a npm  -d 'Update global npm packages. Requires yarn'
 complete --no-files -c update -a nvim -d 'Install Neovim from HEAD of its git repository'
 complete --no-files -c update -a pip  -d 'Update pip and installed packages. Update pyenv shims'
-complete --no-files -c update -a vim  -d 'Update and clean up Vim plugins. Requires vim-plug'
+complete --no-files -c update -a vim  -d 'Update and clean up Neovim plugins. Requires vim-plug'
 
