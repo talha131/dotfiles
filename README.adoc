@@ -960,6 +960,7 @@ Then issue following commands
     ln -s ~/Repos/dotfiles/bin/diff-highlight ~/bin/diff-highlight
     ln -s ~/Repos/dotfiles/vim/vimrc ~/.vimrc
     ln -s ~/Repos/dotfiles/vim/vim ~/.vim
+    ln -s ~/Repos/dotfiles/spacemacs/spacemacs ~/.spacemacs
     mkdir ~/.config/nvim
     ln -s ~/Repos/dotfiles/vim/vimrc ~/.config/nvim/init.vim
 
