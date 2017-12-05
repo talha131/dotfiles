@@ -319,6 +319,9 @@ you should place your code here."
         '((sequence "TODO" "|" "DONE" "CANCELED")))
 
   (setq vc-follow-symlinks t)
+  (add-hook 'text-mode-hook #'visual-line-mode)
+  (setq-default fill-column 80)
+  (add-hook 'text-mode-hook 'turn-on-auto-fill)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
