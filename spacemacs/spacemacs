@@ -317,7 +317,6 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq org-todo-keywords
         '((sequence "TODO" "|" "DONE" "CANCELED")))
-
   (setq vc-follow-symlinks t)
   (add-hook 'text-mode-hook #'visual-line-mode)
   (setq-default fill-column 80)
