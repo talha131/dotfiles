@@ -318,6 +318,7 @@ you should place your code here."
   (setq org-todo-keywords
         '((sequence "TODO" "|" "DONE" "CANCELED")))
 
+  (setq vc-follow-symlinks t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
