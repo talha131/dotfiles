@@ -90,10 +90,9 @@ modalKey:bind('', '[', 'Decrease window width', function() yank(-sizeDelta, 0) e
 
 -- Grid Management
 
-hs.grid.MARGINX 	= 0
-hs.grid.MARGINY 	= 0
 hs.grid.GRIDWIDTH 	= 7
 hs.grid.GRIDHEIGHT 	= 4
+hs.grid.setMargins({0, 0})
 hs.grid.ui.textSize = 55
 hs.grid.ui.cellStrokeWidth = 5
 hs.grid.ui.highlightStrokeWidth = 5
