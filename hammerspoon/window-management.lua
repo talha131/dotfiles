@@ -91,7 +91,7 @@ modalKey:bind('', '[', 'Decrease window width', function() yank(-sizeDelta, 0) e
 -- Grid Management
 
 -- Grid columns should be equal to number of hints in each row. Default hints variable is an array of 5x10
--- If grid cilumns and hint columns do not match, the Hammerspoon merges cells such that they total number
+-- If grid columns and hint columns do not match, the Hammerspoon merges cells such that they total number
 -- columns in the grid remains 10.
 -- For details see https://github.com/Hammerspoon/hammerspoon/issues/1619
 -- Here I don't expect to use column 2-5 much so I have set their hints to hard to access keys.
