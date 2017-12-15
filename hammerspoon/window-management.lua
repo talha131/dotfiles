@@ -100,7 +100,7 @@ hs.grid.HINTS={
 
 hs.grid.setMargins({0, 0})
 hs.grid.setGrid('16x4')
-hs.grid.ui.textSize = 55
+hs.grid.ui.textSize = 35
 hs.grid.ui.cellStrokeWidth = 5
 hs.grid.ui.highlightStrokeWidth = 5
 
