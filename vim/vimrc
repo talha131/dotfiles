@@ -253,7 +253,7 @@ nnoremap <Leader>ff :Files <CR>
 nnoremap <Leader>bb :Buffers <CR>
 nnoremap <Leader>ss :BLines <CR>
 nnoremap <Leader>sb :Lines <CR>
-nnoremap <Leader>sr :Rg <CR>
+nnoremap <Leader>/ :Rg <CR>
 nnoremap <Leader>pf :GFiles <CR>
 
 " Theme Settings                                                              {{{2
