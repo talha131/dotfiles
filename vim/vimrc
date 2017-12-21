@@ -11,8 +11,7 @@ if !has('nvim')
     Plug 'tpope/vim-sensible'
 endif
 Plug 'dahu/bisectly'
-" Plug 'embear/vim-localvimrc'
-Plug 'talha131/vim-localvimrc'
+Plug 'embear/vim-localvimrc'
 Plug 'tpope/vim-speeddating'
 Plug 'mzlogin/vim-markdown-toc' " Generate table of contents for Markdown files. `:GenTocGFM`
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " :Files :Marks :Windows
