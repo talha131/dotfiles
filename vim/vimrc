@@ -385,19 +385,6 @@ let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 " let g:tsuquyomi_use_dev_node_module = 2
 " let g:tsuquyomi_tsserver_path = './node_modules/typescript/bin/tsserver'
 
-" steelsojka/deoplete-flow                                                                {{{2
-" function! StrTrim(txt)
-"   return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-" endfunction
-
-" let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH; and which flow'))
-
-" if g:flow_path != 'flow not found'
-"   let g:deoplete#sources#flow#flow_bin = g:flow_path
-" endif
-let g:flow_path = './node_modules/.bin/flow'
-
-
 " Ale                                                                                  {{{2
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
