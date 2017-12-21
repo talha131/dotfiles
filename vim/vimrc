@@ -48,7 +48,6 @@ Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 Plug 'tpope/vim-rsi' " Readline key bindings
 Plug 'junegunn/vim-easy-align' " Vim alignment
 Plug 'tpope/vim-characterize' " press ga to reveal characters representation in decimal, octal and hex
-Plug 'cohama/lexima.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary' " toggle comments
