@@ -407,8 +407,11 @@ let g:flow_path = './node_modules/.bin/flow'
 " Ale                                                                                  {{{2
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['json'] = ['prettier']
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['css'] = ['prettier']
+let g:ale_fixers['javascript.jsx'] = ['prettier']
+let g:ale_fixers['typescript.tsx'] = ['prettier']
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_linters = {}
 let g:ale_linters['typescript'] = ['tslint', 'tsserver']
