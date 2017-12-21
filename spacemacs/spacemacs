@@ -54,8 +54,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(gruvbox-theme
-                                      color-theme-sanityinc-tomorrow)
+   dotspacemacs-additional-packages '()
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -70,7 +69,8 @@ values."
    dotspacemacs-install-packages 'used-only
    ;; Enable auto-completion pop for misspelled words 
    dotspacemacs-configuration-layers
-    '((spell-checking :variables enable-flyspell-auto-completion t)))
+   '((spell-checking :variables enable-flyspell-auto-completion t)
+     themes-megapack))
   )
 
 (defun dotspacemacs/init ()
