@@ -69,6 +69,7 @@ Plug 'moll/vim-bbye'
 " Plugins - Version Control and File Comparison                               {{{2
 Plug 'tpope/vim-fugitive'
             \ | Plug 'junegunn/gv.vim'
+            \ | Plug 'tpope/vim-rhubarb'
 Plug 'jreybert/vimagit'
 Plug 'chrisbra/vim-diff-enhanced' " Enhanced Diff for git diff --patience
 Plug 'airblade/vim-gitgutter'
