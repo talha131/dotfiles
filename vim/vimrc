@@ -239,17 +239,22 @@ nnoremap <Leader>ghs :GitGutterStageHunk <CR>
 nnoremap <Leader>ghu :GitGutterUndoHunk <CR>
 nnoremap <Leader>ghp :GitGutterPreviewHunk <CR>
 " For quickly opening files
-" nnoremap <Leader>f :find *
-nnoremap <Leader>f :Files <CR>
+nnoremap <Leader>f :find *
 nnoremap <Leader>F :find <C-R>=expand('%:p:h').'/**/*'<CR>
 nnoremap <Leader>v :vert sfind *
 nnoremap <Leader>V :vert sfind <C-R>=expand('%:p:h').'/**/*'<CR>
 nnoremap <Leader>t :tabfind *
 " For switching between open buffers
-" nnoremap <Leader>b :ls<CR>:b<Space>
-nnoremap <Leader>b :Buffers <CR>
+nnoremap <Leader>b :ls<CR>:b<Space>
 nnoremap <Leader>q :w \| Bdelete<CR> " vim-bbye
 nnoremap <leader>hg :call <SID>SynStack()<CR> " show highlight group
+" Relies on FZF
+nnoremap <Leader>ff :Files <CR>
+nnoremap <Leader>bb :Buffers <CR>
+nnoremap <Leader>ss :BLines <CR>
+nnoremap <Leader>sb :Lines <CR>
+nnoremap <Leader>sr :Rg <CR>
+nnoremap <Leader>pf :GFiles <CR>
 
 " Theme Settings                                                              {{{2
 if has('mac')
