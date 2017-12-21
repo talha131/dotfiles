@@ -401,6 +401,15 @@ let g:ale_fix_on_save = 1
 
 " startify                                                                                  {{{2
 let g:startify_session_dir = '~/.vim/sessions'
+let s:padding_left = repeat(' ', get(g:, 'startify_padding_left', 3))
+let g:startify_list_order = [ 
+        \ [s:padding_left .'Sessions'],       'sessions',
+        \ [s:padding_left .'MRU'],            'files',
+        \ [s:padding_left .'MRU '. getcwd()], 'dir',
+        \ [s:padding_left .'Bookmarks'],      'bookmarks',
+        \ [s:padding_left .'Commands'],       'commands',
+        \ ]
+
 
 " vim.fzf                                                                                  {{{2
 command! -bang -nargs=* Rg
