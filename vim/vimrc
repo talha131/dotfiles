@@ -26,10 +26,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
  \ | Plug 'Quramy/tsuquyomi'
-Plug 'steelsojka/deoplete-flow'
-" Plug 'carlitux/deoplete-ternjs'
-"             \ | Plug 'zchee/deoplete-clang'
-"             \ | Plug 'Shougo/neco-syntax'
 endif
 " Plugins - Motion Enhancements                                               {{{2
 " Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char}
