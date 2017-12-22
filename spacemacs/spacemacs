@@ -324,9 +324,3 @@ you should place your code here."
   (setq-default fill-column 80)
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
   )
-
-(custom-set-variables
- '(helm-ag-base-command "rg --smart-case --no-heading --line-number"))
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
