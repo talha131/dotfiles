@@ -319,4 +319,5 @@ you should place your code here."
   (add-hook 'text-mode-hook #'visual-line-mode)
   (setq-default fill-column 80)
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
+  (setq helm-ag-base-command "rg --smart-case --no-heading --line-number")
   )
