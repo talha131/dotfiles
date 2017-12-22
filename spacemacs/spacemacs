@@ -46,9 +46,10 @@ values."
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     spell-checking
+     (spell-checking :variables enable-flyspell-auto-completion t) 
      ;; syntax-checking
      ;; version-control
+     themes-megapack
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -70,12 +71,7 @@ values."
    ;; `used-but-keep-unused' installs only the used packages but won't uninstall
    ;; them if they become unused. `all' installs *all* packages supported by
    ;; Spacemacs and never uninstall them. (default is `used-only')
-   dotspacemacs-install-packages 'used-only
-   ;; Enable auto-completion pop for misspelled words 
-   dotspacemacs-configuration-layers
-   '((spell-checking :variables enable-flyspell-auto-completion t)
-     themes-megapack))
-  )
+   dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
   "Initialization function.
