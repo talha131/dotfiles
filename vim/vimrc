@@ -319,6 +319,10 @@ if executable("rg")
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
+" Terminal related settings                                                   {{{2
+autocmd TermOpen * set bufhidden=hide
+tnoremap <Esc> <C-\><C-n>
+
 " Plugins Customizations                                                      {{{1
 " vim-autoformat                                                              {{{2
 let g:formatdef_fmt_custom_xml = '"tidy -xml -q --show-errors 0 --show-warnings 0 --indent-attributes 1"'
