@@ -411,6 +411,9 @@ let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_linters = {}
 let g:ale_linters['typescript'] = ['tslint', 'tsserver']
 let g:ale_fix_on_save = 1
+if (has('mac'))
+    let g:ale_c_clangformat_executable = '/usr/local/opt/llvm@4/bin/clang-format'
+endif
 
 " startify                                                                                  {{{2
 let g:startify_session_dir = '~/.vim/sessions'
