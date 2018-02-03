@@ -320,8 +320,10 @@ if executable("rg")
 endif
 
 " Terminal related settings                                                   {{{2
-autocmd TermOpen * set bufhidden=hide
-tnoremap <Esc> <C-\><C-n>
+if (has('nvim'))
+    autocmd TermOpen * set bufhidden=hide
+    tnoremap <Esc> <C-\><C-n>
+endif
 
 " Plugins Customizations                                                      {{{1
 " vim-autoformat                                                              {{{2
