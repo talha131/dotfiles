@@ -424,10 +424,11 @@ let g:ale_fixers['c'] = ['clang-format']
 let g:ale_fixers['cpp'] = ['clang-format']
 let g:ale_fixers['objc'] = ['clang-format']
 let g:ale_fixers['objcpp'] = ['clang-format']
+let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_linters = {}
 let g:ale_linters['typescript'] = ['tslint', 'tsserver']
-let g:ale_fix_on_save = 1
+let g:ale_open_list = 1
 if (has('mac'))
     let g:ale_c_clangformat_executable = '/usr/local/opt/llvm@4/bin/clang-format'
 endif
