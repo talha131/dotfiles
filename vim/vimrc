@@ -88,21 +88,21 @@ call plug#end()            " required
 " from https://www.vi-improved.org/recommendations/
 function! StripTrailingWhitespace()
   if !&binary && &filetype != 'diff'
-    normal mz
-    normal Hmy
+    normal! mz
+    normal! Hmy
     %s/\s\+$//e
-    normal 'yz<CR>
-    normal `z
+    normal! 'yz<CR>
+    normal! `z
   endif
 endfunction
 
 function! RemoveZeroWidthSpace()
   if !&binary && &filetype != 'diff'
-    normal mz
-    normal Hmy
+    normal! mz
+    normal! Hmy
     %s/\%u200b//g
-    normal 'yz<CR>
-    normal `z
+    normal! 'yz<CR>
+    normal! `z
   endif
 endfunction
 
