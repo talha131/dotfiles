@@ -1,6 +1,8 @@
 *~
 *.swp
-.*
+**/.DS_Store
+.#spacemacs
+
 emacs/emacs.d/bookmarks
 emacs/emacs.d/elpa/archives/marmalade/archive-contents
 emacs/emacs.d/url/cookies
