@@ -1,6 +1,0 @@
-set wildignore+=**/vim/autoload/
-set wildignore+=**/vim/autoload/*
-set wildignore+=**/vim/sessions
-set wildignore+=**/vim/sessions/*
-set wildignore+=**/vim/plugged
-set wildignore+=**/vim/plugged/*
