@@ -108,7 +108,7 @@ endfunction
 
 " from https://jordanelver.co.uk/blog/2015/05/27/working-with-vim-colorschemes/#showing-highlight-groups
 function! <SID>SynStack()
-  if !exists("*synstack")
+  if !exists('*synstack')
     return
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
@@ -329,7 +329,7 @@ set statusline+=\ " separator
 set statusline+=(%{winnr()}) " window number. Useful for {count}<C-W>q
 
 " Use ag instead of grep                                                      {{{2
-if executable("rg")
+if executable('rg')
     set grepprg=rg\ --vimgrep
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
@@ -455,7 +455,7 @@ command! -bang -nargs=* Rg
 
 
 " vim-go                                                                                  {{{2
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 let g:go_metalinter_autosave = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
