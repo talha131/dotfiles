@@ -139,7 +139,7 @@ set ignorecase
 set smartcase
 set hlsearch " Highlight search results
 set noerrorbells visualbell t_vb= " Disable Beeping
-set rnu " relative number
+set relativenumber
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro rnu' " Except nu and rnu, all are netrw default values
 set showcmd
 
