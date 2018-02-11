@@ -7,7 +7,7 @@
     excludesfile = /Users/talha/.gitignore
     trustctime = false
     pager = less -x1,5
-	editor = vim
+	editor = nvim
 	autocrlf = input
 [color]
     ui = always
