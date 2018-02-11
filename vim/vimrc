@@ -88,21 +88,19 @@ call plug#end()            " required
 " from https://www.vi-improved.org/recommendations/
 function! StripTrailingWhitespace()
   if !&binary && &filetype ==# 'diff'
-    normal! mz
-    normal! Hmy
+    let l:save = winsaveview() " Save cursor position
+    " vint: -ProhibitCommandWithUnintendedSideEffect -ProhibitCommandRelyOnUser
     %s/\s\+$//e
-    normal! 'yz<CR>
-    normal! `z
+    call winrestview(l:save) " Restore cursor to saved position
   endif
 endfunction
 
 function! RemoveZeroWidthSpace()
   if !&binary && &filetype ==# 'diff'
-    normal! mz
-    normal! Hmy
+    let l:save = winsaveview() " Save cursor position
+    " vint: -ProhibitCommandWithUnintendedSideEffect -ProhibitCommandRelyOnUser
     %s/\%u200b//g
-    normal! 'yz<CR>
-    normal! `z
+    call winrestview(l:save) " Restore cursor to saved position
   endif
 endfunction
 
