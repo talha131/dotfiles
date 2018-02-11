@@ -87,7 +87,7 @@ call plug#end()            " required
 " Custom Functions                                                            {{{1
 " from https://www.vi-improved.org/recommendations/
 function! StripTrailingWhitespace()
-  if !&binary && &filetype != 'diff'
+  if !&binary && &filetype ==# 'diff'
     normal! mz
     normal! Hmy
     %s/\s\+$//e
@@ -97,7 +97,7 @@ function! StripTrailingWhitespace()
 endfunction
 
 function! RemoveZeroWidthSpace()
-  if !&binary && &filetype != 'diff'
+  if !&binary && &filetype ==# 'diff'
     normal! mz
     normal! Hmy
     %s/\%u200b//g
@@ -270,7 +270,7 @@ function! SetStatusLineColor()
 endfunction
 
 function! SetLimelightConcealColor()
-    if (&background == 'dark')
+    if (&background ==# 'dark')
         " bg3 from gruvbox dark mode
         let g:limelight_conceal_ctermfg = '241'
         let g:limelight_conceal_guifg = '#665c54'
