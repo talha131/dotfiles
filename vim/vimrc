@@ -109,8 +109,7 @@ function! s:SynStack()
   if !exists('*synstack')
     return
   endif
-  " vint: -ProhibitUnnecessaryDoubleQuote
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+  echo map(synstack(line('.'), col('.')), "synIDattr(v:val, 'name')")
 endfunction
 
 " Customize Vim                                                               {{{1
