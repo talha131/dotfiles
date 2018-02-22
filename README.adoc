@@ -934,7 +934,7 @@ Then use `brew cask install` to install following applications,
 . Install 1Password browser extension
 . Login to RescueTime
 
-===== Confiure iterm2
+===== Configure iterm2
 
 . Open Preferences
 . General -> Preferences -> Load preferences from a custom folder
