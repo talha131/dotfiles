@@ -883,25 +883,46 @@ First add taps
     brew tap cask
     brew tap versions
     brew tap fonts
+    brew tap railwaycat/emacsmacport
 
 Then use `brew cask install` to install following applications,
 
 . 1password
+. android-file-transfer
+. android-platform-tools
+. appcleaner
+. appcode
+. atext
+. authy
+. calibre
 . dash
+. deluge
 . dropbox
+. emacs-mac
 . evernote
 . firefoxdeveloperedition
+. font-fira-code
 . font-inconsolata
+. google-backup-and-sync
+. google-chrome
 . hammerspoon
+. handbrake
+. hockey
 . imageoptim
 . iterm2
 . karabiner-elements
 . mac2imgur
+. qt-creator
 . rcdefaultapp
 . rescuetime
+. skype
+. slack
+. syncthing-bar
 . the-clock
 . the-unarchiver
+. ticktick
 . visual-studio-code
+. vlc
 
 ==== Configure Applications Post Install
 
