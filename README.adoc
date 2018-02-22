@@ -994,7 +994,7 @@ https://github.com/junegunn/vim-plug[vim-plug]
 
 === Install Applications
 
-. Deluge Magnet Handler[https://github.com/Lord-Kamina/Deluge-Magnet-Handler]
+. https://github.com/Lord-Kamina/Deluge-Magnet-Handler[Deluge Magnet Handler]
 . https://dynalist.io/download[Dynalist]
 
 === Emacs key bindings for OS X
