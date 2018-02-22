@@ -897,7 +897,6 @@ Then use `brew cask install` to install following applications,
 . iterm2
 . karabiner-elements
 . mac2imgur
-. rambox
 . rcdefaultapp
 . rescuetime
 . the-clock
