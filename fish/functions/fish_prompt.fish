@@ -103,7 +103,7 @@ function fish_prompt -d "Write out the prompt"
         end
     end
 
-    echo -n -s "$__fish_prompt_userhost" "$__fish_prompt_virtualenv" "$__fish_prompt_cwd" (prompt_pwd) "$__vcprompt" "$__fish_prompt_normal" "$__fish_prompt_char"
+    echo -n -s "$__fish_prompt_userhost" "$__fish_prompt_virtualenv" "$__fish_prompt_cwd" (prompt_pwd) "$__vcprompt" "$__fish_prompt_normal" "\n" "$__fish_prompt_char"
 
 end
 
