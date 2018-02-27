@@ -1,6 +1,9 @@
 # Fish variables
 set -g fish_prompt_pwd_dir_length 0
 
+# Environment variables
+set -x EDITOR nvim
+
 # Pyenv variables
 set PYENV_ROOT $HOME/.pyenv
 set -x PATH $PYENV_ROOT/shims $PATH
@@ -24,5 +27,3 @@ set -g fish_user_paths "$GOPATH/bin" $fish_user_paths
 # fzf will use find command (or $FZF_DEFAULT_COMMAND if defined) to 
 # list the files under the current directory
 set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-
-set -x EDITOR nvim
