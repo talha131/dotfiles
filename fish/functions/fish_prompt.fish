@@ -106,17 +106,3 @@ function fish_prompt -d "Write out the prompt"
     echo -n -s "$__fish_prompt_userhost" "$__fish_prompt_virtualenv" "$__fish_prompt_cwd" (prompt_pwd) "$__vcprompt" "$__fish_prompt_normal" "\n" "$__fish_prompt_char"
 
 end
-
-# We've also included an example of how
-# to determine the current project from the pwd.
-# It'll only work without alterations if
-# you happen to keep all your projects in
-# ~/Sites/ on a Mac, but it's easy to modify
-
-set -l project
-
-if echo (pwd) | grep -qEi "^/Users/$USER/Repos/"
-    set  project (echo (pwd) | sed "s#^/Users/$USER/Repos/\\([^/]*\\).*#\\1#")
-else
-    set  project "Terminal"
-end
