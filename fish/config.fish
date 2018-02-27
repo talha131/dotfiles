@@ -1,5 +1,8 @@
 source ~/.config/fish/functions/marks.fish
 
+# Fish variables
+set -g fish_prompt_pwd_dir_length 0
+
 set PYENV_ROOT $HOME/.pyenv
 set -x PATH $PYENV_ROOT/shims $PATH
 pyenv rehash
