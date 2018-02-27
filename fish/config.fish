@@ -1,5 +1,3 @@
-source ~/.config/fish/functions/marks.fish
-
 # Fish variables
 set -g fish_prompt_pwd_dir_length 0
 
@@ -8,8 +6,9 @@ set PYENV_ROOT $HOME/.pyenv
 set -x PATH $PYENV_ROOT/shims $PATH
 pyenv rehash
 
+# Load shell utilities
+source ~/.config/fish/functions/marks.fish
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
-
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 # Set path
