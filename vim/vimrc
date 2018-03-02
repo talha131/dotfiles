@@ -217,7 +217,7 @@ let g:mapleader = ' '
 " Press ENTER or type command to continue
 " See :help hit-enter
 nnoremap <Leader>wq :silent wq<CR>
-" I want to open Gstatus in a new tab. 
+" I want to open Gstatus in a new tab.
 " Fugitive opens diff from Gstatus in the current window.
 " My file order gets mangled up after I am done with Gstatus.
 " tab split = is necessary. Git fugitive commands work only if a file from Git
@@ -247,7 +247,7 @@ nnoremap <Leader>b :ls<CR>:b<Space>
 " vim-bbye
 nnoremap <Leader>q :w \| Bdelete<CR>
 " show highlight group
-nnoremap <leader>hg :call <SID>SynStack()<CR> 
+nnoremap <leader>hg :call <SID>SynStack()<CR>
 " Relies on FZF
 nnoremap <Leader>ff :Files <CR>
 nnoremap <Leader>bb :Buffers <CR>
@@ -403,10 +403,11 @@ let g:undotree_SetFocusWhenToggle = 1
 " localvimrc                                                                  {{{2
 " Reply with upper case Y/N/A for .lvimrc that you trust
 let g:localvimrc_persistent = 1
-" Disable loading of local vimrc files. Use LocalVimRCEnable or LocalVimRCDisable
-let g:localvimrc_enable = 0 
+" Disable loading of local vimrc files. Use LocalVimRCEnable or
+" LocalVimRCDisable
+let g:localvimrc_enable = 0
 
-" vim-diff-enhanced                                                                    {{{2
+" vim-diff-enhanced                                                           {{{2
 let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 
 " tsuquyomi/typescript                                                                    {{{2
@@ -437,7 +438,7 @@ endif
 " startify                                                                                  {{{2
 let g:startify_session_dir = '~/.vim/sessions'
 let s:padding_left = repeat(' ', get(g:, 'startify_padding_left', 3))
-let g:startify_list_order = [ 
+let g:startify_list_order = [
         \ [s:padding_left .'Sessions'],       'sessions',
         \ [s:padding_left .'MRU'],            'files',
         \ [s:padding_left .'MRU '. getcwd()], 'dir',
