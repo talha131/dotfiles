@@ -39,6 +39,7 @@ if (has('nvim'))
     Plug 'mhartington/nvim-typescript' " Typescript tooling for Neovim
 endif
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 " Plugins - Typing Utilities                                                  {{{2
 Plug 'tpope/vim-rsi' " Readline key bindings
 Plug 'junegunn/vim-easy-align' " Vim alignment
@@ -465,6 +466,10 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
+" deoplete-go                                                                                  {{{2
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " asyncrun                                                                                  {{{2
 " For vim-fugitive
