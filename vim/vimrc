@@ -305,6 +305,7 @@ augroup theme_related_settings
     " colorscheme or background is changed
     autocmd ColorScheme * call SetStatusLineColor()
     autocmd ColorScheme * call SetLimelightConcealColor()
+    autocmd BufEnter * call SetStatusLineColor()
     autocmd User ALELintPost call SetStatusLineColor()
 augroup END
 
