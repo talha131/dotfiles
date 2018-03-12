@@ -266,7 +266,11 @@ elseif has('win32')
 endif
 
 function! SetStatusLineColor()
-    highlight StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272a4 gui=bold
+    if LinterStatus() ==# 'OK'
+        highlight StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272a4 gui=bold
+    else
+        highlight StatusLine ctermfg=231 ctermbg=09 cterm=bold guifg=#f8f8f2 guibg=#ff0000 gui=bold
+    endif
     highlight StatusLineNC ctermfg=231 ctermbg=243 cterm=NONE guifg=#f8f8f2 guibg=#64666d gui=NONE
 endfunction
 
