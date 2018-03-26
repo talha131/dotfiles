@@ -124,6 +124,7 @@ if has('nvim')
     if has('mac')
         let g:python_host_prog = $HOME.'/.pyenv/versions/2.7.14/bin/python'
         let g:python3_host_prog = $HOME.'/.pyenv/versions/3.3.6/bin/python'
+        let $PYENV_ROOT=$HOME.'/.pyenv/'
     endif
 endif
 " Miscellaneous Variables                                                     {{{2
