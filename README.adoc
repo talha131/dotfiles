@@ -927,6 +927,12 @@ Then use `brew cask install` to install following applications,
 . visual-studio-code
 . vlc
 
+==== Install applications from `yarn`
+
+Use `yarn global add`
+
+. gifify
+
 === Install Applications
 
 . https://github.com/Lord-Kamina/Deluge-Magnet-Handler[Deluge Magnet Handler]
