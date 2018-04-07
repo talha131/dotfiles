@@ -857,27 +857,27 @@ Install https://brew.sh/[brew]
 
 Use `brew install` to install following applications,
 
-aspell
-bench
-exa
-fish
-fzf
-git
-go
-iftop
-llvm@4
-neovim
-node
-pyenv
-ripgrep
-ruby
-the_silver_searcher
-trash
-tree
-vcprompt
-wget
-yarn
-youtube-dl
+. aspell
+. bench
+. exa
+. fish
+. fzf
+. git
+. go
+. iftop
+. llvm@4
+. neovim
+. node
+. pyenv
+. ripgrep
+. ruby
+. the_silver_searcher
+. trash
+. tree
+. vcprompt
+. wget
+. yarn
+. youtube-dl
 
 ==== Install applications from `cask`
 
