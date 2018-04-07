@@ -860,11 +860,14 @@ Use `brew install` to install following applications,
 . aspell
 . bench
 . exa
+. `ffmpeg --with-chromaprint --with-fdk-aac --with-libass --with-librsvg --with-libsoxr --with-libssh --with-tesseract --with-libvidstab --with-opencore-amr --with-openh264 --with-openjpeg --with-openssl --with-rtmpdump --with-rubberband --with-sdl2 --with-snappy --with-tools --with-webp --with-x265 --with-xz --with-zeromq --with-zimg --with-fontconfig`
 . fish
 . fzf
+. giflossy
 . git
 . go
 . iftop
+. `imagemagick --with-fontconfig`
 . llvm@4
 . neovim
 . node
