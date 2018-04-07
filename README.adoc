@@ -899,7 +899,6 @@ Then use `brew cask install` to install following applications,
 . authy
 . calibre
 . dash
-. deluge
 . dropbox
 . emacs-mac
 . evernote
@@ -915,6 +914,7 @@ Then use `brew cask install` to install following applications,
 . iterm2
 . karabiner-elements
 . mac2imgur
+. qbittorrent
 . qt-creator
 . rcdefaultapp
 . rescuetime
