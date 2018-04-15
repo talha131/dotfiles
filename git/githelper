@@ -12,6 +12,16 @@ FORMAT="$HASH}$AUTHOR_DATE}$AUTHOR}$REFS $SUBJECT"
 ANSI_MAGENTA='\033[35m'
 ANSI_RESET='\033[0m'
 
+function pretty_git_log_graph {
+
+     git log --date=short --pretty="format:${FORMAT}" --graph --topo-order $* |
+        sed -Ee "s/}/  /g" |
+        # Color merge commits specially
+        sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
+        # Page only if needed
+        less -FXRS
+}
+
 function pretty_git_log {
 
      git log --date=short --pretty="format:${FORMAT}%n" $* |
