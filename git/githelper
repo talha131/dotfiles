@@ -32,7 +32,7 @@ function pretty_git_log_graph {
         less -FXRS
 }
 
-function pretty_git_log_oneline {
+function pretty_git_log_subject {
 
      git log --date=short --pretty="format:${FORMAT}%n" $* |
         # Line columns up based on } delimiter

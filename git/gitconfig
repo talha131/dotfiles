@@ -59,7 +59,7 @@
     dcw = diff --cached --word-diff=color
 
     # One line logs
-    l = "!source ~/.githelper && pretty_git_log_oneline"
+    l = "!source ~/.githelper && pretty_git_log_subject"
     # log with stats
     ls = "!source ~/.githelper && pretty_git_log_stats"
     # Git log with graph
