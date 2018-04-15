@@ -978,13 +978,15 @@ a new SSH key to your GitHub account]
 ===== Install Python version
 
     pyenv versions
-	pyenv install 3.3.6
-	pyenv global 3.3.6
+	pyenv install 2.7.14
+    pyenv install 3.6.5
+    pyenv install pypy3.5-5.10.1
+	pyenv global pypy3.5-5.10.1
 
 ===== Pip and gem packages
 
     pip2 install --upgrade neovim
-    pip3 install --upgrade neovim
+    pypy3 -m pip install --upgrade neovim
     gem install asciidoctor
     gem install neovim
 
