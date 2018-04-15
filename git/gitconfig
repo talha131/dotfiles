@@ -1,6 +1,6 @@
 [user]
-    name = Talha Mansoor
-    email = talha131@gmail.com
+	name = Talha Mansoor
+	email = talha131@gmail.com
 [core]
     quotepath = false
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
