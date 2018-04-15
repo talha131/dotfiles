@@ -30,30 +30,43 @@
 [push]
     default = simple
 [alias]
-    sb = status -sb
-    sc = diff --name-only --diff-filter=U
-    l = "!source ~/.githelper && pretty_git_log"
-    ls = "!source ~/.githelper && pretty_git_log_stats"
-    la = "!git l --all"
-    lr = !git l -50 --graph
-    lra = !git lr --all
-    lg = !git l --graph
-    lp = log --patch --decorate
-    d = diff
-    dc = diff --cached
+    ap = add -p
+    ai = add -i
+
     c = commit -v
     ca = !git c -a
     caa = !git c -a --amend
     cm = !git c --amend
-    s = status --short
-    ap = add -p
-    ai = add -i
-    ln = log --name-only
-    dw = diff --word-diff=color
-    chm = checkout master
-    chb = checkout -b
+
+    # Short form
     ch = checkout
-	dcw = diff --cached --word-diff
+    # Swtich and create branch at branch or commit
+    chb = checkout -b
+    # Switch to master branch
+    chm = checkout master
+
+    d = diff
+    dc = diff --cached
+    dw = diff --word-diff=color
+    dcw = diff --cached --word-diff=color
+
+    # One line logs
+    l = "!source ~/.githelper && pretty_git_log"
+    # log with stats
+    ls = "!source ~/.githelper && pretty_git_log_stats"
+    la = "!git l --all"
+    # Git log with graph
+    lr = !git l -50 --graph
+    lra = !git lr --all
+    lg = !git l --graph
+    lp = log --patch --decorate
+    # log file names
+    ln = log --name-only
+
+    s = status --short
+    sb = status -sb
+    sc = diff --name-only --diff-filter=U
+
 [merge]
     conflictstyle = diff3
 [diff]
