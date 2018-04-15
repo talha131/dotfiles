@@ -930,12 +930,6 @@ Then use `brew cask install` to install following applications,
 . visual-studio-code
 . vlc
 
-==== Install applications from `yarn`
-
-Use `yarn global add`
-
-. gifify
-
 === Install Applications
 
 . https://github.com/Lord-Kamina/Deluge-Magnet-Handler[Deluge Magnet Handler]
@@ -983,12 +977,14 @@ a new SSH key to your GitHub account]
     pyenv install pypy3.5-5.10.1
 	pyenv global pypy3.5-5.10.1
 
-===== Pip and gem packages
+===== Pip, gem and yarn packages
 
     pip2 install --upgrade neovim
     pypy3 -m pip install --upgrade neovim
     gem install asciidoctor
     gem install neovim
+    yarn global add neovim
+    yarn global add gifify
 
 === Dot Files
 
