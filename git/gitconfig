@@ -62,11 +62,7 @@
     l = "!source ~/.githelper && pretty_git_log"
     # log with stats
     ls = "!source ~/.githelper && pretty_git_log_stats"
-    la = "!git l --all"
     # Git log with graph
-    lr = !git l -50 --graph
-    lra = !git lr --all
-    lg = !git l --graph
     lp = log --patch --decorate
     # log file names
     ln = log --name-only
