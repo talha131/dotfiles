@@ -71,6 +71,9 @@
     lp = "!git logpretty --patch"
     ln = "!git logpretty --name-only"
 
+    mo = "!git fetch origin && git merge --ff-only origin/master"
+    mu = "!git fetch upstream && git merge --no-ff upstream/master"
+
     s = status --short
     sb = status -sb
     sc = diff --name-only --diff-filter=U
