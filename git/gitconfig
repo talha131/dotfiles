@@ -42,7 +42,7 @@
     bru = branch -a --no-merged
     brD = !sh -c 'git branch -D $1 && git push --delete origin $1' -
     branch-name = "!git rev-parse --abbrev-ref HEAD"
-    publish = "!git push -u origin $(git branch-name)"
+    pub = "!git push -u origin $(git branch-name)"
 
     c = commit -v
     ca = !git c -a
