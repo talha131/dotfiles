@@ -71,8 +71,8 @@
     lp = "!git logpretty --patch"
     ln = "!git logpretty --name-only"
 
-    mo = "!git fetch origin && git merge --ff-only origin/master"
-    mu = "!git fetch upstream && git merge --no-ff upstream/master"
+    mo = "!source ~/.githelper && merge_remote origin"
+    mu = "!source ~/.githelper && merge_remote upstream"
 
     s = status --short
     sb = status -sb
