@@ -15,6 +15,26 @@ YELLOW='\033[1;33m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
+function merge_conflicts_possible() {
+    if (("$1" == 'upstream' || "$1" == 'origin'));
+    then
+        echo "${YELLOW}${BOLD}Fetching $1${NORMAL}"
+        git fetch $1
+        fetch_head="$1/master"
+    else
+        fetch_head="$1"
+    fi
+
+    printf "${YELLOW}${BOLD}Checking merge conflicts between "
+    printf "${ANSI_MAGENTA}$fetch_head${ANSI_RESET} "
+    printf "${YELLOW}${BOLD}and "
+    printf "${ANSI_MAGENTA}$(git branch-name)${ANSI_RESET}${NORMAL}\n"
+
+    merge_base=$(git merge-base "$fetch_head" "$(git branch-name)")
+
+    git merge-tree $merge_base "fetch_head" "$(git branch-name)" | grep -A3 "changed in both"
+}
+
 function merge_remote() {
     echo "${YELLOW}${BOLD}Fetching $1${NORMAL}"
     git fetch "$1"
