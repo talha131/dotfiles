@@ -21,14 +21,15 @@ function merge_remote() {
     if (("$(git branch-name)" == 'master'));
     then
         echo "${YELLOW}${BOLD}Doing fast forward merge${NORMAL}"
-        git merge --ff-only upstream/master
+        git merge --ff-only $1/master
         echo "${YELLOW}${BOLD}Pushing to origin${NORMAL}"
         git push
     else 
         echo "${YELLOW}${BOLD}Doing non fast forward merge${NORMAL}"
-        git merge --no-ff upstream/master
+        git merge --no-ff $1/master
     fi
 }
+
 function pretty_git_log_subject_body {
 
      git log --date=short --pretty="format:${FORMAT}%n%b" $* |
