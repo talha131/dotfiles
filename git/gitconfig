@@ -71,8 +71,9 @@
     lp = "!git logpretty --patch"
     ln = "!git logpretty --name-only"
 
-    # merge conflict
+    # dry run merge
     msafe = "!source ~/.githelper && merge_conflicts_possible $1"
+    # merge conflict
     mcon = "diff --name-only --diff-filter=U"
     mo = "!source ~/.githelper && merge_remote origin"
     mu = "!source ~/.githelper && merge_remote upstream"
