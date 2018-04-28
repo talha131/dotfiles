@@ -16,7 +16,7 @@ BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
 function merge_conflicts_possible() {
-    if (("$1" == 'upstream' || "$1" == 'origin'));
+    if [ "$1" == 'upstream' -o "$1" == 'origin' ];
     then
         echo "${YELLOW}${BOLD}Fetching $1${NORMAL}"
         git fetch $1
