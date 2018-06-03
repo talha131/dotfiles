@@ -889,6 +889,7 @@ First add taps
     brew tap cask
     brew tap versions
     brew tap fonts
+    brew tap colindean/fonts-nonfree
     brew tap railwaycat/emacsmacport
 
 Then use `brew cask install` to install following applications,
@@ -908,6 +909,7 @@ Then use `brew cask install` to install following applications,
 . firefoxdeveloperedition
 . font-fira-code
 . font-inconsolata
+. font-microsoft-office
 . google-backup-and-sync
 . google-chrome
 . hammerspoon
