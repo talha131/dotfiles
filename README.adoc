@@ -990,8 +990,16 @@ a new SSH key to your GitHub account]
     pypy3 -m pip install --upgrade neovim
     gem install asciidoctor
     gem install neovim
-    yarn global add neovim
-    yarn global add gifify
+
+===== Yarn packages
+
+Use `yarn global add` to install following packages,
+
+. ffmpeg-concat
+. gifify
+. neovim
+. npm-check
+. tiddlywiki
 
 === Dot Files
 
