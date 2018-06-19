@@ -901,6 +901,7 @@ Then use `brew cask install` to install following applications,
 . appcode
 . atext
 . authy
+. bitwarden
 . calibre
 . dash
 . dropbox
@@ -910,8 +911,11 @@ Then use `brew cask install` to install following applications,
 . font-fira-code
 . font-inconsolata
 . font-microsoft-office
+. github
+. gitup
 . google-backup-and-sync
 . google-chrome
+. grandperspective
 . hammerspoon
 . handbrake
 . hockey
@@ -919,6 +923,7 @@ Then use `brew cask install` to install following applications,
 . iterm2
 . karabiner-elements
 . mac2imgur
+. pdfexpert
 . qbittorrent
 . qt-creator
 . rcdefaultapp
