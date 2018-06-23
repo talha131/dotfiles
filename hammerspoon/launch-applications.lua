@@ -18,6 +18,7 @@ local appShortCuts = {
     P = '1Password 6',
     Q = 'Qt Creator',
     R = 'Google Chrome',
+    S = 'Slack',
     V = 'evernote',
     X = 'Xcode',
 }
