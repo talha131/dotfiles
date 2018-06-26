@@ -952,6 +952,20 @@ Then use `brew cask install` to install following applications,
 . Install 1Password browser extension
 . Login to RescueTime
 
+===== Configue dark theme for Firefox
+
+
+. Open `about:support`
+. Click on Profile Folder -> Open Folder
+. Create a sub-folder named `chrome`
+. Change into the new folder
+. Make sure the directory is empty and does not even have hidden files:
+. Clone https://github.com/overdodactyl/ShadowFox[Shadow Fox]
+
+    git clone https://github.com/overdodactyl/ShadowFox.git .
+
+. Restart Firefox
+
 ===== Configure iterm2
 
 . Open Preferences
