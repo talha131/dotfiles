@@ -19,21 +19,13 @@ Plug 'skywind3000/asyncrun.vim'
 " Plugins - Code Complete and Snippets                                        {{{2
 " The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
 " Plug 'ajh17/VimCompletesMe'
-if (has('nvim'))
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
- \ | Plug 'Quramy/tsuquyomi'
-endif
 " Plugins - Motion Enhancements                                               {{{2
 " Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char}
 " Plugins - Syntax files and Programming Languages                            {{{2
 " Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'ihacklog/HiCursorWords' " highlights words under the cursor like many IDEs
-Plug 'HerringtonDarkholme/yats.vim' " TypeScript Syntax Highlighting
 Plug 'w0rp/ale' " Asynchronous Lint Engine
-if (has('nvim'))
-    Plug 'mhartington/nvim-typescript' " Typescript tooling for Neovim
-endif
 " Plugins - Typing Utilities                                                  {{{2
 Plug 'tpope/vim-rsi' " Readline key bindings
 Plug 'junegunn/vim-easy-align' " Vim alignment
@@ -402,9 +394,6 @@ let g:localvimrc_enable = 0
 " vim-diff-enhanced                                                           {{{2
 let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 
-" tsuquyomi/typescript                                                                    {{{2
-" let g:tsuquyomi_use_dev_node_module = 2
-" let g:tsuquyomi_tsserver_path = './node_modules/typescript/bin/tsserver'
 
 " Ale                                                                                  {{{2
 let g:ale_fixers = {}
