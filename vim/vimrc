@@ -20,10 +20,6 @@ Plug 'skywind3000/asyncrun.vim'
 " The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
 " Plug 'ajh17/VimCompletesMe'
 if (has('nvim'))
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-            \ | Plug 'Shougo/neoinclude.vim'
-            \ | Plug 'Shougo/neco-vim'
-Plug 'Shougo/neco-syntax'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
  \ | Plug 'Quramy/tsuquyomi'
 endif
@@ -385,20 +381,6 @@ augroup END
 xmap gl <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap gl <Plug>(EasyAlign)
-
-if (has('nvim'))
-" deoplete                                                                    {{{2
-let g:deoplete#enable_at_startup = 1
-let g:echodoc_enable_at_startup = 1
-
-" let g:deoplete#enable_ignore_case = 1
-if (has('mac'))
-	let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-	let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
-endif
-let g:deoplete#sources#clang#std = {'c': 'c11', 'cpp': 'c++1z', 'objc': 'c11', 'objcpp': 'c++1z'}
-let g:deoplete#sources#clang#sort_algo = 'priority'
-endif
 
 " vim-gitgutter                                                               {{{2
 set updatetime=200
