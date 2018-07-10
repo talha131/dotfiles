@@ -17,7 +17,6 @@ Plug 'mzlogin/vim-markdown-toc' " Generate table of contents for Markdown files.
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " :Files :Marks :Windows
 Plug 'skywind3000/asyncrun.vim'
 " Plugins - Code Complete and Snippets                                        {{{2
-" The Tab key will, depending on the context, offer Vim's local keyword, file path, omni-completion after typing a period or an arrow operator
 " Plugins - Motion Enhancements                                               {{{2
 " Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char}
 " Plugins - Syntax files and Programming Languages                            {{{2
