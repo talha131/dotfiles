@@ -3,7 +3,7 @@ hyper = { "cmd", "alt", "shift", "ctrl" }
 loggerInfo = hs.logger.new('My Settings', 'info')
 
 require 'caffeine'
-require 'clipboard'
+-- require 'clipboard'
 require 'launch-applications'
 require 'launch-chrome-applications'
 require 'red-shift'
