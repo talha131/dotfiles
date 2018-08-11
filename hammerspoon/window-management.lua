@@ -55,10 +55,10 @@ hs.window.animationDuration = 0
 
 modalKey:bind('', 'N', 'Move window to next monitor screen' , hs.grid.pushWindowNextScreen)
 
-modalKey:bind('', 'H', 'Resize window to left half of screen', function() push(0, 0, 0.5, 1) end)
-modalKey:bind('', 'J', 'Resize window to bottom half of screen', function() push(0, 0.5, 1, 0.5) end)
-modalKey:bind('', 'K', 'Resize window to top half of screen', function() push(0, 0, 1, 0.5) end)
-modalKey:bind('', 'L', 'Resize window to right half of screen', function() push(0.5, 0, 0.5, 1) end)
+modalKey:bind('', 'left', 'Resize window to left half of screen', function() push(0, 0, 0.5, 1) end)
+modalKey:bind('', 'down', 'Resize window to bottom half of screen', function() push(0, 0.5, 1, 0.5) end)
+modalKey:bind('', 'up', 'Resize window to top half of screen', function() push(0, 0, 1, 0.5) end)
+modalKey:bind('', 'right', 'Resize window to right half of screen', function() push(0.5, 0, 0.5, 1) end)
 
 modalKey:bind('', 'Q', 'Resize window to half of screen, center vertically', function() push(0, 0.25, 1, 0.5) end)
 modalKey:bind('', 'W', 'Resize window to half of screen, center horizontally', function() push(0.25, 0, 0.5, 1) end)
@@ -77,10 +77,10 @@ modalKey:bind('', 'F', 'Toggle full screen', function() fullScreen() end)
 modalKey:bind('', 'M', 'Maximize window', hs.grid.maximizeWindow)
 
 local positionDelta = 100
-modalKey:bind('', 'left', 'Move window to left', function() nudge(-positionDelta, 0) end)
-modalKey:bind('', 'down', 'Move window down', function() nudge(0, positionDelta) end)
-modalKey:bind('', 'up', 'Move window up', function() nudge(0, -positionDelta) end)
-modalKey:bind('', 'right', 'Move window to right', function() nudge(positionDelta, 0) end)
+modalKey:bind('shift', 'left', 'Move window to left', function() nudge(-positionDelta, 0) end)
+modalKey:bind('shift', 'down', 'Move window down', function() nudge(0, positionDelta) end)
+modalKey:bind('shift', 'up', 'Move window up', function() nudge(0, -positionDelta) end)
+modalKey:bind('shift', 'right', 'Move window to right', function() nudge(positionDelta, 0) end)
 
 local sizeDelta = 50
 modalKey:bind('', '=', 'Increase window height', function() yank(0, sizeDelta) end)
