@@ -55,10 +55,10 @@ hs.window.animationDuration = 0
 
 modalKey:bind('', 'N', 'Move window to next monitor screen' , hs.grid.pushWindowNextScreen)
 
-modalKey:bind('', 'left', 'Resize window to left half of screen', function() push(0, 0, 0.5, 1) end)
-modalKey:bind('', 'down', 'Resize window to bottom half of screen', function() push(0, 0.5, 1, 0.5) end)
-modalKey:bind('', 'up', 'Resize window to top half of screen', function() push(0, 0, 1, 0.5) end)
-modalKey:bind('', 'right', 'Resize window to right half of screen', function() push(0.5, 0, 0.5, 1) end)
+modalKey:bind('', 'left', 'Resize window to left half', function() push(0, 0, 0.5, 1) end)
+modalKey:bind('', 'down', 'Resize window to bottom half', function() push(0, 0.5, 1, 0.5) end)
+modalKey:bind('', 'up', 'Resize window to top half', function() push(0, 0, 1, 0.5) end)
+modalKey:bind('', 'right', 'Resize window to right', function() push(0.5, 0, 0.5, 1) end)
 
 modalKey:bind('', 'Q', 'Resize window to half of screen, center vertically', function() push(0, 0.25, 1, 0.5) end)
 modalKey:bind('', 'W', 'Resize window to half of screen, center horizontally', function() push(0.25, 0, 0.5, 1) end)
