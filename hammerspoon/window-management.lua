@@ -73,7 +73,7 @@ modalKey:bind('', 'C', 'Resize window to center', function() push(0.15, 0.15, 0.
 modalKey:bind('', 'F', 'Toggle full screen', function() fullScreen() end, function() modalKey:exit() end)
 modalKey:bind('', 'M', 'Maximize window', hs.grid.maximizeWindow, function() modalKey:exit() end)
 
-local positionDelta = 100
+local positionDelta = 50
 modalKey:bind('alt', 'left', 'Move window to left', function() nudge(-positionDelta, 0) end)
 modalKey:bind('alt', 'down', 'Move window down', function() nudge(0, positionDelta) end)
 modalKey:bind('alt', 'up', 'Move window up', function() nudge(0, -positionDelta) end)
