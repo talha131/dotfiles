@@ -87,25 +87,8 @@ modalKey:bind('', '[', 'Decrease window width', function() yank(-sizeDelta, 0) e
 
 -- Grid Management
 
--- Grid columns should be equal to number of hints in each row. Default hints variable is an array of 5x10
--- If grid columns and hint columns do not match, the Hammerspoon merges cells such that they total number
--- columns in the grid remains 10.
--- For details see https://github.com/Hammerspoon/hammerspoon/issues/1619
--- Here I don't expect to use column 2-5 much so I have set their hints to hard to access keys.
--- If need arises I can simply use arrow keys to select those cells instead of using hints.
-hs.grid.HINTS={
-    {'f1', 'f2' , 'f3' , 'f4' , 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15', 'f16'},
-    {'1' , 'f11', 'f15', 'f19', 'f3', '=' , ']' , '2' , '3' , '4'  , '5'  , '6'  , '7'  , '8'  , '9'  , '0'  },
-    {'Q' , 'f12', 'f16', 'f20', 'f4', '-' , '[' , 'W' , 'E' , 'R'  , 'T'  , 'Y'  , 'U'  , 'I'  , 'O'  , 'P'  },
-    {'A' , 'f13', 'f17', 'f1' , 'f5', 'f7', '\\', 'S' , 'D' , 'F'  , 'G'  , 'H'  , 'J'  , 'K'  , 'L'  , ','  },
-    {'X' , 'f14', 'f18', 'f2' , 'f6', 'f8', ';' , '/' , '.' , 'Z'  , 'X'  , 'C'  , 'V'  , 'B'  , 'N'  , 'M'  }
-}
-
-hs.grid.setMargins({0, 0})
-hs.grid.setGrid('16x4')
-hs.grid.ui.textSize = 35
-hs.grid.ui.cellStrokeWidth = 5
-hs.grid.ui.highlightStrokeWidth = 5
+hs.grid.setGrid('10x4')
+hs.grid.ui.textSize = 150
 
 modalKey:bind('', 'G', 'Show Grid', function() hs.grid.show(function() modalKey:exit() end) end)
 modalKey:bind('', 'S', 'Snap active window to grid', function() hs.grid.snap(hs.window.focusedWindow()) end, function() modalKey:exit() end)
