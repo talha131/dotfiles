@@ -47,34 +47,31 @@ end
 
 local modalKey = hs.hotkey.modal.new(hyper, 'W', 'Window Management mode')
 modalKey:bind('', 'escape', function() modalKey:exit() end)
-function modalKey:exited()
-    hs.alert.show('Window Management mode exited', 1)
-end
 
 hs.window.animationDuration = 0
 
-modalKey:bind('', 'N', 'Move window to next monitor screen' , hs.grid.pushWindowNextScreen)
+modalKey:bind('', 'N', 'Move window to next monitor screen' , hs.grid.pushWindowNextScreen, function() modalKey:exit() end)
 
-modalKey:bind('', 'left', 'Resize window to left half', function() push(0, 0, 0.5, 1) end)
-modalKey:bind('', 'down', 'Resize window to bottom half', function() push(0, 0.5, 1, 0.5) end)
-modalKey:bind('', 'up', 'Resize window to top half', function() push(0, 0, 1, 0.5) end)
-modalKey:bind('', 'right', 'Resize window to right', function() push(0.5, 0, 0.5, 1) end)
+modalKey:bind('', 'left', 'Resize window to left half', function() push(0, 0, 0.5, 1) end, function() modalKey:exit() end)
+modalKey:bind('', 'down', 'Resize window to bottom half', function() push(0, 0.5, 1, 0.5) end, function() modalKey:exit() end)
+modalKey:bind('', 'up', 'Resize window to top half', function() push(0, 0, 1, 0.5) end, function() modalKey:exit() end)
+modalKey:bind('', 'right', 'Resize window to right', function() push(0.5, 0, 0.5, 1) end, function() modalKey:exit() end)
 
-modalKey:bind('', 'Q', 'Resize window to half of screen, center vertically', function() push(0, 0.25, 1, 0.5) end)
-modalKey:bind('', 'W', 'Resize window to half of screen, center horizontally', function() push(0.25, 0, 0.5, 1) end)
-modalKey:bind('', 'E', 'Resize window to quarter of screen, center vertically, align to left', function() push(0, 0.25, 0.5, 0.5) end)
-modalKey:bind('', 'R', 'Resize window to quarter of screen, center vertically, align to right', function() push(0.5, 0.25, 0.5, 0.5) end)
-modalKey:bind('', 'T', 'Resize window to quarter of screen, center horizontally, align to top', function() push(0.25, 0, 0.5, 0.5) end)
-modalKey:bind('', 'Y', 'Resize window to quarter of screen, center horizontally, align to bottom', function() push(0.25, 0.5, 0.5, 0.5) end)
+modalKey:bind('', 'Q', 'Resize window to half of screen, center vertically', function() push(0, 0.25, 1, 0.5) end, function() modalKey:exit() end)
+modalKey:bind('', 'W', 'Resize window to half of screen, center horizontally', function() push(0.25, 0, 0.5, 1) end, function() modalKey:exit() end)
+modalKey:bind('', 'E', 'Resize window to quarter of screen, center vertically, align to left', function() push(0, 0.25, 0.5, 0.5) end, function() modalKey:exit() end)
+modalKey:bind('', 'R', 'Resize window to quarter of screen, center vertically, align to right', function() push(0.5, 0.25, 0.5, 0.5) end, function() modalKey:exit() end)
+modalKey:bind('', 'T', 'Resize window to quarter of screen, center horizontally, align to top', function() push(0.25, 0, 0.5, 0.5) end, function() modalKey:exit() end)
+modalKey:bind('', 'Y', 'Resize window to quarter of screen, center horizontally, align to bottom', function() push(0.25, 0.5, 0.5, 0.5) end, function() modalKey:exit() end)
 
-modalKey:bind('', 'H', 'Resize window to top left', function() push(0, 0, 0.5, 0.5) end)
-modalKey:bind('', 'J', 'Resize window to top right', function() push(0.5, 0, 0.5, 0.5) end)
-modalKey:bind('', 'K', 'Resize window to bottom left', function() push(0, 0.5, 0.5, 0.5) end)
-modalKey:bind('', 'L', 'Resize window to bottom right', function() push(0.5, 0.5, 0.5, 0.5) end)
+modalKey:bind('', 'H', 'Resize window to top left', function() push(0, 0, 0.5, 0.5) end, function() modalKey:exit() end)
+modalKey:bind('', 'J', 'Resize window to top right', function() push(0.5, 0, 0.5, 0.5) end, function() modalKey:exit() end)
+modalKey:bind('', 'K', 'Resize window to bottom left', function() push(0, 0.5, 0.5, 0.5) end, function() modalKey:exit() end)
+modalKey:bind('', 'L', 'Resize window to bottom right', function() push(0.5, 0.5, 0.5, 0.5) end, function() modalKey:exit() end)
 
-modalKey:bind('', 'C', 'Resize window to center', function() push(0.15, 0.15, 0.7, 0.7) end)
-modalKey:bind('', 'F', 'Toggle full screen', function() fullScreen() end)
-modalKey:bind('', 'M', 'Maximize window', hs.grid.maximizeWindow)
+modalKey:bind('', 'C', 'Resize window to center', function() push(0.15, 0.15, 0.7, 0.7) end, function() modalKey:exit() end)
+modalKey:bind('', 'F', 'Toggle full screen', function() fullScreen() end, function() modalKey:exit() end)
+modalKey:bind('', 'M', 'Maximize window', hs.grid.maximizeWindow, function() modalKey:exit() end)
 
 local positionDelta = 100
 modalKey:bind('shift', 'left', 'Move window to left', function() nudge(-positionDelta, 0) end)
@@ -111,5 +108,5 @@ hs.grid.ui.cellStrokeWidth = 5
 hs.grid.ui.highlightStrokeWidth = 5
 
 modalKey:bind('', 'G', 'Show Grid', function() hs.grid.show() end)
-modalKey:bind('', 'S', 'Snap active window to grid', function() hs.grid.snap(hs.window.focusedWindow()) end)
+modalKey:bind('', 'S', 'Snap active window to grid', function() hs.grid.snap(hs.window.focusedWindow()) end, function() modalKey:exit() end)
 
