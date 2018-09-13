@@ -107,6 +107,6 @@ hs.grid.ui.textSize = 35
 hs.grid.ui.cellStrokeWidth = 5
 hs.grid.ui.highlightStrokeWidth = 5
 
-modalKey:bind('', 'G', 'Show Grid', function() hs.grid.show() end)
+modalKey:bind('', 'G', 'Show Grid', function() hs.grid.show(function() modalKey:exit() end) end)
 modalKey:bind('', 'S', 'Snap active window to grid', function() hs.grid.snap(hs.window.focusedWindow()) end, function() modalKey:exit() end)
 
