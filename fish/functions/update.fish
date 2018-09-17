@@ -24,7 +24,6 @@ function update -d 'Update software to the latest versions'
             brew upgrade
             _printMessage 'Cleaning up Brew'
             brew cleanup
-            brew cask cleanup
         end
         functions -e _updateBrewPackages
     end
