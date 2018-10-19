@@ -867,7 +867,7 @@ Use `brew install` to install following applications,
 . git
 . go
 . iftop
-. `imagemagick --with-fontconfig`
+. `imagemagick --with-fontconfig --with-ghostscript`
 . llvm@4
 . neovim
 . node
