@@ -23,7 +23,6 @@ Plug 'skywind3000/asyncrun.vim'
 " Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'ihacklog/HiCursorWords' " highlights words under the cursor like many IDEs
-Plug 'w0rp/ale' " Asynchronous Lint Engine
 " Plugins - Typing Utilities                                                  {{{2
 Plug 'tpope/vim-rsi' " Readline key bindings
 Plug 'junegunn/vim-easy-align' " Vim alignment
@@ -256,11 +255,7 @@ elseif has('win32')
 endif
 
 function! SetStatusLineColor()
-    if LinterStatus() ==# 'OK'
-        highlight StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272a4 gui=bold
-    else
-        highlight StatusLine ctermfg=231 ctermbg=09 cterm=bold guifg=#f8f8f2 guibg=#ff0000 gui=bold
-    endif
+    highlight StatusLine ctermfg=231 ctermbg=61 cterm=bold guifg=#f8f8f2 guibg=#6272a4 gui=bold
     highlight StatusLineNC ctermfg=231 ctermbg=243 cterm=NONE guifg=#f8f8f2 guibg=#64666d gui=NONE
 endfunction
 
@@ -276,19 +271,6 @@ function! SetLimelightConcealColor()
     endif
 endfunction
 
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   l:all_non_errors,
-    \   l:all_errors
-    \)
-endfunction
-
 augroup theme_related_settings
     autocmd!
     " Preserve the custom colors set in SetStatusLineColor() whenever
@@ -296,7 +278,6 @@ augroup theme_related_settings
     autocmd ColorScheme * call SetStatusLineColor()
     autocmd ColorScheme * call SetLimelightConcealColor()
     autocmd BufEnter * call SetStatusLineColor()
-    autocmd User ALELintPost call SetStatusLineColor()
 augroup END
 
 set cursorline
@@ -320,8 +301,6 @@ set statusline+=[%04l,%04v] " current line, current column
 set statusline+=\ " separator
 set statusline+=[%{&ff}] " current file format
 set statusline+=%y " file type
-set statusline+=\ " separator
-set statusline+=[%{LinterStatus()}]
 set statusline+=\ " separator
 set statusline+=(%{winnr()}) " window number. Useful for {count}<C-W>q
 
@@ -389,27 +368,6 @@ let g:localvimrc_persistent = 1
 " Disable loading of local vimrc files. Use LocalVimRCEnable or
 " LocalVimRCDisable
 let g:localvimrc_enable = 0
-
-" Ale                                                                                  {{{2
-let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
-let g:ale_fixers['json'] = ['prettier']
-let g:ale_fixers['typescript'] = ['prettier']
-let g:ale_fixers['css'] = ['prettier']
-let g:ale_fixers['javascript.jsx'] = ['prettier']
-let g:ale_fixers['typescript.tsx'] = ['prettier']
-let g:ale_fixers['c'] = ['clang-format']
-let g:ale_fixers['cpp'] = ['clang-format']
-let g:ale_fixers['objc'] = ['clang-format']
-let g:ale_fixers['objcpp'] = ['clang-format']
-let g:ale_fix_on_save = 1
-let g:ale_javascript_prettier_use_local_config = 1
-let g:ale_linters = {}
-let g:ale_linters['typescript'] = ['tslint', 'tsserver']
-let g:ale_open_list = 1
-if (has('mac'))
-    let g:ale_c_clangformat_executable = '/usr/local/opt/llvm@4/bin/clang-format'
-endif
 
 " startify                                                                                  {{{2
 let g:startify_session_dir = '~/.vim/sessions'
