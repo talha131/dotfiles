@@ -301,7 +301,7 @@ augroup END
 set cursorline
 set cursorcolumn
 
-colorscheme gruvbox
+colorscheme hopscotch
 
 " Status line                                                                 {{{2
 set statusline=%F " full path to file in the buffer
