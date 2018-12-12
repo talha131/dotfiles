@@ -1,6 +1,7 @@
 [user]
 	name = Talha Mansoor
 	email = talha131@gmail.com
+	signingkey = 561E6373A1B75589791E589D002B80DA805650B7
 [core]
     quotepath = false
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -98,3 +99,5 @@
 	diff = diff-highlight | less
 [interactive]
 	diffFilter = diff-highlight
+[commit]
+	gpgsign = true
