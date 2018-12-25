@@ -17,6 +17,7 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 # Set path
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 set -g fish_user_paths "~/bin" $fish_user_paths
+set -g fish_user_paths "/usr/local/opt/llvm@4/bin/" $fish_user_paths
 
 # Golang variables
 set -x GOPATH $HOME/Repos/GO
