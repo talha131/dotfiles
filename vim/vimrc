@@ -21,7 +21,6 @@ Plug 'skywind3000/asyncrun.vim'
 " Plugins - Syntax files and Programming Languages                            {{{2
 " Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
-Plug 'ihacklog/HiCursorWords' " highlights words under the cursor like many IDEs
 " Plugins - Typing Utilities                                                  {{{2
 Plug 'tpope/vim-rsi' " Readline key bindings
 Plug 'junegunn/vim-easy-align' " Vim alignment
