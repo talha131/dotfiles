@@ -96,39 +96,6 @@ function update -d 'Update software to the latest versions'
     set argument all brew fish gem npm pip vim
     set validArgument 'false'
 
-    if contains $argument[2] $argv 
-        set validArgument 'true'
-        _updateBrew
-        _updateBrewPackages
-    end
-
-    if contains $argument[6] $argv
-        set validArgument 'true'
-        _updatePipPackages
-        _updatePyenvShims
-    end
-
-    if contains $argument[4] $argv
-        set validArgument 'true'
-        _updateGems
-        _updateRbenvShims
-    end
-
-    if contains $argument[7] $argv
-        set validArgument 'true'
-        _updateVimPlugins
-    end
-
-    if contains $argument[5] $argv
-        set validArgument 'true'
-        _updateNpmPackages
-    end
-
-    if contains $argument[3] $argv
-        set validArgument 'true'
-        _updateFishCompletions
-    end
-
     set i (count $argv)
     if contains $argument[1] $argv; or math "$i == 0" > /dev/null
         set validArgument 'true'
@@ -142,6 +109,39 @@ function update -d 'Update software to the latest versions'
         _updateVimPlugins
         _updateNpmPackages
         _updateFishCompletions
+    end
+
+    if contains $argument[2] $argv 
+        set validArgument 'true'
+        _updateBrew
+        _updateBrewPackages
+    end
+
+    if contains $argument[3] $argv
+        set validArgument 'true'
+        _updateFishCompletions
+    end
+
+    if contains $argument[4] $argv
+        set validArgument 'true'
+        _updateGems
+        _updateRbenvShims
+    end
+
+    if contains $argument[5] $argv
+        set validArgument 'true'
+        _updateNpmPackages
+    end
+
+    if contains $argument[6] $argv
+        set validArgument 'true'
+        _updatePipPackages
+        _updatePyenvShims
+    end
+
+    if contains $argument[7] $argv
+        set validArgument 'true'
+        _updateVimPlugins
     end
 
     if [ $validArgument = 'false' ]
