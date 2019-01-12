@@ -28,15 +28,6 @@ function update -d 'Update software to the latest versions'
         functions -e _updateBrewPackages
     end
 
-    function _updateNeovim
-        which brew >/dev/null
-            and begin
-            _printMessage 'Updating Neovim'
-            brew reinstall --HEAD neovim
-        end
-        functions -e _updateNeovim
-    end
-
     function _updatePipPackages
         which pip > /dev/null
         and begin
@@ -102,22 +93,16 @@ function update -d 'Update software to the latest versions'
     end
 
     # Main method starts from here
-    set argument all brew fish gem npm nvim pip vim
+    set argument all brew fish gem npm pip vim
     set validArgument 'false'
 
-    if contains $argument[2] $argv; or contains $argument[6] $argv
+    if contains $argument[2] $argv 
         set validArgument 'true'
         _updateBrew
-
-        if contains $argument[2] $argv
-            _updateBrewPackages
-        end
-        if contains $argument[6] $argv
-            _updateNeovim
-        end
+        _updateBrewPackages
     end
 
-    if contains $argument[7] $argv
+    if contains $argument[6] $argv
         set validArgument 'true'
         _updatePipPackages
         _updatePyenvShims
@@ -129,7 +114,7 @@ function update -d 'Update software to the latest versions'
         _updateRbenvShims
     end
 
-    if contains $argument[8] $argv
+    if contains $argument[7] $argv
         set validArgument 'true'
         _updateVimPlugins
     end
@@ -147,7 +132,7 @@ function update -d 'Update software to the latest versions'
     set i (count $argv)
     if contains $argument[1] $argv; or math "$i == 0" > /dev/null
         set validArgument 'true'
-        _printMessage 'Update all packages. Except Neovim'
+        _printMessage 'Update all packages'
         _updateBrew
         _updateBrewPackages
         _updatePipPackages
@@ -169,12 +154,10 @@ function update -d 'Update software to the latest versions'
 
 end
 
-complete --no-files -c update -a all  -d 'Update all packages. Except Neovim'
+complete --no-files -c update -a all  -d 'Update all packages'
 complete --no-files -c update -a brew -d 'Update brew, upgrade and cleanup installed packages'
 complete --no-files -c update -a fish -d 'Update fish completions'
 complete --no-files -c update -a gem  -d 'Update and cleanup installed gems. Update rbenv shims'
 complete --no-files -c update -a npm  -d 'Update global npm packages. Requires yarn'
-complete --no-files -c update -a nvim -d 'Install Neovim from HEAD of its git repository'
 complete --no-files -c update -a pip  -d 'Update pip and installed packages. Update pyenv shims'
 complete --no-files -c update -a vim  -d 'Update and clean up Neovim plugins. Requires vim-plug'
-
