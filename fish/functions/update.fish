@@ -97,7 +97,7 @@ function update -d 'Update software to the latest versions'
     set validArgument 'false'
 
     set i (count $argv)
-    if contains $argument[1] $argv; or math "$i == 0" > /dev/null
+    if contains $argument[1] $argv; or test $i -eq 0
         set validArgument 'true'
         _printMessage 'Update all packages'
         _updateBrew
