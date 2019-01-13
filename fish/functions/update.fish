@@ -43,7 +43,7 @@ function update -d 'Update software to the latest versions'
         which gem > /dev/null
         and begin
             _printMessage 'Updating gems'
-            gem update (eval gem outdated | cut -d ' ' -f 1)
+            gem update --user-install (eval gem outdated | cut -d ' ' -f 1)
             _printMessage 'Cleaning up old versions of Gem'
             gem cleanup
         end
