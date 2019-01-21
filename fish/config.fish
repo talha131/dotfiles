@@ -4,10 +4,8 @@ set -g fish_prompt_pwd_dir_length 0
 # Environment variables
 set -x EDITOR nvim
 
-# Pyenv variables
-set PYENV_ROOT $HOME/.pyenv
-set -x PATH $PYENV_ROOT/shims $PATH
-pyenv rehash
+# Pyenv
+status --is-interactive; and source (pyenv init -|psub)
 
 # Load shell utilities
 source ~/.config/fish/functions/marks.fish
