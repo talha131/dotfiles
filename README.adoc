@@ -937,6 +937,10 @@ Then use `brew cask install` to install following applications,
 . visual-studio-code
 . vlc
 
+==== Install Quick Look plugins
+
+Install Quick Look plugins from https://github.com/sindresorhus/quick-look-plugins[this list].
+
 === Install Applications
 
 . https://github.com/Lord-Kamina/Deluge-Magnet-Handler[Deluge Magnet Handler]
