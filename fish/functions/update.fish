@@ -32,9 +32,11 @@ function update -d 'Update software to the latest versions'
         which pip > /dev/null
         and begin
             _printMessage 'Updating pip'
-            pip install --upgrade pip
+            pip2 install --upgrade pip
+            pip3 install --upgrade pip
             _printMessage 'Updating pip packages'
-            pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U
+            pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip2 install -U
+            pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install -U
         end
         functions -e _updatePip
     end
