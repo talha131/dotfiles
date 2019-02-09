@@ -6,6 +6,8 @@ set -x EDITOR nvim
 
 # Pyenv
 status --is-interactive; and source (pyenv init -|psub)
+# Virtual Fish (virtual env for python)
+eval (python -m virtualfish compat_aliases projects)
 
 # Load shell utilities
 source ~/.config/fish/functions/marks.fish
