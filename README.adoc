@@ -998,14 +998,18 @@ a new SSH key to your GitHub account]
 
     pyenv versions
     pyenv install 2.7.14
-    pyenv install 3.6.5
-    pyenv install pypy3.5-5.10.1
-    pyenv global pypy3.5-5.10.1
+    pyenv install 3.7.2
+    pyenv global 3.7.2 2.7.14
 
-===== Pip, gem and yarn packages
+===== pip Packages
 
+    pip2 install --upgrade pip
+    pip3 install --upgrade pip
     pip2 install --upgrade neovim
-    pypy3 -m pip install --upgrade neovim
+    pip3 install --upgrade neovim virtualfish
+
+===== gem packages
+
     gem install asciidoctor
     gem install neovim
 
