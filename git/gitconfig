@@ -35,6 +35,8 @@
     ai = add -i
 
     br = branch
+    # All branches
+    bra = branch -a
     # Merged branches
     brm = branch -a --merged
     # Clean merged branch
@@ -42,6 +44,7 @@
     # Unmerged branches
     bru = branch -a --no-merged
     brd = !sh -c 'git branch -D $1 && git push --delete origin $1' -
+    brv = branch -vv
     branch-name = "!git rev-parse --abbrev-ref HEAD"
     pub = "!git push -u origin $(git branch-name)"
 
@@ -82,6 +85,9 @@
     s = status --short
     sb = status -sb
     sc = diff --name-only --diff-filter=U
+
+    # Show files in a commit
+    shf = diff-tree --no-commit-id --name-only -r 
 
     # Undo commit
     und = reset --soft HEAD~1
