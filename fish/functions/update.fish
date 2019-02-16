@@ -29,13 +29,18 @@ function update -d 'Update software to the latest versions'
     end
 
     function _updatePipPackages
-        which pip > /dev/null
+        which pip2 > /dev/null
         and begin
-            _printMessage 'Updating pip'
+            _printMessage 'Updating pip2'
             pip2 install --upgrade pip
-            pip3 install --upgrade pip
-            _printMessage 'Updating pip packages'
+            _printMessage 'Updating pip2 packages'
             pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip2 install -U
+        end
+        which pip3 > /dev/null
+        and begin
+            _printMessage 'Updating pip3'
+            pip3 install --upgrade pip
+            _printMessage 'Updating pip3 packages'
             pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install -U
         end
         functions -e _updatePip
