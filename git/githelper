@@ -18,7 +18,7 @@ NORMAL=$(tput sgr0)
 function merge_conflicts_possible() {
     if [ "$1" == 'upstream' -o "$1" == 'origin' ];
     then
-        echo "${YELLOW}${BOLD}Fetching $1${NORMAL}"
+        printf "${YELLOW}${BOLD}Fetching $1${NORMAL}\n"
         git fetch $1
         fetch_head="$1/master"
     else
@@ -36,16 +36,16 @@ function merge_conflicts_possible() {
 }
 
 function merge_remote() {
-    echo "${YELLOW}${BOLD}Fetching $1${NORMAL}"
+    printf "${YELLOW}${BOLD}Fetching $1${NORMAL}\n"
     git fetch "$1"
     if (("$(git branch-name)" == 'master'));
     then
-        echo "${YELLOW}${BOLD}Doing fast forward merge${NORMAL}"
+        printf "${YELLOW}${BOLD}Doing fast forward merge${NORMAL}\n"
         git merge --ff $1/master
-        echo "${YELLOW}${BOLD}Pushing to origin${NORMAL}"
+        printf "${YELLOW}${BOLD}Pushing to origin${NORMAL}\n"
         git push
     else 
-        echo "${YELLOW}${BOLD}Doing non fast forward merge${NORMAL}"
+        printf "${YELLOW}${BOLD}Doing non fast forward merge${NORMAL}\n"
         git merge --no-ff $1/master
     fi
 }
