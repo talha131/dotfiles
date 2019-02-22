@@ -438,13 +438,15 @@ Open Vim and check you have Python2, Python3, Ruby, and Lua working, using follo
 :echo has('lua')
 ----
 
-===== Link to Vim Configuration
+===== Link to Vim and NeoVim Configuration
 
 Start `cmd` with administrative privilege in ConEmu. Create symbolic links thusly,
 
 ----
 mklink %HOMEPATH%\.vimrc %HOMEPATH%\Repos\dotfiles\vim\vimrc
 mklink /d %HOMEPATH%\.vim\ %HOMEPATH%\Repos\dotfiles\vim\vim\
+mklink %LOCALAPPDATA%\nvim\init.vim %HOMEPATH%\Repos\dotfiles\vim\vimrc
+mklink /d %LOCALAPPDATA%\nvim\colors %HOMEPATH%\Repos\dotfiles\vim\vim\colors
 ----
 
 ===== Install Vim-Plug
