@@ -201,7 +201,20 @@ Install http://scoop.sh/[Scoop].
     Set-ExecutionPolicy RemoteSigned -scope CurrentUser
     iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
 
-==== Install applications from main bucket
+Add `scoop` "extras" bucket.
+
+    scoop bucket add extras
+
+Add `scoop` "versions" bucket.
+
+    scoop bucket add versions
+
+This bucket is help for running multiple versions of Python and Ruby on the same
+machine. For details see
+https://github.com/lukesampson/scoop/wiki/Switching-Ruby-And-Python-Versions[Switching
+Ruby and Python Versions].
+
+==== Install applications
 
 Use `scoop install` to install following applications,
 
@@ -218,15 +231,6 @@ Use `scoop install` to install following applications,
 . wget
 . yarn
 . youtube-dl
-
-====  Install applications from extras bucket
-
-Add `scoop` "extras" bucket.
-
-    scoop bucket add extras
-
-Then install following applications,
-
 . atom
 . autohotkey
 . calibre
@@ -239,17 +243,6 @@ Then install following applications,
 . SumatraPdf
 . vscode
 . zeal
-
-==== Add versions bucket to scoop
-
-Run
-
-    scoop bucket add versions
-
-This bucket is help for running multiple versions of Python and Ruby on the same
-machine. For details see
-https://github.com/lukesampson/scoop/wiki/Switching-Ruby-And-Python-Versions[Switching
-Ruby and Python Versions].
 
 ==== Configure Applications Post Install
 
