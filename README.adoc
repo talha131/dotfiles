@@ -218,31 +218,36 @@ Ruby and Python Versions].
 
 Use `scoop install` to install following applications,
 
-. ag
+. 7zip
+. bitwarden
+. calibre
 . clink
+. conemu
 . curl
+. dont-sleep
+. ffmpeg
 . fzf
 . git
+. gitextensions
+. github
+. gpg4win
 . llvm
+. neovim
+. nodejs
 . openssh
+. ripgrep
 . ruby
+. sharex
 . shasum
+. slack
+. SumatraPDF
+. synctrayzor
 . vim
+. vlc
+. vscode
 . wget
 . yarn
-. youtube-dl
-. atom
-. autohotkey
-. calibre
-. conemu
-. dont-sleep
-. firefox-developer
-. rambox
-. sharex
-. slack
-. SumatraPdf
-. vscode
-. zeal
+. youtube
 
 ==== Configure Applications Post Install
 
