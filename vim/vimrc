@@ -278,8 +278,10 @@ augroup theme_related_settings
     autocmd BufEnter * call SetStatusLineColor()
 augroup END
 
-set cursorline
-set cursorcolumn
+if !has('win32') || (has('win32') && exists('g:GuiLoaded'))
+	set cursorline
+	set cursorcolumn
+endif
 
 colorscheme hopscotch
 
