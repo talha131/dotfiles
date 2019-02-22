@@ -225,6 +225,7 @@ Use `scoop install` to install following applications,
 . conemu
 . curl
 . dont-sleep
+. fd
 . ffmpeg
 . fzf
 . git
