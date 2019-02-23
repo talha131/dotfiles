@@ -137,6 +137,10 @@ let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro rnu' " Except nu and rnu
 set showcmd
 " use Patience diff algorithm for generating diffs
 set diffopt+=internal,algorithm:patience
+if has('mac')
+    set shell=/usr/local/bin/bash\ --login
+    set shellcmdflag=-c
+endif
 
 " Spelling                                                                    {{{2
 set spellfile=~/.vim/spell/en.utf-8.add " Store all good words in this file
