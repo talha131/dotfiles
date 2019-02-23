@@ -342,6 +342,7 @@ let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 5
 let g:session_default_overwrite = 1
 let g:session_autoload = 'no'
+let g:session_directory = '~/.vim/sessions'
 
 " Limelight and Goyo - Distraction Free Writing                               {{{2
 augroup plugin_goyo
