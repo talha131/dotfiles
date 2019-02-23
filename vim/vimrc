@@ -13,7 +13,13 @@ endif
 Plug 'dahu/bisectly'
 Plug 'tpope/vim-speeddating'
 Plug 'mzlogin/vim-markdown-toc' " Generate table of contents for Markdown files. `:GenTocGFM`
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim' " :Files :Marks :Windows
+if has('mac')
+    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf.vim' " :Files :Marks :Windows
+    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+elseif has('win32')
+     Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
+endif
 Plug 'skywind3000/asyncrun.vim'
 " Plugins - Code Complete and Snippets                                        {{{2
 " Plugins - Motion Enhancements                                               {{{2
