@@ -412,6 +412,14 @@ mklink %HOMEPATH%\.githelper %HOMEPATH%\Repos\dotfiles\git\githelper
 mklink %HOMEPATH%\bin\diff-highlight %HOMEPATH%\Repos\dotfiles\bin\diff-highlight
 ----
 
+==== ConEmu
+
+Start a `cmd` tab with administrative privilege in ConEmu. Create symbolic links thusly,
+
+----
+mklink %APPDATA%\ConEmu.xml %HOMEPATH%\Repos\dotfiles\conemu\ConEmu.xml
+----
+
 ==== Vim
 
 ===== Python for Vim
