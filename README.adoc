@@ -424,6 +424,11 @@ mklink %APPDATA%\ConEmu.xml %HOMEPATH%\Repos\dotfiles\conemu\ConEmu.xml
 
 ===== Python for Vim
 
+To compile LeaderF plugin, I had
+
+. Install Windows 10 SDK
+. Install  http://aka.ms/vcpython27[Visual C++ Compiler for Python 2.7]
+
 NOTE: Currently https://github.com/vim/vim-win32-installer/[Vim is compiled with
 Python 3.5.3]. For some reason https://github.com/lukesampson/scoop/issues/1515[
     Python installed via scoop is not detected by Vim].
