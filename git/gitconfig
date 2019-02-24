@@ -11,7 +11,7 @@
 	editor = nvim
 	autocrlf = input
 [color]
-    ui = always
+    ui = auto
 [color "branch"]
     current = green
     local = magenta
