@@ -299,7 +299,7 @@ endif
 
 " for coc-highlight
 set termguicolors
-colorscheme hopscotch
+colorscheme gruvbox
 
 " Status line                                                                 {{{2
 set statusline=%F " full path to file in the buffer
