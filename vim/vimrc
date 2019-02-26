@@ -22,6 +22,7 @@ elseif has('win32')
 endif
 Plug 'skywind3000/asyncrun.vim'
 " Plugins - Code Complete and Snippets                                        {{{2
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Plugins - Motion Enhancements                                               {{{2
 " Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char}
 " Plugins - Syntax files and Programming Languages                            {{{2
@@ -296,6 +297,8 @@ if !has('win32') || (has('win32') && exists('g:GuiLoaded'))
 	set cursorcolumn
 endif
 
+" for coc-highlight
+set termguicolors
 colorscheme hopscotch
 
 " Status line                                                                 {{{2
@@ -316,6 +319,7 @@ set statusline+=[%{&ff}] " current file format
 set statusline+=%y " file type
 set statusline+=\ " separator
 set statusline+=(%{winnr()}) " window number. Useful for {count}<C-W>q
+set statusline+=%{coc#status()} 
 
 " Use ag instead of grep                                                      {{{2
 if executable('rg')
