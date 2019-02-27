@@ -238,14 +238,6 @@ nnoremap <Leader>ghh :GitGutterLineHighlightsToggle <CR>
 nnoremap <Leader>ghs :GitGutterStageHunk <CR>
 nnoremap <Leader>ghu :GitGutterUndoHunk <CR>
 nnoremap <Leader>ghp :GitGutterPreviewHunk <CR>
-" For quickly opening files
-nnoremap <Leader>f :find *
-nnoremap <Leader>F :find <C-R>=expand('%:p:h').'/**/*'<CR>
-nnoremap <Leader>v :vert sfind *
-nnoremap <Leader>V :vert sfind <C-R>=expand('%:p:h').'/**/*'<CR>
-nnoremap <Leader>t :tabfind *
-" For switching between open buffers
-nnoremap <Leader>b :ls<CR>:b<Space>
 " vim-bbye
 nnoremap <Leader>q :w \| Bdelete<CR>
 " show highlight group
