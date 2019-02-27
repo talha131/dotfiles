@@ -398,6 +398,9 @@ command! -bang -nargs=* Rg
 " For vim-fugitive
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
+" LeaderF                                                                                  {{{2
+let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<Up>': ['<C-K>'], '<Down>': ['<C-J>']}
+
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
     autocmd!
