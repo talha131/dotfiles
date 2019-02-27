@@ -242,13 +242,11 @@ nnoremap <Leader>ghp :GitGutterPreviewHunk <CR>
 nnoremap <Leader>q :w \| Bdelete<CR>
 " show highlight group
 nnoremap <leader>hg :call <SID>SynStack()<CR>
-" Relies on FZF
-nnoremap <Leader>ff :Files <CR>
-nnoremap <Leader>bb :Buffers <CR>
-nnoremap <Leader>ss :BLines <CR>
-nnoremap <Leader>sb :Lines <CR>
-nnoremap <Leader>/ :Rg <CR>
-nnoremap <Leader>pf :GFiles <CR>
+" Relies on LeaderF
+nnoremap <Leader>f :LeaderfFile <CR>
+nnoremap <Leader>b :LeaderfBuffer <CR>
+nnoremap <Leader>s :LeaderfLine <CR>
+nnoremap <Leader>ss :LeaderfLineAll <CR>
 
 " Theme Settings                                                              {{{2
 if has('mac')
