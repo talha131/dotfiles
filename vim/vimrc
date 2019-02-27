@@ -247,6 +247,8 @@ nnoremap <Leader>f :LeaderfFile <CR>
 nnoremap <Leader>b :LeaderfBuffer <CR>
 nnoremap <Leader>s :LeaderfLine <CR>
 nnoremap <Leader>ss :LeaderfLineAll <CR>
+" search word under cursor, the pattern is treated as regex, and enter normal mode directly
+noremap <Leader>r :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
 
 " Theme Settings                                                              {{{2
 if has('mac')
