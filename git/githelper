@@ -52,7 +52,7 @@ function merge_remote() {
 
 function pretty_git_log_subject_body {
 
-     git log --date=short --pretty="format:${FORMAT}%n%b" $* |
+     git log --color --date=short --pretty="format:${FORMAT}%n%b" $* |
         sed -Ee "s/}/  /g" |
         # Color merge commits specially
         sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
@@ -62,7 +62,7 @@ function pretty_git_log_subject_body {
 
 function pretty_git_log_graph {
 
-     git log --date=short --pretty="format:${FORMAT}" --graph --topo-order $* |
+     git log --color --date=short --pretty="format:${FORMAT}" --graph --topo-order $* |
         sed -Ee "s/}/  /g" |
         # Color merge commits specially
         sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
@@ -72,7 +72,7 @@ function pretty_git_log_graph {
 
 function pretty_git_log_subject {
 
-     git log --date=short --pretty="format:${FORMAT}%n" $* |
+     git log --color --date=short --pretty="format:${FORMAT}%n" $* |
         # Line columns up based on } delimiter
         column -s '}' -t 2> /dev/null |
         # Color merge commits specially
@@ -83,7 +83,7 @@ function pretty_git_log_subject {
 
 function pretty_git_log_stats {
 
-     git log --date=short --pretty="format:${FORMAT}" --stat $* |
+     git log --color --date=short --pretty="format:${FORMAT}" --stat $* |
         sed 's/}/ /g' |
         # indent stats by a tab for readability
         sed 's/^ /	/g' |
