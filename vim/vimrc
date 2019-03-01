@@ -324,6 +324,10 @@ if (has('nvim'))
     autocmd TermOpen * set bufhidden=hide
 endif
 
+" File type Customizations                                                      {{{1
+" Until https://github.com/sheerun/vim-polyglot/pull/318 is merged
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+
 " Plugins Customizations                                                      {{{1
 " vim-autoformat                                                              {{{2
 let g:formatdef_fmt_custom_xml = '"tidy -xml -q --show-errors 0 --show-warnings 0 --indent-attributes 1"'
