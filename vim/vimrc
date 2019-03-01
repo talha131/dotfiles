@@ -322,7 +322,6 @@ endif
 " Terminal related settings                                                   {{{2
 if (has('nvim'))
     autocmd TermOpen * set bufhidden=hide
-    tnoremap <Esc> <C-\><C-n>
 endif
 
 " Plugins Customizations                                                      {{{1
