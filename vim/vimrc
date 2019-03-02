@@ -24,7 +24,7 @@ Plug 'skywind3000/asyncrun.vim'
 " Plugins - Code Complete and Snippets                                        {{{2
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " Plugins - Motion Enhancements                                               {{{2
-" Plug 'justinmk/vim-sneak' " Use s{char}{char} or S{char}{char}
+Plug 'justinmk/vim-sneak'
 " Plugins - Syntax files and Programming Languages                            {{{2
 " Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
@@ -405,6 +405,9 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
 " LeaderF                                                                                  {{{2
 let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<Up>': ['<C-K>'], '<Down>': ['<C-J>']}
+
+" vim-sneak                                                                                  {{{2
+let g:sneak#label = 1
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
