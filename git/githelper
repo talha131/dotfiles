@@ -15,10 +15,10 @@ YELLOW='\033[33m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
-SEP="<:>:<:>:<:>"
-SEP1="%C(red)$SEP%C(green)$SEP%C(blue)$SEP%C(yellow)$SEP"
-SEP2="%C(yellow)$SEP%C(blue)$SEP%C(green)$SEP%C(red)$SEP"
-SEPF="$SEP1$SEP2%n$SEP2$SEP1%n$SEP1$SEP2%n%n"
+SEP="+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
+SEP1="%C(bold red)$SEP$SEP$SEP%n"
+SEP2="%C(bold yellow)$SEP$SEP$SEP%n"
+SEPARATOR="$SEP1$SEP2%n%n"
 
 function merge_conflicts_possible() {
     if [ "$1" == 'upstream' -o "$1" == 'origin' ];
@@ -63,7 +63,7 @@ function highlight_merge_commits {
 }
 
 function pretty_git_log_subject_body_patch {
-    git log --color --date=short --pretty="format:${SEPF}${FORMAT}%n%b" $* |
+    git log --color --date=short --pretty="format:${SEPARATOR}${FORMAT}%n%b" $* |
     sed -Ee "s/}/  /g" |
     highlight_merge_commits
 }
