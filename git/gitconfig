@@ -71,7 +71,7 @@
     ls = "!source ~/.githelper && pretty_git_log_stats"
     # Git log with graph
     lg = "!source ~/.githelper && pretty_git_log_graph"
-    logpretty = "!source ~/.githelper && pretty_git_log_subject_body"
+    lb = "!source ~/.githelper && pretty_git_log_subject_body"
     lp = "!git logpretty --patch"
     ln = "!git logpretty --name-only"
 
