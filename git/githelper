@@ -15,6 +15,11 @@ YELLOW='\033[33m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
+SEP="<:>:<:>:<:>"
+SEP1="%C(red)$SEP%C(green)$SEP%C(blue)$SEP%C(yellow)$SEP"
+SEP2="%C(yellow)$SEP%C(blue)$SEP%C(green)$SEP%C(red)$SEP"
+SEPF="$SEP1$SEP2%n$SEP2$SEP1%n$SEP1$SEP2%n%n"
+
 function merge_conflicts_possible() {
     if [ "$1" == 'upstream' -o "$1" == 'origin' ];
     then
@@ -48,6 +53,16 @@ function merge_remote() {
         printf "${YELLOW}${BOLD}Doing non fast forward merge${NORMAL}\n"
         git merge --no-ff $1/master
     fi
+}
+
+function pretty_git_log_subject_body_patch {
+
+     git log --color --date=short --pretty="format:${SEPF}${FORMAT}%n%b" $* |
+        sed -Ee "s/}/  /g" |
+        # Color merge commits specially
+        sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
+        # Page only if needed
+        less -FXRS
 }
 
 function pretty_git_log_subject_body {

@@ -72,7 +72,7 @@
     # Git log with graph
     lg = "!source ~/.githelper && pretty_git_log_graph"
     lb = "!source ~/.githelper && pretty_git_log_subject_body"
-    lp = "!git logpretty --patch"
+    lp = "!source ~/.githelper && pretty_git_log_subject_body_patch --patch"
     ln = "!git logpretty --name-only"
 
     # dry run merge
