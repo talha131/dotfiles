@@ -55,53 +55,42 @@ function merge_remote() {
     fi
 }
 
-function pretty_git_log_subject_body_patch {
+function highlight_merge_commits {
+    # Color merge commits specially
+    sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
+    # Page only if needed
+    less -FXRS
+}
 
-     git log --color --date=short --pretty="format:${SEPF}${FORMAT}%n%b" $* |
-        sed -Ee "s/}/  /g" |
-        # Color merge commits specially
-        sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
-        # Page only if needed
-        less -FXRS
+function pretty_git_log_subject_body_patch {
+    git log --color --date=short --pretty="format:${SEPF}${FORMAT}%n%b" $* |
+    sed -Ee "s/}/  /g" |
+    highlight_merge_commits
 }
 
 function pretty_git_log_subject_body {
-
-     git log --color --date=short --pretty="format:${FORMAT}%n%b" $* |
-        sed -Ee "s/}/  /g" |
-        # Color merge commits specially
-        sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
-        # Page only if needed
-        less -FXRS
+    git log --color --date=short --pretty="format:${FORMAT}%n%b" $* |
+    sed -Ee "s/}/  /g" |
+    highlight_merge_commits
 }
 
 function pretty_git_log_graph {
-
-     git log --color --date=short --pretty="format:${FORMAT}" --graph --topo-order $* |
-        sed -Ee "s/}/  /g" |
-        # Color merge commits specially
-        sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
-        # Page only if needed
-        less -FXRS
+    git log --color --date=short --pretty="format:${FORMAT}" --graph --topo-order $* |
+    sed -Ee "s/}/  /g" |
+    highlight_merge_commits
 }
 
 function pretty_git_log_subject {
-
      git log --color --date=short --pretty="format:${FORMAT}%n" $* |
-        # Line columns up based on } delimiter
-        column -s '}' -t 2> /dev/null |
-        # Color merge commits specially
-        sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
-        # Page only if needed
-        less -FXRS
+     # Line columns up based on } delimiter
+     column -s '}' -t 2> /dev/null |
+     highlight_merge_commits
 }
 
 function pretty_git_log_stats {
-
-     git log --color --date=short --pretty="format:${FORMAT}" --stat $* |
-        sed 's/}/ /g' |
-        # indent stats by a tab for readability
-        sed 's/^ /	/g' |
-        sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
-        less -FXRS
+    git log --color --date=short --pretty="format:${FORMAT}" --stat $* |
+    sed -Ee "s/}/  /g" |
+    # indent stats by a tab for readability
+    sed 's/^ /	/g' |
+    highlight_merge_commits
 }
