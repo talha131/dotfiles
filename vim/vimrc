@@ -440,6 +440,20 @@ nmap <silent> gr <Plug>(coc-references)
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+let g:coc_global_extensions = [
+            \'coc-yank',
+            \'coc-highlight',
+            \'coc-prettier',
+            \'coc-pairs',
+            \'coc-json',
+            \'coc-css',
+            \'coc-html',
+            \'coc-tslint',
+            \'coc-tsserver',
+            \'coc-yaml',
+            \'coc-ccls'
+            \]
+
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
     autocmd!
