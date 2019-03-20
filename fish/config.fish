@@ -20,6 +20,10 @@ set -g fish_user_paths "~/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/llvm@4/bin/" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
 
+# ruby gem variables
+set -x GEM_HOME $HOME/.gem
+set -x GEM_ROOT $HOME/.gem
+
 # Golang variables
 set -x GOPATH $HOME/Repos/GO
 set -x GOBIN $GOPATH/bin
