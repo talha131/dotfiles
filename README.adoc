@@ -881,6 +881,7 @@ Use `brew install` to install following applications,
 . giflossy
 . git
 . go
+. handbrake
 . iftop
 . `imagemagick --with-fontconfig --with-ghostscript`
 . llvm@4
