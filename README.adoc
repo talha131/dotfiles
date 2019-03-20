@@ -884,7 +884,7 @@ Use `brew install` to install following applications,
 . handbrake
 . iftop
 . `imagemagick --with-fontconfig --with-ghostscript`
-. llvm@4
+. llvm
 . neovim
 . node
 . pyenv
