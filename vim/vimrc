@@ -417,6 +417,31 @@ let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<Up>': ['<C-K>']
 " vim-sneak                                                                                  {{{2
 let g:sneak#label = 1
 
+" vim-signature                                                                        {{{2
+let g:SignatureMap = {
+            \ 'Leader'             :  "m",
+            \ 'PlaceNextMark'      :  "",
+            \ 'ToggleMarkAtLine'   :  "m.",
+            \ 'PurgeMarksAtLine'   :  "",
+            \ 'DeleteMark'         :  "",
+            \ 'PurgeMarks'         :  "",
+            \ 'PurgeMarkers'       :  "",
+            \ 'GotoNextLineAlpha'  :  "",
+            \ 'GotoPrevLineAlpha'  :  "",
+            \ 'GotoNextSpotAlpha'  :  "",
+            \ 'GotoPrevSpotAlpha'  :  "",
+            \ 'GotoNextLineByPos'  :  "",
+            \ 'GotoPrevLineByPos'  :  "",
+            \ 'GotoNextSpotByPos'  :  "m]",
+            \ 'GotoPrevSpotByPos'  :  "m[",
+            \ 'GotoNextMarker'     :  "",
+            \ 'GotoPrevMarker'     :  "",
+            \ 'GotoNextMarkerAny'  :  "",
+            \ 'GotoPrevMarkerAny'  :  "",
+            \ 'ListBufferMarks'    :  "m/",
+            \ 'ListBufferMarkers'  :  ""
+            \ }
+
 " vim-yoink                                                                            {{{2
 nmap <c-n> <plug>(YoinkPostPasteSwapBack)
 nmap <c-p> <plug>(YoinkPostPasteSwapForward)
