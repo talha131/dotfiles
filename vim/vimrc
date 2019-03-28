@@ -58,6 +58,7 @@ Plug 'mhinz/vim-startify' " A start screen for Vim
 " Delete buffers and close files without messing up layout
 " Why it is needed? See this discussion http://superuser.com/q/289285/42415
 Plug 'moll/vim-bbye'
+Plug 'svermeulen/vim-yoink'
 " Plugins - Version Control and File Comparison                               {{{2
 Plug 'tpope/vim-fugitive'
             \ | Plug 'junegunn/gv.vim'
@@ -415,6 +416,16 @@ let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<Up>': ['<C-K>']
 
 " vim-sneak                                                                                  {{{2
 let g:sneak#label = 1
+
+" vim-yoink                                                                            {{{2
+nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+let g:yoinkMaxItems = 20
+let g:yoinkSavePersistently = 1
+let g:yoinkIncludeDeleteOperations = 1
+let g:yoinkMoveCursorToEndOfPaste = 1
 
 " coc                                                                                  {{{2
 " don't give |ins-completion-menu| messages.
