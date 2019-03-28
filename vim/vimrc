@@ -140,7 +140,10 @@ set relativenumber
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro rnu' " Except nu and rnu, all are netrw default values
 set showcmd
 " use Patience diff algorithm for generating diffs
-set diffopt+=internal,algorithm:patience
+" patch-8.1.0360 is for vim
+if has('nvim') || has('patch-8.1.0360')
+    set diffopt+=internal,algorithm:patience
+endif
 if has('mac')
     set shell=/usr/local/bin/bash
     set shellcmdflag=-c
@@ -437,8 +440,11 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+if has('nvim')
+    " Highlight symbol under cursor on CursorHold
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+    autocmd CursorHold * silent call CocActionAsync('showSignatureHelp')
+endif
 
 let g:coc_global_extensions = [
             \'coc-yank',
