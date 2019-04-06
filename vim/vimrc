@@ -235,7 +235,7 @@ nnoremap <Leader>wq :silent wq<CR>
 " 0tabmove = moves the tab to the 0th position
 " Gstatus = opens Git status
 " $q = closes the split that has file from tab split
-nnoremap <Leader>gs :tab split \| 0tabmove \| Gstatus \| $q <CR>
+nnoremap <Leader>gs :-tab split \| Gstatus \| $q <CR>
 nnoremap <Leader>gc :Gcommit -v<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gw :Gwrite<CR>
