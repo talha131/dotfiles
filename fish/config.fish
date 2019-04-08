@@ -28,8 +28,6 @@ set -g fish_user_paths $GEM_HOME/bin $fish_user_paths
 # Golang variables
 set -x GOPATH $HOME/Repos/GO
 set -x GOBIN $GOPATH/bin
-set -x GOVERSION (brew list go | head -n 1 | cut -d '/' -f 6)
-set -x GOROOT (brew --prefix)/Cellar/go/$GOVERSION/libexec
 set -g fish_user_paths "$GOPATH/bin" $fish_user_paths
 
 # FZF variables
