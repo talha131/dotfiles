@@ -25,7 +25,7 @@ endif
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
 " Plugins - Code Complete and Snippets                                        {{{2
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 " Plugins - Motion Enhancements                                               {{{2
 Plug 'justinmk/vim-sneak'
 " Plugins - Syntax files and Programming Languages                            {{{2
