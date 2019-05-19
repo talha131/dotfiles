@@ -957,9 +957,12 @@ Then use `brew cask install` to install following applications,
 
 Install Quick Look plugins from https://github.com/sindresorhus/quick-look-plugins[this list].
 
+==== Install applications from taps
+
+brew install srkomodo/tap/shadowfox-updater
+
 === Install Applications
 
-. https://github.com/Lord-Kamina/Deluge-Magnet-Handler[Deluge Magnet Handler]
 . https://dynalist.io/download[Dynalist]
 
 ==== Configure Applications Post Install
