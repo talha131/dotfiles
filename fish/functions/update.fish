@@ -94,13 +94,22 @@ function update -d 'Update software to the latest versions'
     end
 
     function _updateFishCompletions
-        _printMessage 'Updating completions'
+        _printMessage 'Updating fish completions'
         fish_update_completions
         functions -e _updateFishCompletions
     end
 
+    function _updateShadowFox
+        which shadowfox >/dev/null
+        and begin
+            _printMessage 'Updating ShadowFox - Dark Theme for Firefox'
+            shadowfox -generate-uuids -profile-index 0 -set-dark-theme 
+        end
+        functions -e _updateShadowFox
+    end
+
     # Main method starts from here
-    set argument all brew fish gem npm pip vim
+    set argument all brew fish gem npm pip vim shadowfox
     set validArgument 'false'
 
     set i (count $argv)
@@ -116,6 +125,7 @@ function update -d 'Update software to the latest versions'
         _updateVimPlugins
         _updateNpmPackages
         _updateFishCompletions
+        _updateShadowFox
     end
 
     if contains $argument[2] $argv 
@@ -151,6 +161,11 @@ function update -d 'Update software to the latest versions'
         _updateVimPlugins
     end
 
+    if contains $argument[8] $argv
+        set validArgument 'true'
+        _updateShadowFox
+    end
+
     if [ $validArgument = 'false' ]
         set_color -o red
         echo '⚠️  Incorrent argument. Valid values are'
@@ -168,3 +183,4 @@ complete --no-files -c update -a gem  -d 'Update and cleanup installed gems. Upd
 complete --no-files -c update -a npm  -d 'Update global npm packages. Requires yarn'
 complete --no-files -c update -a pip  -d 'Update pip and installed packages. Update pyenv shims'
 complete --no-files -c update -a vim  -d 'Update and clean up Neovim plugins. Requires vim-plug'
+complete --no-files -c update -a shadowfox  -d 'Update ShadowFox Dark theme for Firefox browswer'
