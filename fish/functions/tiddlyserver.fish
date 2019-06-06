@@ -1,6 +1,6 @@
 function tiddlyserver -d 'Run tm_tiddly-next server'
     # Default port
-    set _flag_p 8080
+    set _flag_p 8089
     # My default tiddlywiki
     set tw ~/Dropbox/TiddlyNotes
     argparse --name=tiddlyserver 'h/help' 'p/port=' -- $argv
