@@ -24,6 +24,7 @@ set -x GEM_HOME $HOME/.gem
 set -x GEM_ROOT $HOME/.gem
 set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
 set -g fish_user_paths $GEM_HOME/bin $fish_user_paths
+set -g fish_user_paths (ruby -e 'puts Gem.user_dir')/bin $fish_user_paths
 
 # Golang variables
 set -x GOPATH $HOME/Repos/GO
