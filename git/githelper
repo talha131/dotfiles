@@ -7,7 +7,7 @@ AUTHOR="%Cblue%aN%Creset"
 REFS="%C(bold red)%d%Creset"
 SUBJECT="%s"
 
-FORMAT="$HASH}$AUTHOR_DATE}$AUTHOR}$REFS $SUBJECT"
+FORMAT="%<(11)$HASH%><(13)$AUTHOR_DATE%><(12,trunc)$AUTHOR $REFS $SUBJECT"
 
 ANSI_MAGENTA='\033[35m'
 ANSI_RESET='\033[0m'
@@ -19,6 +19,8 @@ SEP="+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
 SEP1="%C(bold red)$SEP$SEP$SEP%n"
 SEP2="%C(bold yellow)$SEP$SEP$SEP%n"
 SEPARATOR="$SEP1$SEP2%n%n"
+
+ABBREV="--abbrev=10"
 
 function merge_conflicts_possible() {
     if [ "$1" == 'upstream' -o "$1" == 'origin' ];
@@ -63,34 +65,26 @@ function highlight_merge_commits {
 }
 
 function pretty_git_log_subject_body_patch {
-    git log --color --date=short --pretty="format:${SEPARATOR}${FORMAT}%n%b" $* |
-    sed -Ee "s/}/  /g" |
+    git log --color --date=short --pretty="format:${SEPARATOR}${FORMAT}%n%b" ${ABBREV} $* |
     highlight_merge_commits
 }
 
 function pretty_git_log_subject_body {
-    git log --color --date=short --pretty="format:${FORMAT}%n%b" $* |
-    sed -Ee "s/}/  /g" |
+    git log --color --date=short --pretty="format:${FORMAT}%n%b" ${ABBREV} $* |
     highlight_merge_commits
 }
 
 function pretty_git_log_graph {
-    git log --color --date=short --pretty="format:${FORMAT}" --graph --topo-order $* |
-    sed -Ee "s/}/  /g" |
+    git log --color --date=short --pretty="format:${FORMAT}" ${ABBREV} --graph --topo-order $* |
     highlight_merge_commits
 }
 
 function pretty_git_log_subject {
-     git log --color --date=short --pretty="format:${FORMAT}%n" $* |
-     # Line columns up based on } delimiter
-     column -s '}' -t 2> /dev/null |
+     git log --color --date=short --pretty="format:${FORMAT}" ${ABBREV} $* |
      highlight_merge_commits
 }
 
 function pretty_git_log_stats {
-    git log --color --date=short --pretty="format:${FORMAT}" --stat $* |
-    sed -Ee "s/}/  /g" |
-    # indent stats by a tab for readability
-    sed 's/^ /	/g' |
+    git log --color --date=short --pretty="format:${FORMAT}" ${ABBREV} --stat $* |
     highlight_merge_commits
 }
