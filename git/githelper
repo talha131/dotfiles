@@ -46,10 +46,16 @@ function merge_conflicts_possible() {
 function merge_remote() {
     printf "${YELLOW}${BOLD}Fetching $1${NORMAL}\n"
     git fetch "$1"
-    if [ "$(git branch-name)" == 'master' ];
+    branch='master'
+    if [ "$(git branch-name)" == "next" ];
+    then
+        branch='next'
+    fi
+
+    if [ "$(git branch-name)" == "$branch" ];
     then
         printf "${YELLOW}${BOLD}Doing fast forward merge${NORMAL}\n"
-        git merge --ff $1/master
+        git merge --ff $1/$branch
         if [ "$1" != 'origin' ];
         then
             printf "${YELLOW}${BOLD}Pushing to origin${NORMAL}\n"
@@ -59,7 +65,7 @@ function merge_remote() {
         fi
     else
         printf "${YELLOW}${BOLD}Doing non fast forward merge${NORMAL}\n"
-        git merge --no-ff $1/master
+        git merge --no-ff $1/$branch
     fi
 }
 
