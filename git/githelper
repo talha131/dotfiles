@@ -12,6 +12,7 @@ FORMAT="%<(11)$HASH%><(13)$AUTHOR_DATE%><(12,trunc)$AUTHOR $REFS $SUBJECT"
 ANSI_MAGENTA='\033[35m'
 ANSI_RESET='\033[0m'
 YELLOW='\033[33m'
+BLUE='\e[34m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
@@ -45,13 +46,18 @@ function merge_conflicts_possible() {
 function merge_remote() {
     printf "${YELLOW}${BOLD}Fetching $1${NORMAL}\n"
     git fetch "$1"
-    if (("$(git branch-name)" == 'master'));
+    if [ "$(git branch-name)" == 'master' ];
     then
         printf "${YELLOW}${BOLD}Doing fast forward merge${NORMAL}\n"
         git merge --ff $1/master
-        printf "${YELLOW}${BOLD}Pushing to origin${NORMAL}\n"
-        git push
-    else 
+        if [ "$1" != 'origin' ];
+        then
+            printf "${YELLOW}${BOLD}Pushing to origin${NORMAL}\n"
+            git push
+        else
+            printf "${BLUE}${BOLD}NOT pushing to origin${NORMAL}\n"
+        fi
+    else
         printf "${YELLOW}${BOLD}Doing non fast forward merge${NORMAL}\n"
         git merge --no-ff $1/master
     fi
