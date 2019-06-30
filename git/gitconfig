@@ -40,7 +40,7 @@
     # Merged branches
     brm = branch -a --merged
     # Clean merged branch
-    brmcl = "!git branch --no-color --merged | grep -v master | xargs -I % sh -c 'git branch -d %; git push --delete origin %;'"
+    brmcl = "!git branch --no-color --merged | grep -v master | grep -v next | xargs -I % sh -c 'git branch -d %; git push --delete origin %;'"
     # Unmerged branches
     bru = branch -a --no-merged
     brd = !sh -c 'git branch -D $1 && git push --delete origin $1' -
