@@ -1,14 +1,11 @@
 {
-  "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "initializationOptions": {
-         "cache": {
-           "directory": ".ccls-cache"
-         }
-       }
+	"languageserver": {
+    "golang": {
+        "command": "gopls",
+        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+        "filetypes": ["go"]
     }
-  }
+  },
+  "list.source.files.command": "fd",
+  "list.source.files.args": ["--hidden"]
 }
