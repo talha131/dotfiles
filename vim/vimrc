@@ -297,7 +297,9 @@ set termguicolors
 colorscheme gruvbox
 
 " Status line                                                                 {{{2
-set statusline=%F " full path to file in the buffer
+set statusline=%{winnr()} " window number. Useful for {count}<C-W>q
+set statusline+=\ " separator
+set statusline+=%F " full path to file in the buffer
 set statusline+=\ " separator
 set statusline+=%{fugitive#statusline()} " the current branch and the currently edited file's commit
 set statusline+=\ " separator
@@ -305,15 +307,14 @@ set statusline+=%m " modified flag
 set statusline+=%r " read-only flag
 set statusline+=%h " help buffer flag
 set statusline+=%w " preview flag
-set statusline+=\ " separator
-set statusline+=[%L] " total number of lines in buffer
+" set statusline+=\ " separator
+" set statusline+=[%L] " total number of lines in buffer
 set statusline+=[%p%%] " percentage through file in lines
 set statusline+=[%04l,%04v] " current line, current column
-set statusline+=\ " separator
-set statusline+=[%{&ff}] " current file format
+" set statusline+=\ " separator
+" set statusline+=[%{&ff}] " current file format
 set statusline+=%y " file type
-set statusline+=\ " separator
-set statusline+=(%{winnr()}) " window number. Useful for {count}<C-W>q
+" set statusline+=\ " separator
 
 " Use rg instead of grep                                                      {{{2
 if executable('rg')
