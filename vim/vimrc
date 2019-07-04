@@ -299,7 +299,7 @@ colorscheme gruvbox
 " Status line                                                                 {{{2
 set statusline=%{winnr()} " window number. Useful for {count}<C-W>q
 set statusline+=\ " separator
-set statusline+=%F " full path to file in the buffer
+set statusline+=%f " relative path of current file
 set statusline+=\ " separator
 set statusline+=%{fugitive#statusline()} " the current branch and the currently edited file's commit
 set statusline+=\ " separator
