@@ -46,7 +46,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'chrisbra/NrrwRgn' " focus on a region and make the rest inaccessible. Select and call :NR
 " Plugins - Utilities and Wrappers                                            {{{2
-Plug 'xolox/vim-misc' | Plug 'xolox/vim-session' " Plugins - Session Management
 Plug 'vim-scripts/VOoM' " View and change file outline
 Plug 'guns/xterm-color-table.vim' " :XtermColorTable to show all 256 xterm colors with their RGB equivalents
 Plug 'vim-scripts/DrawIt' " Draw ASCII art in Vim
@@ -387,6 +386,7 @@ let g:undotree_SetFocusWhenToggle = 1
 
 " startify                                                                                  {{{2
 let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_session_persistence = 1
 let s:padding_left = repeat(' ', get(g:, 'startify_padding_left', 3))
 let g:startify_list_order = [
         \ [s:padding_left .'Sessions'],       'sessions',
