@@ -18,9 +18,6 @@ Plug 'skywind3000/asyncrun.vim'
 if has('mac')
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim' " :Files :Marks :Windows
-    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-elseif has('win32')
-     Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
 endif
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
@@ -249,13 +246,11 @@ nnoremap <Leader>ghp :GitGutterPreviewHunk <CR>
 nnoremap <Leader>q :w \| Bdelete<CR>
 " show highlight group
 nnoremap <leader>hg :call <SID>SynStack()<CR>
-" Relies on LeaderF
-nnoremap <Leader>f :LeaderfFile <CR>
-nnoremap <Leader>b :LeaderfBuffer <CR>
-nnoremap <Leader>s :LeaderfLine <CR>
-nnoremap <Leader>ss :LeaderfLineAll <CR>
-" search word under cursor, the pattern is treated as regex, and enter normal mode directly
-noremap <Leader>r :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
+nnoremap <Leader>f :CocList files <CR>
+nnoremap <Leader>b :CocList buffers <CR>
+" enter word to search
+nnoremap <Leader>g  :CocList --interactive grep<CR>
+nnoremap <Leader>s  :CocList --interactive words<CR>
 
 " Theme Settings                                                              {{{2
 if has('mac')
@@ -378,6 +373,7 @@ set updatetime=200
 let g:gitgutter_map_keys = 0
 nmap [c <Plug>GitGutterPrevHunk
 nmap ]c <Plug>GitGutterNextHunk
+autocmd BufWritePost * GitGutter
 
 " undotree                                                                    {{{2
 let g:undotree_SplitWidth = 45
@@ -411,9 +407,6 @@ command! -bang -nargs=* Rg
 " asyncrun                                                                                  {{{2
 " For vim-fugitive
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
-
-" LeaderF                                                                                  {{{2
-let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<Up>': ['<C-K>'], '<Down>': ['<C-J>']}
 
 " vim-sneak                                                                                  {{{2
 let g:sneak#label = 1
@@ -494,8 +487,16 @@ let g:coc_global_extensions = [
             \'coc-tslint',
             \'coc-tsserver',
             \'coc-yaml',
-            \'coc-ccls'
+            \'coc-lists',
             \]
+
+command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
+
+function! s:GrepArgs(...)
+  let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
+        \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
+  return join(list, "\n")
+endfunction
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
