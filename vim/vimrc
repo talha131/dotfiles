@@ -314,7 +314,6 @@ set statusline+=[%{&ff}] " current file format
 set statusline+=%y " file type
 set statusline+=\ " separator
 set statusline+=(%{winnr()}) " window number. Useful for {count}<C-W>q
-set statusline+=%{coc#status()} 
 
 " Use rg instead of grep                                                      {{{2
 if executable('rg')
