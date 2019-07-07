@@ -1,7 +1,7 @@
-function tm_audio_to_mp3 -d 'Convert wav/mp3 file to a lower bitrate mp3'
+function tm_audio-to-mp3 -d 'Convert wav/mp3 file to a lower bitrate mp3'
 
     set rfile (gdate +"%Y-%m-%d %H%m%S %N.txt")
-    set dname (gdate +"%Y-%m-%d %H%m%S output")
+    set dname (gdate +"%Y-%m-%d %H%m%S output mp3")
     for f in $argv
         set name (echo "$f" | sed 's/\.[^.]*$//')
         set ext (echo "$f" | sed 's/.*\.//')
