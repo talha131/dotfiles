@@ -4,7 +4,7 @@ function tm_filename-remove-orig -d 'Remove -orig from file name'
         set ext (echo "$f" | sed 's/.*\.//')
 
         set nname (echo $name | sed 's/-orig//')
-        if test "$name" != "$nname"
+        if test "$name" != "$nname" && test -f $f
             set_color -o red
             mv -nv $f $nname.$ext
         else
