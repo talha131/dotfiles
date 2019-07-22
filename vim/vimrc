@@ -504,6 +504,7 @@ augroup filetype_related_settings
     autocmd FileType objc,objcpp,cpp,c setlocal foldmethod=syntax
     autocmd FileType objcpp setlocal cindent
     autocmd FileType gitcommit setlocal colorcolumn=72 spell" highlight 72nd column in git commit
+    autocmd FileType markdown,text setlocal spell
     if (has('mac'))
         autocmd FileType gitcommit,markdown,text setlocal dictionary=/usr/share/dict/words
     endif
