@@ -88,20 +88,9 @@ function pretty_git_log_subject_body {
     highlight_merge_commits
 }
 
-function pretty_git_log_graph {
-    cd -- ${GIT_PREFIX:-.}
-    git log --color --date=short --pretty="format:${FORMAT}" ${ABBREV} --graph --topo-order $* |
-    highlight_merge_commits
-}
-
 function pretty_git_log_subject {
     cd -- ${GIT_PREFIX:-.}
     git log --color --date=short --pretty="format:${FORMAT}" ${ABBREV} $* |
     highlight_merge_commits
 }
 
-function pretty_git_log_stats {
-    cd -- ${GIT_PREFIX:-.}
-    git log --color --date=short --pretty="format:${FORMAT}" ${ABBREV} --stat $* |
-    highlight_merge_commits
-}

@@ -68,9 +68,9 @@
     # One line logs
     l = "!source ~/.githelper && pretty_git_log_subject"
     # log with stats
-    ls = "!source ~/.githelper && pretty_git_log_stats"
+    ls = "!source ~/.githelper && pretty_git_log_subject --stat"
     # Git log with graph
-    lg = "!source ~/.githelper && pretty_git_log_graph"
+    lg = "!source ~/.githelper && pretty_git_log_subject --graph --topo-order"
     lb = "!source ~/.githelper && pretty_git_log_subject_body"
     lp = "!source ~/.githelper && pretty_git_log_subject_body_patch --patch"
     ln = "!source ~/.githelper && pretty_git_log_subject --name-only"
