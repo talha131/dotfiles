@@ -10,10 +10,15 @@ require 'red-shift'
 require 'reload-config'
 require 'window-management'
 
+local modalKey = hs.hotkey.modal.new(hyper, 'P', 'System Actions')
+modalKey:bind('', 'escape', function() modalKey:exit() end)
 -- Lock System
-hs.hotkey.bind(hyper, 'Q', 'Lock system', function() hs.caffeinate.lockScreen() end)
+modalKey:bind('', 'Q', 'Lock system', function() hs.caffeinate.lockScreen() end)
 -- Sleep system
-hs.hotkey.bind(hyper, 'S', 'Put system to sleep',function() hs.caffeinate.systemSleep() end)
+modalKey:bind('', 'S', 'Put system to sleep',function() 
+    modalKey:exit()
+    hs.caffeinate.systemSleep() 
+end)
 
 -- Window Hints
 hs.hints.style = 'vimperator'
