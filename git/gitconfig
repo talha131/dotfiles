@@ -73,7 +73,7 @@
     lg = "!source ~/.githelper && pretty_git_log_graph"
     lb = "!source ~/.githelper && pretty_git_log_subject_body"
     lp = "!source ~/.githelper && pretty_git_log_subject_body_patch --patch"
-    ln = "!git logpretty --name-only"
+    ln = "!source ~/.githelper && pretty_git_log_subject --name-only"
 
     # dry run merge
     msafe = "!source ~/.githelper && merge_conflicts_possible $1"
