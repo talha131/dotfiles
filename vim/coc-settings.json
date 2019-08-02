@@ -7,5 +7,5 @@
     }
   },
   "list.source.files.command": "fd",
-  "list.source.files.args": ["--hidden"]
+  "list.source.files.args": ["--hidden", "--exclude", ".git/"]
 }
