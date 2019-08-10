@@ -59,6 +59,7 @@
     chb = checkout -b
     # Switch to master branch
     chm = checkout master
+    chn = checkout next
 
     d = diff
     dc = diff --cached
