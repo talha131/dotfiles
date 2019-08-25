@@ -39,6 +39,7 @@ Plug 'tpope/vim-commentary' " toggle comments
 Plug 'tpope/vim-endwise'
 Plug 'kshenoy/vim-signature' " Shows marks
 Plug 'AndrewRadev/splitjoin.vim' " gS gJ to split and join lines
+Plug 'SirVer/ultisnips'
 " Plugins - Distraction Free Writing                                          {{{2
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -489,6 +490,8 @@ let g:coc_global_extensions = [
             \'coc-tsserver',
             \'coc-yaml',
             \'coc-lists',
+            \'coc-snippets',
+            \'coc-ultisnips',
             \]
 
 command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
