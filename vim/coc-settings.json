@@ -1,9 +1,9 @@
 {
-	"languageserver": {
+  "languageserver": {
     "golang": {
-        "command": "gopls",
-        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        "filetypes": ["go"]
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
     }
   },
   "list.source.files.command": "fd",
