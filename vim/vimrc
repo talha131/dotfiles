@@ -425,11 +425,9 @@ let g:SignatureMap = {
             \ 'ListBufferMarkers'  :  ""
             \ }
 
-" ultisnips                                                                                  {{{2
+" ultisnips                                                                            {{{2
 " override UltiSnipsExpandTrigger because coc.nvim handles the expansion
-let g:UltiSnipsExpandTrigger="<c-h><c-i><c-x><c-n>"
-let g:UltiSnipsJumpForwardTrigger=""
-let g:UltiSnipsJumpBackwardTrigger=""
+let g:UltiSnipsExpandTrigger="<c-y>"
 
 " coc                                                                                  {{{2
 " don't give |ins-completion-menu| messages.
