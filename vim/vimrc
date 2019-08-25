@@ -13,6 +13,7 @@ endif
 Plug 'dahu/bisectly'
 Plug 'tpope/vim-speeddating'
 Plug 'mzlogin/vim-markdown-toc' " Generate table of contents for Markdown files. `:GenTocGFM`
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'skywind3000/asyncrun.vim'
 " Plugins - File Explorer                                        {{{2
 if has('mac')
@@ -497,6 +498,9 @@ function! s:GrepArgs(...)
         \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
   return join(list, "\n")
 endfunction
+
+" markdown-preview                                                                                  {{{2
+let g:mkdp_auto_close = 0
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
