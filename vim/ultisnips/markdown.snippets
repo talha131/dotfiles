@@ -32,9 +32,9 @@ Date: `date '+%Y-%m-%d %H:%M'`
 Slug: `!p
 user_input = re.sub('[%s]' % re.escape(string.punctuation), '', t[1])
 snip.rv = user_input.replace(' ', '-').lower()`
-Disqus_identifier: `!p
+comment_id: `!p
 if not snip.c:
-    random_string = ''.join(random.sample(string.ascii_lowercase + string.digits, 7))
+    random_string = ''.join(random.sample(string.ascii_lowercase + string.digits, 12))
 user_input = re.sub('[%s]' % re.escape(string.punctuation), '', t[1])
 snip.rv = random_string + '-' + user_input.replace(' ', '-').lower()`
 Subtitle: $4
