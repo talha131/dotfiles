@@ -1,9 +1,3 @@
-function tm_split_path -d 'Take path and return filename, ext and path'
-    set f $argv[1]
-    set name (echo $f | sed 's/.*\/\(.*\)\..*$/\1/')
-    set ext (echo $f | sed 's/.*\.//')
-	set pth (echo $f | sed 's/\(.*\)\/.*/\1/')
-	echo $name 
-	echo $ext 
-	echo $pth
+function tm_split_path -d 'Return filename, ext, and directory from the path'
+    echo $argv[1] | gsed 's/\(.*\)\/\(.*\)\.\(.*\)$/\2\n\3\n\1/'
 end
