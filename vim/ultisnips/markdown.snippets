@@ -1,0 +1,47 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet pel "Pelican metadata" bs
+Title: ${1:title}
+Tags: $2
+Category: $3
+Date: `date '+%Y-%m-%d %H:%M'`
+Slug: `!p
+user_input = re.sub('[%s]' % re.escape(string.punctuation), '', t[1])
+snip.rv = user_input.replace(' ', '-').lower()`
+Disqus_identifier: `!p
+if not snip.c:
+    random_string = ''.join(random.sample(string.ascii_lowercase + string.digits, 7))
+user_input = re.sub('[%s]' % re.escape(string.punctuation), '', t[1])
+snip.rv = random_string + '-' + user_input.replace(' ', '-').lower()`
+Subtitle: $4
+Summary: $5
+Keywords: $6
+
+${0:Content of your blog post}
+
+endsnippet
+
