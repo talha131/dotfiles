@@ -458,6 +458,8 @@ let g:UltiSnipsJumpBackwardTrigger=""
 " coc                                                                                  {{{2
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
+" Better display for messages
+set cmdheight=2
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
