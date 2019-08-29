@@ -15,7 +15,7 @@ local appShortCuts = {
     R = 'Google Chrome',
     S = 'Slack',
     V = 'evernote',
-    X = 'Xcode',
+    X = 'Xcode-Beta',
 }
 
 for key, app in pairs(appShortCuts) do
