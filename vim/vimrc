@@ -366,8 +366,8 @@ nmap gl <Plug>(EasyAlign)
 " vim-gitgutter                                                               {{{2
 set updatetime=200
 let g:gitgutter_map_keys = 0
-nmap [c <Plug>GitGutterPrevHunk
-nmap ]c <Plug>GitGutterNextHunk
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
 autocmd BufWritePost * GitGutter
 
 " undotree                                                                    {{{2
