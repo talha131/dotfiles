@@ -10,10 +10,12 @@ local appShortCuts = {
     D = 'Dash',
     F = 'FirefoxDeveloperEdition',
     I = 'iterm',
+    L = 'Dynalist',
     P = '1Password 6',
     Q = 'Qt Creator',
     R = 'Google Chrome',
     S = 'Slack-Web',
+    T = 'TickTick',
     V = 'evernote',
     X = 'Xcode-Beta',
 }
