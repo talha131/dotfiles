@@ -14,20 +14,27 @@ function tm_git_push -d 'Push to Git remote periodically'
     
     while true
        set a (git cherry -v)
-       if test $a
-           tm_printSuccess "Pushing new commits"
-           set attempt (math $attempt - 1)
-           git push
-           or begin
-                  tm_printWarning "git push failed" 
-                  echo
-                  beep
-                  _wait
-              end
+       if test $status -ne 0
+           tm_printWarning "git cherry failed" 
            echo
-       else
+           beep
            _wait
-           set attempt (math $attempt + 1)
+       else 
+           if test -n "$a"
+               tm_printSuccess "Pushing new commits"
+               set attempt (math $attempt - 1)
+               git push
+               or begin
+                   tm_printWarning "git push failed" 
+                   echo
+                   beep
+                   _wait
+               end
+               echo
+           else
+               _wait
+               set attempt (math $attempt + 1)
+           end
        end
     end
 end
