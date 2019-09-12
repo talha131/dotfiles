@@ -9,6 +9,7 @@ local appShortCuts = {
     C = 'Visual Studio Code',
     D = 'Dash',
     F = 'FirefoxDeveloperEdition',
+    G = 'Gmail talha131',
     I = 'iterm',
     L = 'Dynalist',
     P = '1Password 6',
@@ -16,6 +17,7 @@ local appShortCuts = {
     R = 'Google Chrome',
     S = 'Slack-Web',
     T = 'TickTick',
+    W = 'WhatsApp',
     V = 'evernote',
     X = 'Xcode-Beta',
 }
