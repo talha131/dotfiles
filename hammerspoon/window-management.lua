@@ -43,6 +43,11 @@ function fullScreen()
 	local win = hs.window.focusedWindow()
     win:setFullScreen(not win:isFullScreen())
 end
+
+function zoom()
+	local win = hs.window.focusedWindow()
+    win:maximize()
+end
 -- End of Helper Functions
 
 local modalKey = hs.hotkey.modal.new(hyper, 'W', 'Window Management mode')
@@ -71,7 +76,7 @@ modalKey:bind('', 'L', 'Resize window to bottom right', function() push(0.5, 0.5
 
 modalKey:bind('', 'C', 'Resize window to center', function() push(0.15, 0.15, 0.7, 0.7) end, function() modalKey:exit() end)
 modalKey:bind('', 'F', 'Toggle full screen', function() fullScreen() end, function() modalKey:exit() end)
-modalKey:bind('', 'M', 'Maximize window', hs.grid.maximizeWindow, function() modalKey:exit() end)
+modalKey:bind('', 'M', 'Maximize window', function() zoom() end, function() modalKey:exit() end)
 
 local positionDelta = 50
 modalKey:bind('alt', 'left', 'Move window to left', function() nudge(-positionDelta, 0) end)
