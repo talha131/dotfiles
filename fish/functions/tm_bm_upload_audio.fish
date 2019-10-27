@@ -20,6 +20,8 @@ function tm_bm_upload_audio -d 'Upload audio files from IC Recorder to pCloud'
     test -d $root
     and begin
         tm_printMessage "Folder $root found"
+        # Remove lock from the file
+        fd capability_01.xml $root -x chflags nouchg
         fd capability_01.xml $root -X trash \{\} 
         fd MSGLISTL.MSF $root -X trash \{\}
         fd . -t e $root -X trash \{\}
