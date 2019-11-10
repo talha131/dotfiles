@@ -8,7 +8,7 @@ tell application "iterm"
 			split vertically with default profile
 		end tell
 		
-		-- split for running gulp
+		-- split for running TiddlyWiki
 		tell first session of current tab
 			write text "cd"
 			write text "tiddlysave"
