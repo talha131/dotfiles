@@ -18,7 +18,7 @@ tell application "iterm"
 		-- monitor network status
 		tell second session of current tab
 			write text "cd"
-			write text "ping www.google.com --apple-time"
+			write text "prettyping www.google.com"
 		end tell
 		
 		-- for any other task		
