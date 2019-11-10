@@ -18,14 +18,22 @@ tell application "iTerm"
 		-- split for running nvim
 		tell second session of current tab
 			write text "cd ~/Repos/onCrashReboot"
-			write text "nvim -S ~/.vim/sessions/onCrashReboot"
+			write text "vf activate elegant-4"
 			select
+            tell application "System Events"
+                keystroke "nvim -S ~/.vim/sessions/onCrashReboot"
+            end tell
 		end tell
 		
 		-- for any other task		
 		tell third session of current tab
 			write text "cd ~/Repos/onCrashReboot"
+			write text "vf activate elegant-4"
 		end tell
 		
 	end tell
+end tell
+
+tell application "System Events"
+	keystroke return using command down
 end tell
