@@ -1,7 +1,7 @@
 tell application "iterm"
 	activate
 	tell current window
-		create tab with default profile
+		-- create tab with default profile
 		
 		tell current session of current tab
 			split vertically with default profile
