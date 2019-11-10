@@ -25,6 +25,9 @@ tell application "iterm"
 		tell third session of current tab
 			write text "cd"
 			select
+            tell application "System Events"
+                keystroke return using command down
+            end tell
 		end tell
 		
 	end tell
