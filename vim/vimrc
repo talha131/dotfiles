@@ -26,6 +26,7 @@ Plug 'kristijanhusak/vim-dirvish-git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plugins - Motion Enhancements                                               {{{2
 Plug 'justinmk/vim-sneak'
+Plug 'chaoren/vim-wordmotion'
 " Plugins - Syntax files and Programming Languages                            {{{2
 Plug 'sheerun/vim-polyglot'
 " Plugins - Typing Utilities                                                  {{{2
