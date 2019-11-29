@@ -7,5 +7,7 @@
     }
   },
   "list.source.files.command": "fd",
-  "list.source.files.args": ["--hidden", "--exclude", ".git/"]
+  "list.source.files.args": ["--hidden", "--exclude", ".git/"],
+  "list.source.grep.command": "rg",
+  "list.source.grep.args": ["--smart-case"]
 }
