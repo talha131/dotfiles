@@ -137,7 +137,6 @@ function update -d 'Update software to the latest versions'
         _updateVimPlugins
         _updateNpmPackages
         _updateFishCompletions
-        _updateShadowFox
     end
 
     if contains $argument[2] $argv 
