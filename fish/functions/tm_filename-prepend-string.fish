@@ -1,4 +1,6 @@
 function tm_filename-prepend-string -d 'Prepend a string to files names'
+    # example
+    # tm_filename-prepend-string * -s "2018-02-09 130916"
     argparse --name=tm_filename-prepend-string 's/str=' -- $argv
 	or return
 
