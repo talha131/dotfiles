@@ -30,8 +30,6 @@ set -g fish_user_paths (ruby -e 'puts Gem.user_dir')/bin $fish_user_paths
 set -x GOPATH $HOME/Repos/GO
 set -x GOBIN $GOPATH/bin
 set -g fish_user_paths "$GOPATH/bin" $fish_user_paths
-# Make go@1.12 take precendence over go@1.13
-set -g fish_user_paths "/usr/local/opt/go@1.12/bin" $fish_user_paths
 
 # FZF variables
 # fzf will use find command (or $FZF_DEFAULT_COMMAND if defined) to 
