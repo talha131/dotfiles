@@ -116,7 +116,7 @@ if has('nvim')
     " Python package for Neovim                                                   {{{2
     if has('mac')
         let g:python_host_prog = $HOME.'/.pyenv/versions/2.7.14/bin/python'
-        let g:python3_host_prog = $HOME.'/.pyenv/versions/3.7.2/bin/python3'
+        let g:python3_host_prog = $HOME.'/.pyenv/versions/3.8.2/bin/python3'
         let $PYENV_ROOT=$HOME.'/.pyenv/'
     elseif has('win32')
         let g:python_host_prog = 'C:/Python27/python'
