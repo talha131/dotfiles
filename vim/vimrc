@@ -57,7 +57,6 @@ Plug 'mhinz/vim-startify' " A start screen for Vim
 " Why it is needed? See this discussion http://superuser.com/q/289285/42415
 Plug 'moll/vim-bbye'
 Plug 'wellle/targets.vim'
-Plug 'maxbrunsfeld/vim-yankstack'
 " Plugins - Version Control and File Comparison                               {{{2
 Plug 'tpope/vim-fugitive'
             \ | Plug 'junegunn/gv.vim'
@@ -499,6 +498,7 @@ augroup mygroup
 augroup end
 
 let g:coc_global_extensions = [
+            \'coc-git',    
             \'coc-yank',
             \'coc-highlight',
             \'coc-prettier',
@@ -517,9 +517,6 @@ let g:coc_snippet_next = '<tab>'
 
 " markdown-preview                                                                                  {{{2
 let g:mkdp_auto_close = 0
-
-" vim-yankstack                                                                                     {{{2
-let g:yankstack_yank_keys = ['y', 'd']
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
