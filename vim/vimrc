@@ -251,7 +251,7 @@ nnoremap <Leader>f :CocList files <CR>
 nnoremap <Leader>b :CocList buffers <CR>
 " enter word to search
 nnoremap <Leader>g  :CocList --interactive grep<CR>
-nnoremap <Leader>s  :CocList --interactive words<CR>
+nnoremap <Leader>s  :CocList --interactive --ignore-case words<CR>
 
 " Theme Settings                                                              {{{2
 if has('mac')
