@@ -19,7 +19,7 @@ local appShortCuts = {
     T = 'TickTick',
     W = 'WhatsApp',
     V = 'evernote',
-    X = 'Xcode-Beta',
+    X = 'Xcode',
 }
 
 for key, app in pairs(appShortCuts) do
