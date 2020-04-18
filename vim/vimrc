@@ -61,7 +61,6 @@ Plug 'wellle/targets.vim'
 Plug 'tpope/vim-fugitive'
             \ | Plug 'junegunn/gv.vim'
             \ | Plug 'tpope/vim-rhubarb'
-Plug 'airblade/vim-gitgutter'
 Plug 'mbbill/undotree' " Browse the undo tree
 " Plugins - Theme                                                             {{{2
 Plug 'morhetz/gruvbox'
@@ -236,12 +235,6 @@ nnoremap <Leader>gc :Gcommit -v<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gwq :Gwq <CR>
-" vim-gitgutter
-" h for hunk
-nnoremap <Leader>ghh :GitGutterLineHighlightsToggle <CR>
-nnoremap <Leader>ghs :GitGutterStageHunk <CR>
-nnoremap <Leader>ghu :GitGutterUndoHunk <CR>
-nnoremap <Leader>ghp :GitGutterPreviewHunk <CR>
 " vim-bbye
 nnoremap <Leader>q :w \| Bdelete<CR>
 " show highlight group
@@ -362,13 +355,6 @@ augroup END
 xmap gl <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap gl <Plug>(EasyAlign)
-
-" vim-gitgutter                                                               {{{2
-set updatetime=200
-let g:gitgutter_map_keys = 0
-nmap [c <Plug>(GitGutterPrevHunk)
-nmap ]c <Plug>(GitGutterNextHunk)
-autocmd BufWritePost * GitGutter
 
 " undotree                                                                    {{{2
 let g:undotree_SplitWidth = 45
@@ -514,6 +500,23 @@ let g:coc_global_extensions = [
             \'coc-ultisnips',
             \]
 let g:coc_snippet_next = '<tab>'
+
+" navigate chunks of current buffer
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+" show chunk diff at current position. inline status
+nmap <Leader>gis <Plug>(coc-git-chunkinfo)
+" show commit contains current position. inline commit
+nmap <Leader>gic <Plug>(coc-git-commit)
+" git chuck stage
+nnoremap <Leader>gcs  :CocCommand git.chunkStage<CR>
+" git chuck undo
+nnoremap <Leader>gcu  :CocCommand git.chunkUndo<CR>
+" create text object for git chunks
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
 
 " markdown-preview                                                                                  {{{2
 let g:mkdp_auto_close = 0
