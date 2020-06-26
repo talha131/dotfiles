@@ -222,16 +222,9 @@ let g:mapleader = ' '
 " Press ENTER or type command to continue
 " See :help hit-enter
 nnoremap <Leader>wq :silent wq<CR>
-" I want to open Gstatus in a new tab.
-" Fugitive opens diff from Gstatus in the current window.
-" My file order gets mangled up after I am done with Gstatus.
-" tab split = is necessary. Git fugitive commands work only if a file from Git
-" repository is open. tab split opens current file in a new tab.
-" 0tabmove = moves the tab to the 0th position
-" Gstatus = opens Git status
-" $q = closes the split that has file from tab split
-nnoremap <Leader>gs :-tab split \| Gstatus \| $q <CR>
-nnoremap <Leader>gc :Gcommit -v<CR>
+" Open Gstatus in a new tab
+nnoremap <Leader>gs :-Gtabedit :<CR>
+nnoremap <Leader>gc :-tab Git commit -v<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gwq :Gwq <CR>
