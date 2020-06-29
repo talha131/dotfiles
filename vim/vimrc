@@ -126,7 +126,7 @@ endif
 set expandtab
 set guioptions+=b " make sure horizontal scroll bar is visible
 set number
-set shiftwidth=4
+set shiftwidth=2
 set softtabstop=4
 set tabstop=4
 set wrap
