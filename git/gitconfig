@@ -51,7 +51,7 @@
     c = commit -v
     ca = !git c -a
     caa = !git c -a --amend
-    cm = !git c --amend
+    ce = !git c --amend
 
     # Short form
     ch = checkout
