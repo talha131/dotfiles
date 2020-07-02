@@ -34,3 +34,6 @@ set -g fish_user_paths "$GOPATH/bin" $fish_user_paths
 # list the files under the current directory
 set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
+
+# Add itermocil completions
+complete -c itermocil -a "(itermocil --list)"
