@@ -1,0 +1,12 @@
+windows:
+  - name: codingworkout-nexus
+    root: ~/Repos/codingworkout/codingworkout-nexus/
+    layout: even-vertical
+    panes:
+      - commands:
+        - echo "nvim -S ~/.vim/sessions/codingworkout-nexus"
+        focus: true  
+      - commands:
+        - echo "make start"
+      - commands:
+        - echo "http POST"
