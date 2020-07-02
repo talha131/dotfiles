@@ -83,7 +83,7 @@
     mo = "!source ~/.githelper && merge_remote origin"
     mu = "!source ~/.githelper && merge_remote upstream"
 
-    s = status --short
+    s = status --short --branch
     sb = status -sb
     sc = diff --name-only --diff-filter=U
 
