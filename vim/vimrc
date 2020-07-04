@@ -415,6 +415,13 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " floaterm                                                                                  {{{2
 hi FloatermBorder guibg=orange guifg=cyan
+let g:floaterm_shell = "fish"
+let g:floaterm_keymap_toggle = '<F5>'
+let g:floaterm_position = 'right'
+let g:floaterm_width = 0.5
+let g:floaterm_height = 0.9
+" show list of floaterm
+nnoremap <Leader>t :CocList floaterm <CR>
 
 " coc                                                                                  {{{2
 " don't give |ins-completion-menu| messages.
