@@ -21,19 +21,28 @@ function tm_bm_audio_image_to_mp4 -d 'Combine audio m4a file with PNG image to m
         end
     end
 
-    set count (wc -l $rfile | awk '{print $1}')
-    if test $count != "0"
-        tm_printMessage "Convert $count files"
-        set start (gdate +%s)
-        mkdir $dname
-        tm_printMessage "Conversion started"
-        parallel --jobs 4 < $rfile
-        set end (gdate +%s)
-        set elappsed (math $end - $start)
-        tm_printMessage "Converted $count files in $elappsed seconds"
-        open $dname
-    end
+    if test -f $rfile
+      set count (wc -l $rfile | awk '{print $1}')
+      if test $count != "0"
+          tm_printMessage "Convert $count files"
 
-    tm_printMessage "Removing $rfile"
-    trash $rfile
+          set start (gdate +%s)
+
+          mkdir $dname
+          tm_printMessage "Conversion started"
+
+          parallel --jobs 4 < $rfile
+
+          set end (gdate +%s)
+          set elappsed (math $end - $start)
+
+          tm_printMessage "Converted $count files in $elappsed seconds"
+          open $dname
+      end
+
+      tm_printMessage "Removing $rfile"
+      trash $rfile
+    else 
+      tm_printWarning "$rfile is missing. No conversion"
+    end
 end
