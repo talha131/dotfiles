@@ -15,7 +15,6 @@ Plug 'tpope/vim-speeddating'
 Plug 'mzlogin/vim-markdown-toc' " Generate table of contents for Markdown files. `:GenTocGFM`
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'skywind3000/asyncrun.vim'
-Plug 'voldikss/vim-floaterm'
 " Plugins - File Explorer                                        {{{2
 if has('mac')
     Plug '/usr/local/opt/fzf'
@@ -413,16 +412,6 @@ let g:UltiSnipsExpandTrigger="<c-y>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" floaterm                                                                                  {{{2
-hi FloatermBorder guibg=orange guifg=cyan
-let g:floaterm_shell = "fish"
-let g:floaterm_keymap_toggle = '<F5>'
-let g:floaterm_position = 'right'
-let g:floaterm_width = 0.5
-let g:floaterm_height = 0.9
-" show list of floaterm
-nnoremap <Leader>t :CocList floaterm <CR>
-
 " coc                                                                                  {{{2
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
@@ -491,7 +480,6 @@ augroup end
 let g:coc_global_extensions = [
             \'coc-git',    
             \'coc-yank',
-            \'coc-floaterm',
             \'coc-highlight',
             \'coc-prettier',
             \'coc-pairs',
