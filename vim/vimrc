@@ -218,11 +218,6 @@ endif
 " :help expr-quote
 " Some commands like map understand <Space> but for others you need "\<Space>"
 let g:mapleader = ' '
-" Write and quit silently. Useful for quiting Git commit from Vim fugitive
-" which always gives following propmt after :wq
-" Press ENTER or type command to continue
-" See :help hit-enter
-nnoremap <Leader>wq :silent wq<CR>
 " Open Gstatus in a new tab
 nnoremap <Leader>gs :-Gtabedit :<CR>
 nnoremap <Leader>gc :-tab Git commit -v<CR>
