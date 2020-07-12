@@ -5,14 +5,13 @@ modalKey:bind('', 'escape', function() modalKey:exit() end)
 
 local appShortCuts = {
 
-    B = 'Bitwarden',
     C = 'Visual Studio Code',
     D = 'Dash',
     F = 'Firefox Developer Edition',
     G = 'Gmail talha131',
     I = 'iterm',
     L = 'Dynalist',
-    P = '1Password 6',
+    P = '1Password 7',
     Q = 'Qt Creator',
     R = 'Google Chrome',
     S = 'Slack-Web',
