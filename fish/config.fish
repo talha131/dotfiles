@@ -37,3 +37,5 @@ set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 
 # Add itermocil completions
 complete -c itermocil -a "(itermocil --list)"
+
+set -x PSQL_PAGER 'ov -w=f -H2 -F -C -d "|"'
