@@ -1,7 +1,7 @@
 windows:
   - name: codingworkout-nexus
     root: ~/Repos/codingworkout/codingworkout-nexus/
-    layout: even-vertical
+    layout: main-vertical
     panes:
       - commands:
         - echo "nvim -S ~/.vim/sessions/codingworkout-nexus"

@@ -1,7 +1,7 @@
 windows:
   - name: jump-ws-frontend
     root: ~/Repos/jump-ws/neuron-frontend
-    layout: even-vertical
+    layout: main-vertical
     panes:
       - commands:
         - echo "nvim -S ~/.vim/sessions/neuron-frontend"
