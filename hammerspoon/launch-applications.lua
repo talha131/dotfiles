@@ -6,7 +6,8 @@ modalKey:bind('', 'escape', function() modalKey:exit() end)
 local appShortCuts = {
 
     C = 'Visual Studio Code',
-    D = 'Dash',
+    D = 'Diaro - Diary, Journal, Notes',
+    E = 'Telegram',
     F = 'Firefox Developer Edition',
     G = 'Gmail talha131',
     I = 'iterm',
