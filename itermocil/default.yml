@@ -1,0 +1,13 @@
+windows:
+  - name: default
+    root: ~/
+    layout: main-vertical
+    panes:
+      - commands:
+        - echo "pane 1"
+        focus: true  
+      - commands:
+        - echo "pane 2"
+      - commands:
+        - tiddlysave && tiddlyserver
+
