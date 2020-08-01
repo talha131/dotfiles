@@ -35,5 +35,10 @@ set -g fish_user_paths "$GOPATH/bin" $fish_user_paths
 set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 
+which bat > /dev/null
+and begin
+  set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+end
+
 # Add itermocil completions
 complete -c itermocil -a "(itermocil --list)"
