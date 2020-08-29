@@ -42,6 +42,24 @@ function tm_bm_audio_image_to_mp4 -d 'Combine audio m4a file with PNG image to m
 
       tm_printMessage "Removing $rfile"
       trash $rfile
+
+      # Check output length
+      for f in $argv/*
+        set fep (tm_split_path $f)
+        set name $fep[1]
+        set ext $fep[2]
+
+        if test -f $f
+          if test "$ext" = "m4a"
+            if test -f $image
+              tm_printMessage "Length of $f (audio, video)"
+              ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 -sexagesimal $f
+              ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 -sexagesimal $dname/$name.mp4
+            end
+          end
+        end
+      end
+
     else 
       tm_printWarning "$rfile is missing. No conversion"
     end
