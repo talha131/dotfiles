@@ -12,7 +12,7 @@ function tm_bm_audio_image_to_mp4 -d 'Combine audio m4a file with PNG image to m
         if test -f $f
             if test "$ext" = "m4a"
                 if test -f $image
-                    echo "ffmpeg -loop 1 -i \"$image\" -i \"$f\" -vf \"scale='min(1280,iw)':-2,format=yuv420p\" -c:v libx264 -preset veryslow -profile:v main -level 4.1 -c:a aac -shortest -movflags +faststart \"$dname/$name.mp4\"" >> $rfile
+                    echo "ffmpeg -loop 1 -i \"$image\" -i \"$f\" -vf \"scale='min(1280,iw)':-2,format=yuv420p\" -c:v libx264 -preset veryslow -profile:v main -level 4.1 -c:a aac -shortest -fflags +shortest -max_interleave_delta 0 -movflags +faststart \"$dname/$name.mp4\"" >> $rfile
 
                 else
                     tm_printWarning "$image not found for $f"
