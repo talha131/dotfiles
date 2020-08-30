@@ -1,7 +1,7 @@
 function tm_audio-to-wav -d 'Convert mp3 file to wav'
 
     set rfile (gdate +"%Y-%m-%d %H%m%S %N.txt")
-    set dname (gdate +"%Y-%m-%d %H%m%S output mp3")
+    set dname (gdate +"%Y-%m-%d %H%m%S output wav")
     for f in $argv
         set name (echo "$f" | sed 's/\.[^.]*$//')
         set ext (echo "$f" | sed 's/.*\.//')
