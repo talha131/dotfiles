@@ -2,9 +2,11 @@ function tm_audio-to-m4a -d 'Convert wav file to a m4a'
 
     set rfile (gdate +"%Y-%m-%d %H%m%S %N.txt")
     set dname (gdate +"%Y-%m-%d %H%m%S output m4a")
-    for f in $argv
-        set name (echo "$f" | sed 's/\.[^.]*$//')
-        set ext (echo "$f" | sed 's/.*\.//')
+
+    for f in $argv/*
+        set fep (tm_split_path $f)
+        set name $fep[1]
+        set ext $fep[2]
 
         if test -f $f
             if test "$ext" = "wav"
