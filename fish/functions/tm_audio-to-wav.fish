@@ -15,21 +15,26 @@ function tm_audio-to-wav -d 'Convert mp3 file to wav'
         end
     end
 
-    set count (wc -l $rfile | awk '{print $1}')
-    if test $count != "0"
-        tm_printMessage "Convert $count files"
-        set start (gdate +%s)
-        mkdir $dname
-        tm_printMessage "Conversion started"
-        parallel --jobs 4 < $rfile
-        set end (gdate +%s)
-        set elappsed (math $end - $start)
-        tm_printMessage "Converted $count files in $elappsed seconds"
-        open $dname
+    if test -f $rfile
+      set count (wc -l $rfile | awk '{print $1}')
+      if test $count != "0"
+          tm_printMessage "Convert $count files"
+          set start (gdate +%s)
+          mkdir $dname
+          tm_printMessage "Conversion started"
+          parallel --jobs 4 < $rfile
+          set end (gdate +%s)
+          set elappsed (math $end - $start)
+          tm_printMessage "Converted $count files in $elappsed seconds"
+          open $dname
+      end
+
+      tm_printMessage "Removing $rfile"
+      trash $rfile
+    else
+      tm_printWarning "$rfile not found"
     end
 
-    tm_printMessage "Removing $rfile"
-    trash $rfile
 end
 
 

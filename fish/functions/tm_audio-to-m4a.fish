@@ -15,21 +15,25 @@ function tm_audio-to-m4a -d 'Convert wav file to a m4a'
         end
     end
 
-    set count (wc -l $rfile | awk '{print $1}')
-    if test $count != "0"
-        tm_printMessage "Convert $count files"
-        set start (gdate +%s)
-        mkdir $dname
-        tm_printMessage "Conversion started"
-        parallel --jobs 4 < $rfile
-        set end (gdate +%s)
-        set elappsed (math $end - $start)
-        tm_printMessage "Converted $count files in $elappsed seconds"
-        open $dname
-    end
+    if test -f $rfile
+      set count (wc -l $rfile | awk '{print $1}')
+      if test $count != "0"
+          tm_printMessage "Convert $count files"
+          set start (gdate +%s)
+          mkdir $dname
+          tm_printMessage "Conversion started"
+          parallel --jobs 4 < $rfile
+          set end (gdate +%s)
+          set elappsed (math $end - $start)
+          tm_printMessage "Converted $count files in $elappsed seconds"
+          open $dname
+      end
 
-    tm_printMessage "Removing $rfile"
-    trash $rfile
+      tm_printMessage "Removing $rfile"
+      trash $rfile
+    else
+      tm_printWarning "$rfile not found"
+    end
 end
 
 
