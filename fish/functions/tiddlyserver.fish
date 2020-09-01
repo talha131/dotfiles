@@ -25,6 +25,6 @@ function tiddlyserver -d 'Run tm_tiddly-next server'
         echo 'Port:' $_flag_p
         echo 'Tiddlywiki:' $tw
 
-        tm_tiddly-next $tw --listen port=$_flag_p root-tiddler=\$:/core/save/lazy-all
+        tm_tiddly-next $tw --listen port=$_flag_p root-tiddler=\$:/core/save/lazy-images
     end
 end
