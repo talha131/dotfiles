@@ -36,7 +36,7 @@ function tm_bm_upload_audio -d 'Upload audio files from IC Recorder to pCloud'
             tm_printMessage "Upload files to the pcloud"
             rclone move $t pcloud:"Project - Podcast Archives/A0 Friday Lectures - Raw Files - Todo" -P --delete-empty-src-dirs
             and begin
-                test (ls $t)
+                fd . $t | read
                 and begin
                     tm_printWarning "Directory $t is not empty"
                     open $t
