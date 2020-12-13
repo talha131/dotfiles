@@ -13,30 +13,12 @@ function update -d 'Update software to the latest versions'
         and begin
             _printMessage 'Updating Brew'
             brew update
-        end
-        functions -e _updateBrew
-    end
-
-    function _updateBrewPackages
-        which brew >/dev/null
-        and begin
             _printMessage 'Upgrading Brew'
             brew upgrade
             _printMessage 'Cleaning up Brew'
             brew cleanup
         end
-        functions -e _updateBrewPackages
-    end
-
-    function _updateBrewCasks
-        which brew >/dev/null
-        and begin
-            _printMessage 'Upgrading Brew Casks'
-             brew cask upgrade
-            _printMessage 'Cleaning up Brew'
-            brew cleanup
-        end
-        functions -e _updateBrewCasks
+        functions -e _updateBrew
     end
 
     function _updatePipPackages
@@ -120,7 +102,7 @@ function update -d 'Update software to the latest versions'
     end
 
     # Main method starts from here
-    set argument all brew fish gem npm pip vim shadowfox cask
+    set argument all brew fish gem npm pip vim shadowfox
     set validArgument 'false'
 
     set i (count $argv)
@@ -128,8 +110,6 @@ function update -d 'Update software to the latest versions'
         set validArgument 'true'
         _printMessage 'Update all packages'
         _updateBrew
-        _updateBrewPackages
-        _updateBrewCasks
         _updatePipPackages
         _updatePyenvShims
         _updateGems
@@ -142,7 +122,6 @@ function update -d 'Update software to the latest versions'
     if contains $argument[2] $argv 
         set validArgument 'true'
         _updateBrew
-        _updateBrewPackages
     end
 
     if contains $argument[3] $argv
@@ -177,12 +156,6 @@ function update -d 'Update software to the latest versions'
         _updateShadowFox
     end
 
-    if contains $argument[9] $argv 
-        set validArgument 'true'
-        _updateBrew
-        _updateBrewCasks
-    end
-
     if [ $validArgument = 'false' ]
         set_color -o red
         echo '⚠️  Incorrent argument. Valid values are'
@@ -194,8 +167,7 @@ function update -d 'Update software to the latest versions'
 end
 
 complete --no-files -c update -a all  -d 'Update all packages'
-complete --no-files -c update -a brew -d 'Update brew, upgrade and cleanup installed packages'
-complete --no-files -c update -a cask -d 'Update brew, upgrade casks and cleanup installed packages'
+complete --no-files -c update -a brew -d 'Update brew, upgrade, casks, and cleanup installed packages'
 complete --no-files -c update -a fish -d 'Update fish completions'
 complete --no-files -c update -a gem  -d 'Update and cleanup installed gems. Update rbenv shims'
 complete --no-files -c update -a npm  -d 'Update global npm packages. Requires yarn'
