@@ -1,11 +1,11 @@
 windows:
   - name: jump-ws-backend
     root: ~/Repos/jump-ws/neuron
-    layout: main-vertical
+    layout: main-horizontal
     panes:
       - commands:
-        - echo "nvim -S ~/.vim/sessions/neuron"
+        - nvim -S ~/.vim/sessions/jump-ws-backend
         focus: true  
       - commands:
-        - echo "make && neuron -test --logformat text"
+        - make && neuron -test --logformat text
       - echo "git mu"
