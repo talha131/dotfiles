@@ -113,3 +113,5 @@
 	required = true
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = master
