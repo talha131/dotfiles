@@ -28,10 +28,13 @@ function tm_bm_upload_audio -d 'Upload audio files from IC Recorder to pCloud'
         set t (_createTempDir)
         and begin
             tm_printMessage "Copy files to $t"
-            fd . -e mp3 $root -X cp -pv \{\} $t
+            fd . -e mp3 -e m4a $root -X cp -pv \{\} $t
             tm_printMessage "Rename files to their birth time"
             for i in $t/*.{mp3,MP3}
                mv -vn $i $t/(gdate -d (stat -f "%SB" $i) "+%Y-%m-%d %H%M%S-orig.mp3")
+            end
+            for i in $t/*.{m4a,M4A}
+               mv -vn $i $t/(gdate -d (stat -f "%SB" $i) "+%Y-%m-%d %H%M%S-orig.m4a")
             end
             tm_printMessage "Upload files to the pcloud"
             rclone move $t pcloud:"Project - Podcast Archives/A0 Friday Lectures - Raw Files - Todo" -P --delete-empty-src-dirs
