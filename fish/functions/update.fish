@@ -21,6 +21,16 @@ function update -d 'Update software to the latest versions'
         functions -e _updateBrew
     end
 
+    function _updateNeoVim
+        which brew >/dev/null
+        and begin
+            _printMessage 'Updating NeoVim'
+            brew reinstall luajit
+            brew reinstall neovim
+        end
+        functions -e _updateNeoVim
+    end
+
     function _updatePipPackages
         which pip2 > /dev/null
         and begin
@@ -110,6 +120,7 @@ function update -d 'Update software to the latest versions'
         set validArgument 'true'
         _printMessage 'Update all packages'
         _updateBrew
+        _updateNeoVim
         _updatePipPackages
         _updatePyenvShims
         _updateGems
@@ -122,6 +133,7 @@ function update -d 'Update software to the latest versions'
     if contains $argument[2] $argv 
         set validArgument 'true'
         _updateBrew
+        _updateNeoVim
     end
 
     if contains $argument[3] $argv
