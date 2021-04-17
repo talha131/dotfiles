@@ -9,7 +9,7 @@ function tm_audio-to-wav -d 'Convert mp3 file to wav'
         set ext $fep[2]
 
         if test -f $f
-            if test "$ext" = "mp3"
+            if test "$ext" = "mp3" || test "$ext" = "m4a"
                 echo "ffmpeg -i \"$f\" -ac 1 -ar 44100 \"$dname/$name.wav\"" >> $rfile
             end
         end
