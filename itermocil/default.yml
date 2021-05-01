@@ -1,7 +1,7 @@
 windows:
   - name: default
     root: ~/
-    layout: main-vertical
+    layout: even-vertical
     panes:
       - commands:
         - echo "pane 1"
