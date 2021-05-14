@@ -114,9 +114,7 @@ if has('nvim')
     set inccommand=split
     " Python package for Neovim                                                   {{{2
     if has('mac')
-        let g:python_host_prog = $HOME.'/.pyenv/versions/2.7.14/bin/python'
-        let g:python3_host_prog = $HOME.'/.pyenv/versions/3.8.2/bin/python3'
-        let $PYENV_ROOT=$HOME.'/.pyenv/'
+        let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
     elseif has('win32')
         let g:python_host_prog = 'C:/Python27/python'
         let g:python3_host_prog = 'C:/Users/talha/AppData/Local/Programs/Python/Python37-32/python'

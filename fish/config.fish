@@ -4,9 +4,6 @@ set -g fish_prompt_pwd_dir_length 0
 # Environment variables
 set -x EDITOR nvim
 
-# Pyenv
-status --is-interactive; and source (pyenv init -|psub)
-
 # Load shell utilities
 source ~/.config/fish/functions/marks.fish
 [ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
@@ -16,6 +13,9 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 set -g fish_user_paths "$HOME/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/llvm/bin/" $fish_user_paths
+
+#Python path
+set -g fish_user_paths "/usr/local/opt/python/libexec/bin/" $fish_user_paths
 
 # ruby gem variables
 set -x GEM_HOME $HOME/.gem
