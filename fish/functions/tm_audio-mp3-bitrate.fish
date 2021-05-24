@@ -11,7 +11,3 @@ function tm_audio-mp3-bitrate
     end
     set_color normal
 end
-
-
-
-
