@@ -3,7 +3,7 @@ function tiddlysave
     set f index.html
 
     set file "$p""$f"
-    tm_tiddly-next ~/Dropbox/TiddlyNotes --verbose --build index
+    tiddlywiki ~/Dropbox/TiddlyNotes --verbose --build index
 
     if test -e "$file"
         set_color -o red

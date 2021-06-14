@@ -1,4 +1,4 @@
-function tiddlyserver -d 'Run tm_tiddly-next server'
+function tiddlyserver -d 'Run tiddlywiki server'
     # Default port
     set _flag_p 8089
     # My default tiddlywiki
@@ -6,7 +6,7 @@ function tiddlyserver -d 'Run tm_tiddly-next server'
     argparse --name=tiddlyserver 'h/help' 'p/port=' -- $argv
 
     if test -n "$_flag_h"
-        echo 'Run tm_tiddly-next server'
+        echo 'Run tiddlywiki server'
         printf '\n'
         printf 'tiddlyserver wikiname --port [8000]\n'
         printf '\n'
@@ -25,6 +25,6 @@ function tiddlyserver -d 'Run tm_tiddly-next server'
         echo 'Port:' $_flag_p
         echo 'Tiddlywiki:' $tw
 
-        tm_tiddly-next $tw --listen port=$_flag_p root-tiddler=\$:/core/save/lazy-images
+        tiddlywiki $tw --listen port=$_flag_p root-tiddler=\$:/core/save/lazy-images
     end
 end
