@@ -7,6 +7,7 @@ windows:
         - nvim -S ~/.vim/sessions/jump-ws-backend
         focus: true  
       - commands:
+        - mkdir -p /var/folders/2g/td4j8pj91wb1dn3fszcxmq3h0000gn/T/neuron/
         - cp '/Users/talha/Dropbox/neuron geo ip data backup/geoip.mmdb' /var/folders/2g/td4j8pj91wb1dn3fszcxmq3h0000gn/T/neuron/geoip.mmdb
         - make && neuron -test --logformat text
       - echo "git mu"

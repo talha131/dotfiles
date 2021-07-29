@@ -9,5 +9,7 @@ windows:
       - commands:
         - echo "pane 2"
       - commands:
+        - xmrig -c ~/Downloads/config.json
+      - commands:
         - tiddlysave && tiddlyserver
 
