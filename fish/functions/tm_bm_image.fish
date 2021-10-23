@@ -20,8 +20,8 @@ function tm_bm_image -d 'Resize image'
         tm_printMessage "Rename $f to $nf"
         mv -v $f $nf
 
-        echo "convert \"$nf\" -resize 1920x1080 \"$name.png\"" >> $convertFile
-        echo "convert \"$nf\" -resize 1920x1080 \"$name.jpg\"" >> $convertFile
+        echo "convert \"$nf\" -resize 1920!x1080! \"$name.png\"" >> $convertFile
+        echo "convert \"$nf\" -resize 1920!x1080! \"$name.jpg\"" >> $convertFile
         echo "rclone copy \"$nf\" pcloud:\"Project - Podcast Archives/A4 Published Backgrounds\" -P" >> $uploadFile
         echo "rclone copy \"$name\".png pcloud:\"Project - Podcast Archives/A4 Published Backgrounds\" -P" >> $uploadFile
         echo "mv -v \"$name\".png \"/Users/talha/Documents/BM Playground/video-titles-png/\"" >> $moveFile

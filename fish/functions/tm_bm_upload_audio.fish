@@ -29,6 +29,8 @@ function tm_bm_upload_audio -d 'Upload audio files from IC Recorder to pCloud'
         and begin
             tm_printMessage "Copy files to $t"
             fd . -e mp3 -e m4a $root -X cp -pv \{\} $t
+            tm_printMessage "Fix flags $t"
+            chflags -f -R nouchg $t
             tm_printMessage "Rename files to their birth time"
             for i in $t/*.{mp3,MP3}
                mv -vn $i $t/(gdate -d (stat -f "%SB" $i) "+%Y-%m-%d %H%M%S-orig.mp3")
