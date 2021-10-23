@@ -9,7 +9,7 @@ windows:
       - commands:
         - echo "pane 2"
       - commands:
-        - xmrig -c ~/Downloads/config.json
+        - xmrig -c ~/Dropbox/MoneroConfigurations/config-minexmr.com.json
       - commands:
         - tiddlysave && tiddlyserver
 
