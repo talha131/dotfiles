@@ -1,0 +1,28 @@
+# Continue on download errors, for example to skip unavailable videos in a playlist
+-i
+
+# Output filename template
+-o "~/Movies/YouTube/%(uploader)s (%(uploader_id)s)/%(upload_date)s - %(title)s - (%(duration)ss) [%(resolution)s] [%(id)s].%(ext)s"
+
+# Archive Settings
+--download-archive ~/Movies/YouTube/youtube-dl-archive.txt
+-a ~/Movies/YouTube/youtube-dl-channels.txt
+
+# Uniform Format
+--prefer-ffmpeg
+--merge-output-format mkv
+
+# Get All Subs to SRT
+--write-sub
+--all-subs
+--convert-subs srt
+--write-auto-sub
+
+# Get metadata
+--add-metadata
+--write-description
+--write-thumbnail
+--write-info-json
+
+# Debug
+-v
