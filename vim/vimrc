@@ -217,7 +217,7 @@ endif
 " Some commands like map understand <Space> but for others you need "\<Space>"
 let g:mapleader = ' '
 " Open Gstatus in a new tab
-nnoremap <Leader>gs :Gstatus <CR> :wincmd T <CR> :-tabmove <CR>
+nnoremap <Leader>gs :Git <CR> :wincmd T <CR> :-tabmove <CR>
 nnoremap <Leader>gc :-tab Git commit -v<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gw :Gwrite<CR>
