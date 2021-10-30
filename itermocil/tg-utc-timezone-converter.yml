@@ -1,0 +1,13 @@
+windows:
+  - name: default
+    root: /Users/talha/Repos/Telegram-Utilities/utc-timezone-converter
+    layout: even-vertical
+    panes:
+      - commands:
+        - vf activate tg-utc-timezone-converter
+        - nvim -S ~/.vim/sessions/tg-utc-timezone-converter
+        focus: true  
+      - commands:
+        - vf activate tg-utc-timezone-converter
+
+
