@@ -1,5 +1,5 @@
 windows:
-  - name: farooq-pelican
+  - name: zzz-farooq-pelican
     root: ~/Repos/students/farooq/pelican-sample-web
     layout: main-horizontal
     panes:
