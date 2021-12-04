@@ -10,6 +10,7 @@
     pager = less -x1,5
 	editor = nvim
 	autocrlf = input
+	sshCommand = ssh -i ~/.ssh/id_rsa
 [color]
     ui = auto
 [color "branch"]
