@@ -14,7 +14,7 @@
 
 # Get All Subs to SRT
 --write-sub
---all-subs
+--sub-lang en
 --convert-subs srt
 --write-auto-sub
 
