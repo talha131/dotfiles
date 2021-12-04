@@ -5,21 +5,20 @@ modalKey:bind('', 'escape', function() modalKey:exit() end)
 
 local appShortCuts = {
 
-    C = 'Visual Studio Code',
-    D = 'Diaro - Diary, Journal, Notes',
-    E = 'Telegram',
-    F = 'Firefox Developer Edition',
-    G = 'Gmail talha131',
-    I = 'iterm',
-    L = 'Dynalist',
-    P = '1Password 7',
-    Q = 'Qt Creator',
-    R = 'Google Chrome',
+    -- Most used
+    D = 'Brave Browser Beta',
+    Q = 'TickTick',
     S = 'Slack-Web',
-    T = 'TickTick',
-    W = 'WhatsApp',
-    V = 'evernote',
+    W = 'iterm',
+
+    -- Less frequent
+    C = 'Visual Studio Code',
+    F = 'Firefox Developer Edition',
+    P = '1Password 7',
+    R = 'Google Chrome',
+    T = 'Telegram Desktop',
     X = 'Xcode',
+    Y = 'WhatsApp',
 }
 
 for key, app in pairs(appShortCuts) do
