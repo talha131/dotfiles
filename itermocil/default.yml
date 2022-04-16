@@ -11,5 +11,7 @@ windows:
       - commands:
         - xmrig -c ~/Dropbox/MoneroConfigurations/config-minexmr.com.json
       - commands:
+        - tiddlysave /Users/talha/Dropbox/TiddlyNotesArchives && tiddlyserver /Users/talha/Dropbox/TiddlyNotesArchives --port 8090
+      - commands:
         - tiddlysave && tiddlyserver
 
