@@ -1,23 +1,43 @@
 function tiddlysave
-    set p /Users/talha/Dropbox/TiddlyNotes/output/
-    set f index.html
+    # Default port
+    # My default tiddlywiki
+    set tw ~/Dropbox/TiddlyNotes
+    argparse --name=tiddlysave 'h/help' -- $argv
 
-    set file "$p""$f"
-    tiddlywiki ~/Dropbox/TiddlyNotes --verbose --build index
+    if test -n "$_flag_h"
+        echo 'Save tiddlywiki'
+        printf '\n'
+        printf 'tiddlysave wikiname'
+        printf '\n'
+        echo $tw' is the default tiddlywiki'
+        printf '\n'
+        echo 'Example:'
+        echo 'tiddlysave mynewwiki'
+    else
+        # Check if wiki path is given
+        if test -n "$argv[1]"
+            set tw "$argv[1]"
+        end
 
-    if test -e "$file"
-        set_color -o red
-        echo "index.html found"
-        
-        set append (stat -f "%Sm" -t "%F-%H%M" "$file")
-        set rootname (echo $f | sed 's/\.[^.]*$//')
-        set ext (echo $file | sed 's/.*\.//')
-        set new "$p""$rootname"-"$append"."$ext"
+        echo 'Tiddlywiki:' $tw
 
-        set_color -o yellow
-        echo "Rename $file → $new"
-        set_color normal
+        tiddlywiki $tw --verbose --build index
 
-        mv -v "$file" "$new"
+        set p "/output/"
+        set f "index.html"
+        set file "$tw$p$f"
+        tm_printMessage $file
+
+        if test -e "$file"
+            tm_printMessage "index.html found"
+            
+            set append (stat -f "%Sm" -t "%F-%H%M" "$file")
+            set rootname (echo $f | sed 's/\.[^.]*$//')
+            set ext (echo $file | sed 's/.*\.//')
+            set new "$tw$p$rootname-$append.$ext"
+
+            tm_printMessage "Rename $file → $new"
+            mv -v "$file" "$new"
+        end
     end
 end
