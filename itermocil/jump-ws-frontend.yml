@@ -1,6 +1,6 @@
 windows:
   - name: jump-ws-frontend
-    root: ~/Repos/jump-ws/neuron-frontend
+    root: ~/Repos/jump-ws/neuron-frontend/src
     layout: main-horizontal
     panes:
       - commands:
