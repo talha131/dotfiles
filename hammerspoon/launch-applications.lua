@@ -8,7 +8,7 @@ local appShortCuts = {
     -- Most used
     D = 'Brave Browser Beta',
     Q = 'TickTick',
-    S = 'Slack-Web',
+    S = 'Slack',
     W = 'iterm',
 
     -- Less frequent
