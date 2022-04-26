@@ -1,4 +1,4 @@
-function tm_bm_audio_image_to_mp4 -d 'Combine audio m4a file with PNG image to make mp4 video'
+function tm_bm_audio_image_to_mp4 --description 'Combine audio m4a file with PNG image to make mp4 video'
 
     set rfile (gdate +"%Y-%m-%d %H%m%S %N.txt")
     set dname (gdate +"%Y-%m-%d %H%m%S output mp4")
@@ -10,7 +10,7 @@ function tm_bm_audio_image_to_mp4 -d 'Combine audio m4a file with PNG image to m
         set image (echo "/Users/talha/Documents/BM Playground/video-titles-png/$name.png")
 
         if test -f $f
-            if test "$ext" = "m4a"
+            if test "$ext" = "m4a"; or test "$ext" = "aac"
                 if test -f $image
                     echo "ffmpeg -loop 1 -i \"$image\" -i \"$f\" -vf \"scale='min(1920,iw)':-2,format=yuv420p\" -c:v libx264 -preset veryslow -profile:v main -level 4.1 -c:a aac -shortest -fflags +shortest -max_interleave_delta 0 -movflags +faststart \"$dname/$name.mp4\"" >> $rfile
 
@@ -50,7 +50,7 @@ function tm_bm_audio_image_to_mp4 -d 'Combine audio m4a file with PNG image to m
         set ext $fep[2]
 
         if test -f $f
-          if test "$ext" = "m4a"
+          if test "$ext" = "m4a"; or test "$ext" = "aac"
             if test -f $image
               tm_printMessage "Length of $f (audio, video)"
               ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 -sexagesimal $f
