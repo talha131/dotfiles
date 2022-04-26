@@ -42,5 +42,3 @@ end
 
 # Add itermocil completions
 complete -c itermocil -a "(itermocil --list)"
-
-ssh-add -K ~/.ssh/id_ed25519
