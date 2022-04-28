@@ -1,13 +1,8 @@
 " Begin Plugins section                                                       {{{1
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
-if !has('nvim')
-    Plug 'tpope/vim-sensible'
-endif
 Plug 'dahu/bisectly'
 Plug 'tpope/vim-speeddating'
-Plug 'mzlogin/vim-markdown-toc' " Generate table of contents for Markdown files. `:GenTocGFM`
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'skywind3000/asyncrun.vim'
 " Plugins - File Explorer                                        {{{2
 if has('mac')
@@ -27,22 +22,13 @@ Plug 'sheerun/vim-polyglot'
 " Plugins - Typing Utilities                                                  {{{2
 Plug 'tpope/vim-rsi' " Readline key bindings
 Plug 'junegunn/vim-easy-align' " Vim alignment
-Plug 'tpope/vim-characterize' " press ga to reveal characters representation in decimal, octal and hex
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary' " toggle comments
 Plug 'tpope/vim-endwise'
 Plug 'kshenoy/vim-signature' " Shows marks
 Plug 'AndrewRadev/splitjoin.vim' " gS gJ to split and join lines
-Plug 'SirVer/ultisnips'
-" Plugins - Distraction Free Writing                                          {{{2
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'chrisbra/NrrwRgn' " focus on a region and make the rest inaccessible. Select and call :NR
 " Plugins - Utilities and Wrappers                                            {{{2
-Plug 'vim-scripts/VOoM' " View and change file outline
-Plug 'guns/xterm-color-table.vim' " :XtermColorTable to show all 256 xterm colors with their RGB equivalents
-Plug 'vim-scripts/DrawIt' " Draw ASCII art in Vim
 Plug 'tpope/vim-eunuch' " Wrapper for UNIX shell commands
 Plug 'henrik/vim-indexed-search' " Show 'Match 123 of 456 <search term>' in Vim searches
 Plug 'romainl/vim-qf' " a collection of settings, commands and mappings for the quickfix window
@@ -56,12 +42,8 @@ Plug 'wellle/targets.vim'
 Plug 'tpope/vim-fugitive'
             \ | Plug 'junegunn/gv.vim'
             \ | Plug 'tpope/vim-rhubarb'
-Plug 'mbbill/undotree' " Browse the undo tree
 " Plugins - Theme                                                             {{{2
 Plug 'morhetz/gruvbox'
-Plug 'dracula/vim'
-Plug 'rakr/vim-one'
-Plug 'romainl/flattened'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
