@@ -81,20 +81,16 @@ function! s:SynStack()
 endfunction
 
 " Customize Vim                                                               {{{1
-if has('nvim')
-    " Use <C-L> to clear the highlighting of :set hlsearch. From sensible.vim
-    if maparg('<C-L>', 'n') ==# ''
-        nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-    endif
-    set inccommand=split
-    " Python package for Neovim                                                   {{{2
-    if has('mac')
-        let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
-    elseif has('win32')
-        let g:python_host_prog = 'C:/Python27/python'
-        let g:python3_host_prog = 'C:/Users/talha/AppData/Local/Programs/Python/Python37-32/python'
-    endif
+" Use <C-L> to clear the highlighting of :set hlsearch. From sensible.vim
+if maparg('<C-L>', 'n') ==# ''
+    nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
+set inccommand=split
+" Python package for Neovim                                                   {{{2
+if has('mac')
+    let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
+endif
+
 " Miscellaneous Variables                                                     {{{2
 set expandtab
 set guioptions+=b " make sure horizontal scroll bar is visible
