@@ -78,8 +78,7 @@ function highlight_merge_commits {
 
 function pretty_git_log_subject_body_patch {
     cd -- ${GIT_PREFIX:-.}
-    git log --color --date=short --pretty="format:${SEPARATOR}${FORMAT}%n%b" ${ABBREV} $* |
-    highlight_merge_commits
+    git log --color --date=short --pretty="format:${SEPARATOR}${FORMAT}%n%b" ${ABBREV} $*
 }
 
 function pretty_git_log_subject_body {
