@@ -114,15 +114,6 @@ if has('mac')
     set shellcmdflag=-c
 endif
 
-" Spelling                                                                    {{{2
-set spellfile=~/.vim/spell/en.utf-8.add " Store all good words in this file
-" Generate a binary spell file from text spell file. Vim does it automatically
-" whenever a word is added. But when spell file is added externally, you
-" need to generate it once
-if empty(glob(&spellfile.'.spl'))
-    exec 'mkspell!' &spellfile
-endif
-
 " Preserve file history                                                       {{{2
 set undofile " write undo history to file so that undo history remains persistent
 set backup " Make a backup before overwriting a file.  Leave it around after the file has been successfully written.
