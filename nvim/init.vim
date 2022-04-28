@@ -88,7 +88,8 @@ endif
 set inccommand=split
 " Python package for Neovim                                                   {{{2
 if has('mac')
-    let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
+    " crtical setting
+    let g:python3_host_prog = '/opt/homebrew/bin/python3'
 endif
 
 " Miscellaneous Variables                                                     {{{2
