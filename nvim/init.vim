@@ -1,9 +1,3 @@
-" On Windows, $HOME/.vim is $HOME/vimfiles. For consistency, replace vimfiles with .vim
-" See :help vimfiles for more information
-if has('win32') && !has('nvim')
-     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-endif
-
 " Begin Plugins section                                                       {{{1
 call plug#begin('~/.vim/plugged')
 
