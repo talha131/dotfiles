@@ -108,10 +108,7 @@ set relativenumber
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro rnu' " Except nu and rnu, all are netrw default values
 set showcmd
 " use Patience diff algorithm for generating diffs
-" patch-8.1.0360 is for vim
-if has('nvim') || has('patch-8.1.0360')
-    set diffopt+=internal,algorithm:patience
-endif
+set diffopt+=internal,algorithm:patience
 if has('mac')
     set shell=/usr/local/bin/bash
     set shellcmdflag=-c
