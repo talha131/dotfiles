@@ -110,7 +110,7 @@ set showcmd
 " use Patience diff algorithm for generating diffs
 set diffopt+=internal,algorithm:patience
 if has('mac')
-    set shell=/usr/local/bin/bash
+    set shell=/opt/homebrew/bin/bash
     set shellcmdflag=-c
 endif
 
