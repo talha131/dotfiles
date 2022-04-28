@@ -3,7 +3,6 @@ call plug#begin()
 
 Plug 'dahu/bisectly'
 Plug 'tpope/vim-speeddating'
-Plug 'skywind3000/asyncrun.vim'
 " Plugins - File Explorer                                        {{{2
 if has('mac')
     Plug '/usr/local/opt/fzf'
