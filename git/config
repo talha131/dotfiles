@@ -101,11 +101,11 @@
 	algorithm = patience
 	compactionHeuristic = true
 [pager]
-	log = /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight | less
-	show = /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight | less
-	diff = /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight | less
+	log = diffr | less
+	show = diffr | less
+	diff = diffr | less
 [interactive]
-	diffFilter = /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight
+	diffFilter = diffr
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
