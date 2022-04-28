@@ -101,11 +101,11 @@
 	algorithm = patience
 	compactionHeuristic = true
 [pager]
-	log = diffr | less
-	show = diffr | less
-	diff = diffr | less
+	log = diffr --line-numbers=aligned | less
+	show = diffr --line-numbers=aligned | less
+	diff = diffr --line-numbers=aligned | less
 [interactive]
-	diffFilter = diffr
+	diffFilter = diffr --line-numbers=aligned
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
