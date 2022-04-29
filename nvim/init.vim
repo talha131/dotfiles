@@ -260,30 +260,6 @@ endif
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 
 " Plugins Customizations                                                      {{{1
-" Voom                                                                        {{{2
-let g:voom_tree_placement = 'right'
-let g:voom_ft_modes = {'markdown': 'markdown', 'pandoc': 'markdown'}
-let g:voom_always_allow_move_left = 1
-augroup plugin_voom
-    autocmd!
-    autocmd FileType voomtree setlocal nonumber
-augroup END
-
-" xolox/vim-session                                                           {{{2
-let g:session_autosave = 'yes'
-let g:session_autosave_periodic = 5
-let g:session_default_overwrite = 1
-let g:session_autoload = 'no'
-let g:session_directory = '~/.vim/sessions'
-
-" Limelight and Goyo - Distraction Free Writing                               {{{2
-augroup plugin_goyo
-    autocmd!
-    autocmd User GoyoEnter Limelight
-    autocmd User GoyoEnter set nocursorline nocursorcolumn
-    autocmd User GoyoLeave Limelight!
-    autocmd User GoyoLeave set cursorline cursorcolumn
-augroup END
 
 " Vim Easy Align                                                              {{{2
 " Start interactive EasyAlign in visual mode (e.g. vipga)
