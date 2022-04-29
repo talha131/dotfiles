@@ -188,8 +188,6 @@ nnoremap <Leader>s  :CocList --interactive --ignore-case words<CR>
 if has('mac')
     set guifont=Inconsolata:h14
     set background=dark
-elseif has('win32')
-    set guifont=Inconsolata:h12
 endif
 
 function! SetStatusLineColor()
@@ -218,10 +216,8 @@ augroup theme_related_settings
     autocmd BufEnter * call SetStatusLineColor()
 augroup END
 
-if !has('win32') || (has('win32') && exists('g:GuiLoaded'))
-	set cursorline
-	set cursorcolumn
-endif
+set cursorline
+set cursorcolumn
 
 " for coc-highlight
 set termguicolors
