@@ -367,10 +367,8 @@ function! s:GrepArgs(...)
   return join(list, "\n")
 endfunction
 
-if has('nvim')
-    " Highlight symbol under cursor on CursorHold
-    autocmd CursorHold * silent call CocActionAsync('highlight')
-endif
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 augroup mygroup
   autocmd!
