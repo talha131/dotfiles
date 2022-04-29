@@ -5,7 +5,7 @@ Plug 'dahu/bisectly'
 Plug 'tpope/vim-speeddating'
 " Plugins - File Explorer                                        {{{2
 if has('mac')
-    Plug '/usr/local/opt/fzf'
+    Plug '/opt/homebrew/opt/fzf'
     Plug 'junegunn/fzf.vim' " :Files :Marks :Windows
 endif
 Plug 'justinmk/vim-dirvish'
