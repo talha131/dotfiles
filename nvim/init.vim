@@ -261,16 +261,6 @@ autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 
 " Plugins Customizations                                                      {{{1
 
-" Vim Easy Align                                                              {{{2
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap gl <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap gl <Plug>(EasyAlign)
-
-" undotree                                                                    {{{2
-let g:undotree_SplitWidth = 45
-let g:undotree_SetFocusWhenToggle = 1
-
 " startify                                                                                  {{{2
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_session_persistence = 1
