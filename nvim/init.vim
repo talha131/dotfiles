@@ -311,9 +311,6 @@ let g:SignatureMap = {
 
 
 " coc                                                                                  {{{2
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-" Better display for messages
 let g:coc_global_extensions = [
             \'coc-git',    
             \'coc-go',    
@@ -332,7 +329,24 @@ let g:coc_global_extensions = [
             \'coc-pyright',
             \]
 
+" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
+" unicode characters in the file autoload/float.vim
+set encoding=utf-8
+
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Give more space for displaying messages.
 set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+set signcolumn=yes
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
