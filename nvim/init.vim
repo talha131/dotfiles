@@ -120,14 +120,6 @@ set backup " Make a backup before overwriting a file.  Leave it around after the
 set writebackup " Make a backup before overwriting a file.  The backup is removed after the file was successfully written, unless the 'backup' option is also on.
 set swapfile " Use a swap file for the buffer.
 
-if !isdirectory($HOME.'/.vimTemp')
-    silent call mkdir ($HOME.'/.vimTemp', 'p')
-endif
-
-set backupdir^=~/.vimTemp// " directory for backup files
-set directory^=~/.vimTemp// " directory for swap files
-set undodir^=~/.vimTemp// " directory for undo history
-
 " Command Line Completion                                                     {{{2
 " from [SO answer](http://stackoverflow.com/a/526940/177116)
 " When you type the first tab hit will complete as much as possible, the
