@@ -281,10 +281,6 @@ command! -bang -nargs=* Rg
       \           : fzf#vim#with_preview('right:50%:hidden', '?'),
 \ <bang>0)
 
-" asyncrun                                                                                  {{{2
-" For vim-fugitive
-command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
-
 " vim-sneak                                                                                  {{{2
 let g:sneak#label = 1
 
