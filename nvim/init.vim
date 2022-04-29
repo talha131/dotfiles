@@ -388,7 +388,6 @@ let g:coc_global_extensions = [
             \'coc-yaml',
             \'coc-lists',
             \'coc-snippets',
-            \'coc-ultisnips',
             \'coc-pyright',
             \]
 let g:coc_snippet_next = '<tab>'
