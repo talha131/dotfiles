@@ -407,6 +407,8 @@ augroup end
 
 let g:coc_snippet_next = '<tab>'
 
+" coc-git                                                                                  {{{2
+" https://github.com/neoclide/coc-git#keymaps
 " navigate chunks of current buffer
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
