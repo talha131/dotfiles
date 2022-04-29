@@ -415,9 +415,6 @@ xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
 
-" markdown-preview                                                                                  {{{2
-let g:mkdp_auto_close = 0
-
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
     autocmd!
