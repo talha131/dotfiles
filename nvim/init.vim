@@ -314,6 +314,24 @@ let g:SignatureMap = {
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 " Better display for messages
+let g:coc_global_extensions = [
+            \'coc-git',    
+            \'coc-go',    
+            \'coc-yank',
+            \'coc-highlight',
+            \'coc-prettier',
+            \'coc-pairs',
+            \'coc-json',
+            \'coc-css',
+            \'coc-html',
+            \'coc-tslint',
+            \'coc-tsserver',
+            \'coc-yaml',
+            \'coc-lists',
+            \'coc-snippets',
+            \'coc-pyright',
+            \]
+
 set cmdheight=2
 
 inoremap <silent><expr> <TAB>
@@ -373,23 +391,6 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-let g:coc_global_extensions = [
-            \'coc-git',    
-            \'coc-go',    
-            \'coc-yank',
-            \'coc-highlight',
-            \'coc-prettier',
-            \'coc-pairs',
-            \'coc-json',
-            \'coc-css',
-            \'coc-html',
-            \'coc-tslint',
-            \'coc-tsserver',
-            \'coc-yaml',
-            \'coc-lists',
-            \'coc-snippets',
-            \'coc-pyright',
-            \]
 let g:coc_snippet_next = '<tab>'
 
 " navigate chunks of current buffer
