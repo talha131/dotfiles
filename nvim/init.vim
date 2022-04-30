@@ -178,6 +178,8 @@ nnoremap <Leader>gwq :Gwq <CR>
 nnoremap <Leader>q :w \| Bdelete<CR>
 " show highlight group
 nnoremap <leader>hg :call <SID>SynStack()<CR>
+nnoremap <Leader>f :Files <CR>
+nnoremap <Leader>b :Buffers <CR>
 
 " Theme Settings                                                              {{{2
 if has('mac')
@@ -469,8 +471,8 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-nnoremap <Leader>f :CocList files <CR>
-nnoremap <Leader>b :CocList buffers <CR>
+" nnoremap <Leader>f :CocList files <CR>
+" nnoremap <Leader>b :CocList buffers <CR>
 " enter word to search
 nnoremap <Leader>g  :CocList --interactive grep<CR>
 nnoremap <Leader>s  :CocList --interactive --ignore-case words<CR>
