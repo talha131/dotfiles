@@ -203,9 +203,6 @@ augroup END
 set cursorline
 set cursorcolumn
 
-" for coc-highlight
-set termguicolors
-
 colorscheme gruvbox
 
 " Status line                                                                 {{{2
@@ -376,9 +373,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " Symbol renaming. Rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -485,6 +479,11 @@ xmap ag <Plug>(coc-git-chunk-outer)
 nnoremap <Leader>gcs  :CocCommand git.chunkStage<CR>
 " git chuck undo
 nnoremap <Leader>gcu  :CocCommand git.chunkUndo<CR>
+
+" coc-highlight                                                                               {{{2
+set termguicolors
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
