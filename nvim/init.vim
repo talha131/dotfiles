@@ -25,7 +25,6 @@ Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary' " toggle comments
 Plug 'tpope/vim-endwise'
-Plug 'kshenoy/vim-signature' " Shows marks
 Plug 'AndrewRadev/splitjoin.vim' " gS gJ to split and join lines
 " Plugins - Utilities and Wrappers                                            {{{2
 Plug 'tpope/vim-eunuch' " Wrapper for UNIX shell commands
@@ -264,32 +263,6 @@ command! -bang -nargs=* Rg
 
 " vim-sneak                                                                                  {{{2
 let g:sneak#label = 1
-
-" vim-signature                                                                        {{{2
-let g:SignatureMap = {
-            \ 'Leader'             :  "m",
-            \ 'PlaceNextMark'      :  "",
-            \ 'ToggleMarkAtLine'   :  "m.",
-            \ 'PurgeMarksAtLine'   :  "",
-            \ 'DeleteMark'         :  "",
-            \ 'PurgeMarks'         :  "",
-            \ 'PurgeMarkers'       :  "",
-            \ 'GotoNextLineAlpha'  :  "",
-            \ 'GotoPrevLineAlpha'  :  "",
-            \ 'GotoNextSpotAlpha'  :  "",
-            \ 'GotoPrevSpotAlpha'  :  "",
-            \ 'GotoNextLineByPos'  :  "",
-            \ 'GotoPrevLineByPos'  :  "",
-            \ 'GotoNextSpotByPos'  :  "m]",
-            \ 'GotoPrevSpotByPos'  :  "m[",
-            \ 'GotoNextMarker'     :  "",
-            \ 'GotoPrevMarker'     :  "",
-            \ 'GotoNextMarkerAny'  :  "",
-            \ 'GotoPrevMarkerAny'  :  "",
-            \ 'ListBufferMarks'    :  "m/",
-            \ 'ListBufferMarkers'  :  ""
-            \ }
-
 
 " coc                                                                                  {{{2
 let g:coc_global_extensions = [
