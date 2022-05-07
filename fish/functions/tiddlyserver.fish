@@ -1,7 +1,7 @@
 function tiddlyserver -d 'Run tiddlywiki server'
     # Default port
     set _flag_p 8089
-    set _flag_i 192.168.10.112
+    set _flag_i 127.0.0.1
     # My default tiddlywiki
     set tw ~/Dropbox/TiddlyNotes
     argparse --name=tiddlyserver 'h/help' 'i/host=' 'p/port=' -- $argv

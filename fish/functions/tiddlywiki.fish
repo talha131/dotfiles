@@ -1,4 +1,4 @@
 function tiddlywiki -d 'Run tiddlywiki@next server'
-    ~/Repos/tiddlywiki/TiddlyWiki5/tiddlywiki.js $argv
+    ~/Repos/TiddlyWiki5/tiddlywiki.js $argv
 end
 
