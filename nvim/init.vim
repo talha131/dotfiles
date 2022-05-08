@@ -178,6 +178,9 @@ nnoremap <Leader>q :w \| Bdelete<CR>
 nnoremap <leader>hg :call <SID>SynStack()<CR>
 nnoremap <Leader>f :Files <CR>
 nnoremap <Leader>b :Buffers <CR>
+nnoremap <Leader>g :Rg <CR>
+nnoremap <Leader>s :Blines <CR>
+nnoremap <Leader>r :Lines <CR>
 
 " Theme Settings                                                              {{{2
 if has('mac')
@@ -419,8 +422,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " nnoremap <Leader>f :CocList files <CR>
 " nnoremap <Leader>b :CocList buffers <CR>
 " enter word to search
-nnoremap <Leader>g  :CocList --interactive grep<CR>
-nnoremap <Leader>s  :CocList --interactive --ignore-case words<CR>
+" nnoremap <Leader>g  :CocList --interactive grep<CR>
+" nnoremap <Leader>s  :CocList --interactive --ignore-case words<CR>
 
 " coc-git                                                                                  {{{2
 " https://github.com/neoclide/coc-git#keymaps
