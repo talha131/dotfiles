@@ -34,6 +34,7 @@ Plug 'mhinz/vim-startify' " A start screen for Vim
 " Why it is needed? See this discussion http://superuser.com/q/289285/42415
 Plug 'moll/vim-bbye'
 Plug 'wellle/targets.vim'
+Plug 'kshenoy/vim-signature'
 " Plugins - Version Control and File Comparison                               {{{2
 Plug 'tpope/vim-fugitive'
             \ | Plug 'junegunn/gv.vim'
