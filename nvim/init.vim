@@ -20,9 +20,7 @@ Plug 'danilamihailov/beacon.nvim'
 Plug 'sheerun/vim-polyglot'
 " Plugins - Typing Utilities                                                  {{{2
 Plug 'tpope/vim-rsi' " Readline key bindings
-Plug 'junegunn/vim-easy-align' " Vim alignment
 Plug 'machakann/vim-sandwich'
-Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary' " toggle comments
 Plug 'tpope/vim-endwise'
 Plug 'AndrewRadev/splitjoin.vim' " gS gJ to split and join lines
@@ -109,6 +107,7 @@ set showcmd
 " use Patience diff algorithm for generating diffs
 set diffopt+=internal,algorithm:patience
 if has('mac')
+    " crtical setting
     set shell=/opt/homebrew/bin/bash
     set shellcmdflag=-c
 endif
