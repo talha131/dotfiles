@@ -67,7 +67,7 @@ function! RemoveZeroWidthSpace()
 endfunction
 
 function! JSONFormat()
-    execute "%!python -m json.tool"
+    execute '%!python -m json.tool'
 endfunction
 
 " from https://jordanelver.co.uk/blog/2015/05/27/working-with-vim-colorschemes/#showing-highlight-groups
