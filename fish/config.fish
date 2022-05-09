@@ -6,8 +6,6 @@ set -g fish_prompt_pwd_dir_length 0
 set -x EDITOR nvim
 set -x VIRTUALFISH_HOME ~/.local/share/virtualenvs
 
-# Load shell utilities
-source ~/.config/fish/functions/marks.fish
 # autojump
 [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
 # iTerm2 integration
