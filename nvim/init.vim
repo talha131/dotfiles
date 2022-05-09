@@ -449,7 +449,9 @@ nnoremap <Leader>gcu  :CocCommand git.chunkUndo<CR>
 " coc-highlight                                                                               {{{2
 set termguicolors
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup coc_highlight
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 
 " FileType related settings                                                   {{{1
 augroup filetype_related_settings
