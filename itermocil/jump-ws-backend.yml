@@ -4,7 +4,7 @@ windows:
     layout: main-horizontal
     panes:
       - commands:
-        - nvim -S ~/.vim/sessions/jump-ws-backend
+        - nvim -S ~/.local/share/nvim/sessions/jump-ws-backend
         focus: true  
       - commands:
         - mkdir -p /var/folders/2g/td4j8pj91wb1dn3fszcxmq3h0000gn/T/neuron/
