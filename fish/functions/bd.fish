@@ -1,98 +1,96 @@
 #!/usr/bin/env fish
 # -*-  mode:fish; tab-width:4  -*-
 #
-# fish-bd 1.1 by Jean-Philippe Roemer <roemer.jp@gmail.com>
+# fish-bd main & usage function
 # https://github.com/0rax/bd-fish
 #
 
-function __bd_usage
-	printf "# fish-bd 1.1.1 by Jean-Philippe Roemer <roemer.jp@gmail.com>
-# https://github.com/0rax/bd-fish
+function bd
 
-Based on bd for bash by Vigneshwaran Raveendran (https://github.com/vigneshwaranr/bd)
+    set -l oldpwd (pwd)
+    set -l newpwd ""
+    set -l opts   "$BD_OPT"
+    set -l args   (getopt "csih" $argv)
+
+    if [ $status -gt 0 ]
+        return 1
+    end
+    set args (echo $args | sed 's/^\s//' | tr ' ' '\n')
+
+    set -l i 1
+    for arg in $args
+        switch $arg
+        case "-h"
+            printf "# fish-bd v1.3.3 (https://github.com/0rax/bd-fish)
 
 Description:
     Quickly go back to a parent directory up in your current working directory tree.
     Don't write 'cd ../../..' redundantly, use bd instead.
 
 Usage:
-    bd [option] <directory name>
+    bd [option] <pattern>
 
-Example:
+Examples:
     # You are in /home/user/my/path/is/very/long/
     # And you want to go back to 'path', simple type
     > bd path
     # or
     > bd -s pa
     # or
-    > bd -i P
+    > bd -i Pat
     # And you are now in /home/user/my/path/
 
 Options:
-    -c\t\tClassic mode : goes back to the first directory named as the string (default)
-	\t\tSet if default using (set -gx BD_OPT 'classic')
-	\t\tDefault mode when BD_OPT or CLI options are specified
-    -s\t\tSeems mode : goes back to the first directory containing string
-    \t\tSet it as default using (set -gx BD_OPT 'sensitive')
-    -i\t\tCase insensitive move (implies seems mode)
-    \t\tSet it as default using (set -gx BD_OPT 'insensitive')
-    -h\t\tDisplay help and exit
-"
-end
+    -c <pattern>
+            Classic mode : goes back to the first directory matching the pattern (default)
+            Set if default using (set -gx BD_OPT 'classic')
+            Default mode when BD_OPT or CLI options are specified
+    -s <pattern>
+            Seems mode: goes back to the first directory starting with pattern
+            Set it as default using (set -gx BD_OPT 'sensitive')
+    -i <pattern>
+            Case insensitive mode: same as seems mode without case sensitity
+            Set it as default using (set -gx BD_OPT 'insensitive')
+    -h      Print this help and exit
 
-function bd
+Note:
+    Fuzzy matching of a directory can be done with any mode using the built-in
+    fish-shell autocompletion. This allows you to enter any part of the path
+    and still match it.\n"
+            return 0
+        case "-s"
+            set opts "sensitive"
+        case "-i"
+            set opts "insensitive"
+        case "-c"
+            set opts "classic"
+        case "--"
+            set i (math $i + 1)
+            break
+        end
+        set i (math $i + 1)
+    end
 
-	set -l __bd_oldpwd (pwd)
-	set -l __bd_newpwd
-	set -l __bd_index
-	set -l __bd_arg
-	set -l __bd_opts $BD_OPT
+    if [ $i -gt (count $args) ]
+        cd ..
+        pwd
+        return 0
+    end
 
-	set args (getopt "csih" $argv)
-	if [ $status -gt 0 ]
-        	return 1
-	end
-	set args (echo $args | sed 's/^\s//' | tr ' ' '\n')
+    switch "$opts"
+    case "sensitive"
+        set newpwd (echo $oldpwd | sed 's|\(.*/'$args[$i]'[^/]*/\).*|\1|')
+    case "insensitive"
+        set newpwd (echo $oldpwd | perl -pe 's|(.*/'$args[$i]'[^/]*/).*|$1|i')
+    case '*' # classic
+        set newpwd (echo $oldpwd | sed 's|\(.*/'$args[$i]'/\).*|\1|')
+    end
 
-	set -l i 1
-	for arg in $args
-		switch $arg
-		case "-s"
-			set __bd_opts "sensitive"
-		case "-i"
-			set __bd_opts "insensitive"
-		case "-c"
-			set __bd_opts "classic"
-		case "--"
-			set i (math $i + 1)
-			break
-		case "-h"
-			__bd_usage
-			return 0
-		end
-		set i (math $i + 1)
-	end
-
-	if [ $i -gt (count $args) ]
-		cd ..
-		pwd
-		return 0
-	end
-
-	switch "$__bd_opts"
-	case "sensitive"
-		set __bd_newpwd (echo $__bd_oldpwd | sed 's|\(.*/'$args[$i]'[^/]*/\).*|\1|')
-	case "insensitive"
-		set __bd_newpwd (echo $__bd_oldpwd | sed 's|\(.*/'$args[$i]'[^/]*/\).*|\1|I')
-	case '*'		# classic
-		set __bd_newpwd (echo $__bd_oldpwd | sed 's|\(.*/'$args[$i]'/\).*|\1|')
-	end
-
-	if [ $__bd_newpwd = $__bd_oldpwd ]
-		echo "No such occurence."
-	end
-
-	echo "$__bd_newpwd"
-	cd "$__bd_newpwd"
+    if [ "$newpwd" = "$oldpwd" ]
+        echo "No such occurence." >&2
+    else
+        echo "$newpwd"
+        cd   "$newpwd"
+    end
 
 end
