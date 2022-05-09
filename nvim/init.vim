@@ -245,7 +245,7 @@ autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 " Plugins Customizations                                                      {{{1
 
 " startify                                                                                  {{{2
-let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_session_dir = stdpath('data') . '/sessions'
 let g:startify_session_persistence = 1
 let s:padding_left = repeat(' ', get(g:, 'startify_padding_left', 3))
 let g:startify_list_order = [
