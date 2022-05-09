@@ -44,3 +44,7 @@ complete -c itermocil -a "(itermocil --list)"
 # https://github.com/0rax/fish-bd
 # Case insensitive mode: same as seems mode without case sensitity
 set -gx BD_OPT 'insensitive'
+
+# done.fish
+# https://github.com/franciscolourenco/done
+set -U __done_notify_sound 1
