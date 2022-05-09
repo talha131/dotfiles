@@ -8,7 +8,7 @@ set -x EDITOR nvim
 source ~/.config/fish/functions/marks.fish
 # autojump
 [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
-
+# iTerm2 integration
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 # Set path
