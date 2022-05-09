@@ -171,7 +171,7 @@ endif
 let g:mapleader = ' '
 " Open Gstatus in a new tab
 nnoremap <Leader>gs :Git <CR> :wincmd T <CR> :-tabmove <CR>
-nnoremap <Leader>gc :-tab Git commit -v<CR>
+nnoremap <Leader>gc :Git commit -v<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gwq :Gwq <CR>
