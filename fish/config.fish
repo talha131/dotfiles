@@ -39,3 +39,8 @@ end
 
 # Add itermocil completions
 complete -c itermocil -a "(itermocil --list)"
+
+# bd.fish 
+# https://github.com/0rax/fish-bd
+# Case insensitive mode: same as seems mode without case sensitity
+set -gx BD_OPT 'insensitive'
