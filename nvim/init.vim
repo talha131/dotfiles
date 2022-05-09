@@ -118,6 +118,8 @@ set undofile " write undo history to file so that undo history remains persisten
 set backup " Make a backup before overwriting a file.  Leave it around after the file has been successfully written.
 set writebackup " Make a backup before overwriting a file.  The backup is removed after the file was successfully written, unless the 'backup' option is also on.
 set swapfile " Use a swap file for the buffer.
+" do not store backup files that end with ~ in the file directory
+set backupdir-=.
 
 " Command Line Completion                                                     {{{2
 " from [SO answer](http://stackoverflow.com/a/526940/177116)
