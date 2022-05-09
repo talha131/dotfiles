@@ -1,4 +1,5 @@
-# Fish variables
+# Disable shortening of characters in path components in the output of prompt_pwd
+# https://fishshell.com/docs/current/cmds/prompt_pwd.html
 set -g fish_prompt_pwd_dir_length 0
 
 # Environment variables
