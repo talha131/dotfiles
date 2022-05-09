@@ -4,6 +4,7 @@ set -g fish_prompt_pwd_dir_length 0
 
 # Environment variables
 set -x EDITOR nvim
+set -x VIRTUALFISH_HOME ~/.local/share/virtualenvs
 
 # Load shell utilities
 source ~/.config/fish/functions/marks.fish

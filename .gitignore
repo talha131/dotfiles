@@ -1,1 +1,2 @@
 fish/functions/fzf_key_bindings.fish
+fish/conf.d/virtualfish-loader.fish
