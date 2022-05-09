@@ -180,7 +180,7 @@ nnoremap <leader>hg :call <SID>SynStack()<CR>
 nnoremap <Leader>f :Files <CR>
 nnoremap <Leader>b :Buffers <CR>
 nnoremap <Leader>g :Rg <CR>
-nnoremap <Leader>s :Blines <CR>
+nnoremap <Leader>s :BLines <CR>
 nnoremap <Leader>r :Lines <CR>
 
 " Theme Settings                                                              {{{2
