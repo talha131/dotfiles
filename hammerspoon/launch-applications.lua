@@ -6,7 +6,7 @@ modalKey:bind('', 'escape', function() modalKey:exit() end)
 local appShortCuts = {
 
     -- Most used
-    D = 'Brave Browser Beta',
+    D = 'Brave Browser',
     Q = 'TickTick',
     S = 'Slack',
     W = 'iterm',
