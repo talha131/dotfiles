@@ -36,6 +36,36 @@ function toggleInput(v)
    else
        hs.alert.show('Enable Mic')
    end
+   setMicDisplay(not isMute)
 end
 
-modalKey:bind('', 'm', 'Toggle mic', function() toggleInput() end, function() modalKey:exit() end)
+modalKey:bind('', 'm', nil, function() toggleInput() end, function() modalKey:exit() end)
+
+-- Mic icon
+local micOn = ASSETS_PATH .. "mic-on.png"
+local micOff = ASSETS_PATH .. "mic-off.png"
+
+local micIcon = hs.menubar.new()
+
+function setMicDisplay(isMute)
+    if isMute then
+        micIcon:setIcon(micOff)
+        micIcon:setTooltip("Mic is off")
+    else
+        micIcon:setIcon(micOn)
+        micIcon:setTooltip("Mic is ON")
+    end
+end
+
+function micIconClicked()
+    toggleInput()
+end
+
+if micIcon then
+    micIcon:setClickCallback(toggleInput)
+
+    local default = hs.audiodevice.defaultInputDevice()
+    local isMute = default:inputMuted()
+    setMicDisplay(isMute)
+end
+
