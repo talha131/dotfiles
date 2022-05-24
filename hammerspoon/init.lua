@@ -14,6 +14,7 @@ require 'launch-applications'
 require 'launch-chrome-applications'
 require 'red-shift'
 require 'window-management'
+require 'window-switcher'
 
 local modalKey = hs.hotkey.modal.new(hyper, 'P', 'System Actions')
 modalKey:bind('', 'escape', function() modalKey:exit() end)
