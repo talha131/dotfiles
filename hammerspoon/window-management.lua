@@ -62,18 +62,6 @@ modalKey:bind('', 'down', 'Resize window to bottom half', function() push(0, 0.5
 modalKey:bind('', 'up', 'Resize window to top half', function() push(0, 0, 1, 0.5) end, function() modalKey:exit() end)
 modalKey:bind('', 'right', 'Resize window to right', function() push(0.5, 0, 0.5, 1) end, function() modalKey:exit() end)
 
-modalKey:bind('', 'Q', 'Resize window to half of screen, center vertically', function() push(0, 0.25, 1, 0.5) end, function() modalKey:exit() end)
-modalKey:bind('', 'W', 'Resize window to half of screen, center horizontally', function() push(0.25, 0, 0.5, 1) end, function() modalKey:exit() end)
-modalKey:bind('', 'E', 'Resize window to quarter of screen, center vertically, align to left', function() push(0, 0.25, 0.5, 0.5) end, function() modalKey:exit() end)
-modalKey:bind('', 'R', 'Resize window to quarter of screen, center vertically, align to right', function() push(0.5, 0.25, 0.5, 0.5) end, function() modalKey:exit() end)
-modalKey:bind('', 'T', 'Resize window to quarter of screen, center horizontally, align to top', function() push(0.25, 0, 0.5, 0.5) end, function() modalKey:exit() end)
-modalKey:bind('', 'Y', 'Resize window to quarter of screen, center horizontally, align to bottom', function() push(0.25, 0.5, 0.5, 0.5) end, function() modalKey:exit() end)
-
-modalKey:bind('', 'H', 'Resize window to top left', function() push(0, 0, 0.5, 0.5) end, function() modalKey:exit() end)
-modalKey:bind('', 'J', 'Resize window to top right', function() push(0.5, 0, 0.5, 0.5) end, function() modalKey:exit() end)
-modalKey:bind('', 'K', 'Resize window to bottom left', function() push(0, 0.5, 0.5, 0.5) end, function() modalKey:exit() end)
-modalKey:bind('', 'L', 'Resize window to bottom right', function() push(0.5, 0.5, 0.5, 0.5) end, function() modalKey:exit() end)
-
 modalKey:bind('', 'C', 'Resize window to center', function() push(0.15, 0.15, 0.7, 0.7) end, function() modalKey:exit() end)
 modalKey:bind('', 'F', 'Toggle full screen', function() fullScreen() end, function() modalKey:exit() end)
 modalKey:bind('', 'M', 'Maximize window', function() zoom() end, function() modalKey:exit() end)
