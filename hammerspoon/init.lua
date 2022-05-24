@@ -13,7 +13,6 @@ require 'caffeine'
 require 'launch-applications'
 require 'launch-chrome-applications'
 require 'red-shift'
-require 'reload-config'
 require 'window-management'
 
 local modalKey = hs.hotkey.modal.new(hyper, 'P', 'System Actions')
@@ -30,3 +29,6 @@ end)
 hs.hints.style = 'vimperator'
 hs.hotkey.bind(hyper, 'H', 'Show window hints', hs.hints.windowHints)
 
+-- Auto Reload Configuration
+hs.pathwatcher.new(HAMMERSPOON, hs.reload):start()
+hs.alert.show("Config loaded")
