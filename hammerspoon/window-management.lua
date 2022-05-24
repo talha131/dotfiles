@@ -48,6 +48,19 @@ function zoom()
 	local win = hs.window.focusedWindow()
     win:maximize()
 end
+
+function min()
+	local app = hs.application.frontmostApplication()
+	local focusedWindow = app:focusedWindow()
+	if focusedWindow then
+		focusedWindow:minimize()
+	else 
+		local allWindows = app:allWindows()
+		for _, w in ipairs(allWindows) do
+			w:unminimize()
+		end
+	end
+end
 -- End of Helper Functions
 
 local modalKey = hs.hotkey.modal.new(hyper, 'W', 'Window Management mode')
@@ -65,6 +78,7 @@ modalKey:bind('', 'right', 'Resize window to right', function() push(0.5, 0, 0.5
 modalKey:bind('', 'C', 'Resize window to center', function() push(0.15, 0.15, 0.7, 0.7) end, function() modalKey:exit() end)
 modalKey:bind('', 'F', 'Toggle full screen', function() fullScreen() end, function() modalKey:exit() end)
 modalKey:bind('', 'M', 'Maximize window', function() zoom() end, function() modalKey:exit() end)
+modalKey:bind('', ',', 'Minimize window', function() min() end, function() modalKey:exit() end)
 
 local positionDelta = 50
 modalKey:bind('alt', 'left', 'Move window to left', function() nudge(-positionDelta, 0) end)
