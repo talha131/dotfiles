@@ -7,7 +7,7 @@ local caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
     if state then
         caffeine:setIcon(iconAwake)
-        caffeine:setTooltip(ASSETS_PATH .."Awake - machine will refuse to sleep")
+        caffeine:setTooltip("Awake - machine will refuse to sleep")
     else
         caffeine:setIcon(iconSleep)
         caffeine:setTooltip("Sleepy - machine is allowed to sleep")
