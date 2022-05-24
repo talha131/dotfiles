@@ -1,5 +1,11 @@
 hyper = { "cmd", "alt", "shift", "ctrl" }
 
+-- paths
+HOME = os.getenv("HOME")
+XDG_CONFIG_HOME = os.getenv("XDG_CONFIG_HOME") or HOME.."/.config"
+HAMMERSPOON = XDG_CONFIG_HOME .. '/hammerspoon'
+ASSETS_PATH =  HAMMERSPOON .. '/assets/';
+
 loggerInfo = hs.logger.new('My Settings', 'info')
 
 require 'caffeine'
