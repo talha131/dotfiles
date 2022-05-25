@@ -8,7 +8,8 @@ ASSETS_PATH =  HAMMERSPOON .. '/assets/';
 
 loggerInfo = hs.logger.new('My Settings', 'info')
 
-require 'audio'
+require 'audio-output'
+require 'audio-input'
 require 'caffeine'
 -- require 'clipboard'
 require 'launch-applications'
