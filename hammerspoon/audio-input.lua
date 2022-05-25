@@ -25,7 +25,7 @@ function toggleInput(v)
    setMicDisplay(not isMute)
 end
 
-modalKey:bind('', 'm', nil, function() toggleInput() end, function() modalKey:exit() end)
+modalKey:bind('', 'm', "Toggle Mic", function() toggleInput() end, function() modalKey:exit() end)
 
 -- Mic icon
 local micOn = ASSETS_PATH .. "mic-on.png"
