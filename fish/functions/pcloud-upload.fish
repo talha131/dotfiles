@@ -84,4 +84,9 @@ function pcloud-upload -d 'Upload file to fish'
     if test $status -eq 0
         it2attention fireworks
     end
+
+    function -e __create_index_files
+    function -e __set_index_files
+    function -e __update_file_count
+    function -e __move_file
 end
