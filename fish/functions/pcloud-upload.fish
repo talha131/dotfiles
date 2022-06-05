@@ -85,8 +85,8 @@ function pcloud-upload -d 'Upload file to fish'
         it2attention fireworks
     end
 
-    function -e __create_index_files
-    function -e __set_index_files
-    function -e __update_file_count
-    function -e __move_file
+    functions -e __create_index_files
+    functions -e __set_index_files
+    functions -e __update_file_count
+    functions -e __move_file
 end
