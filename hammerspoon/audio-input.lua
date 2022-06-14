@@ -8,12 +8,22 @@ function toggleInput(v)
 
    local devs = hs.audiodevice.allInputDevices()
 
+   local setInputDevice = false
+
    for _, d in ipairs(devs) do
        d:setInputMuted(not isMute)
 
-       -- set default input device to built in Mic
-       if d:uid() == 'BuiltInMicrophoneDevice' then
+       -- prefer external headphone
+       if d:uid() == 'BuiltInHeadphoneInputDevice' then
            d:setDefaultInputDevice()
+           setInputDevice = true
+           loggerInfo.i('set audio input device:', d:uid())
+       end
+
+       -- if headphone not found then set default input device to built in Mic
+       if not setInputDevice and d:uid() == 'BuiltInMicrophoneDevice' then
+           d:setDefaultInputDevice()
+           loggerInfo.i('set audio input device:', d:uid())
        end
    end
 
