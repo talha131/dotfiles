@@ -6,7 +6,7 @@ XDG_CONFIG_HOME = os.getenv("XDG_CONFIG_HOME") or HOME.."/.config"
 HAMMERSPOON = XDG_CONFIG_HOME .. '/hammerspoon'
 ASSETS_PATH =  HAMMERSPOON .. '/assets/';
 
-loggerInfo = hs.logger.new('My Settings', 'info')
+loggerInfo = hs.logger.new('main', 'info')
 
 require 'audio-output'
 require 'audio-input'
