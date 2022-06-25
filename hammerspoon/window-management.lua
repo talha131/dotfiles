@@ -87,10 +87,10 @@ modalKey:bind('alt', 'up', 'Move window up', function() nudge(0, -positionDelta)
 modalKey:bind('alt', 'right', 'Move window to right', function() nudge(positionDelta, 0) end)
 
 local sizeDelta = 50
-modalKey:bind('', '=', 'Increase window height', function() yank(0, sizeDelta) end)
-modalKey:bind('', '-', 'Decrease window height', function() yank(0, -sizeDelta) end)
-modalKey:bind('', ']', 'Increase window width', function() yank(sizeDelta, 0) end)
-modalKey:bind('', '[', 'Decrease window width', function() yank(-sizeDelta, 0) end)
+modalKey:bind('shift', 'up', 'Increase window height', function() yank(0, sizeDelta) end)
+modalKey:bind('shift', 'down', 'Decrease window height', function() yank(0, -sizeDelta) end)
+modalKey:bind('shift', 'right', 'Increase window width', function() yank(sizeDelta, 0) end)
+modalKey:bind('shift', 'left', 'Decrease window width', function() yank(-sizeDelta, 0) end)
 
 -- Grid Management
 
