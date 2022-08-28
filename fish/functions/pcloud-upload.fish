@@ -40,6 +40,8 @@ function pcloud-upload -d 'Upload file to fish'
 
     function _pcloud_upload_move_file -S -a f
         if test -e $f
+            # get OCR text
+            tesseract "$f" - | pbcopy
             # get file name parts
             set count (math $count + 1)
             set file (tm_split_path $f)
