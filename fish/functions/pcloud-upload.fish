@@ -40,15 +40,17 @@ function pcloud-upload -d 'Upload file to fish'
 
     function _pcloud_upload_move_file -S -a f
         if test -e $f
-            rclone move "$f" pcloud:"$root/$name-$i" -P
+            # get file name parts
+            set count (math $count + 1)
+            set file (tm_split_path $f)
+            # move file
+            rclone moveto "$f" pcloud:"$root/$name-$i/$count-$file[1].$file[2]" -P
             if test $status -eq 0
                 tm_printSuccess "$f uploaded"
-                set file (tm_split_path $f)
-                set url "https://filedn.com/laUTmcj57lPkQfIaVW9b29L/$name-$i/$file[1].$file[2]"
+                set url "https://filedn.com/laUTmcj57lPkQfIaVW9b29L/$name-$i/$count-$file[1].$file[2]"
                 # do not output a new line
                 echo -n $url | pbcopy
                 echo $url
-                set count (math $count + 1)
                 echo -n $count > ~/.local/share/tm-pcloud/count
             else
                 tm_printWarning "$f upload failed"
