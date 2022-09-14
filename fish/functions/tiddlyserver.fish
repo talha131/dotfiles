@@ -30,6 +30,6 @@ function tiddlyserver -d 'Run tiddlywiki server'
         echo 'Port:' $_flag_p
         echo 'Tiddlywiki:' $tw
 
-        tiddlywiki $tw --listen host=$_flag_i port=$_flag_p root-tiddler=\$:/core/save/lazy-images
+        tiddlywiki $tw --listen host=$_flag_i port=$_flag_p
     end
 end
