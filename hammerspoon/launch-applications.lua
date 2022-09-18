@@ -15,7 +15,7 @@ local appShortCuts = {
     -- Less frequent
     C = 'Visual Studio Code',
     F = 'Firefox Developer Edition',
-    P = '1Password 7',
+    P = '1Password',
     R = 'Google Chrome',
     T = 'Telegram Desktop',
     V = 'Vlc',
