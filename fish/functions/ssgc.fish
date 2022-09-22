@@ -3,7 +3,7 @@ function ssgc -d 'Download and backup SSGC bills'
    set temp (gmktemp -d)
    echo $temp
    set temp_file (gmktemp -p $temp)
-   # pushd $temp
+   pushd $temp
 
    for bill in (cat ~/.local/share/tm-ssgc/bills.txt)
       set entry (echo $bill | gsed 's/,/\n/g')
@@ -37,5 +37,5 @@ function ssgc -d 'Download and backup SSGC bills'
    tm_printSuccess "Text copied to the clipboard"
    # switch back
    open $temp
-   # popd
+   popd
 end
