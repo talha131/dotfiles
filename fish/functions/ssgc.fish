@@ -37,11 +37,18 @@ function ssgc -d 'Download and backup SSGC bills'
          echo (gsed -n 4p $file[1]--.txt) >> $temp_file
 
          echo \n >> $temp_file
+
+         # clean up
+         trash $file[1]*.txt
+         ## this only cleans the file that have been converted to text
+         trash $file[1].$file[2]
       end
    end
 
    cat $temp_file | pbcopy
    tm_printSuccess "Text copied to the clipboard"
+   trash $temp_file
+
    # switch back
    open $temp
    popd
