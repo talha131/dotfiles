@@ -1,7 +1,7 @@
 // disable emojis
 api.iunmap(":");
 
-settings.blocklistPattern = /.*mail.google.com.*|.*127\.0\.0\.1:8089.*|.*127\.0\.0\.1:8090.*|.*grammarly.com.*/i;
+settings.blocklistPattern = /.*mail.google.com.*|.*127\.0\.0\.1:8089.*|.*127\.0\.0\.1:8090.*|.*grammarly.com.*|.*tiddlywiki.com.*|.*tiddlyhost.com.*/i;
 
 // Below is the list of default settings
 
