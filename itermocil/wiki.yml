@@ -1,0 +1,14 @@
+windows:
+  - name: wiki
+    root: ~/Library/CloudStorage/Dropbox
+    layout: tiled
+    panes:
+      - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/coursera-common-wealth --port 8090
+      - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/jump --port 8091
+      - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/master-copy --port 8092
+      - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes --port 8093
+      - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/test-copy --port 8094
+      - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/tiddlywiki --port 8095
+      - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/vu-mscs-cs720 --port 8096
+      - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/journal --port 8097
+      - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes-archive --port 8098
