@@ -12,3 +12,4 @@ windows:
       - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/vu-mscs-cs720 --port 8096
       - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/journal --port 8097
       - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes-archive --port 8098
+      - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/commandline --port 8099
