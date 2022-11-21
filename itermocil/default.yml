@@ -6,15 +6,11 @@ windows:
       - commands:
         - echo "pane 1"
         - sleep 10 && exit
-        focus: true  
       - commands:
         - echo "pane 2"
+        focus: true  
       - commands:
         - yt-dlp
       - commands:
-        - xmrig -c ~/Dropbox/MoneroConfigurations/config-minexmr.com.json
-      - commands:
-        - tiddlysave && tiddlyserver
-      - commands:
-        - tiddlysave /Users/talha/Dropbox/TiddlyNotesArchives && tiddlyserver /Users/talha/Dropbox/TiddlyNotesArchives --port 8090
+        - echo ""
 
