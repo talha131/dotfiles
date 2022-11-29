@@ -1,0 +1,11 @@
+{
+  "suggest.noselect": true,
+  "colors.enable": true,
+  "list.source.files.command": "fd",
+  "list.source.files.args": ["--hidden", "--exclude", ".git/"],
+  "list.source.grep.command": "rg",
+  "list.source.grep.args": ["--smart-case"],
+  "diagnostic.messageTarget": "echo",
+  "signature.target": "echo",
+  "yank.highlight.enable": true
+}
