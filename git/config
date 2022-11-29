@@ -96,7 +96,7 @@
     uns = reset HEAD :/
 
 [merge]
-    conflictstyle = diff3
+    conflictstyle = merge
 [diff]
 	algorithm = patience
 	compactionHeuristic = true
