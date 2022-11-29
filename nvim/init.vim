@@ -12,6 +12,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
 " Plugins - Code Complete and Snippets                                        {{{2
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'github/copilot.vim'
 " Plugins - Motion Enhancements                                               {{{2
 Plug 'justinmk/vim-sneak'
 Plug 'chaoren/vim-wordmotion'
@@ -256,6 +257,9 @@ let g:startify_list_order = [
 
 " vim-sneak                                                                                  {{{2
 let g:sneak#label = 1
+
+" Github Copilot                                                                                  {{{2
+ let g:copilot_node_command = "/opt/homebrew/opt/node@16/bin/node"
 
 " coc                                                                                  {{{2
 let g:coc_global_extensions = [
