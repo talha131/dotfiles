@@ -7,7 +7,6 @@ local appShortCuts = {
 
     -- Most used
     D = 'Brave Browser',
-    N = HOME .. '/Applications/Brave Browser Apps.localized/Notes.app',
     Q = 'TickTick',
     S = 'Slack',
     W = 'iterm',
