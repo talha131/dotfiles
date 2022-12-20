@@ -16,7 +16,7 @@ windows:
           - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes --port 8093
         name: 'notes'
       - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/journal --port 8094
+          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/journal --port 8094 anon-username=talha131
         name: 'journal'
       - commands:
           - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/tiddlywiki --port 8095
