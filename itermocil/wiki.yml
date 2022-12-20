@@ -4,29 +4,32 @@ windows:
     layout: tiled
     panes:
       - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/coursera-common-wealth --port 8090
+          - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/coursera-common-wealth --listen port=8090 anon-username=talha131
         name: 'coursera'
       - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/jump --port 8091
+          - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/jump --listen port=8091 anon-username=talha131
         name: 'jump'
       - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/master-copy --port 8092
+          - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/master-copy --listen port=8092 anon-username=talha131
         name: 'master-copy'
       - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes --port 8093
+          - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes --listen port=8093 anon-username=talha131
         name: 'notes'
       - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/journal --port 8094 anon-username=talha131
+          - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/journal --listen port=8094 anon-username=talha131
         name: 'journal'
       - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/tiddlywiki --port 8095
+          - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/tiddlywiki --listen port=8095 anon-username=talha131
         name: 'tiddlywiki'
       - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/vu-mscs-cs720 --port 8096
+          - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/vu-mscs-cs720 --listen port=8096 anon-username=talha131
         name: 'CS720'
       - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes-archive --port 8098
+          - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes-archive --listen port=8098 anon-username=talha131
         name: 'archive'
       - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/commandline --port 8099
+          - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/commandline --listen port=8099 anon-username=talha131
         name: 'command line'
+      - commands:
+          - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/master-copy-delete --listen port=8100 anon-username=talha131
+        name: 'master-copy-delete'
