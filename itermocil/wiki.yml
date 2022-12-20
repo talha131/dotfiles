@@ -16,17 +16,14 @@ windows:
           - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes --port 8093
         name: 'notes'
       - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/test-copy --port 8094
-        name: 'test'
+          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/journal --port 8094
+        name: 'journal'
       - commands:
           - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/tiddlywiki --port 8095
         name: 'tiddlywiki'
       - commands:
           - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/vu-mscs-cs720 --port 8096
         name: 'CS720'
-      - commands:
-          - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/journal --port 8097
-        name: 'journal'
       - commands:
           - tiddlyserver /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes-archive --port 8098
         name: 'archive'
