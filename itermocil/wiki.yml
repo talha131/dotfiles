@@ -19,8 +19,14 @@ windows:
         - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/master-copy --listen port=8094 anon-username=talha131
         name: "Master Configuration"
       - commands:
-        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes-archive --listen port=8095 anon-username=talha131
+        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes --listen port=8095 anon-username=talha131
+        name: "So Talha Says"
+      - commands:
+        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes-archive --listen port=8096 anon-username=talha131
         name: Archive
       - commands:
-        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/master-copy-delete --listen port=8096 anon-username=talha131
+        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/vu-mscs-cs720 --listen port=8097 anon-username=talha131
+        name: "CS720"
+      - commands:
+        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/master-copy-delete --listen port=8098 anon-username=talha131
         name: "Delete master-copy"
