@@ -8,7 +8,7 @@ function jump_run-test-20 -d 'Run a Golang test 20 times'
     tm_printMessage $f
     for i in (seq 1 $times)
       # print progress
-      echo -n '#'
+      echo -n '.'
 
       go test -p 1 --run $f > /dev/null
       and begin
