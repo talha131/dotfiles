@@ -7,7 +7,7 @@ function ssgc -d 'Download and backup SSGC bills'
 
    for bill in (cat ~/.local/share/tm-ssgc/bills.txt)
       set entry (echo $bill | gsed 's/,/\n/g')
-      set pdf_url (http --form POST "https://viewbill.ssgc.com.pk/web/bill.php" b=$entry[1] | rg -o billpdfs\/gasbill[0-9_]\+.pdf)
+      set pdf_url (http --form POST "https://viewbill.ssgc.com.pk/web/" b=$entry[1] g-recaptcha-response="any_random_text" | rg -o billpdfs\/gasbill[0-9_]\+.pdf)
       set download_url (echo $pdf_url |gsed 's/^/https:\/\/viewbill.ssgc.com.pk\/web\//')
 
       # download file
