@@ -4,7 +4,7 @@ windows:
     layout: main-horizontal
     panes:
       - commands:
-        - nvim -S ~/.vim/sessions/jump-ws-frontend
+        - nvim -S ~/.local/share/nvim/sessions/jump-ws-frontend
         focus: true  
       - commands:
         - yarn install && yarn start
