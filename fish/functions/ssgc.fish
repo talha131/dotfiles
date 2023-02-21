@@ -15,6 +15,8 @@ function ssgc -d 'Download and backup SSGC bills'
       http -d $download_url
       tm_printMessage "file downloaded"
 
+      set file (tm_split_path $pdf_url)
+
       #check file
       if test $file[2] != "pdf"
          tm_printWarning "file is not pdf"
@@ -24,7 +26,6 @@ function ssgc -d 'Download and backup SSGC bills'
 
       # upload file
       tm_printMessage "Upload $file[1].$file[2] to $entry[2]"
-      set file (tm_split_path $pdf_url)
       rclone -v copy "$file[1].$file[2]" pcloud:$entry[2]
       tm_printMessage "file uploaded"
 
