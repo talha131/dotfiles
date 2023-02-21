@@ -11,9 +11,19 @@ function ssgc -d 'Download and backup SSGC bills'
       set download_url (echo $pdf_url |gsed 's/^/https:\/\/viewbill.ssgc.com.pk\/web\//')
 
       # download file
+      tm_printMessage "Downloading $download_url"
       http -d $download_url
       tm_printMessage "file downloaded"
+
+      #check file
+      if test $file[2] != "pdf"
+         tm_printWarning "file is not pdf"
+         open $temp
+         return 1
+      end
+
       # upload file
+      tm_printMessage "Upload $file[1].$file[2] to $entry[2]"
       set file (tm_split_path $pdf_url)
       rclone -v copy "$file[1].$file[2]" pcloud:$entry[2]
       tm_printMessage "file uploaded"
