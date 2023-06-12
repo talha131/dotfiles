@@ -223,6 +223,8 @@ if has('mac')
     " crtical setting
     let g:python3_host_prog = '/opt/homebrew/bin/python3'
 endif
+" Perl package for Neovim                                                   {{{2
+let g:loaded_perl_provider = 0
 
 " Miscellaneous Variables                                                     {{{2
 set expandtab
