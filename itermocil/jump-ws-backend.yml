@@ -10,7 +10,7 @@ windows:
       - commands:
         - mkdir -p /var/folders/m_/ysy9p0js24z4v23xs98lsc300000gn/T/neuron/
         - cp '/Users/talha/Library/CloudStorage/Dropbox/neuron geo ip data backup/geoip.mmdb' /var/folders/m_/ysy9p0js24z4v23xs98lsc300000gn/T/neuron/geoip.mmdb
-        - make && git checkout pb/ && neuron -test --logformat text
+        - make && git checkout pb/ && neuron -test --logformat text || git checkout pb/
         name: 'run tests'
       - commands:
         - echo "git mu"
