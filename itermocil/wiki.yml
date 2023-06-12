@@ -4,29 +4,8 @@ windows:
     layout: tiled
     panes:
       - commands:
-        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/journal --listen port=8090 anon-username=talha131
-        name: Journal
-      - commands:
-        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/jump --listen port=8091 anon-username=talha131
-        name: Jump
-      - commands:
-        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/commandline --listen port=8092 anon-username=talha131
-        name: "Command line"
-      - commands:
-        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/tiddlywiki --listen port=8093 anon-username=talha131
-        name: TiddlyWiki
-      - commands:
         - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/master-copy --listen port=8094 anon-username=talha131
         name: "Master Configuration"
-      - commands:
-        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes --listen port=8095 anon-username=talha131
-        name: "So Talha Says"
-      - commands:
-        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/notes-archive --listen port=8096 anon-username=talha131
-        name: Archive
-      - commands:
-        - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/vu-mscs-cs720 --listen port=8097 anon-username=talha131
-        name: "CS720"
       - commands:
         - tiddlywiki /Users/talha/Library/CloudStorage/Dropbox/Wikis/master-copy-delete --listen port=8098 anon-username=talha131
         name: "Delete master-copy"
