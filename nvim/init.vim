@@ -343,7 +343,7 @@ augroup END
 set cursorline
 set cursorcolumn
 
-colorscheme gruvbox
+colorscheme slate
 
 " Status line                                                                 {{{2
 set statusline=%{winnr()} " window number. Useful for {count}<C-W>q
