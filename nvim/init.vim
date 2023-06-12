@@ -18,7 +18,13 @@ Plug 'justinmk/vim-sneak'
 Plug 'chaoren/vim-wordmotion'
 Plug 'danilamihailov/beacon.nvim'
 " Plugins - Syntax files and Programming Languages                            {{{2
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'theHamsta/nvim-treesitter-pairs'
+Plug 'HiPhish/nvim-ts-rainbow2'
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+
 " Plugins - Typing Utilities                                                  {{{2
 Plug 'tpope/vim-rsi' " Readline key bindings
 Plug 'machakann/vim-sandwich'
@@ -42,10 +48,137 @@ Plug 'tpope/vim-fugitive'
             \ | Plug 'tpope/vim-rhubarb'
 " Plugins - Theme                                                             {{{2
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
+Plug 'luisiacc/gruvbox-baby'
+Plug 'tiagovla/tokyodark.nvim'
+Plug 'sainnhe/everforest'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'catppuccin/nvim'
+Plug 'joshdick/onedark.vim'
+Plug 'andersevenrud/nordic.nvim'
+Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
+Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 " End Plugins section }}}
+
+" Lua settings                                                            {{{1
+lua <<EOF
+
+require'nvim-treesitter.configs'.setup {
+   -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = { 
+    "c",
+    "fish",
+    "git_config",
+    "git_rebase",
+    "gitattributes",
+    "gitcommit",
+    "gitignore",
+    "go",
+    "gomod",
+    "gosum",
+    "gowork",
+    "help",
+    "html",
+    "javascript",
+    "jsdoc",
+    "json",
+    "json5",
+    "lua",
+    "python",
+    "query",
+    "tsx",
+    "typescript",
+    "vim",
+    "yaml",
+  },
+
+  highlight = {
+    enable = true
+  },
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  indent = {
+    enable = true
+  },
+
+ pairs = {
+    enable = true,
+    disable = {},
+    highlight_pair_events = {}, -- e.g. {"CursorMoved"}, -- when to highlight the pairs, use {} to deactivate highlighting
+    highlight_self = false, -- whether to highlight also the part of the pair under cursor (or only the partner)
+    goto_right_end = false, -- whether to go to the end of the right partner or the beginning
+    fallback_cmd_normal = "call matchit#Match_wrapper('',1,'n')", -- What command to issue when we can't find a pair (e.g. "normal! %")
+    keymaps = {
+      goto_partner = "<leader>%",
+      delete_balanced = "X",
+    },
+    delete_balanced = {
+      only_on_first_char = false, -- whether to trigger balanced delete when on first character of a pair
+      fallback_cmd_normal = nil, -- fallback command when no pair found, can be nil
+      longest_partner = false, -- whether to delete the longest or the shortest pair when multiple found.
+                               -- E.g. whether to delete the angle bracket or whole tag in  <pair> </pair>
+    }
+  },
+  rainbow = {
+    enable = false,
+    -- list of languages you want to disable the plugin for
+    disable = { 'jsx', 'cpp' },
+    -- Which query to use for finding delimiters
+    query = 'rainbow-parens',
+    -- Highlight the entire buffer all at once
+    strategy = require('ts-rainbow').strategy.global,
+  },
+  textobjects = {
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        -- You can optionally set descriptions to the mappings (used in the desc parameter of
+        -- nvim_buf_set_keymap) which plugins like which-key display
+        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+        -- You can also use captures from other query groups like `locals.scm`
+        ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+      },
+      -- You can choose the select mode (default is charwise 'v')
+      --
+      -- Can also be a function which gets passed a table with the keys
+      -- * query_string: eg '@function.inner'
+      -- * method: eg 'v' or 'o'
+      -- and should return the mode ('v', 'V', or '<c-v>') or a table
+      -- mapping query_strings to modes.
+      selection_modes = {
+        ['@parameter.outer'] = 'v', -- charwise
+        ['@function.outer'] = 'V', -- linewise
+        ['@class.outer'] = '<c-v>', -- blockwise
+      },
+      -- If you set this to `true` (default is `false`) then any textobject is
+      -- extended to include preceding or succeeding whitespace. Succeeding
+      -- whitespace has priority in order to act similarly to eg the built-in
+      -- `ap`.
+      --
+      -- Can also be a function which gets passed a table with the keys
+      -- * query_string: eg '@function.inner'
+      -- * selection_mode: eg 'v'
+      -- and should return true of false
+      include_surrounding_whitespace = true,
+    },
+  },
+ }
+
+EOF
 
 " Custom Functions                                                            {{{1
 " from https://www.vi-improved.org/recommendations/
