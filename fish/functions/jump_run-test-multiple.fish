@@ -1,4 +1,4 @@
-function jump_run-test -d 'Run a Golang test multiple times'
+function jump_run-test-multiple -d 'Run a Golang test multiple times'
   set $_flag_count 20
   argparse 'n/count=' -- $argv
   or return
