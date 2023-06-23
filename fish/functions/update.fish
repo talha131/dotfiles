@@ -74,7 +74,7 @@ function update -d 'Update software to the latest versions'
         which yarn > /dev/null
         and begin
             _printMessage 'Updating global NPM packages'
-            yarn global upgrade --latest
+            npm update -g
         end
         functions -e _updateNpmPackages
     end
