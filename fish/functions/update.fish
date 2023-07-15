@@ -27,7 +27,7 @@ function update -d 'Update software to the latest versions'
             _printMessage 'Updating pip3'
             pip3 install --upgrade pip
             _printMessage 'Updating pip3 packages'
-            pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip3 install -U
+            pip3 list --outdated --format=json | python3 -c "import json, sys; print('\n'.join([x['name'] for x in json.load(sys.stdin)]))" | xargs pip3 install -U
         end
         functions -e _updatePip
     end
