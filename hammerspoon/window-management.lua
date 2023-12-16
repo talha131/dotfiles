@@ -68,7 +68,7 @@ modalKey:bind('', 'escape', function() modalKey:exit() end)
 
 hs.window.animationDuration = 0
 
-modalKey:bind('', 'N', 'Move window to next monitor screen' , hs.grid.pushWindowNextScreen, function() modalKey:exit() end)
+modalKey:bind('', 'N', 'Move window to next screen' , hs.grid.pushWindowNextScreen, function() modalKey:exit() end)
 
 modalKey:bind('', 'left', 'Resize window to left half', function() push(0, 0, 0.5, 1) end, function() modalKey:exit() end)
 modalKey:bind('', 'down', 'Resize window to bottom half', function() push(0, 0.5, 1, 0.5) end, function() modalKey:exit() end)
