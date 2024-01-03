@@ -87,6 +87,8 @@ require'nvim-treesitter.configs'.setup {
     "json",
     "json5",
     "lua",
+    "make",
+    "proto",
     "python",
     "query",
     "tsx",
