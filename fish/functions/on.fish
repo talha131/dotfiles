@@ -5,6 +5,4 @@ function on -d 'Open a Neovim session'
   if test -f "$folder/$n"
     nvim -S "$folder/$n"
   end
-
 end
-
