@@ -38,8 +38,10 @@ function jump_run-test-multiple -d 'Run a Golang test multiple times'
 
     if test $p -gt 0
       tm_printSuccess "Positive: $p Negative: $n"
+      return 0
     else
       tm_printWarning "Positive: $p Negative: $n"
+      return 1
     end
   end
 end
