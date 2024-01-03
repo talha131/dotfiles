@@ -17,7 +17,7 @@ Plug 'github/copilot.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'chaoren/vim-wordmotion'
 Plug 'danilamihailov/beacon.nvim'
-" Plugins - Syntax files and Programming Languages                            {{{2
+"z Plugins - Syntax files and Programming Languages                            {{{2
 " Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
@@ -180,6 +180,20 @@ require'nvim-treesitter.configs'.setup {
   },
  }
 
+require'treesitter-context'.setup{
+  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+  max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+  min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+  line_numbers = true,
+  multiline_threshold = 20, -- Maximum number of lines to show for a single context
+  trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+  mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+  -- Separator between context and content. Should be a single character string, like '-'.
+  -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+  separator = nil,
+  zindex = 20, -- The Z-index of the context window
+  on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+}
 EOF
 
 " Custom Functions                                                            {{{1
@@ -284,6 +298,11 @@ set wildignore+=*.plist,*.xcodeproj/**,*.framework/**/*
 set wildignore+=*/.hg/**/*,*/.svn/**/*
 set wildignore+=tags,cscope.*
 set wildignore+=*.tar.*
+set wildignore+=*.zip,*.rar,*.7z,*.gz,*.bz2,*.xz
+set wildignore+=*.DS_Store,*.localized,*.localized/**/*
+set wildignore+=*.log,*.tmp,*.tmp/**/*
+set wildignore+=*.min.js,*.min.css
+set wildignore+=*/vendor/*
 
 " Key Mappings                                                                {{{2
 " It is better to use <CR> instead or <C-R> instead of  in key mappings.
@@ -433,7 +452,7 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use `[g` and `]g` to navigate diagnostics
+" Use `[d` and `]d` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
@@ -473,11 +492,18 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 
 " Run the Code Lens action on the current line.
 nmap <leader>cl  <Plug>(coc-codelens-action)
+nmap <leader>cv  <Plug>(coc-refactor)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -507,6 +533,9 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
+" Formatting selected code
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -546,8 +575,8 @@ nnoremap <silent><nowait> <Leader><Leader>p  :<C-u>CocListResume<CR>
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
 " navigate conflicts of current buffer
-nmap [c <Plug>(coc-git-prevconflict)
-nmap ]c <Plug>(coc-git-nextconflict)
+" nmap [c <Plug>(coc-git-prevconflict)
+" nmap ]c <Plug>(coc-git-nextconflict)
 " show chunk diff at current position
 nmap gs <Plug>(coc-git-chunkinfo)
 " show commit contains current position
@@ -557,6 +586,7 @@ omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
+nnoremap <Leader>gcv  <Plug>(coc-git-chunkinfo)
 " git chunk stage
 nnoremap <Leader>gcs  :CocCommand git.chunkStage<CR>
 " git chuck undo
@@ -576,6 +606,7 @@ augroup filetype_related_settings
     autocmd FileType objcpp setlocal cindent
     autocmd FileType gitcommit setlocal colorcolumn=72 spell" highlight 72nd column in git commit
     autocmd FileType markdown,text setlocal spell
+    autocmd BufEnter,BufRead *.conf setf dosini
     if (has('mac'))
         autocmd FileType gitcommit,markdown,text setlocal dictionary=/usr/share/dict/words
     endif
