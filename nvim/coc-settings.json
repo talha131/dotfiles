@@ -7,5 +7,12 @@
   "list.source.grep.args": ["--smart-case"],
   "diagnostic.messageTarget": "echo",
   "signature.target": "echo",
-  "yank.highlight.enable": true
+  "yank.highlight.enable": true,
+  "go.goplsOptions": {
+    "codelenses": {
+      "test": true
+    },
+    "semanticTokens": true,
+    "staticcheck": true
+  }
 }
