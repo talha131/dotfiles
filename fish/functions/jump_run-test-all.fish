@@ -30,7 +30,7 @@ function jump_run-test-all -d 'Run all Golang tests'
     tm_printSuccess "All tests passed"
   else
     tm_printWarning "Tests that failed both times"
-    cat failed_tests_1_sorted.txt
+    cat $temp/failed_tests_1_sorted.txt
   end
 
   trash -v $temp
