@@ -33,19 +33,28 @@ function ssgc -d 'Download and backup SSGC bills'
          tm_printMessage "convert to text"
          pdftotext $file[1].$file[2]
 
-         gsed '0,/^CURRENT READING$/d' $file[1].txt > $file[1]-.txt
+         # extract data to this file
+         set current_file $file[1]-.txt
+
+         gsed '0,/^CURRENT READING$/d' $file[1].txt > $current_file
          echo "*$entry[4]*" >> $temp_file
          echo "میٹر پڑھا گیا: " >> $temp_file
-         echo (gsed -n 4p $file[1]-.txt) >> $temp_file
+         echo (gsed -n 1p $current_file) >> $temp_file
          echo "میٹر ریڈنگ: " >> $temp_file
-         echo (gsed -n 8p $file[1]-.txt) >> $temp_file
+         echo (gsed -n 2p $current_file) >> $temp_file
+
+         set current_file $file[1]--.txt
+
+         gsed '0,/^MEASURED QTY/d' $file[1].txt > $current_file
          echo "یونٹ: " >> $temp_file
-         echo (gsed -n 14p $file[1]-.txt) >> $temp_file
+         echo (gsed -n 1p $current_file) >> $temp_file
 
          # add charged amount
-         gsed '0,/^Bill ID/d' $file[1]-.txt > $file[1]--.txt
+         set current_file $file[1]---.txt
+
+         gsed '0,/^Issue Date:/d' $file[1].txt > $current_file
          echo "رقم: " >> $temp_file
-         echo (gsed -n 4p $file[1]--.txt) >> $temp_file
+         echo (gsed -n 2p $current_file) >> $temp_file
 
          echo \n >> $temp_file
 
