@@ -1,0 +1,16 @@
+windows:
+  - name: jump-ws-infra
+    root: ~/Repos/jump-ws/infra
+    layout: main-horizontal
+    panes:
+      - commands:
+        - nvim -S ~/.local/share/nvim/sessions/jump-ws-infra
+        name: 'develop'
+        focus: true  
+      - commands:
+        - echo ""
+        name: 'run tests'
+      - commands:
+        - echo ""
+        name: 'git'
+
