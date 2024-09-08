@@ -11,9 +11,12 @@ local appShortCuts = {
     W = { appName = 'iterm', os = "macOS" },
     C = { appName = 'Visual Studio Code', os = "macOS" },
     P = { appName = '1Password', os = "macOS" },
-    T = { appName = 'Telegram Desktop', os = "macOS" },
     X = { appName = 'Xcode', os = "macOS" },
+
+  -- Social apps
+    T = { appName = 'Telegram Desktop', os = "macOS" },
     Y = { appName = 'WhatsApp', os = "macOS" },
+    U = { appName = 'Discord', os = "macOS" },
 }
 
 for key, app in pairs(appShortCuts) do
