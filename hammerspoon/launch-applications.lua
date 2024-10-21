@@ -5,6 +5,7 @@ modalKey:bind('', 'escape', function() modalKey:exit() end)
 
 local appShortCuts = {
 
+    A = { appName = 'TypingMind', os = "chromeOS" },
     D = { appName = 'Google Chrome', os = "macOS" },
     Q = { appName = 'TickTick', os = "chromeOS" },
     S = { appName = 'Slack', os = "macOS" },
