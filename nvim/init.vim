@@ -1,3 +1,8 @@
+if exists('g:vscode')
+  "Do not execute rest of init.vim, do not apply any configs
+  finish
+endif
+
 " Begin Plugins section                                                       {{{1
 call plug#begin()
 
@@ -12,7 +17,8 @@ Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
 " Plugins - Code Complete and Snippets                                        {{{2
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
+Plug 'Exafunction/codeium.vim'
 " Plugins - Motion Enhancements                                               {{{2
 Plug 'justinmk/vim-sneak'
 Plug 'chaoren/vim-wordmotion'
@@ -244,7 +250,7 @@ let g:loaded_perl_provider = 0
 
 " Miscellaneous Variables                                                     {{{2
 set expandtab
-set guioptions+=b " make sure horizontal scroll bar is visible
+" set guioptions+=b " make sure horizontal scroll bar is visible
 set number
 set shiftwidth=2
 set softtabstop=4
@@ -415,7 +421,7 @@ let g:startify_list_order = [
 let g:sneak#label = 1
 
 " Github Copilot                                                                                  {{{2
- let g:copilot_node_command = "/opt/homebrew/opt/node@16/bin/node"
+ let g:copilot_node_command = "/opt/homebrew/bin/node"
 
 " coc                                                                                  {{{2
 let g:coc_global_extensions = [

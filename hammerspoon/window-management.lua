@@ -46,7 +46,7 @@ end
 
 function zoom()
 	local win = hs.window.focusedWindow()
-    win:maximize()
+    win:maximize(1)
 end
 
 function min()
@@ -61,21 +61,42 @@ function min()
 		end
 	end
 end
+
+function moveToNextScreen()
+  print(hs.window.animationDuration)
+  local win = hs.window.focusedWindow()
+  if not win then return end
+  local screen = win:screen()
+  local nextScreen = screen:next()
+  win:moveToScreen(nextScreen, false, true, 1)
+end
+
+function centerWindow()
+  local win = hs.window.focusedWindow()
+  if not win then return end
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x + ((max.w - f.w) / 2)
+  f.y = max.y + ((max.h - f.h) / 2)
+  win:setFrame(f)
+end
 -- End of Helper Functions
 
 local modalKey = hs.hotkey.modal.new(hyper, 'W', 'Window Management mode')
 modalKey:bind('', 'escape', function() modalKey:exit() end)
 
-hs.window.animationDuration = 0
+-- hs.window.animationDuration = 1
 
-modalKey:bind('', 'N', 'Move window to next screen' , hs.grid.pushWindowNextScreen, function() modalKey:exit() end)
+modalKey:bind('', 'N', 'Move window to next screen' , function() moveToNextScreen() end, function() modalKey:exit() end)
 
 modalKey:bind('', 'left', 'Resize window to left half', function() push(0, 0, 0.5, 1) end, function() modalKey:exit() end)
 modalKey:bind('', 'down', 'Resize window to bottom half', function() push(0, 0.5, 1, 0.5) end, function() modalKey:exit() end)
 modalKey:bind('', 'up', 'Resize window to top half', function() push(0, 0, 1, 0.5) end, function() modalKey:exit() end)
 modalKey:bind('', 'right', 'Resize window to right', function() push(0.5, 0, 0.5, 1) end, function() modalKey:exit() end)
 
-modalKey:bind('', 'C', 'Resize window to center', function() push(0.15, 0.15, 0.7, 0.7) end, function() modalKey:exit() end)
+modalKey:bind('', 'C', 'Resize window to center', function() centerWindow() end, function() modalKey:exit() end)
 modalKey:bind('', 'F', 'Toggle full screen', function() fullScreen() end, function() modalKey:exit() end)
 modalKey:bind('', 'M', 'Maximize window', function() zoom() end, function() modalKey:exit() end)
 modalKey:bind('', ',', 'Minimize window', function() min() end, function() modalKey:exit() end)

@@ -14,7 +14,7 @@ require 'caffeine'
 -- require 'clipboard'
 require 'launch-applications'
 require 'red-shift'
-require 'window-management'
+-- require 'window-management'
 require 'window-switcher'
 
 local modalKey = hs.hotkey.modal.new(hyper, 'P', 'System Actions')

@@ -1,6 +1,6 @@
 -- Mic Management
-local modalKey = hs.hotkey.modal.new(hyper, 'M', 'Mic Management mode')
-modalKey:bind('', 'escape', function() modalKey:exit() end)
+-- local modalKey = hs.hotkey.modal.new(hyper, 'M', 'Mic Management mode')
+-- modalKey:bind('', 'escape', function() modalKey:exit() end)
 
 local logger = hs.logger.new('audio-in', 'debug')
 
@@ -40,7 +40,7 @@ function toggleInput(v)
    setMicDisplay(not isMute)
 end
 
-modalKey:bind('', 'm', "Toggle Mic", function() toggleInput() end, function() modalKey:exit() end)
+-- modalKey:bind('', 'm', "Toggle Mic", function() toggleInput() end, function() modalKey:exit() end)
 
 -- Mic icon
 local micOn = ASSETS_PATH .. "mic-on.png"

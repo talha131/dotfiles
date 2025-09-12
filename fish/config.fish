@@ -31,6 +31,7 @@ set -g fish_user_paths "$GOPATH/bin" $fish_user_paths
 # fzf will use find command (or $FZF_DEFAULT_COMMAND if defined) to 
 # list the files under the current directory
 set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+fzf --fish | source
 
 which bat > /dev/null
 and begin
@@ -48,3 +49,20 @@ set -gx BD_OPT 'insensitive'
 # done.fish
 # https://github.com/franciscolourenco/done
 set -U __done_notify_sound 1
+
+# Created by `pipx` on 2024-03-10 10:24:08
+set PATH $PATH /Users/talha/.local/bin
+set PATH $PATH /Users/talha/Library/Python/3.9/bin
+
+# LLVM
+set -gx LDFLAGS "-L/opt/homebrew/opt/llvm/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/llvm/include"
+set -gx PATH /opt/homebrew/opt/llvm/bin $PATH
+
+
+# LLVM
+set -gx LLVM_ROOT "/opt/homebrew/opt/llvm/bin"
+set -gx PATH /opt/homebrew/opt/llvm/bin $PATH
+
+# Emscripten
+source "/Users/talha/Repos/emsdk/emsdk_env.fish"
