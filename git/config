@@ -1,7 +1,12 @@
 [user]
 	name = Talha
 	email = talha131@gmail.com
-	signingkey = 1C2D3BA5D49EA56B78FDF5BC9CFEE01C696DA56D
+	signingkey = 561E6373A1B75589791E589D002B80DA805650B7
+
+# Work account (Jump Desktop)
+[includeIf "gitdir:~/Developer/talha@jumpdesktop.com/"]
+    path = ~/Developer/dotfiles/git/config-work
+
 [core]
     quotepath = false
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -105,5 +110,3 @@
 	gpgsign = true
 [init]
 	defaultBranch = master
-[url "git@github.com:"]
-	insteadOf = https://github.com/
