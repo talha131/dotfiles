@@ -1,17 +1,16 @@
 windows:
   - name: jump-ws-backend
-    root: ~/Repos/jump-ws/neuron
-    layout: main-horizontal
+    root: ~/Developer/jump-ws/neuron
+    layout: main-vertical
     panes:
       - commands:
-        - nvim -S ~/.local/share/nvim/sessions/jump-ws-backend
-        name: 'develop'
-        focus: true  
+          - code ~/Developer/neuron-backend.code-workspace
+          - git s
+        name: "develop"
+        focus: true
       - commands:
-        - mkdir -p /var/folders/m_/ysy9p0js24z4v23xs98lsc300000gn/T/neuron/
-        - cp '/Users/talha/Library/CloudStorage/Dropbox/neuron geo ip data backup/geoip.mmdb' /var/folders/m_/ysy9p0js24z4v23xs98lsc300000gn/T/neuron/geoip.mmdb
-        - make && git checkout pb/ && neuron -test --logformat text || git checkout pb/
-        name: 'run tests'
+          - mkdir -p /var/folders/zk/k34pcl7d7qq36mf4x2b96_cr0000gn/T/neuron/
+          - cp '/Users/talha/Library/CloudStorage/Dropbox/neuron geo ip data backup/geoip.mmdb' /var/folders/zk/k34pcl7d7qq36mf4x2b96_cr0000gn/T/neuron/geoip.mmdb
+          - make && git checkout pb/ && ./bin/neuron -test --logformat text || git checkout pb/
       - commands:
-        - echo "git mu"
-        name: 'git'
+          - ngrok http 8000

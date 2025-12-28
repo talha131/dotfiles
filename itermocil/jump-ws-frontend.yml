@@ -1,12 +1,11 @@
 windows:
   - name: jump-ws-frontend
-    root: ~/Repos/jump-ws/neuron-frontend/src
-    layout: main-horizontal
+    root: ~/Developer/jump-ws/neuron-frontend/src
+    layout: main-vertical
     panes:
       - commands:
-        - nvim -S ~/.local/share/nvim/sessions/jump-ws-frontend
-        focus: true  
+          - code ~/Developer/neuron-frontend.code-workspace
+          - git s
+        focus: true
       - commands:
-        - yarn install && yarn start
-      - echo "git mu"
-
+          - yarn install && yarn start
