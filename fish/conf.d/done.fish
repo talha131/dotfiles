@@ -24,15 +24,15 @@ if not status is-interactive
     exit
 end
 
-set -g __done_version 1.16.5
+set -g __done_version 1.21.1
 
 function __done_run_powershell_script
-    set -l powershell_exe (command --search "powershell.exe")
+    set -f powershell_exe (command --search "powershell.exe")
 
-    if test $status -ne 0
+    if test "$status" -ne 0
         and command --search wslvar
 
-        set -l powershell_exe (wslpath (wslvar windir)/System32/WindowsPowerShell/v1.0/powershell.exe)
+        set -f powershell_exe (wslpath (wslvar windir)/System32/WindowsPowerShell/v1.0/powershell.exe)
     end
 
     if string length --quiet "$powershell_exe"
@@ -78,10 +78,15 @@ end
 
 function __done_get_focused_window_id
     if type -q lsappinfo
-        lsappinfo info -only bundleID (lsappinfo front) | cut -d '"' -f4
+        lsappinfo info -only bundleID (lsappinfo front | string replace 'ASN:0x0-' '0x') | cut -d '"' -f4
     else if test -n "$SWAYSOCK"
         and type -q jq
         swaymsg --type get_tree | jq '.. | objects | select(.focused == true) | .id'
+    else if test -n "$HYPRLAND_INSTANCE_SIGNATURE"
+        hyprctl activewindow | awk 'NR==1 {print $2}'
+    else if test -n "$NIRI_SOCKET"
+        and type -q jq
+        niri msg --json focused-window | jq ".id"
     else if begin
             test "$XDG_SESSION_DESKTOP" = gnome; and type -q gdbus
         end
@@ -116,7 +121,10 @@ function __done_is_tmux_window_active
     # ppid == "tmux" -> break
     set tmux_fish_pid $fish_pid
     while set tmux_fish_ppid (ps -o ppid= -p $tmux_fish_pid | string trim)
-        and ! string match -q "tmux*" (basename (ps -o command= -p $tmux_fish_ppid))
+        # remove leading hyphen so that basename does not treat it as an argument (e.g. -fish), and return only
+        # the actual command and not its arguments so that basename finds the correct command name.
+        # (e.g. '/usr/bin/tmux' from command '/usr/bin/tmux new-session -c /some/start/dir')
+        and ! string match -q "tmux*" (basename (ps -o command= -p $tmux_fish_ppid | string replace -r '^-' '' | string split ' ')[1])
         set tmux_fish_pid $tmux_fish_ppid
     end
 
@@ -136,10 +144,21 @@ function __done_is_process_window_focused
         return 1
     end
 
+    if set -q __done_kitty_remote_control
+        kitty @ --password="$__done_kitty_remote_control_password" ls | jq -e ".[].tabs[] | select(any(.windows[]; .is_self)) | .is_focused" >/dev/null
+        return $status
+    end
+
     set __done_focused_window_id (__done_get_focused_window_id)
     if test "$__done_sway_ignore_visible" -eq 1
         and test -n "$SWAYSOCK"
-        string match --quiet --regex "^true" (swaymsg -t get_tree | jq ".. | objects | select(.id == "$__done_initial_window_id") | .visible")
+        string match --quiet --regex "^true" (swaymsg -t get_tree | jq ".. | objects | select(.id == "$__done_initial_window_id") | .visible" 2>/dev/null)
+        return $status
+    else if test -n "$HYPRLAND_INSTANCE_SIGNATURE"
+        and test "$__done_initial_window_id" = (hyprctl activewindow | awk 'NR==1 {print $2}')
+        return $status
+    else if test -n "$NIRI_SOCKET"
+        and test "$__done_initial_window_id" = (niri msg --json focused-window | jq ".id")
         return $status
     else if test "$__done_initial_window_id" != "$__done_focused_window_id"
         return 1
@@ -166,13 +185,13 @@ function __done_humanize_duration -a milliseconds
     set -l minutes (math --scale=0 "$milliseconds/60000" % 60)
     set -l hours (math --scale=0 "$milliseconds/3600000")
 
-    if test $hours -gt 0
+    if test "$hours" -gt 0
         printf '%s' $hours'h '
     end
-    if test $minutes -gt 0
+    if test "$minutes" -gt 0
         printf '%s' $minutes'm '
     end
-    if test $seconds -gt 0
+    if test "$seconds" -gt 0
         printf '%s' $seconds's'
     end
 end
@@ -191,35 +210,47 @@ end
 if set -q __done_enabled
     set -g __done_initial_window_id ''
     set -q __done_min_cmd_duration; or set -g __done_min_cmd_duration 5000
-    set -q __done_exclude; or set -g __done_exclude 'git (?!push|pull|fetch)'
+    set -q __done_exclude; or set -g __done_exclude '^git (?!push|pull|fetch)'
     set -q __done_notify_sound; or set -g __done_notify_sound 0
     set -q __done_sway_ignore_visible; or set -g __done_sway_ignore_visible 0
+    set -q __done_tmux_pane_format; or set -g __done_tmux_pane_format '[#{window_index}]'
+    set -q __done_notification_duration; or set -g __done_notification_duration 3000
 
     function __done_started --on-event fish_preexec
         set __done_initial_window_id (__done_get_focused_window_id)
     end
 
-    function __done_ended --on-event fish_prompt
+    function __done_ended --on-event fish_postexec
         set -l exit_status $status
 
         # backwards compatibility for fish < v3.0
         set -q cmd_duration; or set -l cmd_duration $CMD_DURATION
 
-        if test $cmd_duration
-            and test $cmd_duration -gt $__done_min_cmd_duration # longer than notify_duration
+        if test -n "$cmd_duration"
+            and test "$cmd_duration" -gt "$__done_min_cmd_duration" # longer than notify_duration
             and not __done_is_process_window_focused # process pane or window not focused
-            and not string match -qr $__done_exclude $history[1] # don't notify on git commands which might wait external editor
+
+            # don't notify if command matches exclude list
+            for pattern in $__done_exclude
+                if string match -qr -- $pattern $argv[1]
+                    return
+                end
+            end
 
             # Store duration of last command
             set -l humanized_duration (__done_humanize_duration "$cmd_duration")
 
             set -l title "Done in $humanized_duration"
             set -l wd (string replace --regex "^$HOME" "~" (pwd))
-            set -l message "$wd/ $history[1]"
+            set -l message "$wd/ $argv[1]"
             set -l sender $__done_initial_window_id
 
-            if test $exit_status -ne 0
+            if test "$exit_status" -ne 0
                 set title "Failed ($exit_status) after $humanized_duration"
+            end
+
+            if test -n "$TMUX_PANE"
+                set message (tmux lsw  -F"$__done_tmux_pane_format" -f '#{==:#{pane_id},'$TMUX_PANE'}')" $message"
             end
 
             if set -q __done_notification_command
@@ -227,17 +258,35 @@ if set -q __done_enabled
                 if test "$__done_notify_sound" -eq 1
                     echo -e "\a" # bell sound
                 end
+
+            else if set -q KITTY_WINDOW_ID
+                printf "\x1b]99;i=done:d=0;$title\x1b\\"
+                printf "\x1b]99;i=done:d=1:p=body;$message\x1b\\"
+
+            else if test "$TERM_PROGRAM" = ghostty; or test "$TERM_PROGRAM" = WezTerm
+                printf "\x1b]777;notify;%s;%s\x1b\\" "$title" "$message"
+
+            else if test "$TERM_PROGRAM" = iTerm.app
+                printf "\x1b]9;%s: %s\x1b\\" "$title" "$message"
+
             else if type -q terminal-notifier # https://github.com/julienXX/terminal-notifier
                 if test "$__done_notify_sound" -eq 1
-                    terminal-notifier -message "$message" -title "$title" -sender "$__done_initial_window_id" -sound default
+                    # pipe message into terminal-notifier to avoid escaping issues (https://github.com/julienXX/terminal-notifier/issues/134). fixes #140
+                    # not using the -sender option because it hangs for some apps (https://github.com/julienXX/terminal-notifier/issues/301)
+                    echo "$message" | terminal-notifier -title "$title" -sound default
                 else
-                    terminal-notifier -message "$message" -title "$title" -sender "$__done_initial_window_id"
+                    echo "$message" | terminal-notifier -title "$title"
                 end
 
             else if type -q osascript # AppleScript
-                osascript -e "display notification \"$message\" with title \"$title\""
+                # escape double quotes that might exist in the message and break osascript. fixes #133
+                set -l message (string replace --all '"' '\"' "$message")
+                set -l title (string replace --all '"' '\"' "$title")
+
                 if test "$__done_notify_sound" -eq 1
-                    echo -e "\a" # bell sound
+                    osascript -e "display notification \"$message\" with title \"$title\" sound name \"Glass\""
+                else
+                    osascript -e "display notification \"$message\" with title \"$title\""
                 end
 
             else if type -q notify-send # Linux notify-send
@@ -249,14 +298,14 @@ if set -q __done_enabled
                     set urgency "$__done_notification_urgency_level"
                 end
                 # override user-defined urgency level if non-zero exitstatus
-                if test $exit_status -ne 0
+                if test "$exit_status" -ne 0
                     set urgency critical
                     if set -q __done_notification_urgency_level_failure
                         set urgency "$__done_notification_urgency_level_failure"
                     end
                 end
 
-                notify-send --hint=int:transient:1 --urgency=$urgency --icon=utilities-terminal --app-name=fish "$title" "$message"
+                notify-send --hint=int:transient:1 --urgency=$urgency --icon=utilities-terminal --app-name=fish --expire-time=$__done_notification_duration "$title" "$message"
 
                 if test "$__done_notify_sound" -eq 1
                     echo -e "\a" # bell sound
@@ -264,7 +313,7 @@ if set -q __done_enabled
 
             else if type -q notify-desktop # Linux notify-desktop
                 set -l urgency
-                if test $exit_status -ne 0
+                if test "$exit_status" -ne 0
                     set urgency "--urgency=critical"
                 end
                 notify-desktop $urgency --icon=utilities-terminal --app-name=fish "$title" "$message"

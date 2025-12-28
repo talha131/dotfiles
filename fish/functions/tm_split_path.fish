@@ -1,12 +1,26 @@
+# Examples:
+#   tm_split_path /Users/talha/video.mp4
+#   # Output:
+#   # video
+#   # mp4
+#   # Users/talha
+#
+#   tm_split_path document.pdf
+#   # Output:
+#   # document
+#   # pdf
+#
+#   set parts (tm_split_path /path/to/file.txt)
+#   echo $parts[1]  # file
+#   echo $parts[2]  # txt
+#   echo $parts[3]  # path/to
+
 function tm_split_path -d 'Return filename, ext, and directory from the path'
-    set result (echo $argv[1] | gsed -n 's/\(.*\)\/\(.*\)\.\(.*\)$/\2\n\3\n\1/p')
-    count $result > /dev/null
-    # If arg does have path like /path/filename.ext
-    and begin
-        string join \n $result
-    end
-    # If arg does not have path like filename.ext
-    or begin
-        echo $argv[1] | gsed -n 's/\(.*\)\.\(.*\)$/\1\n\2/p'
-    end
+    set -l path $argv[1]
+    set -l dir (string match -r '.+/' $path | string trim -c /)
+    set -l base (basename $path)
+    
+    string replace -r '\.[^.]+$' '' $base  # filename without ext
+    string match -r '[^.]+$' $base          # extension only
+    test -n "$dir" && echo $dir             # directory (if exists)
 end
