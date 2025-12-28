@@ -35,6 +35,7 @@
     branch = magenta
 [push]
     default = simple
+    autoSetupRemote = true
 [alias]
     ap = add -p
     ai = add -i
@@ -52,7 +53,6 @@
     # Unmerged branches
     bru = branch -a --no-merged
     brd = !sh -c 'git branch -D $1 && git push --delete origin $1' -
-    pub = "!git push -u origin $(git branch-name)"
 
     c = commit -v
     ca = !git c -a
@@ -110,3 +110,9 @@
 	gpgsign = true
 [init]
 	defaultBranch = master
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
