@@ -4,7 +4,7 @@ windows:
     layout: main-vertical
     panes:
       - commands:
-          - code ~/Developer/neuron-frontend.code-workspace
+          - code "~/Developer/VS Code Workspaces/neuron-frontend.code-workspace"
           - git s
         focus: true
       - commands:
