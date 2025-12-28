@@ -1,11 +1,11 @@
 [user]
 	name = Talha
-	email = talha131@oncrashreboot.com
+	email = talha131@gmail.com
 	signingkey = 1C2D3BA5D49EA56B78FDF5BC9CFEE01C696DA56D
 [core]
     quotepath = false
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-    excludesfile = ~/.config/git/gitignore
+    excludesfile = ~/Developer/dotfiles/git/gitignore
     trustctime = false
     pager = less -x1,5
 	editor = nvim
@@ -34,7 +34,10 @@
     ap = add -p
     ai = add -i
 
-    br = branch
+    # Show file at revision with syntax highlighting: git bat v0.6.0:src/main.rs
+    shw = "!f() { git show \"$1\" | bat -l \"${1##*.}\"; }; f"
+
+    br = branch -vv
     # All branches
     bra = branch -a
     # Merged branches
@@ -44,8 +47,6 @@
     # Unmerged branches
     bru = branch -a --no-merged
     brd = !sh -c 'git branch -D $1 && git push --delete origin $1' -
-    brv = branch -vv
-    branch-name = "!git rev-parse --abbrev-ref HEAD"
     pub = "!git push -u origin $(git branch-name)"
 
     c = commit -v
@@ -59,12 +60,9 @@
     chb = checkout -b
     # Switch to master branch
     chm = checkout master
-    chn = checkout next
 
     d = diff
     dc = diff --cached
-    dw = diff --word-diff=color
-    dcw = diff --cached --word-diff=color
 
     # One line logs
     l = "!source ~/.config/git/githelper && pretty_git_log_subject"
@@ -84,16 +82,6 @@
     mu = "!source ~/.config/git/githelper && merge_remote upstream"
 
     s = status --short --branch
-    sb = status -sb
-    sc = diff --name-only --diff-filter=U
-
-    # Show files in a commit
-    shf = diff-tree --no-commit-id --name-only -r 
-
-    # Undo commit
-    und = reset --soft HEAD~1
-    # Unstage all changes
-    uns = reset HEAD :/
 
 [merge]
     conflictstyle = merge
@@ -101,6 +89,8 @@
 	algorithm = patience
 	compactionHeuristic = true
 [pager]
+    branch = false
+    stash = false
 	log = diffr   | less
 	show = diffr  | less
 	diff = diffr  | less
