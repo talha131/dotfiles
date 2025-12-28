@@ -1,10 +1,10 @@
 windows:
   - name: jump-ws-backend
-    root: ~/Developer/jump-ws/neuron
+    root: ~/Developer/talha@jumpdesktop.com/jump-ws/neuron
     layout: main-vertical
     panes:
       - commands:
-          - code "~/Developer/VS Code Workspaces/neuron-backend.code-workspace"
+          - code ~/Developer/"VS Code Workspaces/neuron-backend.code-workspace"
           - git s
         name: "develop"
         focus: true

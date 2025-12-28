@@ -1,10 +1,10 @@
 windows:
   - name: jump-ws-frontend
-    root: ~/Developer/jump-ws/neuron-frontend/src
+    root: ~/Developer/talha@jumpdesktop.com/jump-ws/neuron-frontend/src
     layout: main-vertical
     panes:
       - commands:
-          - code "~/Developer/VS Code Workspaces/neuron-frontend.code-workspace"
+          - code ~/Developer/"VS Code Workspaces/neuron-frontend.code-workspace"
           - git s
         focus: true
       - commands:
