@@ -1,8 +1,9 @@
 # Download and upload SSGC bills
 #
 # Requires a config file at ~/.local/share/tm-ssgc/bills.txt
-# Each line should be: account_number,pcloud_destination_folder
+# Each line should be: account_number,pcloud_destination_folder[,keep]
 # Example: 1234567890,Documents/Bills/SSGC
+# Example with keep: 1234567890,Documents/Bills/SSGC,keep
 
 function ssgc -d 'Download and backup SSGC bills'
     set config_file ~/.local/share/tm-ssgc/bills.txt
@@ -13,6 +14,7 @@ function ssgc -d 'Download and backup SSGC bills'
     end
 
     set temp (mktemp -d)
+    set -l keep_files
     pushd $temp
 
     for line in (cat $config_file)
@@ -22,16 +24,16 @@ function ssgc -d 'Download and backup SSGC bills'
         set entry (string split ',' $line)
         set account (string trim $entry[1])
         set destination (string trim $entry[2])
+        set keep_flag (string trim $entry[3] 2>/dev/null)
 
         # Skip if account is empty
         test -z "$account" && continue
 
         # Get PDF URL from SSGC (using exact regex pattern from working command)
         set pdf_url (http --form POST "https://viewbill.ssgc.com.pk/web/" b=$account g-recaptcha-response="any_random_text" | rg -o billpdfs\/gasbill[0-9_]\+.pdf | sed 's/^/https:\/\/viewbill.ssgc.com.pk\/web\//')
-        echo $pdf_url
 
         if test -z "$pdf_url"
-            echo "⚠️  Could not get PDF for account: $account"
+            echo "⚠️  Could not get PDF for account: $account (no PDF URL found in response)"
             continue
         end
 
@@ -45,9 +47,26 @@ function ssgc -d 'Download and backup SSGC bills'
         echo "📤 Uploading to pcloud:$destination"
         rclone -v copy "$filename" "pcloud:$destination"
 
+        # Track files to keep
+        if test "$keep_flag" = "keep"
+            set -a keep_files $filename
+        end
+
         echo "✅ Done: $filename"
     end
 
+    # Copy kept files to Downloads
+    for f in $keep_files
+        cp "$f" ~/Downloads/
+        echo "📱 Copied to Downloads for sharing: $f"
+    end
+
     popd
+
+    # Open Downloads if we copied any files
+    if test (count $keep_files) -gt 0
+        open ~/Downloads
+    end
+
     trash $temp
 end
