@@ -40,7 +40,7 @@
     ap = add -p
     ai = add -i
 
-    # Show file at revision with syntax highlighting: git bat v0.6.0:src/main.rs
+    # Show file at revision with syntax highlighting: git shw v0.6.0:src/main.rs
     shw = "!f() { git show \"$1\" | bat -l \"${1##*.}\"; }; f"
 
     br = branch -vv
@@ -59,12 +59,12 @@
     caa = !git c -a --amend
     ce = !git c --amend
 
-    # Short form
-    ch = checkout
-    # Swtich and create branch at branch or commit
-    chb = checkout -b
+    # Switch branch
+    sw = switch
+    # Switch and create branch
+    swc = switch -c
     # Switch to master branch
-    chm = checkout master
+    swm = switch master
 
     d = diff
     dc = diff --cached
@@ -87,6 +87,12 @@
     mu = "!source ~/.config/git/githelper && merge_remote upstream"
 
     s = status --short --branch
+    # Stash list
+    stl = stash list
+    # Undo last commit (keeps changes unstaged)
+    undo = reset HEAD~1
+    # Unstage files
+    unstage = restore --staged
 
 [merge]
     conflictstyle = merge
