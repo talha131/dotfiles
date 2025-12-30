@@ -53,4 +53,6 @@ if status is-interactive
             end
         end
     end
+    # Run once on shell startup
+    __auto_gh_switch
 end
