@@ -35,4 +35,22 @@ if status is-interactive
 
     # Abbreviations
     abbr -a trash 'trash -v'  # Verbose trash output
+
+    # Auto-switch GitHub account based on directory
+    function __auto_gh_switch --on-variable PWD
+        set -l target_user
+        if string match -q "$HOME/Developer/talha@jumpdesktop.com/*" $PWD
+            set target_user smTalhaM
+        else
+            set target_user talha131
+        end
+
+        # Only switch if different from current
+        set -l current_user (gh auth status 2>&1 | grep "Active account: true" -B3 | head -1 | string match -r "account (\S+)" | tail -1)
+        if test "$current_user" != "$target_user"
+            if gh auth switch --user $target_user 2>/dev/null
+                echo "🔄 Switched to GitHub account: $target_user"
+            end
+        end
+    end
 end
