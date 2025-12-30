@@ -13,9 +13,12 @@ command -q bat && set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # Setting fd as the default source for fzf
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
-# To apply the command to CTRL-T as well
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}' --height=100%"
+# Ctrl-T for directory navigation
+export FZF_CTRL_T_COMMAND='fd --type d --strip-cwd-prefix'
+export FZF_CTRL_T_OPTS="--preview 'ls -la {}' --height=100%"
+# Alt-C for file search
+export FZF_ALT_C_COMMAND='fd --type f --strip-cwd-prefix'
+export FZF_ALT_C_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}' --height=100%"
 
 if status is-interactive
     # Starship prompt
