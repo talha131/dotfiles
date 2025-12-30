@@ -11,10 +11,6 @@ FORMAT="%<(11)$HASH%><(13)$AUTHOR_DATE%><(12,trunc)$AUTHOR $REFS $SUBJECT"
 
 ANSI_MAGENTA='\033[35m'
 ANSI_RESET='\033[0m'
-YELLOW='\033[33m'
-BLUE='\e[34m'
-BOLD=$(tput bold)
-NORMAL=$(tput sgr0)
 
 SEP="+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
 SEP1="%C(bold red)$SEP$SEP$SEP%n"
@@ -22,52 +18,6 @@ SEP2="%C(bold yellow)$SEP$SEP$SEP%n"
 SEPARATOR="$SEP1$SEP2%n%n"
 
 ABBREV="--abbrev=10"
-
-function merge_conflicts_possible() {
-    if [ "$1" == 'upstream' -o "$1" == 'origin' ];
-    then
-        printf "${YELLOW}${BOLD}Fetching $1${NORMAL}\n"
-        git fetch $1
-        fetch_head="$1/master"
-    else
-        fetch_head="$1"
-    fi
-
-    printf "${YELLOW}${BOLD}Checking merge conflicts between "
-    printf "${ANSI_MAGENTA}$fetch_head${ANSI_RESET} "
-    printf "${YELLOW}${BOLD}and "
-    printf "${ANSI_MAGENTA}$(git branch-name)${ANSI_RESET}${NORMAL}\n"
-
-    merge_base=$(git merge-base "$fetch_head" "$(git branch-name)")
-
-    git merge-tree $merge_base "fetch_head" "$(git branch-name)" | grep -A3 "changed in both"
-}
-
-function merge_remote() {
-    printf "${YELLOW}${BOLD}Fetching $1${NORMAL}\n"
-    git fetch "$1"
-    branch='master'
-    if [ "$(git branch-name)" == "next" ];
-    then
-        branch='next'
-    fi
-
-    if [ "$(git branch-name)" == "$branch" ];
-    then
-        printf "${YELLOW}${BOLD}Doing fast forward merge${NORMAL}\n"
-        git merge --ff $1/$branch
-        if [ "$1" != 'origin' ];
-        then
-            printf "${YELLOW}${BOLD}Pushing to origin${NORMAL}\n"
-            git push
-        else
-            printf "${BLUE}${BOLD}NOT pushing to origin${NORMAL}\n"
-        fi
-    else
-        printf "${YELLOW}${BOLD}Doing non fast forward merge${NORMAL}\n"
-        git merge --no-ff $1/$branch
-    fi
-}
 
 function highlight_merge_commits {
     # Color merge commits specially
