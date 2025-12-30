@@ -1,45 +1,16 @@
-#!/bin/bash 
+#!/bin/bash
 
+# Git log format with merge commit highlighting
+# Used by git aliases: l, ls, lg, lp
 
-HASH="%C(bold yellow)%h%Creset"
-AUTHOR_DATE="%Cgreen%ad%Creset" # format respects --date= option
-AUTHOR="%Cblue%aN%Creset"
-REFS="%C(bold red)%d%Creset"
-SUBJECT="%s"
+FORMAT="%C(yellow)%h %Cgreen%ad %Cblue%<(12,trunc)%aN%Creset%C(red)%d%Creset %s"
 
-FORMAT="%<(11)$HASH%><(13)$AUTHOR_DATE%><(12,trunc)$AUTHOR $REFS $SUBJECT"
-
-ANSI_MAGENTA='\033[35m'
-ANSI_RESET='\033[0m'
-
-SEP="+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
-SEP1="%C(bold red)$SEP$SEP$SEP%n"
-SEP2="%C(bold yellow)$SEP$SEP$SEP%n"
-SEPARATOR="$SEP1$SEP2%n%n"
-
-ABBREV="--abbrev=10"
-
-function highlight_merge_commits {
-    # Color merge commits specially
-    sed -Ee "s/(Merge .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
+function pretty_git_log {
+    cd -- ${GIT_PREFIX:-.}
+    git log --color --date=short --abbrev=10 --pretty="format:${FORMAT}" "$@" |
+    # Highlight merge commits in magenta
+    sed -Ee "s/(Merge .*$)/\x1b[35m\1\x1b[0m/" |
     # Page only if needed
     less -FXRS
-}
-
-function pretty_git_log_subject_body_patch {
-    cd -- ${GIT_PREFIX:-.}
-    git log --color --date=short --pretty="format:${SEPARATOR}${FORMAT}%n%b" ${ABBREV} $*
-}
-
-function pretty_git_log_subject_body {
-    cd -- ${GIT_PREFIX:-.}
-    git log --color --date=short --pretty="format:${FORMAT}%n%b" ${ABBREV} $* |
-    highlight_merge_commits
-}
-
-function pretty_git_log_subject {
-    cd -- ${GIT_PREFIX:-.}
-    git log --color --date=short --pretty="format:${FORMAT}" ${ABBREV} $* |
-    highlight_merge_commits
 }
 

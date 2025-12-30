@@ -69,15 +69,14 @@
     d = diff
     dc = diff --cached
 
-    # One line logs
-    l = "!source ~/.config/git/githelper && pretty_git_log_subject"
-    # log with stats
-    ls = "!source ~/.config/git/githelper && pretty_git_log_subject --stat"
-    # Git log with graph
-    lg = "!source ~/.config/git/githelper && pretty_git_log_subject --graph --topo-order"
-    lb = "!source ~/.config/git/githelper && pretty_git_log_subject_body"
-    lp = "!source ~/.config/git/githelper && pretty_git_log_subject_body_patch --patch"
-    ln = "!source ~/.config/git/githelper && pretty_git_log_subject --name-only"
+    # One line logs (merge commits highlighted in magenta)
+    l = "!source ~/.config/git/githelper && pretty_git_log"
+    # Log with stats
+    ls = "!source ~/.config/git/githelper && pretty_git_log --stat"
+    # Log with graph
+    lg = "!source ~/.config/git/githelper && pretty_git_log --graph --topo-order"
+    # Log with patch
+    lp = "!source ~/.config/git/githelper && pretty_git_log --patch"
 
     # List files with merge conflicts
     mcon = "diff --name-only --diff-filter=U"
