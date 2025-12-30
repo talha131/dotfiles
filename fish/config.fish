@@ -45,8 +45,8 @@ if status is-interactive
             set target_user talha131
         end
 
-        # Only switch if different from current
-        set -l current_user (gh auth status 2>&1 | grep "Active account: true" -B3 | head -1 | string match -r "account (\S+)" | tail -1)
+        # Get current active user (gh api user returns active account's info)
+        set -l current_user (gh api user -q .login 2>/dev/null)
         if test "$current_user" != "$target_user"
             if gh auth switch --user $target_user 2>/dev/null
                 echo "🔄 Switched to GitHub account: $target_user"
