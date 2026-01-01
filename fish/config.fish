@@ -40,7 +40,11 @@ if status is-interactive
     abbr -a trash 'trash -v'  # Verbose trash output
 
     # Auto-switch GitHub account based on directory
+    # Only runs inside ~/Developer to avoid slowing down every cd
     function __auto_gh_switch --on-variable PWD
+        # Skip if not in Developer folder
+        string match -q "$HOME/Developer/*" $PWD; or return
+
         set -l target_user
         if string match -q "$HOME/Developer/talha@jumpdesktop.com/*" $PWD
             set target_user smTalhaM
@@ -48,14 +52,14 @@ if status is-interactive
             set target_user talha131
         end
 
-        # Get current active user (gh api user returns active account's info)
-        set -l current_user (gh api user -q .login 2>/dev/null)
-        if test "$current_user" != "$target_user"
+        # Only switch if target changed (avoid slow gh api calls)
+        if test "$__gh_current_user" != "$target_user"
             if gh auth switch --user $target_user 2>/dev/null
+                set -g __gh_current_user $target_user
                 echo "🔄 Switched to GitHub account: $target_user"
             end
         end
     end
-    # Run once on shell startup
+    # Run once on shell startup (only if in Developer folder)
     __auto_gh_switch
 end
