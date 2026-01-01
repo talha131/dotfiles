@@ -92,6 +92,8 @@
     undo = reset HEAD~1
     # Unstage files
     unstage = restore --staged
+    # Discard unstaged changes
+    discard = restore :/
 
 [merge]
     conflictstyle = merge
