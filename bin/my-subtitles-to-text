@@ -1,96 +1,91 @@
 #!/usr/bin/env python3
 """
-Convert VTT transcripts to plain text by stripping cue timestamps and metadata.
+Convert VTT and SRT subtitle files to plain text.
 
-Existing .txt files in Assets/Text are left untouched so the script can be
-reused safely.
+Strips timestamps, cue numbers, and metadata.
+
+Usage:
+    my-subtitles-to-text file.srt              # creates file.txt
+    my-subtitles-to-text file.srt -o out.txt   # creates out.txt
 """
 
 from __future__ import annotations
 
 import argparse
 import re
+import sys
 from pathlib import Path
-from typing import Iterable, List
 
-TIMESTAMP_RE = re.compile(r"\d{2}:\d{2}:\d{2}\.\d{3}\s+-->", re.UNICODE)
+# VTT: 00:00:00.000 --> 00:00:00.000
+# SRT: 00:00:00,000 --> 00:00:00,000
+TIMESTAMP_RE = re.compile(r"\d{2}:\d{2}:\d{2}[.,]\d{3}\s*-->")
 TAG_RE = re.compile(r"<[^>]+>")
-LANG_CODE_SUFFIX_RE = re.compile(r"\.[a-z]{2,3}$", re.IGNORECASE)
 
 
-def vtt_to_lines(path: Path) -> List[str]:
-    lines: List[str] = []
+def subtitle_to_text(path: Path) -> str:
+    """Extract plain text from a VTT or SRT file."""
+    lines: list[str] = []
     for raw_line in path.read_text(encoding="utf-8").splitlines():
         line = raw_line.strip()
         if not line:
             continue
+        # Skip VTT headers
         if line.startswith(("WEBVTT", "Kind:", "Language:", "NOTE")):
             continue
+        # Skip timestamp lines
         if TIMESTAMP_RE.search(line):
             continue
+        # Skip cue numbers (standalone digits)
         if line.isdigit():
-            # skip cue numbering
             continue
+        # Remove HTML-like tags (e.g., <c>, </c>, <b>)
         cleaned = TAG_RE.sub("", line).strip()
         if cleaned:
             lines.append(cleaned)
-    return lines
+    return "\n".join(lines)
 
 
-def expected_text_path(vtt_file: Path, text_dir: Path) -> Path:
-    name = vtt_file.stem  # drop .vtt
-    match = LANG_CODE_SUFFIX_RE.search(name)
-    if match:
-        name = name[: match.start()]
-    return text_dir / f"{name}.txt"
-
-
-def convert_all(transcript_dir: Path, text_dir: Path) -> None:
-    transcript_dir = transcript_dir.resolve()
-    text_dir = text_dir.resolve()
-    text_dir.mkdir(parents=True, exist_ok=True)
-
-    transcripts = sorted(transcript_dir.glob("*.vtt"))
-    if not transcripts:
-        print(f"No .vtt files found inside {transcript_dir}")
-        return
-
-    for vtt_file in transcripts:
-        dest = expected_text_path(vtt_file, text_dir)
-        if dest.exists():
-            print(f"✓ Text already exists for {vtt_file.name}")
-            continue
-
-        print(f"→ Converting {vtt_file.name}")
-        lines = vtt_to_lines(vtt_file)
-        if not lines:
-            print(f"! {vtt_file.name} produced no text after stripping timestamps")
-            continue
-
-        dest.write_text("\n".join(lines) + "\n", encoding="utf-8")
-        print(f"  wrote {dest.relative_to(text_dir.parent)}")
-
-
-def main(argv: List[str]) -> None:
+def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Convert .vtt transcripts to plain text files.",
+        description="Convert a VTT/SRT subtitle file to plain text.",
     )
     parser.add_argument(
-        "--transcript-dir",
-        default="Assets/Transcript",
-        help="Directory containing .vtt transcripts.",
+        "file",
+        type=Path,
+        help="Subtitle file (.vtt or .srt).",
     )
     parser.add_argument(
-        "--text-dir",
-        default="Assets/Text",
-        help="Directory where .txt outputs should be saved.",
+        "-o", "--output",
+        type=Path,
+        help="Output filename (default: same name with .txt extension).",
     )
 
-    args = parser.parse_args(argv)
-    convert_all(Path(args.transcript_dir), Path(args.text_dir))
+    args = parser.parse_args()
+    input_path = args.file.resolve()
+
+    if not input_path.is_file():
+        print(f"Error: File not found: {input_path}", file=sys.stderr)
+        return 1
+
+    if input_path.suffix.lower() not in (".vtt", ".srt"):
+        print(f"Error: Not a subtitle file (.vtt/.srt): {input_path}", file=sys.stderr)
+        return 1
+
+    output_path = args.output.resolve() if args.output else input_path.with_suffix(".txt")
+
+    if output_path.exists():
+        print(f"Error: Output file already exists: {output_path.name}", file=sys.stderr)
+        return 1
+
+    text = subtitle_to_text(input_path)
+    if not text:
+        print(f"Warning: No text extracted from {input_path.name}", file=sys.stderr)
+        return 0
+
+    output_path.write_text(text + "\n", encoding="utf-8")
+    print(f"✓ Saved: {output_path.name}", file=sys.stderr)
+    return 0
 
 
 if __name__ == "__main__":
-    import sys
-
-    main(sys.argv[1:])
+    sys.exit(main())
