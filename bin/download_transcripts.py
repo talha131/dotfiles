@@ -1,0 +1,155 @@
+#!/usr/bin/env python3
+"""
+Download YouTube transcripts listed in a markdown file while skipping videos
+whose subtitle files already exist in Assets/Transcript.
+"""
+
+from __future__ import annotations
+
+import argparse
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+from typing import Iterable, List, NamedTuple, Optional
+from urllib.parse import parse_qs, urlparse
+
+
+class VideoEntry(NamedTuple):
+    title: str
+    url: str
+    video_id: str
+
+
+YOUTUBE_LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^\s)]+)\)")
+ID_IN_BRACKETS_RE = re.compile(r"\[([A-Za-z0-9_-]{6,})\]")
+
+
+def extract_video_id(url: str) -> Optional[str]:
+    """Return the YouTube video id from a standard or short link."""
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+
+    if "youtube.com" in host:
+        if parsed.path.startswith("/shorts/"):
+            return parsed.path.split("/")[2]
+        query = parse_qs(parsed.query)
+        if "v" in query:
+            return query["v"][0]
+        # watch URLs sometimes encode the id inside the path, e.g. /embed/<id>
+        parts = parsed.path.strip("/").split("/")
+        if parts and parts[0] in {"embed", "v"} and len(parts) > 1:
+            return parts[1]
+    elif "youtu.be" in host and parsed.path:
+        return parsed.path.strip("/")
+    return None
+
+
+def parse_markdown(md_path: Path) -> List[VideoEntry]:
+    text = md_path.read_text(encoding="utf-8")
+    entries: List[VideoEntry] = []
+    for title, url in YOUTUBE_LINK_RE.findall(text):
+        video_id = extract_video_id(url)
+        if not video_id:
+            continue
+        entries.append(VideoEntry(title.strip(), url, video_id))
+    return entries
+
+
+def existing_ids(transcript_dir: Path) -> set[str]:
+    ids: set[str] = set()
+    for path in transcript_dir.glob("*"):
+        match = ID_IN_BRACKETS_RE.search(path.name)
+        if match:
+            ids.add(match.group(1))
+    return ids
+
+
+def download_transcripts(
+    entries: Iterable[VideoEntry],
+    transcript_dir: Path,
+    language: str,
+) -> None:
+    missing_ids = existing_ids(transcript_dir)
+
+    yt_dlp = shutil.which("yt-dlp")
+    if yt_dlp is None:
+        raise SystemExit("yt-dlp is not installed or not in PATH.")
+
+    transcript_dir.mkdir(parents=True, exist_ok=True)
+    for entry in entries:
+        if entry.video_id in missing_ids:
+            print(f"✓ {entry.title} already downloaded ({entry.video_id})")
+            continue
+
+        print(f"→ Downloading transcript for {entry.title} ({entry.video_id})")
+        with tempfile.TemporaryDirectory() as tmpdir:
+            cmd = [
+                yt_dlp,
+                "--write-auto-sub",
+                "--skip-download",
+                "--sub-lang",
+                language,
+                "--output",
+                "%(title)s [%(id)s].%(ext)s",
+                entry.url,
+            ]
+            try:
+                subprocess.run(cmd, check=True, cwd=tmpdir)
+            except subprocess.CalledProcessError as exc:
+                print(f"! yt-dlp failed for {entry.url}: {exc}")
+                continue
+            generated = list(Path(tmpdir).iterdir())
+            if not generated:
+                print(f"! No transcript files were produced for {entry.url}")
+                continue
+
+            for src in generated:
+                dest = transcript_dir / src.name
+                if dest.exists():
+                    print(f"! Skipping move to avoid overwriting {dest}")
+                    continue
+                src.replace(dest)
+                print(f"  moved {dest.name}")
+
+        missing_ids.add(entry.video_id)
+
+
+def main(argv: List[str]) -> None:
+    parser = argparse.ArgumentParser(
+        description="Download transcripts for YouTube links in a markdown file.",
+    )
+    parser.add_argument(
+        "markdown_file",
+        help="Path to the markdown file that lists the YouTube links.",
+    )
+    parser.add_argument(
+        "--transcript-dir",
+        default="Assets/Transcript",
+        help="Directory where transcripts should be stored.",
+    )
+    parser.add_argument(
+        "--language",
+        default="hi",
+        help="YouTube subtitle language code to request (default: hi).",
+    )
+
+    args = parser.parse_args(argv)
+    md_path = Path(args.markdown_file).expanduser().resolve()
+    transcript_dir = Path(args.transcript_dir).expanduser().resolve()
+
+    if not md_path.exists():
+        raise SystemExit(f"Markdown file not found: {md_path}")
+
+    entries = parse_markdown(md_path)
+    if not entries:
+        print("No YouTube links found in the provided markdown file.")
+        return
+
+    download_transcripts(entries, transcript_dir, args.language)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
