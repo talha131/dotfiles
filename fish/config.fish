@@ -1,6 +1,14 @@
 # Editor (used by git, crontab, kubectl, and other tools)
 set -x EDITOR nvim
 
+# Personal scripts
+fish_add_path ~/Developer/dotfiles/bin
+
+# Load API Keys
+# Create ~/.secrets.fish with: set -x GEMINI_API_KEY "your-key"
+# Secure it with: chmod 600 ~/.secrets.fish (owner read/write only)
+test -e ~/.secrets.fish && source ~/.secrets.fish
+
 # coreutils (use GNU commands without g prefix)
 fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
 
