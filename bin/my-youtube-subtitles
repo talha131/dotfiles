@@ -1,106 +1,136 @@
+#!/usr/bin/env -S uv run --script
 # /// script
 # dependencies = [
 #   "google-genai",
 # ]
 # ///
-
 """
-Generate a YouTube-compatible .srt subtitle file from an audio recording
-using the Gemini API. The script mirrors the authentication pattern used
-by transcribe.py but asks the model to return timed captions instead of
-a plain transcript.
+Generate YouTube-compatible subtitles from audio using Gemini API.
+
+Usage:
+    my-youtube-subtitles audio.mp3              # creates audio.vtt
+    my-youtube-subtitles audio.mp3 -f srt       # creates audio.srt
+    my-youtube-subtitles audio.mp3 -o subs.vtt  # creates subs.vtt
+
+Requires GEMINI_API_KEY environment variable.
 """
 
 from __future__ import annotations
 
+import argparse
 import os
 import sys
 from pathlib import Path
-from typing import Optional
 
 from google import genai
 
+SRT_PROMPT = """\
+Listen to the audio and return a strictly valid SubRip (.srt) file.
+Rules:
+1. Begin numbering at 1 and increment by 1 for each cue.
+2. Use the HH:MM:SS,mmm timestamp format (comma for milliseconds, e.g., 00:01:02,500).
+3. Keep each caption under ~2 lines and under 7 seconds when possible.
+4. Use Urdu script for Urdu words and English for English terms, matching the audio.
+5. Do not include translations, descriptions, or explanations—only the spoken words.
+6. Output nothing except the SRT content (no Markdown fences or comments).
+"""
 
-def build_client() -> genai.Client:
-    """Return a configured Gemini client or exit with a helpful error."""
+VTT_PROMPT = """\
+Listen to the audio and return a strictly valid WebVTT (.vtt) file.
+Rules:
+1. Start with "WEBVTT" header on the first line, followed by a blank line.
+2. Use the HH:MM:SS.mmm timestamp format (period for milliseconds, e.g., 00:01:02.500).
+3. Keep each caption under ~2 lines and under 7 seconds when possible.
+4. Use Urdu script for Urdu words and English for English terms, matching the audio.
+5. Do not include translations, descriptions, or explanations—only the spoken words.
+6. Output nothing except the VTT content (no Markdown fences or comments).
+"""
+
+
+def get_client() -> genai.Client:
+    """Return a configured Gemini client or exit with error."""
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
-        print("Error: Please set the GEMINI_API_KEY environment variable.")
+        print("Error: GEMINI_API_KEY environment variable not set.", file=sys.stderr)
         sys.exit(1)
     return genai.Client(api_key=api_key)
 
 
-def clean_srt_text(raw_text: Optional[str]) -> str:
-    """
-    Remove Markdown fences or stray prefixes Gemini might add so that the
-    saved file is a pure SubRip document.
-    """
-    if not raw_text:
+def clean_response(text: str | None) -> str:
+    """Remove Markdown fences that Gemini might add."""
+    if not text:
         return ""
-
-    text = raw_text.strip()
-    if "```" in text:
-        lines = []
-        for line in text.splitlines():
-            stripped = line.strip()
-            if stripped.startswith("```"):
-                continue
-            lines.append(line)
-        text = "\n".join(lines).strip()
-    return text
+    lines = [
+        line for line in text.strip().splitlines()
+        if not line.strip().startswith("```")
+    ]
+    return "\n".join(lines).strip()
 
 
-def build_prompt() -> str:
-    """Prompt that asks the model to emit valid SRT captions."""
-    return (
-        "You are preparing subtitles for YouTube.\n"
-        "Listen to the audio and return a strictly valid SubRip (.srt) file.\n"
-        "Rules:\n"
-        "1. Begin numbering at 1 and increment by 1 for each cue.\n"
-        "2. Use the HH:MM:SS,mmm timestamp format (e.g., 00:01:02,500).\n"
-        "3. Keep each caption shorter than ~2 lines and under 7 seconds when possible.\n"
-        "4. Use Urdu script for Urdu words and English for English terms, matching the audio.\n"
-        "5. Do not include translations, descriptions, or explanations—only the spoken words.\n"
-        "6. Output nothing except the final SRT content (no Markdown fences or comments).\n"
+def generate_subtitles(audio_path: Path, fmt: str) -> str:
+    """Upload audio to Gemini and return subtitles."""
+    client = get_client()
+    prompt = VTT_PROMPT if fmt == "vtt" else SRT_PROMPT
+
+    print(f"Uploading {audio_path.name}...", file=sys.stderr)
+    audio_file = client.files.upload(file=str(audio_path))
+
+    print("Generating subtitles...", file=sys.stderr)
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=[prompt, audio_file],
     )
 
+    return clean_response(response.text)
 
-def generate_youtube_subtitles(file_path_str: str) -> None:
-    """Upload audio, request SRT subtitles from Gemini, and save them."""
-    client = build_client()
-    audio_path = Path(file_path_str)
-    if not audio_path.exists():
-        print(f"Error: File '{audio_path}' not found.")
-        return
 
-    print(f"Uploading {audio_path.name}...")
-    audio_file = client.files.upload(path=str(audio_path))
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Generate subtitles from audio using Gemini.",
+    )
+    parser.add_argument(
+        "file",
+        type=Path,
+        help="Audio file to transcribe.",
+    )
+    parser.add_argument(
+        "-f", "--format",
+        choices=["vtt", "srt"],
+        default="vtt",
+        help="Subtitle format (default: vtt).",
+    )
+    parser.add_argument(
+        "-o", "--output",
+        type=Path,
+        help="Output filename (default: same name with .vtt/.srt extension).",
+    )
 
-    prompt = build_prompt()
+    args = parser.parse_args()
+    audio_path = args.file.resolve()
+    fmt = args.format
 
-    print("Generating YouTube subtitles with Gemini 3 Flash Preview...")
+    if not audio_path.is_file():
+        print(f"Error: File not found: {audio_path}", file=sys.stderr)
+        return 1
+
+    output_path = args.output.resolve() if args.output else audio_path.with_suffix(f".{fmt}")
+    if output_path.exists():
+        print(f"Error: Output file already exists: {output_path.name}", file=sys.stderr)
+        return 1
+
     try:
-        response = client.models.generate_content(
-            model="gemini-3-flash-preview",
-            contents=[prompt, audio_file],
-        )
-        srt_text = clean_srt_text(response.text)
-        if not srt_text:
-            print("Error: Gemini response was empty.")
-            return
+        subtitles = generate_subtitles(audio_path, fmt)
+        if not subtitles:
+            print("Error: No subtitles generated.", file=sys.stderr)
+            return 1
 
-        output_path = audio_path.with_suffix(".srt")
-        with open(output_path, "w", encoding="utf-8") as fh:
-            fh.write(srt_text)
-
-        print("\n--- SUCCESS ---")
-        print(f"Subtitle file saved to: {output_path.name}")
-    except Exception as exc:
-        print(f"An error occurred while generating subtitles: {exc}")
+        output_path.write_text(subtitles + "\n", encoding="utf-8")
+        print(f"✓ Saved: {output_path.name}", file=sys.stderr)
+        return 0
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: uv run youtube_subtitles.py <path_to_audio_file>")
-    else:
-        generate_youtube_subtitles(sys.argv[1])
+    sys.exit(main())
