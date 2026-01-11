@@ -23,7 +23,7 @@ class VideoEntry(NamedTuple):
     video_id: str
 
 
-YOUTUBE_LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^\s)]+)\)")
+YOUTUBE_URL_RE = re.compile(r"(https?://(?:www\.)?(?:youtube\.com|youtu\.be)/[^\s)\]]+)")
 ID_IN_BRACKETS_RE = re.compile(r"\[([A-Za-z0-9_-]{6,})\]")
 
 
@@ -50,11 +50,31 @@ def extract_video_id(url: str) -> Optional[str]:
 def parse_markdown(md_path: Path) -> List[VideoEntry]:
     text = md_path.read_text(encoding="utf-8")
     entries: List[VideoEntry] = []
-    for title, url in YOUTUBE_LINK_RE.findall(text):
+    
+    for line in text.splitlines():
+        url_match = YOUTUBE_URL_RE.search(line)
+        if not url_match:
+            continue
+            
+        url = url_match.group(1)
         video_id = extract_video_id(url)
         if not video_id:
             continue
+        
+        # Extract title from text before the URL
+        title = line[:url_match.start()].strip()
+        
+        # Clean up common patterns
+        title = re.sub(r'\s*-\s*YouTube\s*-\s*$', '', title)
+        title = re.sub(r'\s*-\s*$', '', title)
+        title = re.sub(r'^\(\d+\)\s*', '', title)
+        title = re.sub(r'^\[.*?\]\s*', '', title)  # Remove [markdown] style prefixes
+        
+        if not title:
+            title = f"Video {video_id}"
+        
         entries.append(VideoEntry(title.strip(), url, video_id))
+    
     return entries
 
 
@@ -126,12 +146,13 @@ def main(argv: List[str]) -> None:
         help="Path to the markdown file that lists the YouTube links.",
     )
     parser.add_argument(
-        "--transcript-dir",
-        default="Assets/Transcript",
-        help="Directory where transcripts should be stored.",
+        "-o", "--output",
+        dest="transcript_dir",
+        default=".",
+        help="Directory where transcripts should be stored (default: current directory).",
     )
     parser.add_argument(
-        "--language",
+        "-l", "--language",
         default="hi",
         help="YouTube subtitle language code to request (default: hi).",
     )
