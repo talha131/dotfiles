@@ -1,3 +1,4 @@
+#!/usr/bin/env -S uv run --script
 # /// script
 # dependencies = [
 #   "google-genai",
@@ -29,7 +30,7 @@ def transcribe_audio(file_path_str):
 
     # 1. Upload the file
     print(f"Uploading {file_path.name}...")
-    audio_file = client.files.upload(path=str(file_path))
+    audio_file = client.files.upload(file=str(file_path))
     
     # The prompt for Urdu/English lecture
     prompt = (
