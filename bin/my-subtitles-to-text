@@ -57,7 +57,7 @@ def main() -> int:
     parser.add_argument(
         "-o", "--output",
         type=Path,
-        help="Output filename (default: same name with .txt extension).",
+        help="Output directory (default: same directory as input file).",
     )
 
     args = parser.parse_args()
@@ -71,7 +71,12 @@ def main() -> int:
         print(f"Error: Not a subtitle file (.vtt/.srt): {input_path}", file=sys.stderr)
         return 1
 
-    output_path = args.output.resolve() if args.output else input_path.with_suffix(".txt")
+    if args.output:
+        output_dir = args.output.resolve()
+        output_dir.mkdir(parents=True, exist_ok=True)
+        output_path = output_dir / input_path.with_suffix(".txt").name
+    else:
+        output_path = input_path.with_suffix(".txt")
 
     if output_path.exists():
         print(f"Error: Output file already exists: {output_path.name}", file=sys.stderr)
