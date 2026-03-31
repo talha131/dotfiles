@@ -1,6 +1,9 @@
 # Editor (used by git, crontab, kubectl, and other tools)
 set -x EDITOR nvim
 
+# vcpkg (C++ package manager)
+set -x VCPKG_ROOT $HOME/vcpkg
+
 # Personal scripts
 fish_add_path ~/Developer/dotfiles/bin
 
@@ -71,3 +74,5 @@ if status is-interactive
     # Run once on shell startup (only if in Developer folder)
     __auto_gh_switch
 end
+# Added by Antigravity
+fish_add_path /Users/talha/.antigravity/antigravity/bin
