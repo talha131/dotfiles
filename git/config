@@ -92,8 +92,8 @@
     undo = reset HEAD~1
     # Unstage files
     unstage = restore --staged
-    # Discard unstaged changes
-    discard = restore :/
+    # Discard unstaged changes (all: git discard :/ or git discard . | specific: git discard file.txt)
+    discard = restore --
 
 [merge]
     conflictstyle = merge
