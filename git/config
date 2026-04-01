@@ -123,3 +123,6 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
+# Rewrite SSH URLs to HTTPS (enables using gh CLI auth instead of SSH keys)
+[url "https://github.com/"]
+	insteadOf = git@github.com:
