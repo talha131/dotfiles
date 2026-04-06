@@ -49,6 +49,7 @@ if status is-interactive
 
     # Abbreviations
     abbr -a trash 'trash -v'  # Verbose trash output
+    abbr -a tmux 'tmux -CC'  # iTerm2 integration mode
 
     # Auto-switch GitHub account based on directory
     # Only runs inside ~/Developer to avoid slowing down every cd
