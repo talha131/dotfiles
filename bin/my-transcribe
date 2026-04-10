@@ -83,6 +83,35 @@ def transcribe_gemini(file_path, language=None):
         model="gemini-3-flash-preview",
         contents=[prompt, audio_file],
     )
+
+    # Show cost estimate
+    usage = response.usage_metadata
+    if usage:
+        audio_tokens = 0
+        text_tokens = 0
+        if hasattr(usage, "prompt_tokens_details") and usage.prompt_tokens_details:
+            for detail in usage.prompt_tokens_details:
+                if detail.modality.name == "AUDIO":
+                    audio_tokens = detail.token_count
+                else:
+                    text_tokens += detail.token_count
+        else:
+            # Fallback: treat all input as audio (overestimates slightly)
+            audio_tokens = usage.prompt_token_count
+
+        output_tokens = usage.candidates_token_count or 0
+        audio_seconds = audio_tokens / 32
+        minutes = int(audio_seconds) // 60
+        seconds = int(audio_seconds) % 60
+
+        # Pricing per 1M tokens (Gemini Flash standard tier)
+        audio_cost = audio_tokens * 0.70 / 1_000_000
+        text_cost = text_tokens * 0.10 / 1_000_000
+        output_cost = output_tokens * 0.40 / 1_000_000
+        total_cost = audio_cost + text_cost + output_cost
+
+        print(f"Audio: ~{minutes}m {seconds}s | Estimated cost: ~${total_cost:.4f}")
+
     return response.text
 
 
