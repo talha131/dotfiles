@@ -5,64 +5,178 @@
 # ]
 # ///
 
+import argparse
 import os
+import shutil
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
-from google import genai
+WHISPER_MODEL = os.path.expanduser("~/.local/share/whisper-cpp/ggml-large-v3-turbo.bin")
 
-# Setup API Key
-# For Fish shell: set -gx GEMINI_API_KEY 'your_key'
-api_key = os.getenv("GEMINI_API_KEY")
+HELP_TEXT = """\
+Transcribe audio files to text.
 
-if not api_key:
-    print("Error: Please set the GEMINI_API_KEY environment variable.")
-    sys.exit(1)
+The transcription is saved as a .txt file alongside the original audio file.
+For example, "lecture.mp3" produces "lecture.txt" in the same directory.
 
-client = genai.Client(api_key=api_key)
+--- Gemini engine (default) ---
 
-def transcribe_audio(file_path_str):
-    file_path = Path(file_path_str)
-    
-    if not file_path.exists():
-        print(f"Error: File '{file_path}' not found.")
-        return
+Uses Google's Gemini API. Fast and high quality, but requires internet.
 
-    # 1. Upload the file
-    print(f"Uploading {file_path.name}...")
-    audio_file = client.files.upload(file=str(file_path))
-    
-    # The prompt for Urdu/English lecture
-    prompt = (
+Setup:
+  Fish shell:  set -gx GEMINI_API_KEY 'your_key'
+  Bash/Zsh:    export GEMINI_API_KEY='your_key'
+
+Language: free-form string via --language (e.g. "English", "a mix of Urdu
+  and English"). Defaults to a mix of Urdu and English.
+
+--- Whisper engine (local) ---
+
+Uses whisper.cpp locally. Runs offline, no API key needed.
+
+Setup:
+  1. brew install whisper-cpp ffmpeg
+  2. Download a GGML model:
+     curl -L -o ~/.local/share/whisper-cpp/ggml-large-v3-turbo.bin \\
+       https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo.bin
+     Other models: https://huggingface.co/ggerganov/whisper.cpp/tree/main
+
+Language: language code via --language (e.g. "en", "ur", "auto").
+  Defaults to auto-detect. Codes: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+"""
+
+
+def build_prompt(language):
+    if language:
+        return (
+            f"Transcribe this audio exactly as spoken. The audio is in {language}. "
+            "Keep the transcription comprehensive, including classroom management and anecdotes. "
+            "Do not use timestamps. Use the appropriate script for each language."
+        )
+    return (
         "Transcribe this audio exactly as spoken. The lecture is in a mix of Urdu and English. "
         "Keep the transcription comprehensive, including classroom management and anecdotes. "
         "Do not use timestamps. Use Urdu script for Urdu words and English script for English terms."
     )
 
-    print("Transcribing with Gemini 3 Flash... (this may take a minute)")
-    
-    try:
-        response = client.models.generate_content(
-            model="gemini-3-flash-preview",
-            contents=[prompt, audio_file],
-        )
-        transcription_text = response.text
 
-        # 3. Save to a text file with the same name
-        # .with_suffix('.txt') changes "lecture.mp3" to "lecture.txt"
+def transcribe_gemini(file_path, language=None):
+    from google import genai
+
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        print("Error: Please set the GEMINI_API_KEY environment variable.")
+        sys.exit(1)
+
+    client = genai.Client(api_key=api_key)
+
+    print(f"Uploading {file_path.name}...")
+    audio_file = client.files.upload(file=str(file_path))
+
+    prompt = build_prompt(language)
+    lang_display = language if language else "Urdu/English mix"
+    print(f"Transcribing with Gemini 3 Flash ({lang_display})... (this may take a minute)")
+
+    response = client.models.generate_content(
+        model="gemini-3-flash-preview",
+        contents=[prompt, audio_file],
+    )
+    return response.text
+
+
+def transcribe_whisper(file_path, language=None):
+    if not shutil.which("whisper-cli"):
+        print("Error: whisper-cli not found. Install with: brew install whisper-cpp")
+        sys.exit(1)
+
+    if not shutil.which("ffmpeg"):
+        print("Error: ffmpeg not found. Install with: brew install ffmpeg")
+        sys.exit(1)
+
+    if not Path(WHISPER_MODEL).exists():
+        print(f"Error: Whisper model not found at {WHISPER_MODEL}")
+        print("Download from: https://huggingface.co/ggerganov/whisper.cpp/tree/main")
+        sys.exit(1)
+
+    # whisper-cpp only supports WAV (16kHz mono), so convert first
+    wav_file = None
+    try:
+        wav_file = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
+        wav_file.close()
+
+        print(f"Converting {file_path.name} to WAV...")
+        subprocess.run(
+            ["ffmpeg", "-i", str(file_path), "-ar", "16000", "-ac", "1", "-y", wav_file.name],
+            capture_output=True, check=True,
+        )
+
+        lang_code = language if language else "auto"
+        lang_display = language if language else "auto-detect"
+        print(f"Transcribing with whisper.cpp ({lang_display})... (this may take a while)")
+
+        cmd = [
+            "whisper-cli",
+            "-m", WHISPER_MODEL,
+            "-l", lang_code,
+            "--no-timestamps",
+            wav_file.name,
+        ]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+
+        if result.returncode != 0:
+            print(f"Error from whisper-cli:\n{result.stderr}")
+            sys.exit(1)
+
+        return result.stdout.strip()
+
+    finally:
+        if wav_file and Path(wav_file.name).exists():
+            Path(wav_file.name).unlink()
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        prog="my-transcribe",
+        description=HELP_TEXT,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument("audio_file", help="Path to the audio file to transcribe")
+    parser.add_argument(
+        "--language", "-l",
+        help="Language of the audio (see engine sections above for format and defaults)",
+    )
+    parser.add_argument(
+        "--engine", "-e",
+        choices=["gemini", "whisper"],
+        default="gemini",
+        help="Transcription engine to use (default: gemini)",
+    )
+    args = parser.parse_args()
+
+    file_path = Path(args.audio_file)
+    if not file_path.exists():
+        print(f"Error: File '{file_path}' not found.")
+        sys.exit(1)
+
+    try:
+        if args.engine == "whisper":
+            text = transcribe_whisper(file_path, language=args.language)
+        else:
+            text = transcribe_gemini(file_path, language=args.language)
+
         output_file_path = file_path.with_suffix('.txt')
-        
         with open(output_file_path, "w", encoding="utf-8") as f:
-            f.write(transcription_text)
+            f.write(text)
 
         print("\n--- SUCCESS ---")
         print(f"Transcription saved to: {output_file_path.name}")
-        
+
     except Exception as e:
         print(f"An error occurred during transcription: {e}")
+        sys.exit(1)
+
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: uv run transcribe.py <path_to_audio_file>")
-    else:
-        transcribe_audio(sys.argv[1])
+    main()
