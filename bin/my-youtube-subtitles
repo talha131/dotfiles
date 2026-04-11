@@ -4,56 +4,98 @@
 #   "google-genai",
 # ]
 # ///
-"""
-Generate YouTube-compatible subtitles from audio using Gemini API.
-
-Usage:
-    my-youtube-subtitles audio.mp3              # creates audio.vtt
-    my-youtube-subtitles audio.mp3 -f srt       # creates audio.srt
-    my-youtube-subtitles audio.mp3 -o subs.vtt  # creates subs.vtt
-
-Requires GEMINI_API_KEY environment variable.
-"""
 
 from __future__ import annotations
 
 import argparse
 import os
+import shutil
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
-from google import genai
+WHISPER_MODEL = os.path.expanduser("~/.local/share/whisper-cpp/ggml-large-v3-turbo.bin")
 
-SRT_PROMPT = """\
+HELP_TEXT = """\
+Generate YouTube-compatible subtitles (VTT or SRT) from audio files.
+
+The subtitle file is saved alongside the original audio file.
+For example, "lecture.mp3" produces "lecture.vtt" in the same directory.
+
+--- Gemini engine (default) ---
+
+Uses Google's Gemini API. Produces high-quality subtitle segmentation,
+especially for mixed-language audio.
+
+Setup:
+  Fish shell:  set -gx GEMINI_API_KEY 'your_key'
+  Bash/Zsh:    export GEMINI_API_KEY='your_key'
+
+Language: free-form string via --language (e.g. "English", "a mix of Urdu
+  and English"). Defaults to a mix of Urdu and English.
+
+--- Whisper engine (local) ---
+
+Uses whisper.cpp locally. Runs offline, no API key needed. Segments
+subtitles mechanically by silence/timing.
+
+Setup:
+  1. brew install whisper-cpp ffmpeg
+  2. Download a GGML model:
+     curl -L -o ~/.local/share/whisper-cpp/ggml-large-v3-turbo.bin \\
+       https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo.bin
+     Other models: https://huggingface.co/ggerganov/whisper.cpp/tree/main
+
+Language: language code via --language (e.g. "en", "ur", "auto").
+  Defaults to auto-detect. Codes: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+"""
+
+
+def build_srt_prompt(language):
+    lang_instruction = (
+        f"The audio is in {language}."
+        if language
+        else "The lecture is in a mix of Urdu and English."
+    )
+    script_instruction = (
+        "Use the appropriate script for each language, matching the audio."
+        if language
+        else "Use Urdu script for Urdu words and English for English terms, matching the audio."
+    )
+    return f"""\
 Listen to the audio and return a strictly valid SubRip (.srt) file.
 Rules:
 1. Begin numbering at 1 and increment by 1 for each cue.
 2. Use the HH:MM:SS,mmm timestamp format (comma for milliseconds, e.g., 00:01:02,500).
 3. Keep each caption under ~2 lines and under 7 seconds when possible.
-4. Use Urdu script for Urdu words and English for English terms, matching the audio.
+4. {lang_instruction} {script_instruction}
 5. Do not include translations, descriptions, or explanations—only the spoken words.
 6. Output nothing except the SRT content (no Markdown fences or comments).
 """
 
-VTT_PROMPT = """\
+
+def build_vtt_prompt(language):
+    lang_instruction = (
+        f"The audio is in {language}."
+        if language
+        else "The lecture is in a mix of Urdu and English."
+    )
+    script_instruction = (
+        "Use the appropriate script for each language, matching the audio."
+        if language
+        else "Use Urdu script for Urdu words and English for English terms, matching the audio."
+    )
+    return f"""\
 Listen to the audio and return a strictly valid WebVTT (.vtt) file.
 Rules:
 1. Start with "WEBVTT" header on the first line, followed by a blank line.
 2. Use the HH:MM:SS.mmm timestamp format (period for milliseconds, e.g., 00:01:02.500).
 3. Keep each caption under ~2 lines and under 7 seconds when possible.
-4. Use Urdu script for Urdu words and English for English terms, matching the audio.
+4. {lang_instruction} {script_instruction}
 5. Do not include translations, descriptions, or explanations—only the spoken words.
 6. Output nothing except the VTT content (no Markdown fences or comments).
 """
-
-
-def get_client() -> genai.Client:
-    """Return a configured Gemini client or exit with error."""
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        print("Error: GEMINI_API_KEY environment variable not set.", file=sys.stderr)
-        sys.exit(1)
-    return genai.Client(api_key=api_key)
 
 
 def clean_response(text: str | None) -> str:
@@ -67,42 +109,155 @@ def clean_response(text: str | None) -> str:
     return "\n".join(lines).strip()
 
 
-def generate_subtitles(audio_path: Path, fmt: str) -> str:
+def print_cost(response):
+    """Print audio duration and estimated cost from Gemini response."""
+    usage = response.usage_metadata
+    if not usage:
+        return
+
+    audio_tokens = 0
+    text_tokens = 0
+    if hasattr(usage, "prompt_tokens_details") and usage.prompt_tokens_details:
+        for detail in usage.prompt_tokens_details:
+            if detail.modality.name == "AUDIO":
+                audio_tokens = detail.token_count
+            else:
+                text_tokens += detail.token_count
+    else:
+        audio_tokens = usage.prompt_token_count
+
+    output_tokens = usage.candidates_token_count or 0
+    audio_seconds = audio_tokens / 32
+    minutes = int(audio_seconds) // 60
+    seconds = int(audio_seconds) % 60
+
+    # Pricing per 1M tokens (Gemini Flash standard tier)
+    audio_cost = audio_tokens * 0.70 / 1_000_000
+    text_cost = text_tokens * 0.10 / 1_000_000
+    output_cost = output_tokens * 0.40 / 1_000_000
+    total_cost = audio_cost + text_cost + output_cost
+
+    print(f"Audio: ~{minutes}m {seconds}s | Estimated cost: ~${total_cost:.4f}", file=sys.stderr)
+
+
+def generate_subtitles_gemini(audio_path: Path, fmt: str, language=None) -> str:
     """Upload audio to Gemini and return subtitles."""
-    client = get_client()
-    prompt = VTT_PROMPT if fmt == "vtt" else SRT_PROMPT
+    from google import genai
+
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        print("Error: GEMINI_API_KEY environment variable not set.", file=sys.stderr)
+        sys.exit(1)
+
+    client = genai.Client(api_key=api_key)
+    prompt = build_vtt_prompt(language) if fmt == "vtt" else build_srt_prompt(language)
 
     print(f"Uploading {audio_path.name}...", file=sys.stderr)
     audio_file = client.files.upload(file=str(audio_path))
 
-    print("Generating subtitles...", file=sys.stderr)
+    lang_display = language if language else "Urdu/English mix"
+    print(f"Generating subtitles with Gemini ({lang_display})...", file=sys.stderr)
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=[prompt, audio_file],
     )
 
+    print_cost(response)
     return clean_response(response.text)
+
+
+def generate_subtitles_whisper(audio_path: Path, fmt: str, language=None) -> str:
+    """Use whisper.cpp locally to generate subtitles."""
+    if not shutil.which("whisper-cli"):
+        print("Error: whisper-cli not found. Install with: brew install whisper-cpp", file=sys.stderr)
+        sys.exit(1)
+
+    if not shutil.which("ffmpeg"):
+        print("Error: ffmpeg not found. Install with: brew install ffmpeg", file=sys.stderr)
+        sys.exit(1)
+
+    if not Path(WHISPER_MODEL).exists():
+        print(f"Error: Whisper model not found at {WHISPER_MODEL}", file=sys.stderr)
+        print("Download from: https://huggingface.co/ggerganov/whisper.cpp/tree/main", file=sys.stderr)
+        sys.exit(1)
+
+    wav_file = None
+    try:
+        wav_file = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
+        wav_file.close()
+
+        print(f"Converting {audio_path.name} to WAV...", file=sys.stderr)
+        subprocess.run(
+            ["ffmpeg", "-i", str(audio_path), "-ar", "16000", "-ac", "1", "-y", wav_file.name],
+            capture_output=True, check=True,
+        )
+
+        lang_code = language if language else "auto"
+        lang_display = language if language else "auto-detect"
+        print(f"Generating subtitles with whisper.cpp ({lang_display})...", file=sys.stderr)
+
+        output_flag = f"--output-{fmt}"
+        # whisper-cli writes to <input>.srt or <input>.vtt
+        cmd = [
+            "whisper-cli",
+            "-m", WHISPER_MODEL,
+            "-l", lang_code,
+            output_flag,
+            "-of", wav_file.name,
+            wav_file.name,
+        ]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+
+        if result.returncode != 0:
+            print(f"Error from whisper-cli:\n{result.stderr}", file=sys.stderr)
+            sys.exit(1)
+
+        # whisper-cli writes output to <output_file>.<fmt>
+        subtitle_path = Path(f"{wav_file.name}.{fmt}")
+        if not subtitle_path.exists():
+            print(f"Error: Expected output file not found: {subtitle_path}", file=sys.stderr)
+            sys.exit(1)
+
+        text = subtitle_path.read_text(encoding="utf-8").strip()
+        subtitle_path.unlink()
+        return text
+
+    finally:
+        if wav_file and Path(wav_file.name).exists():
+            Path(wav_file.name).unlink()
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Generate subtitles from audio using Gemini.",
+        prog="my-youtube-subtitles",
+        description=HELP_TEXT,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
         "file",
         type=Path,
-        help="Audio file to transcribe.",
+        help="Audio file to generate subtitles from",
     )
     parser.add_argument(
         "-f", "--format",
         choices=["vtt", "srt"],
         default="vtt",
-        help="Subtitle format (default: vtt).",
+        help="Subtitle format (default: vtt)",
     )
     parser.add_argument(
         "-o", "--output",
         type=Path,
-        help="Output filename (default: same name with .vtt/.srt extension).",
+        help="Output filename (default: same name with .vtt/.srt extension)",
+    )
+    parser.add_argument(
+        "-e", "--engine",
+        choices=["gemini", "whisper"],
+        default="gemini",
+        help="Subtitle engine to use (default: gemini)",
+    )
+    parser.add_argument(
+        "-l", "--language",
+        help="Language of the audio (see engine sections above for format and defaults)",
     )
 
     args = parser.parse_args()
@@ -119,13 +274,17 @@ def main() -> int:
         return 1
 
     try:
-        subtitles = generate_subtitles(audio_path, fmt)
+        if args.engine == "whisper":
+            subtitles = generate_subtitles_whisper(audio_path, fmt, language=args.language)
+        else:
+            subtitles = generate_subtitles_gemini(audio_path, fmt, language=args.language)
+
         if not subtitles:
             print("Error: No subtitles generated.", file=sys.stderr)
             return 1
 
         output_path.write_text(subtitles + "\n", encoding="utf-8")
-        print(f"✓ Saved: {output_path.name}", file=sys.stderr)
+        print(f"Saved: {output_path.name}", file=sys.stderr)
         return 0
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
