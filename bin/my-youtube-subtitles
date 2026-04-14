@@ -283,7 +283,7 @@ def main() -> int:
             print("Error: No subtitles generated.", file=sys.stderr)
             return 1
 
-        output_path.write_text(subtitles + "\n", encoding="utf-8")
+        output_path.write_text("\ufeff" + subtitles + "\n", encoding="utf-8")
         print(f"Saved: {output_path.name}", file=sys.stderr)
         return 0
     except Exception as e:
