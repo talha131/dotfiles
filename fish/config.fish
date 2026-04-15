@@ -50,6 +50,10 @@ if status is-interactive
     # Abbreviations
     abbr -a trash 'trash -v'  # Verbose trash output
     abbr -a tmux 'tmux -CC'  # iTerm2 integration mode
+    # Download highest-quality audio from YouTube/etc. via yt-dlp.
+    # Outputs <video-title>.opus (or native best codec) in CWD.
+    # Usage: ytaudio <url> [more-urls...]
+    abbr -a ytaudio 'yt-dlp -x --audio-format best --audio-quality 0 -o "%(title)s.%(ext)s"'
 
     # Auto-switch GitHub account based on directory
     # Only runs inside ~/Developer to avoid slowing down every cd
