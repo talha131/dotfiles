@@ -286,8 +286,8 @@ def main() -> int:
     parser.add_argument(
         "-e", "--engine",
         choices=["gemini", "whisper"],
-        default="gemini",
-        help="Subtitle engine to use (default: gemini)",
+        default="whisper",
+        help="Subtitle engine to use (default: whisper)",
     )
     parser.add_argument(
         "-l", "--language",

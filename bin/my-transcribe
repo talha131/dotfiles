@@ -179,8 +179,8 @@ def main():
     parser.add_argument(
         "--engine", "-e",
         choices=["gemini", "whisper"],
-        default="gemini",
-        help="Transcription engine to use (default: gemini)",
+        default="whisper",
+        help="Transcription engine to use (default: whisper)",
     )
     args = parser.parse_args()
 
