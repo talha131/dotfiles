@@ -54,6 +54,7 @@ if status is-interactive
     # Outputs <video-title>.opus (or native best codec) in CWD.
     # Usage: ytaudio <url> [more-urls...]
     abbr -a ytaudio 'yt-dlp -x --audio-format best --audio-quality 0 -o "%(title)s.%(ext)s"'
+    abbr -a claude 'claude --dangerously-skip-permissions'
 
     # Auto-switch GitHub account based on directory
     # Only runs inside ~/Developer to avoid slowing down every cd
