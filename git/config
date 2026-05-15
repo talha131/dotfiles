@@ -50,6 +50,8 @@
     brm = branch --merged
     # Clean merged local branches
     brmcl = "!git branch --no-color --merged | grep -vE '^[+*]' | grep -v master | grep -v next | xargs -I % git branch -d %"
+    # Clean merged worktrees (removes worktree dirs for branches merged into HEAD; refuses dirty worktrees)
+    wtcl = "!git branch --merged HEAD --format='%(worktreepath)|%(refname:short)' | awk -F'|' '$1!=\"\" && $2!=\"master\" && $2!=\"next\" {print $1}' | xargs -I % sh -c 'echo \"Removing worktree: %\"; git worktree remove %'"
     # Unmerged branches
     bru = branch -a --no-merged
     brd = branch -D
