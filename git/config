@@ -46,13 +46,13 @@
     br = branch -vv
     # All branches
     brl = branch -a
-    # Merged branches
-    brm = branch -a --merged
-    # Clean merged branches (prunes stale remotes, deletes local and remote)
-    brmcl = "!git fetch --prune && git branch --no-color --merged | grep -v master | grep -v next | xargs -I % sh -c 'git branch -d %; git push --delete origin % 2>/dev/null || true'"
+    # Merged branches (local only)
+    brm = branch --merged
+    # Clean merged local branches
+    brmcl = "!git branch --no-color --merged | grep -vE '^[+*]' | grep -v master | grep -v next | xargs -I % git branch -d %"
     # Unmerged branches
     bru = branch -a --no-merged
-    brd = !sh -c 'git branch -D $1 && git push --delete origin $1' -
+    brd = branch -D
 
     c = commit -v
     ca = !git c -a
