@@ -118,6 +118,18 @@ def transcribe_gemini(file_path, language=None):
 
         print(f"Audio: ~{minutes}m {seconds}s | Estimated cost: ~${total_cost:.4f}")
 
+    # Warn if Gemini hit the output cap — transcription will end mid-sentence
+    # with no indication unless we surface it. finish_reason is STOP on a
+    # clean completion and MAX_TOKENS when truncated.
+    if response.candidates:
+        finish_reason = response.candidates[0].finish_reason
+        if finish_reason is not None and finish_reason.name == "MAX_TOKENS":
+            print(
+                "WARNING: Gemini hit max_output_tokens; transcription is truncated. "
+                "Split the audio or raise max_output_tokens in the script.",
+                file=sys.stderr,
+            )
+
     return response.text
 
 
