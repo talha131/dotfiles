@@ -145,10 +145,19 @@ def transcribe_whisper(file_path, language=None):
         lang_display = language if language else "auto-detect"
         print(f"Transcribing with whisper.cpp ({lang_display})... (this may take a while)")
 
+        # -mc 0 disables cross-window context carry-over (prevents the
+        # previous chunk's hallucinations from feeding into the next chunk
+        # and locking in repetition cascades). --suppress-nst suppresses
+        # non-speech tokens that leak from YouTube training data
+        # (e.g. "موسیقی" / "music" tags). Both are essential on long-form
+        # non-Latin audio; without them whisper collapses into single-token
+        # spam within ~30 seconds.
         cmd = [
             "whisper-cli",
             "-m", WHISPER_MODEL,
             "-l", lang_code,
+            "-mc", "0",
+            "--suppress-nst",
             "--no-timestamps",
             wav_file.name,
         ]
