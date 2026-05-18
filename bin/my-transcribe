@@ -64,6 +64,7 @@ def build_prompt(language):
 
 def transcribe_gemini(file_path, language=None):
     from google import genai
+    from google.genai import types
 
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
@@ -79,9 +80,14 @@ def transcribe_gemini(file_path, language=None):
     lang_display = language if language else "Urdu/English mix"
     print(f"Transcribing with Gemini 3 Flash ({lang_display})... (this may take a minute)")
 
+    # Default output cap is 8192 tokens — enough for ~10 min of dense Urdu
+    # but truncates longer audio silently. 65536 is the model's max and
+    # covers 8+ hours of transcription, well past the 9.5 hour audio input
+    # limit Gemini enforces anyway.
     response = client.models.generate_content(
         model="gemini-3-flash-preview",
         contents=[prompt, audio_file],
+        config=types.GenerateContentConfig(max_output_tokens=65536),
     )
 
     # Show cost estimate
