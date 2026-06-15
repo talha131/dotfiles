@@ -83,3 +83,6 @@ if status is-interactive
 end
 # Added by Antigravity
 fish_add_path /Users/talha/.antigravity/antigravity/bin
+
+# uv
+fish_add_path "/Users/talha/.local/bin"
