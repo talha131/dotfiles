@@ -55,7 +55,6 @@ if status is-interactive
     # Usage: ytaudio <url> [more-urls...]
     abbr -a ytaudio 'yt-dlp -x --audio-format best --audio-quality 0 -o "%(title)s.%(ext)s"'
     abbr -a claude 'claude --dangerously-skip-permissions'
-    abbr -a cs claude-squad  # Short alias for claude-squad (fish-native, vs. brew's `cs` symlink)
 
     # Auto-switch GitHub account based on directory
     # Only runs inside ~/Developer to avoid slowing down every cd
