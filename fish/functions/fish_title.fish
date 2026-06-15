@@ -1,3 +1,9 @@
+# fish calls fish_title on every prompt redraw and before each command, and wraps
+# whatever it prints in a terminal title escape. Because it runs last and runs
+# constantly, it overrides any title set by other means — so this override is how
+# `tabname` makes a name stick: rather than fight these escapes, we make fish_title
+# itself emit the pinned name. Without this override, `tabname` would be clobbered
+# within one command. See functions/tabname.fish for how the name is stored.
 function fish_title
     # If this tab has a name pinned via `tabname`, always emit it — and ignore the
     # running command (argv) so the title never flickers between the name and the
