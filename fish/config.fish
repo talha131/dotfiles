@@ -86,3 +86,8 @@ fish_add_path /Users/talha/.antigravity/antigravity/bin
 
 # uv
 fish_add_path "/Users/talha/.local/bin"
+
+# Trust workspaces for Gemini CLI so headless dispatches (e.g. /octo:review)
+# don't bail with the trusted-folders prompt. Required for the Octopus
+# multi-LLM review fleet to actually use Gemini instead of falling back.
+set -gx GEMINI_CLI_TRUST_WORKSPACE true
