@@ -1,0 +1,228 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.9"
+# dependencies = [
+#     "beautifulsoup4>=4.12",
+# ]
+# ///
+"""
+Convert an old.reddit.com HTML page into structured JSON.
+
+Preserves ALL images, videos, and links found in both the original post (OP)
+and every comment (recursively, at any nesting depth).
+
+Usage:
+    my-reddit-to-json <input.html> [output.json]
+
+If output.json is omitted, the JSON is written next to the input file with a
+.json extension. Requires `uv` (https://docs.astral.sh/uv/) — no pip needed;
+uv provisions the one dependency (beautifulsoup4) automatically.
+"""
+
+import json
+import sys
+from pathlib import Path
+
+from bs4 import BeautifulSoup
+
+# Substrings that identify a link/URL as pointing at video or rich media.
+VIDEO_HOSTS = (
+    "v.redd.it", "youtube.com/watch", "youtu.be/", "youtube.com/embed",
+    "gfycat.com", "redgifs.com", "streamable.com", "vimeo.com",
+    "twitch.tv", "dailymotion.com", "gifs.com",
+)
+VIDEO_EXTS = (".mp4", ".webm", ".mov", ".m4v", ".gifv", ".gif")
+
+
+def is_video_url(url):
+    if not url:
+        return False
+    u = url.lower()
+    return any(h in u for h in VIDEO_HOSTS) or u.split("?")[0].endswith(VIDEO_EXTS)
+
+
+def collect_media(md):
+    """Extract links, images and videos from a rendered markdown/body element.
+
+    `md` is a BeautifulSoup element (the .md / body container) or None.
+    Returns (links, images, videos) as lists of dicts.
+    """
+    links, images, videos = [], [], []
+    if md is None:
+        return links, images, videos
+
+    # Links (anchors)
+    for a in md.find_all("a", href=True):
+        href = a["href"]
+        entry = {"text": a.get_text(strip=True), "href": href}
+        links.append(entry)
+        # A link to a known video host counts as a video too.
+        if is_video_url(href):
+            videos.append({"type": "link", "src": href,
+                           "text": a.get_text(strip=True)})
+
+    # Images
+    for im in md.find_all("img"):
+        src = im.get("src") or im.get("data-src")
+        images.append({
+            "src": src,
+            "width": im.get("width"),
+            "height": im.get("height"),
+            "alt": im.get("alt"),
+        })
+        # Some "images" are actually animated gifs -> treat as video too.
+        if src and src.lower().split("?")[0].endswith((".gif", ".gifv")):
+            videos.append({"type": "gif", "src": src})
+
+    # Native video / source / iframe (embeds)
+    for v in md.find_all("video"):
+        src = v.get("src")
+        srcs = [s.get("src") for s in v.find_all("source") if s.get("src")]
+        videos.append({"type": "video", "src": src, "sources": srcs,
+                       "poster": v.get("poster")})
+    for f in md.find_all("iframe"):
+        videos.append({"type": "iframe", "src": f.get("src")})
+
+    return links, images, videos
+
+
+def parse_body(container):
+    """Given a container that holds a `.md` body, return body dict fields."""
+    md = container.find("div", class_="md") if container else None
+    if md is None and container is not None and "md" in container.get("class", []):
+        md = container
+    links, images, videos = collect_media(md)
+    return {
+        "body": md.get_text("\n", strip=True) if md else None,
+        "body_html": md.decode_contents().strip() if md else None,
+        "links": links,
+        "images": images,
+        "videos": videos,
+    }
+
+
+def parse_comment(thing):
+    cls = " ".join(thing.get("class", []))
+    node = {
+        "id": thing.get("data-fullname"),
+        "author": thing.get("data-author"),
+        "permalink": thing.get("data-permalink"),
+        "deleted": "deleted" in cls,
+    }
+    sc = thing.find("span", class_="score unvoted")
+    node["score"] = int(sc["title"]) if sc and sc.get("title", "").isdigit() else None
+    t = thing.find("time")
+    node["created"] = t.get("datetime") if t else None
+
+    entry = thing.find("div", class_="entry")
+    node.update(parse_body(entry))
+
+    # Recurse into this comment's direct child listing only.
+    children = []
+    child_div = thing.find("div", class_="child", recursive=True)
+    if child_div:
+        listing = child_div.find("div", class_="sitetable", recursive=False)
+        if listing:
+            for kid in listing.find_all("div", class_="comment", recursive=False):
+                children.append(parse_comment(kid))
+    node["replies"] = children
+    return node
+
+
+def parse_op(soup):
+    op = soup.find("div", id=lambda x: x and x.startswith("thing_t3_"))
+    if op is None:
+        return None
+
+    title_el = op.find(class_="title")
+    post = {
+        "id": op.get("data-fullname"),
+        "author": op.get("data-author"),
+        "permalink": op.get("data-permalink"),
+        "subreddit": op.get("data-subreddit-prefixed") or op.get("data-subreddit"),
+        "title": title_el.get_text(strip=True) if title_el else None,
+        "url": op.get("data-url"),
+        "created": (op.find("time").get("datetime") if op.find("time") else None),
+    }
+    sc = op.find("span", class_="score unvoted")
+    post["score"] = int(sc["title"]) if sc and sc.get("title", "").isdigit() else None
+
+    # Self / text post body (may be empty for link/image posts).
+    selftext = op.find("div", class_="usertext-body")
+    post.update(parse_body(selftext))
+
+    # Post-level media: the linked url, preview image, and any expando embeds.
+    links, images, videos = post["links"], post["images"], post["videos"]
+
+    # The submission URL itself may be an image or video.
+    if post["url"]:
+        low = post["url"].lower()
+        if any(low.split("?")[0].endswith(e) for e in
+               (".jpg", ".jpeg", ".png", ".webp")):
+            if not any(i["src"] == post["url"] for i in images):
+                images.append({"src": post["url"], "width": None,
+                               "height": None, "alt": "submission image"})
+        elif is_video_url(post["url"]):
+            videos.append({"type": "link", "src": post["url"],
+                           "text": "submission video"})
+
+    # Expando / media-preview holds the inline preview <img>, <video>, <iframe>.
+    for zone in op.find_all(class_=["expando", "media-preview"]):
+        zl, zi, zv = collect_media(zone)
+        for i in zi:
+            if not any(x["src"] == i["src"] for x in images):
+                images.append(i)
+        videos.extend(zv)
+        for l in zl:
+            if not any(x["href"] == l["href"] for x in links):
+                links.append(l)
+
+    return post
+
+
+def parse_reddit(html):
+    soup = BeautifulSoup(html, "html.parser")
+    op = parse_op(soup)
+
+    area = soup.find("div", class_="commentarea")
+    listing = area.find("div", class_="sitetable", recursive=False) if area else None
+    comments = []
+    if listing:
+        for thing in listing.find_all("div", class_="comment", recursive=False):
+            comments.append(parse_comment(thing))
+
+    def count(nodes):
+        return sum(1 + count(n["replies"]) for n in nodes)
+
+    return {
+        "post": op,
+        "comments": comments,
+        "stats": {
+            "top_level_comments": len(comments),
+            "total_comments": count(comments),
+        },
+    }
+
+
+def main(argv):
+    if len(argv) < 2:
+        print(__doc__)
+        return 1
+    src = Path(argv[1])
+    if not src.exists():
+        print(f"error: file not found: {src}", file=sys.stderr)
+        return 1
+    out = Path(argv[2]) if len(argv) > 2 else src.with_suffix(".json")
+
+    data = parse_reddit(src.read_text(encoding="utf-8", errors="replace"))
+    out.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    s = data["stats"]
+    print(f"Parsed {s['total_comments']} comments "
+          f"({s['top_level_comments']} top-level).")
+    print(f"Wrote {out}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv))

@@ -86,3 +86,28 @@ my-youtube-subtitles lecture.mp3 -o custom-name.vtt
 my-youtube-subtitles lecture.mp3 -e whisper
 my-youtube-subtitles lecture.mp3 -e whisper -f srt -l ur
 ```
+
+---
+
+## my-reddit-to-json
+
+Converts a saved `old.reddit.com` HTML page into structured JSON, preserving
+all images, videos, and links from both the original post and every comment
+(recursively, at any depth). Dependencies (`beautifulsoup4`) are provisioned
+automatically by `uv` — no manual setup needed.
+
+### Usage
+
+```
+my-reddit-to-json <input.html> [output.json]
+```
+
+If `output.json` is omitted, the JSON is written next to the input with a
+`.json` extension.
+
+**Examples:**
+
+```bash
+my-reddit-to-json reddit.html            # → reddit.json (auto)
+my-reddit-to-json reddit.html out.json   # custom output name
+```
