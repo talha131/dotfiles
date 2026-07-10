@@ -90,3 +90,7 @@ fish_add_path "/Users/talha/.local/bin"
 # don't bail with the trusted-folders prompt. Required for the Octopus
 # multi-LLM review fleet to actually use Gemini instead of falling back.
 set -gx GEMINI_CLI_TRUST_WORKSPACE true
+
+# Firebase Admin SDK service-account credentials, consumed by tooling that
+# talks to Firebase (e.g. the Admin SDK). Point at the local key file.
+set -x FIREBASE_ADMIN_KEY ~/.config/firebase/admin.json
