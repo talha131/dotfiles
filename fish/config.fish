@@ -77,10 +77,10 @@ if status is-interactive
     __auto_gh_switch
 end
 # Added by Antigravity
-fish_add_path /Users/talha/.antigravity/antigravity/bin
+fish_add_path ~/.antigravity/antigravity/bin
 
 # uv
-fish_add_path "/Users/talha/.local/bin"
+fish_add_path ~/.local/bin
 
 # Trust workspaces for Gemini CLI so headless dispatches (e.g. /octo:review)
 # don't bail with the trusted-folders prompt. Required for the Octopus
