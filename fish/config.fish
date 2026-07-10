@@ -38,9 +38,6 @@ if status is-interactive
     # iTerm2 integration
     test -e {$HOME}/.iterm2_shell_integration.fish && source {$HOME}/.iterm2_shell_integration.fish
 
-    # iTermocil completions
-    complete -c itermocil -a "(itermocil --list)"
-
     # Zoxide (replaces autojump)
     zoxide init --cmd j fish | source
 
