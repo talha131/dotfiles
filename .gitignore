@@ -1,3 +1,7 @@
 fish/functions/fzf_key_bindings.fish
 fish/conf.d/virtualfish-loader.fish
 fish/fish_variables
+
+# iTerm2 full-state export: a large, ephemeral snapshot of open
+# windows/panes and scrollback. Settings live in the .plist instead.
+iTerm2/iTerm2 State.itermexport
