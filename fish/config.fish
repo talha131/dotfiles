@@ -1,8 +1,8 @@
 # Editor (used by git, crontab, kubectl, and other tools)
-set -x EDITOR nvim
+set -gx EDITOR nvim
 
 # vcpkg (C++ package manager)
-set -x VCPKG_ROOT $HOME/vcpkg
+set -gx VCPKG_ROOT $HOME/vcpkg
 
 # Personal scripts
 fish_add_path ~/Developer/dotfiles/bin
@@ -20,7 +20,7 @@ set -gx LESS '-R'
 
 # bat as man pager (colored man pages)
 # "bat -plman" messes up the man page formatting
-command -q bat && set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+command -q bat && set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # Setting fd as the default source for fzf
 set -gx FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix'
@@ -89,4 +89,4 @@ set -gx GEMINI_CLI_TRUST_WORKSPACE true
 
 # Firebase Admin SDK service-account credentials, consumed by tooling that
 # talks to Firebase (e.g. the Admin SDK). Point at the local key file.
-set -x FIREBASE_ADMIN_KEY ~/.config/firebase/admin.json
+set -gx FIREBASE_ADMIN_KEY ~/.config/firebase/admin.json
