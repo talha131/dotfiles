@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.talha131.my-secure-input</string>
+
+    <!-- Poll Secure Input state and notify if a non-allowlisted app holds it.
+         Absolute path required: launchd does not expand ~ and ignores login PATH. -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/talha/Developer/dotfiles/bin/my-secure-input</string>
+        <string>--notify</string>
+    </array>
+
+    <!-- Check every 10s. The script itself is cheap (ioreg + ps) and debounces
+         notifications to once per episode. -->
+    <key>StartInterval</key>
+    <integer>10</integer>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/talha/Library/Logs/my-secure-input.log</string>
+</dict>
+</plist>
