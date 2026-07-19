@@ -17,7 +17,6 @@ prompt is [Starship](https://starship.rs/).
 | `fish/`     | fish config, functions, and auto-loaded `conf.d/`             | `~/.config/fish/`                 |
 | `git/`      | git config with split personal/work identity, aliases, helpers | `~/.config/git/`, `~/.gitconfig` |
 | `bin/`      | personal CLI scripts (added to `$PATH` by fish)               | on `$PATH`                        |
-| `iTerm2/`   | iTerm2 preferences + color schemes                            | iTerm2 custom-prefs folder        |
 
 ## bin scripts
 

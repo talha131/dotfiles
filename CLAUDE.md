@@ -15,8 +15,7 @@ tracked file here changes the live config immediately.
 
 ## Folder guides
 
-Each folder has its own `CLAUDE.md` with specifics: `bin/`, `fish/`, `git/`,
-`iTerm2/`.
+Each folder has its own `CLAUDE.md` with specifics: `bin/`, `fish/`, and `git/`.
 
 ## Archived editor configs
 
