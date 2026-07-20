@@ -51,30 +51,6 @@ if status is-interactive
     # Usage: ytaudio <url> [more-urls...]
     abbr -a ytaudio 'yt-dlp -x --audio-format best --audio-quality 0 -o "%(title)s.%(ext)s"'
     abbr -a claude 'claude --dangerously-skip-permissions'
-
-    # Auto-switch GitHub account based on directory
-    # Only runs inside ~/Developer to avoid slowing down every cd
-    function __auto_gh_switch --on-variable PWD
-        # Skip if not in Developer folder
-        string match -q "$HOME/Developer/*" $PWD; or return
-
-        set -l target_user
-        if string match -q "$HOME/Developer/talha@jumpdesktop.com/*" $PWD
-            set target_user smTalhaM
-        else
-            set target_user talha131
-        end
-
-        # Only switch if target changed (avoid slow gh api calls)
-        if test "$__gh_current_user" != "$target_user"
-            if gh auth switch --user $target_user 2>/dev/null
-                set -g __gh_current_user $target_user
-                echo "🔄 Switched to GitHub account: $target_user"
-            end
-        end
-    end
-    # Run once on shell startup (only if in Developer folder)
-    __auto_gh_switch
 end
 # Added by Antigravity
 fish_add_path ~/.antigravity/antigravity/bin

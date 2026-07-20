@@ -2,9 +2,9 @@
 
 Symlinked to `~/.config/fish/`. Layout:
 
-- `config.fish` — env vars, `$PATH`, fzf setup, abbreviations, and an
-  `--on-variable PWD` hook that auto-switches the GitHub account (`gh auth
-  switch`) between personal and work dirs under `~/Developer`.
+- `config.fish` — env vars, `$PATH`, fzf setup, and abbreviations. (GitHub
+  account selection is no longer done here — it's handled statelessly by
+  directory via `git/config` credential helpers and the `bin/gh` shim.)
 - `functions/` — autoloaded fish functions (one function per file; filename ==
   function name).
 - `conf.d/` — auto-sourced at startup. `done.fish` is a vendored plugin (don't
