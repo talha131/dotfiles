@@ -2,3 +2,10 @@
 	name = Talha
     email = talha@jumpdesktop.com
     signingkey = 199346CBEB72C2666A915AA38438A46688D7DFC9
+
+# Pin git auth to the work account (smTalhaM). The empty helper clears the
+# personal helper inherited from the main config; this file is included last
+# (see the includeIf at the bottom of git/config) so this reset wins.
+[credential "https://github.com"]
+	helper =
+	helper = "!GH_TOKEN=$(/opt/homebrew/bin/gh auth token --user smTalhaM) /opt/homebrew/bin/gh auth git-credential"

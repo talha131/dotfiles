@@ -3,10 +3,6 @@
 	email = talha131@gmail.com
 	signingkey = 561E6373A1B75589791E589D002B80DA805650B7
 
-# Work account (Jump Desktop)
-[includeIf "gitdir:~/Developer/talha@jumpdesktop.com/"]
-    path = ~/Developer/dotfiles/git/config-work
-
 [core]
     quotepath = false
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -119,10 +115,14 @@
 	gpgsign = true
 [init]
 	defaultBranch = master
-# Use GitHub CLI for authentication (blank helper= clears any previous helpers)
+# Auth via gh, pinned to the personal account (talha131). The work tree pins
+# smTalhaM instead — see the includeIf at the bottom of this file. Injecting
+# GH_TOKEN makes `gh auth git-credential` return that account's token
+# regardless of gh's global "active account", so pushes never depend on shared
+# mutable state (blank helper= first clears any inherited helpers).
 [credential "https://github.com"]
-	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper =
+	helper = "!GH_TOKEN=$(/opt/homebrew/bin/gh auth token --user talha131) /opt/homebrew/bin/gh auth git-credential"
 # Use GitHub CLI for authentication (blank helper= clears any previous helpers)
 [credential "https://gist.github.com"]
 	helper = 
@@ -130,3 +130,10 @@
 # Rewrite SSH URLs to HTTPS (enables using gh CLI auth instead of SSH keys)
 [url "https://github.com/"]
 	insteadOf = git@github.com:
+
+# Work account (Jump Desktop). MUST stay at the bottom: it overrides both the
+# identity ([user]) and the credential helper for repos under the work tree.
+# Git credential helpers are additive, so config-work's `helper =` reset only
+# wins over the personal helper above if this include is parsed last.
+[includeIf "gitdir:~/Developer/talha@jumpdesktop.com/"]
+	path = ~/Developer/dotfiles/git/config-work
