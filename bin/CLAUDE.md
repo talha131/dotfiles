@@ -6,7 +6,9 @@ Scripts here are on `$PATH` (added by `fish/config.fish` via
 ## Conventions
 
 - **Naming:** user scripts are prefixed `my-*` (e.g. `my-transcribe`,
-  `my-reddit-to-json`). No file extension.
+  `my-reddit-to-json`). No file extension. **Exception:** `gh` deliberately
+  omits the prefix because it *shadows* the real `gh` binary (PATH order puts
+  this dir ahead of Homebrew) rather than adding a new command.
 - **Self-contained Python:** scripts use a `uv` script shebang
   (`#!/usr/bin/env -S uv run --script`) with PEP 723 inline dependencies
   (a `# /// script` block). `uv` provisions deps automatically — no venv, no

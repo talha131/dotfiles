@@ -152,3 +152,26 @@ launchctl bootout gui/(id -u)/com.talha131.my-secure-input
 
 When alerted, **cleanly quit** the offending app (⌘Q) — never force-kill it, or
 the lock orphans onto a dead PID and only a logout/reboot clears it.
+
+---
+
+## gh
+
+A thin shim around the real `gh` CLI (`/opt/homebrew/bin/gh`) that picks the
+GitHub account **by current directory** instead of `gh`'s global "active
+account". Paths under `~/Developer/talha@jumpdesktop.com/` use the work account
+(`smTalhaM`); everywhere else uses personal (`talha131`). It does this by
+exporting `GH_TOKEN` for the chosen account, so selection is stateless — correct
+in every shell and safe across parallel agents, with no `gh auth switch` races.
+
+This is the naming exception noted in `bin/CLAUDE.md`: the file is named `gh`
+(not `my-gh`) so it shadows the real binary via PATH order.
+
+- `gh auth …` is passed straight through untouched (a forced token would break
+  `auth status` / `switch` / `login`).
+- An explicit `GH_TOKEN` / `GITHUB_TOKEN` in the environment is respected.
+- Directory detection is CWD-based, matching git's `includeIf` (see
+  `git/config`). Clone a repo into the tree that matches its account.
+
+Git *itself* (push/pull/fetch) is handled separately by per-directory credential
+helpers in `git/config` — see `git/CLAUDE.md`. The two share the same rule.

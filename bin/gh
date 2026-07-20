@@ -1,0 +1,36 @@
+#!/bin/sh
+# gh — account-aware wrapper around the real gh CLI.
+#
+# Picks the GitHub account from the current directory, matching the rule in
+# git/config's includeIf: paths under ~/Developer/talha@jumpdesktop.com/ use the
+# work account (smTalhaM); everything else uses personal (talha131). The chosen
+# account's token is exported as GH_TOKEN so gh ignores its global "active
+# account" — making account selection stateless and safe across parallel shells
+# and agents (no `gh auth switch` races).
+#
+# This shadows /opt/homebrew/bin/gh via PATH order (dotfiles/bin precedes
+# Homebrew) so it applies in every shell, including tools that don't use fish.
+# It is the one script here not prefixed my-* because it deliberately overrides
+# a real binary rather than adding a new command.
+
+real_gh=/opt/homebrew/bin/gh
+
+# Pass `gh auth ...` straight through: forcing a token would break
+# `auth status` / `switch` / `login`. Likewise defer to an explicit override.
+case "$1" in auth) exec "$real_gh" "$@" ;; esac
+if [ -n "$GH_TOKEN" ] || [ -n "$GITHUB_TOKEN" ]; then
+	exec "$real_gh" "$@"
+fi
+
+# Choose the account from the current directory.
+case "$PWD/" in
+	"$HOME"/Developer/talha@jumpdesktop.com/*) user=smTalhaM ;;
+	*) user=talha131 ;;
+esac
+
+# Export that account's token; fall back to plain gh if it can't be read.
+token=$("$real_gh" auth token --user "$user" 2>/dev/null)
+if [ -n "$token" ]; then
+	export GH_TOKEN=$token
+fi
+exec "$real_gh" "$@"
