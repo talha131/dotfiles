@@ -2,5 +2,9 @@
 # cmux reads this file for terminal rendering (font, theme, transparency, …).
 # Apply changes live with: cmux reload-config
 
+# Font
+font-family = MesloLGL Nerd Font Mono
+font-size = 14
+
 # Appearance
 theme = light:Breadog,dark:Breadog
