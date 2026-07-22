@@ -1,0 +1,18 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion" : 1,
+  "shortcuts" : {
+    "bindings" : {
+      "selectSurfaceByNumber" : {
+        "first" : {
+          "command" : false,
+          "control" : false,
+          "key" : "1",
+          "keyCode" : 18,
+          "option" : true,
+          "shift" : false
+        }
+      }
+    }
+  }
+}
