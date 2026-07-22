@@ -114,47 +114,6 @@ my-reddit-to-json reddit.html out.json   # custom output name
 
 ---
 
-## my-secure-input
-
-Reports (and optionally alerts on) macOS **Secure Input** state. Secure Input
-(Secure Keyboard Entry) blocks *all* global keystroke monitoring — text
-expanders (Raycast snippets), clipboard/hotkey managers (PasteNow), and
-third-party input methods (Keyman) silently go blind until it's released. Apps
-enable it when a password field is *focused* (you needn't type anything), and
-Electron apps like Obsidian sometimes leak it and leave it stuck.
-
-### Usage
-
-```
-my-secure-input            # show who currently holds Secure Input
-my-secure-input --notify   # notify if a non-allowlisted app holds it (silent otherwise)
-```
-
-`loginwindow` (screen lock) and terminals are allowlisted; edit `ALLOWLIST` in
-the script to taste.
-
-### Background watchdog (launchd)
-
-A launchd agent runs `--notify` every 10s so a stuck Secure Input becomes an
-immediate macOS notification instead of a mysterious hours-later failure.
-Install it once:
-
-```fish
-ln -s ~/Developer/dotfiles/launchd/com.talha131.my-secure-input.plist ~/Library/LaunchAgents/
-launchctl bootstrap gui/(id -u) ~/Library/LaunchAgents/com.talha131.my-secure-input.plist
-```
-
-To stop/remove it:
-
-```fish
-launchctl bootout gui/(id -u)/com.talha131.my-secure-input
-```
-
-When alerted, **cleanly quit** the offending app (⌘Q) — never force-kill it, or
-the lock orphans onto a dead PID and only a logout/reboot clears it.
-
----
-
 ## gh
 
 A thin shim around the real `gh` CLI (`/opt/homebrew/bin/gh`) that picks the
