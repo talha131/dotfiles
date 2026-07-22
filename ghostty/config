@@ -5,6 +5,8 @@
 # Font
 font-family = MesloLGL Nerd Font Mono
 font-size = 12
+# Thicken strokes — Meslo renders too thin at 12pt otherwise.
+font-thicken = true
 
 # Appearance
 theme = light:Breadog,dark:Breadog
