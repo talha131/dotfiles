@@ -1,0 +1,6 @@
+# Ghostty config — also read by cmux's embedded Ghostty.
+# cmux reads this file for terminal rendering (font, theme, transparency, …).
+# Apply changes live with: cmux reload-config
+
+# Appearance
+theme = light:Breadog,dark:Breadog
