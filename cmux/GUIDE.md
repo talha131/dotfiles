@@ -8,25 +8,30 @@ in this folder.
 
 ## FAQ / quick reference
 
-### ⭐ Mark a workspace "Done" with a visible green badge
+### ⭐ Mark a workspace state with a visible badge  →  `myws`
 ```fish
-cmux set-status done "Done" --icon checkmark.circle.fill --color "#3FB950" \
-    --priority 90 --workspace workspace:6
-cmux clear-status done --workspace workspace:6            # remove the badge
+myws done                 # green  ✓ Done   pill on the current workspace
+myws active               # blue   ⚡ Active pill (mirrors cmux's "Running")
+myws deferred             # gray   ⏸ Deferred pill
+myws clear                # remove the pill
+myws status               # show current pills + lifecycle lane
+myws done workspace:6     # target another workspace by ref/id/index
 ```
-The right-click **Status → Done** sets a *quiet* lifecycle lane with no bright
-badge; this `set-status` pill is the loud, always-visible marker. (Details:
-[Marking a workspace Done](#marking-a-workspace-done-lifecycle-status).)
+`myws` is a fish function (`fish/functions/myws.fish`) wrapping `cmux set-status`.
+The right-click **Status → Done** only sets a *quiet* lifecycle lane with no
+bright badge; these pills are the loud, always-visible markers. (Details:
+[Shortcut functions](#shortcut-functions-mytab--myws),
+[Visible status badges](#visible-status-badges-sidebar-pills).)
 
-### ⭐ Rename the current tab  (mind the gotcha)
+### ⭐ Rename the current tab  →  `mytab`
 ```fish
-cmux rename-tab --surface $CMUX_SURFACE_ID "dotfiles folder"
+mytab "dotfiles folder"
 ```
-**Do NOT** rely on the bare form `cmux rename-tab "title"` — in practice the
-default `$CMUX_TAB_ID` is set to the *workspace* UUID, so it fails with
-`Error: not_found: Tab not found`. Always pass `--surface $CMUX_SURFACE_ID`
-(that env var is correct) or an explicit `--tab tab:<n>` ref from
-`cmux identify --json` (`caller.tab_ref`). (Details:
+`mytab` (`fish/functions/mytab.fish`) targets `--surface $CMUX_SURFACE_ID`
+because the bare `cmux rename-tab "title"` fails with
+`Error: not_found: Tab not found` — the default `$CMUX_TAB_ID` is set to the
+*workspace* UUID, not a tab id. (Details:
+[Shortcut functions](#shortcut-functions-mytab--myws),
 [Renaming](#renaming-tabs-workspaces-and-windows).)
 
 ### Other common one-liners
@@ -40,17 +45,39 @@ cmux identify --json                                     # what am I? (refs for 
 cmux workspace list --json                               # all workspaces + refs
 ```
 
-### Optional: a fish shortcut for "mark done"
-If you do this a lot, drop a function in `fish/` (e.g. `functions/`):
+---
+
+## Shortcut functions (`mytab` / `myws`)
+
+Two autoloaded fish functions live in `fish/functions/` (symlinked into
+`~/.config/fish/functions/`, so they're live in any new shell).
+
+### `mytab <title>` — rename the current tab
 ```fish
-function wsdone --description 'Mark a cmux workspace done (green pill)'
-    set -l ws $argv[1]; test -z "$ws"; and set ws $CMUX_WORKSPACE_ID
-    cmux set-status done "Done" --icon checkmark.circle.fill --color "#3FB950" \
-        --priority 90 --workspace $ws
-end
-# usage:  wsdone            (current workspace)
-#         wsdone workspace:6
+mytab "dotfiles folder"
 ```
+Wraps `cmux rename-tab --surface $CMUX_SURFACE_ID …` to dodge the
+`$CMUX_TAB_ID` gotcha (see [Renaming](#renaming-tabs-workspaces-and-windows)).
+
+### `myws <state> [workspace-ref]` — set a workspace state badge
+```fish
+myws done         myws active       myws deferred      # set a pill (current ws)
+myws clear                                             # remove the pill
+myws status                                            # list pills + lifecycle lane
+myws deferred workspace:6                              # target another workspace
+```
+Wraps `cmux set-status` using a single pill key (`myws`) so the states are
+mutually exclusive — setting a new one replaces the previous. Styling reuses
+cmux's own icon/color vocabulary:
+
+| State | Label | Icon | Color |
+|---|---|---|---|
+| `done` | Done | `checkmark.circle.fill` ✓ | green `#3FB950` |
+| `active` | Active | `bolt.fill` ⚡ (like "Running") | blue `#4C8DFF` |
+| `deferred` | Deferred | `pause.circle.fill` ⏸ | gray `#8B949E` |
+
+These are **pills**, so unlike the lifecycle lane they persist through agent
+activity and won't auto-clear — use `myws clear` to remove one.
 
 ---
 
