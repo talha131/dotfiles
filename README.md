@@ -1,8 +1,9 @@
 # dotfiles
 
 Personal macOS dotfiles, deployed by **symlinking** files from this repo into
-place — there is no install script. Shell is [fish](https://fishshell.com/);
-prompt is [Starship](https://starship.rs/).
+place — there is no install script; see [`SETUP.md`](SETUP.md) for the exact
+symlink commands. Shell is [fish](https://fishshell.com/); prompt is
+[Starship](https://starship.rs/).
 
 > **A note on churn:** after ~20 years of a vim/neovim-centric workflow, my
 > day-to-day moved to an AI-assisted setup — VS Code for most editing, and
