@@ -7,6 +7,9 @@ Symlinked to `~/.config/fish/`. Layout:
   directory via `git/config` credential helpers and the `bin/gh` shim.)
 - `functions/` — autoloaded fish functions (one function per file; filename ==
   function name).
+- `completions/` — autoloaded tab-completions (one file per command, holding
+  `complete` definitions). Symlinked into `~/.config/fish/completions/` like
+  `functions/` and `conf.d/`.
 - `conf.d/` — auto-sourced at startup. `done.fish` is a vendored plugin (don't
   hand-edit); `fish_frozen_theme.fish` pins the color theme.
 
