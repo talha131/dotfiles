@@ -66,3 +66,15 @@ set -gx GEMINI_CLI_TRUST_WORKSPACE true
 # Firebase Admin SDK service-account credentials, consumed by tooling that
 # talks to Firebase (e.g. the Admin SDK). Point at the local key file.
 set -gx FIREBASE_ADMIN_KEY ~/.config/firebase/admin.json
+
+# Java for Android/Gradle builds. AGP 9.x + Gradle 9.x are validated on JDK 21,
+# which is also what the Android CI job uses; the unversioned openjdk is newer
+# and is not. Every Homebrew openjdk is keg-only, so nothing is linked into
+# /opt/homebrew/bin: point JAVA_HOME at 21 explicitly and put its bin ahead of
+# the /opt/homebrew/opt/openjdk/bin entry already in fish_user_paths.
+# Keg-only JDKs are invisible to /usr/libexec/java_home, which sees only
+# Temurin and silently returns it for any -v N. Reach the others by full path:
+# /opt/homebrew/opt/openjdk@N/libexec/openjdk.jdk/Contents/Home
+set -gx JAVA_HOME /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
+fish_add_path $JAVA_HOME/bin
+
