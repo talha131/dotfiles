@@ -33,7 +33,7 @@ function ssgc -d 'Download and backup SSGC bills'
         # bill_download.php?f=billpdfs%2Fgasbill_<acct>_<yyyymm>_<timestamp>.pdf
         # (URL-encoded, and gated behind a session cookie), so match the bare
         # filename and rebuild the direct billpdfs/ URL, which needs no session.
-        set pdf_url (http --form POST "https://viewbill.ssgc.com.pk/web/" b=$account g-recaptcha-response="any_random_text" | rg -o 'gasbill[0-9_]+\.pdf' | head -1 | sed 's|^|https://viewbill.ssgc.com.pk/web/billpdfs/|')
+        set pdf_url (http --ignore-stdin --form POST "https://viewbill.ssgc.com.pk/web/" b=$account g-recaptcha-response="any_random_text" | rg -o 'gasbill[0-9_]+\.pdf' | head -1 | sed 's|^|https://viewbill.ssgc.com.pk/web/billpdfs/|')
 
         if test -z "$pdf_url"
             echo "⚠️  Could not get PDF for account: $account (no PDF URL found in response)"
@@ -44,7 +44,7 @@ function ssgc -d 'Download and backup SSGC bills'
 
         # Download
         echo "📥 Downloading $filename"
-        http -d "$pdf_url"
+        http --ignore-stdin -d -o "$filename" "$pdf_url"
 
         # Upload to pCloud
         echo "📤 Uploading to pcloud:$destination"
