@@ -78,3 +78,15 @@ set -gx FIREBASE_ADMIN_KEY ~/.config/firebase/admin.json
 set -gx JAVA_HOME /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
 fish_add_path $JAVA_HOME/bin
 
+# Android SDK. One SDK root, the location Android Studio also defaults to, so
+# the IDE and command-line Gradle builds share the same packages. platform-tools
+# goes ahead of /opt/homebrew/bin because the android-platform-tools cask
+# symlinks its own adb/fastboot there; keeping the SDK copy first means adb
+# tracks whatever Studio installs instead of drifting on a separate release
+# cadence. sdkmanager/avdmanager live only under cmdline-tools/latest/bin --
+# Homebrew ships no copy of those, so nothing shadows them.
+set -gx ANDROID_HOME $HOME/Library/Android/sdk
+set -gx ANDROID_SDK_ROOT $ANDROID_HOME
+fish_add_path $ANDROID_HOME/platform-tools
+fish_add_path $ANDROID_HOME/emulator
+fish_add_path $ANDROID_HOME/cmdline-tools/latest/bin
