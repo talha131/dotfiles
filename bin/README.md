@@ -134,3 +134,40 @@ This is the naming exception noted in `bin/CLAUDE.md`: the file is named `gh`
 
 Git *itself* (push/pull/fetch) is handled separately by per-directory credential
 helpers in `git/config` — see `git/CLAUDE.md`. The two share the same rule.
+
+## my-claude-backup
+
+Dated snapshots of the Claude Code config files (`.claude.json`,
+`settings.json`) for every account, kept outside the config dirs.
+
+Claude Code has its own rotation in `<config>/backups/`, but it keeps only
+five copies — under active use that window can be shorter than an hour, so a
+config corrupted overnight has no good copy left by morning.
+
+Accounts are discovered the same way `fish/conf.d/claude-account.fish`
+resolves them: `x` is `~/.claude`, anything else is `~/.config/claude/<name>`.
+Snapshots land in `~/.local/state/claude-config-backups/<account>/<stamp>/`,
+newest 30 retained, identical consecutive snapshots skipped.
+
+### Usage
+
+```fish
+my-claude-backup                    # snapshot every account
+my-claude-backup --list             # show what is stored
+my-claude-backup --restore x        # restore newest good snapshot
+my-claude-backup --restore x --from 20260920-161500
+my-claude-backup --keep 60
+```
+
+### Safeguards
+
+- **Never snapshots a broken config.** A copy is only taken if the file
+  parses, has an `oauthAccount`, and has completed onboarding — otherwise a
+  corrupted config would quietly overwrite the last good snapshot.
+- **Refuses to restore under a live session.** A running Claude holds the
+  config in memory and rewrites it on exit, which would undo the restore.
+  Discovery uses `ps`, not `pgrep` — `pgrep` omits the process the script was
+  invoked from, i.e. the very session most likely to clobber it.
+- **Atomic writes.** Restores go to a temp file, `fsync`, then `rename()`.
+  A truncated config is how these get lost in the first place.
+- The file being replaced is kept as `.claude.json.before-restore-<stamp>`.

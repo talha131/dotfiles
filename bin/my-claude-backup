@@ -1,0 +1,215 @@
+#!/usr/bin/env python3
+"""
+Snapshot and restore Claude Code config files.
+
+Claude Code keeps its own rotation in <config>/backups/, but only five
+copies. Under active use that window can be under an hour, so a config
+that gets corrupted overnight has no good copy left by morning. This keeps
+dated snapshots outside the config dir, and refuses to snapshot a file
+that is already broken.
+
+Usage:
+    my-claude-backup                    # snapshot every account
+    my-claude-backup --list             # show what is stored
+    my-claude-backup --restore x        # restore newest good snapshot
+    my-claude-backup --restore x --from 20260920-161500
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+from datetime import datetime
+from pathlib import Path
+
+HOME = Path.home()
+DEFAULT_DIR = HOME / ".claude"
+ACCOUNT_ROOT = HOME / ".config" / "claude"
+STORE = HOME / ".local" / "state" / "claude-config-backups"
+FILES = (".claude.json", "settings.json")
+KEEP = 30
+
+
+def accounts() -> dict[str, Path]:
+    """Map account name -> config dir, matching fish/conf.d/claude-account.fish."""
+    found = {"x": DEFAULT_DIR} if DEFAULT_DIR.is_dir() else {}
+    if ACCOUNT_ROOT.is_dir():
+        for d in sorted(ACCOUNT_ROOT.iterdir()):
+            if d.is_dir():
+                found[d.name] = d
+    return found
+
+
+def holders(config_dir: Path) -> list[int]:
+    """PIDs of running claude processes using this config dir.
+
+    A live session holds the config in memory and rewrites it on exit, so
+    restoring underneath one silently throws the restore away.
+
+    Discovery goes through ps, not pgrep: pgrep does not report the claude
+    process this script was invoked from, which is precisely the session
+    most likely to clobber a restore.
+    """
+    try:
+        listing = subprocess.run(
+            ["ps", "-axww", "-o", "pid=,command="], capture_output=True, text=True
+        ).stdout
+    except OSError:
+        return []
+
+    out = []
+    for line in listing.splitlines():
+        pid, _, cmd = line.strip().partition(" ")
+        if not pid.isdigit() or not cmd.strip():
+            continue
+        if os.path.basename(cmd.split()[0]) != "claude":
+            continue
+        env = subprocess.run(
+            ["ps", "-Eww", "-p", pid], capture_output=True, text=True
+        ).stdout
+        used = DEFAULT_DIR
+        for tok in env.split():
+            if tok.startswith("CLAUDE_CONFIG_DIR="):
+                used = Path(tok.split("=", 1)[1])
+        if used == config_dir:
+            out.append(int(pid))
+    return out
+
+
+def healthy(path: Path) -> tuple[bool, str]:
+    """Is this .claude.json worth keeping a copy of?"""
+    try:
+        data = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError) as exc:
+        return False, f"unreadable ({exc.__class__.__name__})"
+    if "oauthAccount" not in data:
+        return False, "no oauthAccount — logged out or freshly created"
+    if not data.get("hasCompletedOnboarding"):
+        return False, "onboarding incomplete"
+    return True, data["oauthAccount"].get("emailAddress", "?")
+
+
+def digest(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def write_atomic(dest: Path, data: bytes) -> None:
+    """Never truncate in place — a half-written config is how they get lost."""
+    fd, tmp = tempfile.mkstemp(dir=dest.parent, prefix=f".{dest.name}.")
+    try:
+        with os.fdopen(fd, "wb") as f:
+            f.write(data)
+            f.flush()
+            os.fsync(f.fileno())
+        if dest.exists():
+            shutil.copystat(dest, tmp)
+        os.replace(tmp, dest)
+    except BaseException:
+        Path(tmp).unlink(missing_ok=True)
+        raise
+
+
+def snapshot(keep: int) -> int:
+    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    for name, cfg in accounts().items():
+        main = cfg / ".claude.json"
+        if not main.exists():
+            continue
+        ok, why = healthy(main)
+        if not ok:
+            print(f"  {name}: SKIPPED — {why}", file=sys.stderr)
+            continue
+
+        into = STORE / name
+        into.mkdir(parents=True, exist_ok=True)
+        prior = sorted(into.glob("*"), reverse=True)
+        if prior and digest(main) == digest(prior[0] / ".claude.json"):
+            print(f"  {name}: unchanged since {prior[0].name}")
+            continue
+
+        dest = into / stamp
+        dest.mkdir()
+        for fn in FILES:
+            src = cfg / fn
+            if src.is_file():  # resolves symlinks; y shares x's settings.json
+                shutil.copy2(src, dest / fn)
+        size = (dest / ".claude.json").stat().st_size
+        print(f"  {name}: saved {stamp}  ({size:,} B, {why})")
+
+        for old in sorted(into.glob("*"), reverse=True)[keep:]:
+            shutil.rmtree(old)
+    return 0
+
+
+def show() -> int:
+    for name in accounts():
+        snaps = sorted((STORE / name).glob("*"), reverse=True)
+        print(f"{name}:  {len(snaps)} snapshots")
+        for s in snaps[:10]:
+            main = s / ".claude.json"
+            ok, why = healthy(main) if main.exists() else (False, "missing")
+            print(f"  {s.name}  {main.stat().st_size:>9,} B  {why}")
+        if len(snaps) > 10:
+            print(f"  … {len(snaps) - 10} older")
+    return 0
+
+
+def restore(name: str, stamp: str | None) -> int:
+    cfg = accounts().get(name)
+    if cfg is None:
+        print(f"unknown account: {name}", file=sys.stderr)
+        return 1
+
+    busy = holders(cfg)
+    if busy:
+        print(
+            f"refusing: claude is running on account {name} "
+            f"(pid {', '.join(map(str, busy))}).\n"
+            "Those sessions rewrite the config on exit and would undo this. "
+            "Quit them first.",
+            file=sys.stderr,
+        )
+        return 1
+
+    snaps = sorted((STORE / name).glob("*"), reverse=True)
+    if stamp:
+        snaps = [s for s in snaps if s.name == stamp]
+    chosen = next((s for s in snaps if healthy(s / ".claude.json")[0]), None)
+    if chosen is None:
+        print(f"no good snapshot for {name}", file=sys.stderr)
+        return 1
+
+    live = cfg / ".claude.json"
+    if live.exists():
+        aside = live.with_suffix(f".json.before-restore-{datetime.now():%Y%m%d-%H%M%S}")
+        shutil.copy2(live, aside)
+        print(f"  current file kept at {aside}")
+
+    write_atomic(live, (chosen / ".claude.json").read_bytes())
+    print(f"  restored {name} from {chosen.name} — {healthy(live)[1]}")
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[1])
+    ap.add_argument("--list", action="store_true", help="show stored snapshots")
+    ap.add_argument("--restore", metavar="ACCOUNT", help="restore an account")
+    ap.add_argument("--from", dest="stamp", help="snapshot to restore (default: newest good)")
+    ap.add_argument("--keep", type=int, default=KEEP, help=f"snapshots to retain (default {KEEP})")
+    args = ap.parse_args()
+
+    if args.list:
+        return show()
+    if args.restore:
+        return restore(args.restore, args.stamp)
+    return snapshot(args.keep)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
