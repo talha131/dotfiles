@@ -6,8 +6,11 @@ Symlinked to `~/.config/cmux/cmux.json`. cmux is the Ghostty-based terminal
 ## What lives here
 
 `cmux.json` holds **cmux-owned** settings only — shortcuts, sidebar,
-notifications, browser/automation behavior, workspace colors. Currently just
-the `⌥1` select-surface-by-number shortcut.
+notifications, browser/automation behavior, workspace colors. Currently the
+`⌥1` select-surface-by-number shortcut and
+`browser.openTerminalLinksInCmuxBrowser: false`, which sends clicked terminal
+links to the system browser instead of the embedded browser split (it defaults
+to `true`).
 
 **Terminal rendering (font, theme, transparency, blur) is NOT here** — it goes
 in `ghostty/config` (see `ghostty/CLAUDE.md`). cmux reads that Ghostty file for
