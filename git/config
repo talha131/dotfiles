@@ -137,3 +137,12 @@
 # wins over the personal helper above if this include is parsed last.
 [includeIf "gitdir:~/Developer/talha@jumpdesktop.com/"]
 	path = ~/Developer/dotfiles/git/config-work
+
+# Work-owned repos are fetched by tooling that runs outside the work tree, so
+# the includeIf above does not reach them: vcpkg clones phasefivesystems/webrtc
+# into ~/vcpkg/buildtrees, where the personal helper applies and the private
+# repo reads as "not found". Scope the work credential to the org by URL so any
+# tool, from any directory, authenticates as the account that can read it.
+[credential "https://github.com/phasefivesystems"]
+	helper =
+	helper = "!GH_TOKEN=$(/opt/homebrew/bin/gh auth token --user smTalhaM) /opt/homebrew/bin/gh auth git-credential"
