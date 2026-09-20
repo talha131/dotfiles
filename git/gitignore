@@ -2,3 +2,6 @@
 .DS_Store
 
 **/.claude/settings.local.json
+
+# Per-repo Claude Code account marker (see fish/conf.d/claude-account.fish)
+**/.claude-account
