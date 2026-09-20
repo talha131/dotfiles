@@ -1,6 +1,6 @@
-# The following lines were added by Docker Desktop to add commands to your PATH.
-export PATH="$PATH:/Users/talha/.docker/bin"
-# End of Docker Desktop section.
+# Docker Desktop (installer wrote a bash-style export; fish_add_path dedupes
+# so re-sourcing config.fish does not stack up PATH entries)
+fish_add_path ~/.docker/bin
 
 # Editor (used by git, crontab, kubectl, and other tools)
 set -gx EDITOR nvim
