@@ -1,3 +1,7 @@
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:/Users/talha/.docker/bin"
+# End of Docker Desktop section.
+
 # Editor (used by git, crontab, kubectl, and other tools)
 set -gx EDITOR nvim
 
