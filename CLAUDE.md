@@ -16,7 +16,7 @@ tracked file here changes the live config immediately.
 ## Folder guides
 
 Each folder has its own `CLAUDE.md` with specifics: `bin/`, `fish/`, `git/`,
-`cmux/`, and `ghostty/`.
+`cmux/`, `ghostty/`, and `rtk/`.
 
 ## Archived editor configs
 

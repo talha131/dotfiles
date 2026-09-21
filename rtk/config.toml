@@ -1,0 +1,11 @@
+# rtk config. Symlinked to ~/Library/Application Support/rtk/config.toml
+# (the file only: that directory also holds rtk's databases). Keys left out
+# here keep rtk's defaults; `rtk config` prints the effective values.
+
+[hooks]
+# Never rewrite git to `rtk git`. In `claude --worktree` sessions Claude Code
+# refuses any command that names git as an argument to another program ("names
+# git in a form too complex to verify that it stays inside the worktree"),
+# which blocked commits and pushes. Patterns are regexes matched against each
+# command in a line, not its arguments.
+exclude_commands = ["^git(\\s|$)"]
