@@ -3,5 +3,5 @@
 
 **/.claude/settings.local.json
 
-# Per-repo Claude Code account marker (see fish/conf.d/claude-account.fish)
+# Per-repo Claude Code account marker (see bin/claude)
 **/.claude-account

@@ -37,7 +37,7 @@ KEEP = 30
 
 
 def accounts() -> dict[str, Path]:
-    """Map account name -> config dir, matching fish/conf.d/claude-account.fish."""
+    """Map account name -> config dir, matching bin/claude."""
     found = {"x": DEFAULT_DIR} if DEFAULT_DIR.is_dir() else {}
     if ACCOUNT_ROOT.is_dir():
         for d in sorted(ACCOUNT_ROOT.iterdir()):

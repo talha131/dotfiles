@@ -177,8 +177,8 @@ Claude Code has its own rotation in `<config>/backups/`, but it keeps only
 five copies — under active use that window can be shorter than an hour, so a
 config corrupted overnight has no good copy left by morning.
 
-Accounts are discovered the same way `fish/conf.d/claude-account.fish`
-resolves them: `x` is `~/.claude`, anything else is `~/.config/claude/<name>`.
+Accounts are discovered the same way `bin/claude` resolves them: `x` is
+`~/.claude`, anything else is `~/.config/claude/<name>`.
 Snapshots land in `~/.local/state/claude-config-backups/<account>/<stamp>/`,
 newest 30 retained, identical consecutive snapshots skipped.
 
