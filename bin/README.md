@@ -135,6 +135,39 @@ This is the naming exception noted in `bin/CLAUDE.md`: the file is named `gh`
 Git *itself* (push/pull/fetch) is handled separately by per-directory credential
 helpers in `git/config` — see `git/CLAUDE.md`. The two share the same rule.
 
+## claude
+
+Shadows the Homebrew `claude` and picks the Claude Code **account** (config
+dir) from the nearest `.claude-account` marker, walking up from the current
+directory:
+
+| Marker | Result |
+| --- | --- |
+| `x`, or no marker | `CLAUDE_CONFIG_DIR` unset: the default `~/.claude` |
+| `<name>` | `CLAUDE_CONFIG_DIR=~/.config/claude/<name>` |
+
+```fish
+echo y > .claude-account   # this directory and everything below it use account y
+```
+
+The account is resolved when `claude` launches, not when you `cd`, so it is
+correct in every shell whatever its age, and a marker takes effect the moment
+it is written. `.claude-account` is in the global gitignore.
+
+- **Account `x` unsets the variable** rather than pointing it at `~/.claude`.
+  Claude picks the keychain item by whether `CLAUDE_CONFIG_DIR` is *set*, so an
+  explicit `~/.claude` is a separate, second login slot for the same account.
+  An inherited `~/.claude` is unset for the same reason.
+- A marker naming an account with no config dir prints a warning and falls
+  back to the default, rather than silently ignoring the marker.
+- **cmux:** cmux prepends a launcher shim, and its wrapper then searches PATH
+  for `claude` and finds this script. The script hands off to the next
+  `claude` on PATH after itself, and sets `CLAUDE_ACCOUNT_REENTERED` when that
+  is a cmux shim, so the second pass skips shims and goes straight to the
+  binary. That keeps cmux's integration without looping, whichever comes first
+  on PATH. cmux also skips launcher scripts that contain literal re-exec
+  phrases, so the script is written to avoid them.
+
 ## my-claude-backup
 
 Dated snapshots of the Claude Code config files (`.claude.json`,

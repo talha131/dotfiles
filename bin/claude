@@ -1,0 +1,100 @@
+#!/bin/sh
+# Account-aware front for Claude Code.
+#
+# Picks the Claude Code account (config dir) from the nearest .claude-account
+# marker, walking up from $PWD, and resolves it at launch time. That makes it
+# independent of shell state: it works in shells started before any hook
+# existed, and a marker created a moment ago is seen immediately.
+#
+#   x      -> CLAUDE_CONFIG_DIR unset (Claude's default, ~/.claude)
+#   <name> -> CLAUDE_CONFIG_DIR=~/.config/claude/<name>
+#
+# Account x is expressed by *unsetting* the variable, never by pointing it at
+# ~/.claude: Claude derives the keychain item from whether the variable is
+# set, so an explicit ~/.claude selects a separate, second login slot.
+#
+# Like bin/gh, this shadows the Homebrew binary by PATH order. cmux adds its
+# own launcher shim to PATH and its wrapper then searches PATH for the binary,
+# which finds this file, so the hand-off below has to terminate whichever of
+# the two comes first:
+#   - hand off to the first candidate on PATH *after* this file;
+#   - when that candidate is a cmux shim, mark the environment so the second
+#     pass (cmux's wrapper finding this file again) skips shims and goes
+#     straight to the binary.
+# cmux also scans launcher scripts for literal re-exec phrases and treats a
+# match as a shim to skip; keep such phrasing out of this file.
+
+marker=.claude-account
+reentered=${CLAUDE_ACCOUNT_REENTERED:-}
+
+# Nearest marker, first line, whitespace stripped.
+account=
+d=$PWD
+while [ -n "$d" ] && [ "$d" != / ]; do
+	if [ -r "$d/$marker" ]; then
+		IFS= read -r account <"$d/$marker" || :
+		account=$(printf '%s' "$account" | tr -d '[:space:]')
+		break
+	fi
+	d=${d%/*}
+done
+
+case "$account" in
+	'') ;;
+	x) unset CLAUDE_CONFIG_DIR ;;
+	*)
+		dir=$HOME/.config/claude/$account
+		if [ -d "$dir" ]; then
+			export CLAUDE_CONFIG_DIR="$dir"
+		elif [ -z "$reentered" ]; then
+			echo "claude: $d/$marker names account '$account', but $dir does not exist; using the default account" >&2
+			unset CLAUDE_CONFIG_DIR
+		fi
+		;;
+esac
+
+# An inherited ~/.claude (exported by the old fish hook) means account x too.
+if [ -n "${CLAUDE_CONFIG_DIR:-}" ] && [ "$CLAUDE_CONFIG_DIR" -ef "$HOME/.claude" ]; then
+	unset CLAUDE_CONFIG_DIR
+fi
+
+# Next candidate on PATH after this file.
+next=
+past_self=
+IFS_saved=$IFS
+IFS=:
+for p in $PATH; do
+	cand=$p/claude
+	[ -x "$cand" ] || continue
+	if [ "$cand" -ef "$0" ]; then
+		past_self=1
+		continue
+	fi
+	[ -n "$past_self" ] || continue
+	case "$p" in */cmux-cli-shims/*) [ -n "$reentered" ] && continue ;; esac
+	next=$cand
+	break
+done
+IFS=$IFS_saved
+
+# Invoked by absolute path from outside PATH: take the first non-shim candidate.
+if [ -z "$next" ] && [ -z "$past_self" ]; then
+	IFS=:
+	for p in $PATH; do
+		cand=$p/claude
+		case "$p" in */cmux-cli-shims/*) continue ;; esac
+		[ -x "$cand" ] && ! [ "$cand" -ef "$0" ] && { next=$cand; break; }
+	done
+	IFS=$IFS_saved
+fi
+
+if [ -z "$next" ]; then
+	echo "claude: no Claude Code binary found on PATH after $0" >&2
+	exit 127
+fi
+
+case "$next" in
+	*/cmux-cli-shims/*) export CLAUDE_ACCOUNT_REENTERED=1 ;;
+	*) unset CLAUDE_ACCOUNT_REENTERED ;;
+esac
+exec "$next" "$@"
