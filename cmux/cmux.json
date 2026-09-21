@@ -2,7 +2,10 @@
   "$schema" : "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
   "schemaVersion" : 1,
   "browser" : {
-    "openTerminalLinksInCmuxBrowser" : false
+    "openTerminalLinksInCmuxBrowser" : true,
+    "urlsToAlwaysOpenExternally" : [
+      "re:(?i)^https?://(?!(www\\.)?github\\.com/talha131(/|$|[?#]))"
+    ]
   },
   "shortcuts" : {
     "bindings" : {

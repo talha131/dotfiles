@@ -7,14 +7,26 @@ Symlinked to `~/.config/cmux/cmux.json`. cmux is the Ghostty-based terminal
 
 `cmux.json` holds **cmux-owned** settings only — shortcuts, sidebar,
 notifications, browser/automation behavior, workspace colors. Currently the
-`⌥1` select-surface-by-number shortcut and
-`browser.openTerminalLinksInCmuxBrowser: false`, which sends clicked terminal
-links to the system browser instead of the embedded browser split (it defaults
-to `true`).
+`⌥1` select-surface-by-number shortcut and link routing (below).
 
 **Terminal rendering (font, theme, transparency, blur) is NOT here** — it goes
 in `ghostty/config` (see `ghostty/CLAUDE.md`). cmux reads that Ghostty file for
 all rendering.
+
+## Link routing
+
+Clicked terminal links open in the embedded browser only for personal GitHub
+(`github.com/talha131/…`); everything else goes to the system browser. That keeps
+the personal GitHub login in the embedded browser and the work one in the
+default browser.
+
+Browser settings are global app preferences — a project-local
+`.cmux/cmux.json` cannot override them — so routing is by URL, not by project.
+`openTerminalLinksInCmuxBrowser` stays `true` and one negative-lookahead rule in
+`urlsToAlwaysOpenExternally` forces every non-`talha131` URL out.
+`hostsToOpenInEmbeddedBrowser` can't do this: it matches whole hosts, so it
+cannot tell GitHub owners apart. To also keep another owner embedded, extend
+the alternation: `github\\.com/(talha131|other)(/|$|[?#])`.
 
 ## Reload
 
