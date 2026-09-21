@@ -13,6 +13,15 @@ notifications, browser/automation behavior, workspace colors. Currently the
 in `ghostty/config` (see `ghostty/CLAUDE.md`). cmux reads that Ghostty file for
 all rendering.
 
+## Claude binary
+
+`automation.claudeBinaryPath` points at `bin/claude`, the account-picking
+wrapper. cmux records `/opt/homebrew/bin/claude` for every agent session and
+relaunches that path on restore, which skips PATH (and so the wrapper) and
+brings the session back on whatever account the shell implies. With the
+setting, cmux-launched sessions pick the account from the directory's
+`.claude-account` like any other launch.
+
 ## Link routing
 
 Clicked terminal links open in the embedded browser only for personal GitHub
