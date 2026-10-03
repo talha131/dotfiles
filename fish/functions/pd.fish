@@ -1,6 +1,24 @@
 function pd -d "Create a dated project folder under ~/Developer/Claude-Project and cd into it"
-    argparse 'p/prefix=' 'a/account=' -- $argv
+    argparse h/help 'p/prefix=' 'a/account=' -- $argv
     or return
+    if set -q _flag_help
+        echo "usage: pd [-p prefix] [-a account] <name>
+
+Create ~/Developer/Claude-Project/YYYY-MM-DD - <name>, pin its Claude Code
+account in .claude-account, and cd into it. Re-running on the same day reuses
+the folder and leaves an existing marker alone.
+
+Options:
+  -p, --prefix TEXT     put TEXT before the date: \"TEXT - YYYY-MM-DD - <name>\"
+  -a, --account NAME    account for .claude-account (default: y)
+  -h, --help            show this help
+
+Examples:
+  pd Tax Returns
+  pd -p \"GCE - Action Research\" Maryam Shaukat
+  pd -a x Some Work Thing"
+        return
+    end
     if test (count $argv) -eq 0
         echo "usage: pd [-p prefix] [-a account] <name>" >&2
         return 1
