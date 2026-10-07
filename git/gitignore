@@ -5,3 +5,6 @@
 
 # Per-repo Claude Code account marker (see bin/claude)
 **/.claude-account
+
+# Claude Code worktrees (claude --worktree / EnterWorktree)
+**/.claude/worktrees/
