@@ -63,15 +63,19 @@ Examples:
     end
 
     # Describe what `claude` will do here, mirroring bin/claude's resolution.
-    switch $account
-        case x
-            echo "claude   runs as account x (default config, ~/.claude)"
-        case '*'
-            if test -d $HOME/.config/claude/$account
-                echo "claude   runs as account $account (config ~/.config/claude/$account)"
-            else
-                echo "claude   account $account has no ~/.config/claude/$account; claude will warn and use account x" >&2
-            end
+    # Account x keeps its global config in ~/.claude.json; others keep it
+    # inside their config dir.
+    set -l config $HOME/.claude.json
+    if test $account != x
+        set config $HOME/.config/claude/$account/.claude.json
+    end
+    set -l email (jq -r '.oauthAccount.emailAddress // empty' $config 2>/dev/null)
+    if test $account != x; and not test -d $HOME/.config/claude/$account
+        echo "claude   account $account has no ~/.config/claude/$account; claude will warn and use account x" >&2
+    else if test -n "$email"
+        echo "claude   runs as $email (account $account)"
+    else
+        echo "claude   runs as account $account (not logged in)"
     end
 
     cd $dir
