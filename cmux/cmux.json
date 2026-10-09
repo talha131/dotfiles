@@ -1,6 +1,5 @@
 {
   "$schema" : "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
-  "schemaVersion" : 1,
   "automation" : {
     "claudeBinaryPath" : "/Users/talha/Developer/dotfiles/bin/claude"
   },
@@ -10,6 +9,10 @@
       "re:(?i)^https?://(?!(www\\.)?github\\.com/talha131(/|$|[?#]))"
     ]
   },
+  "computerUse" : {
+    "enabled" : true
+  },
+  "schemaVersion" : 1,
   "shortcuts" : {
     "bindings" : {
       "selectSurfaceByNumber" : {
