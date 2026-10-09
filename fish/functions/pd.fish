@@ -5,8 +5,9 @@ function pd -d "Create a dated project folder under ~/Developer/Claude-Project a
         echo "usage: pd [-p prefix] [-a account] <name>
 
 Create ~/Developer/Claude-Project/YYYY-MM-DD - <name>, pin its Claude Code
-account in .claude-account, and cd into it. Re-running on the same day reuses
-the folder and leaves an existing marker alone.
+account in .claude-account, cd into it, and report which account claude will
+use there. Re-running on the same day reuses the folder and leaves an existing
+marker alone.
 
 Options:
   -p, --prefix TEXT     put TEXT before the date: \"TEXT - YYYY-MM-DD - <name>\"
@@ -41,13 +42,37 @@ Examples:
     end
 
     set -l dir "$HOME/Developer/Claude-Project/$folder"
-    mkdir -p $dir
-    or return
+    set -l short (string replace -- $HOME '~' $dir)
+    if test -d $dir
+        echo "Reusing  $short"
+    else
+        mkdir -p $dir
+        or return
+        echo "Created  $short"
+    end
+
     # Pin the Claude Code account; bin/claude reads the marker at launch.
     # An existing marker is left alone so re-running pd never clobbers it.
-    if not test -e $dir/.claude-account
-        echo $account >$dir/.claude-account
+    set -l marker $dir/.claude-account
+    if test -e $marker
+        set account (string trim <$marker)[1]
+        echo "Kept     .claude-account ($account)"
+    else
+        echo $account >$marker
+        echo "Wrote    .claude-account ($account)"
     end
-    echo $dir
+
+    # Describe what `claude` will do here, mirroring bin/claude's resolution.
+    switch $account
+        case x
+            echo "claude   runs as account x (default config, ~/.claude)"
+        case '*'
+            if test -d $HOME/.config/claude/$account
+                echo "claude   runs as account $account (config ~/.config/claude/$account)"
+            else
+                echo "claude   account $account has no ~/.config/claude/$account; claude will warn and use account x" >&2
+            end
+    end
+
     cd $dir
 end
