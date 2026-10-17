@@ -4,10 +4,8 @@
     "claudeBinaryPath" : "/Users/talha/Developer/dotfiles/bin/claude"
   },
   "browser" : {
-    "openTerminalLinksInCmuxBrowser" : true,
-    "urlsToAlwaysOpenExternally" : [
-      "re:(?i)^https?://(?!(www\\.)?github\\.com/talha131(/|$|[?#]))"
-    ]
+    "interceptTerminalOpenCommandInCmuxBrowser" : false,
+    "openTerminalLinksInCmuxBrowser" : false
   },
   "computerUse" : {
     "enabled" : true

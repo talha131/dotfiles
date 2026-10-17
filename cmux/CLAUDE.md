@@ -7,7 +7,8 @@ Symlinked to `~/.config/cmux/cmux.json`. cmux is the Ghostty-based terminal
 
 `cmux.json` holds **cmux-owned** settings only — shortcuts, sidebar,
 notifications, browser/automation behavior, workspace colors. Currently the
-`⌥1` select-surface-by-number shortcut and link routing (below).
+`⌥1` select-surface-by-number shortcut and sending links to the system browser
+(below).
 
 **Terminal rendering (font, theme, transparency, blur) is NOT here** — it goes
 in `ghostty/config` (see `ghostty/CLAUDE.md`). cmux reads that Ghostty file for
@@ -24,18 +25,14 @@ setting, cmux-launched sessions pick the account from the directory's
 
 ## Link routing
 
-Clicked terminal links open in the embedded browser only for personal GitHub
-(`github.com/talha131/…`); everything else goes to the system browser. That keeps
-the personal GitHub login in the embedded browser and the work one in the
-default browser.
+Every link opens in the system default browser, never cmux's embedded one:
+`openTerminalLinksInCmuxBrowser: false` covers clicked terminal links, and
+`interceptTerminalOpenCommandInCmuxBrowser: false` covers `open <url>` run in
+a terminal (which `gh browse` and similar tools use).
 
-Browser settings are global app preferences — a project-local
-`.cmux/cmux.json` cannot override them — so routing is by URL, not by project.
-`openTerminalLinksInCmuxBrowser` stays `true` and one negative-lookahead rule in
-`urlsToAlwaysOpenExternally` forces every non-`talha131` URL out.
-`hostsToOpenInEmbeddedBrowser` can't do this: it matches whole hosts, so it
-cannot tell GitHub owners apart. To also keep another owner embedded, extend
-the alternation: `github\\.com/(talha131|other)(/|$|[?#])`.
+Don't try to route by URL instead. cmux rejects any `urlsToAlwaysOpenExternally`
+regex containing `(?` (its regex-safety check, since 0.64), so lookaheads such as
+"everything except `github.com/talha131`" silently never match.
 
 ## Reload
 
