@@ -1,3 +1,6 @@
 fish/functions/fzf_key_bindings.fish
 fish/conf.d/virtualfish-loader.fish
 fish/fish_variables
+
+# cmux keeps this empty flock sidecar next to cmux.json and never deletes it
+cmux/cmux.json.cmux-write.lock
