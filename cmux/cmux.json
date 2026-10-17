@@ -13,16 +13,7 @@
   "schemaVersion" : 1,
   "shortcuts" : {
     "bindings" : {
-      "selectSurfaceByNumber" : {
-        "first" : {
-          "command" : false,
-          "control" : false,
-          "key" : "1",
-          "keyCode" : 18,
-          "option" : true,
-          "shift" : false
-        }
-      }
+      "selectSurfaceByNumber" : "opt+1"
     }
   }
 }
