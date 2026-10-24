@@ -166,8 +166,8 @@ def generate_subtitles_gemini(audio_path: Path, fmt: str, language=None) -> str:
     return clean_response(response.text)
 
 
-def generate_subtitles_whisper(audio_path: Path, fmt: str, language=None) -> str:
-    """Use whisper.cpp locally to generate subtitles."""
+def require_whisper():
+    """Exit with an install hint if whisper-cli, ffmpeg or the model is missing."""
     if not shutil.which("whisper-cli"):
         print("Error: whisper-cli not found. Install with: brew install whisper-cpp", file=sys.stderr)
         sys.exit(1)
@@ -181,16 +181,26 @@ def generate_subtitles_whisper(audio_path: Path, fmt: str, language=None) -> str
         print("Download from: https://huggingface.co/ggerganov/whisper.cpp/tree/main", file=sys.stderr)
         sys.exit(1)
 
+
+def convert_to_wav(audio_path: Path, wav_path: str):
+    """Convert audio to the 16 kHz mono WAV that whisper-cli expects."""
+    print(f"Converting {audio_path.name} to WAV...", file=sys.stderr)
+    subprocess.run(
+        ["ffmpeg", "-i", str(audio_path), "-ar", "16000", "-ac", "1", "-y", wav_path],
+        capture_output=True, check=True,
+    )
+
+
+def generate_subtitles_whisper(audio_path: Path, fmt: str, language=None) -> str:
+    """Use whisper.cpp locally to generate subtitles."""
+    require_whisper()
+
     wav_file = None
     try:
         wav_file = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
         wav_file.close()
 
-        print(f"Converting {audio_path.name} to WAV...", file=sys.stderr)
-        subprocess.run(
-            ["ffmpeg", "-i", str(audio_path), "-ar", "16000", "-ac", "1", "-y", wav_file.name],
-            capture_output=True, check=True,
-        )
+        convert_to_wav(audio_path, wav_file.name)
 
         lang_code = language if language else "auto"
         lang_display = language if language else "auto-detect"
