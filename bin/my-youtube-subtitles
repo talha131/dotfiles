@@ -17,6 +17,13 @@ from pathlib import Path
 
 WHISPER_MODEL = os.path.expanduser("~/.local/share/whisper-cpp/ggml-large-v3-turbo.bin")
 
+# -mc 0 disables cross-window context carry-over (prevents the previous
+# chunk's hallucinations from feeding into the next chunk and locking in
+# repetition cascades). --suppress-nst suppresses non-speech tokens that leak
+# from YouTube training data (e.g. "موسیقی" / "music" tags). Both are
+# essential on long-form non-Latin audio; my-transcribe uses the same pair.
+WHISPER_LOOP_GUARDS = ["-mc", "0", "--suppress-nst"]
+
 HELP_TEXT = """\
 Generate YouTube-compatible subtitles (VTT or SRT) from audio files.
 
@@ -212,6 +219,7 @@ def generate_subtitles_whisper(audio_path: Path, fmt: str, language=None) -> str
             "whisper-cli",
             "-m", WHISPER_MODEL,
             "-l", lang_code,
+            *WHISPER_LOOP_GUARDS,
             output_flag,
             "-of", wav_file.name,
             wav_file.name,
