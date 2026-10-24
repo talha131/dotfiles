@@ -8,6 +8,8 @@
 from __future__ import annotations
 
 import argparse
+import difflib
+import json
 import os
 import re
 import shutil
@@ -15,6 +17,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import wave
 from pathlib import Path
 
 WHISPER_MODEL = os.path.expanduser("~/.local/share/whisper-cpp/ggml-large-v3-turbo.bin")
@@ -34,15 +37,20 @@ For example, "lecture.mp3" produces "lecture.vtt" in the same directory.
 
 --- Gemini engine ---
 
-Uses Google's Gemini API. Produces high-quality subtitle segmentation,
-especially for mixed-language audio.
+Gemini writes the words, whisper.cpp times them. The audio goes to Gemini in
+parts of --chunk-minutes (default 10) as plain-text transcription requests,
+and every word is then lined up with whisper's word timestamps. Gemini's
+mixed Urdu/English text is better than whisper's, but the timestamps it
+writes itself are unreliable on long audio. Fits the Gemini API free tier;
+rate limits are waited out and retried automatically.
 
-Setup:
+Setup: the whisper setup below, plus a Gemini API key:
   Fish shell:  set -gx GEMINI_API_KEY 'your_key'
   Bash/Zsh:    export GEMINI_API_KEY='your_key'
 
 Language: free-form string via --language (e.g. "English", "a mix of Urdu
-  and English"). Defaults to a mix of Urdu and English.
+  and English"). Defaults to a mix of Urdu and English. Whisper times the
+  words in the first language named (Urdu when unspecified).
 
 --- Whisper engine (local, default) ---
 
@@ -61,7 +69,7 @@ Language: language code via --language (e.g. "en", "ur", "auto").
 """
 
 
-def build_srt_prompt(language):
+def build_transcript_prompt(language):
     lang_instruction = (
         f"The audio is in {language}."
         if language
@@ -73,37 +81,12 @@ def build_srt_prompt(language):
         else "Use Urdu script for Urdu words and English for English terms, matching the audio."
     )
     return f"""\
-Listen to the audio and return a strictly valid SubRip (.srt) file.
+Listen to the audio and transcribe the spoken words verbatim as plain text.
 Rules:
-1. Begin numbering at 1 and increment by 1 for each cue.
-2. Use the HH:MM:SS,mmm timestamp format (comma for milliseconds, e.g., 00:01:02,500).
-3. Keep each caption under ~2 lines and under 7 seconds when possible.
-4. {lang_instruction} {script_instruction}
-5. Do not include translations, descriptions, or explanations—only the spoken words.
-6. Output nothing except the SRT content (no Markdown fences or comments).
-"""
-
-
-def build_vtt_prompt(language):
-    lang_instruction = (
-        f"The audio is in {language}."
-        if language
-        else "The lecture is in a mix of Urdu and English."
-    )
-    script_instruction = (
-        "Use the appropriate script for each language, matching the audio."
-        if language
-        else "Use Urdu script for Urdu words and English for English terms, matching the audio."
-    )
-    return f"""\
-Listen to the audio and return a strictly valid WebVTT (.vtt) file.
-Rules:
-1. Start with "WEBVTT" header on the first line, followed by a blank line.
-2. Use the HH:MM:SS.mmm timestamp format (period for milliseconds, e.g., 00:01:02.500).
-3. Keep each caption under ~2 lines and under 7 seconds when possible.
-4. {lang_instruction} {script_instruction}
-5. Do not include translations, descriptions, or explanations—only the spoken words.
-6. Output nothing except the VTT content (no Markdown fences or comments).
+1. {lang_instruction} {script_instruction}
+2. Use normal sentence punctuation and put each sentence on its own line.
+3. Do not include timestamps, speaker labels, translations, descriptions, or explanations—only the spoken words.
+4. Output nothing except the transcript (no Markdown fences or comments).
 """
 
 
@@ -118,24 +101,25 @@ def clean_response(text: str | None) -> str:
     return "\n".join(lines).strip()
 
 
-def print_cost(response):
-    """Print audio duration and estimated cost from Gemini response."""
-    usage = response.usage_metadata
-    if not usage:
-        return
-
+def print_cost(responses):
+    """Print audio duration and estimated cost summed over Gemini responses."""
     audio_tokens = 0
     text_tokens = 0
-    if hasattr(usage, "prompt_tokens_details") and usage.prompt_tokens_details:
-        for detail in usage.prompt_tokens_details:
-            if detail.modality.name == "AUDIO":
-                audio_tokens = detail.token_count
-            else:
-                text_tokens += detail.token_count
-    else:
-        audio_tokens = usage.prompt_token_count
+    output_tokens = 0
+    for response in responses:
+        usage = response.usage_metadata
+        if not usage:
+            continue
+        if hasattr(usage, "prompt_tokens_details") and usage.prompt_tokens_details:
+            for detail in usage.prompt_tokens_details:
+                if detail.modality.name == "AUDIO":
+                    audio_tokens += detail.token_count
+                else:
+                    text_tokens += detail.token_count
+        else:
+            audio_tokens += usage.prompt_token_count
+        output_tokens += usage.candidates_token_count or 0
 
-    output_tokens = usage.candidates_token_count or 0
     audio_seconds = audio_tokens / 32
     minutes = int(audio_seconds) // 60
     seconds = int(audio_seconds) % 60
@@ -177,8 +161,42 @@ def call_gemini(client, **kwargs):
             time.sleep(delay)
 
 
-def generate_subtitles_gemini(audio_path: Path, fmt: str, language=None) -> str:
-    """Upload audio to Gemini and return subtitles."""
+def transcribe_chunk(client, clip_path: str, language=None):
+    """Return Gemini's plain-text transcript of one audio clip, plus the response."""
+    from google.genai import types
+
+    response = call_gemini(
+        client,
+        model="gemini-2.5-flash",
+        contents=[
+            build_transcript_prompt(language),
+            types.Part.from_bytes(data=Path(clip_path).read_bytes(), mime_type="audio/mp3"),
+        ],
+        # Thinking adds billed output tokens and latency without improving a
+        # verbatim transcript. 65536 is the model's output max; the 8192
+        # default would truncate long chunks of dense Urdu.
+        config=types.GenerateContentConfig(
+            max_output_tokens=65536,
+            thinking_config=types.ThinkingConfig(thinking_budget=0),
+        ),
+    )
+    if response.candidates:
+        finish_reason = response.candidates[0].finish_reason
+        if finish_reason is not None and finish_reason.name == "MAX_TOKENS":
+            print("WARNING: Gemini hit max_output_tokens; lower --chunk-minutes.", file=sys.stderr)
+    return clean_response(response.text), response
+
+
+def generate_subtitles_gemini(audio_path: Path, fmt: str, language=None, chunk_minutes=10.0) -> str:
+    """Transcribe the words with Gemini and time them with whisper.cpp.
+
+    Gemini writes better mixed Urdu/English text than whisper, but its own
+    subtitle timestamps are unusable on long audio: a 40-minute podcast came
+    back timed as 20 minutes, with cues out of order and ending before they
+    start. So Gemini only returns plain text, a few minutes of audio per
+    request, and each word borrows its timing from whisper's word timestamps.
+    Plain text also needs far fewer output tokens than a subtitle file.
+    """
     from google import genai
 
     api_key = os.getenv("GEMINI_API_KEY")
@@ -186,22 +204,275 @@ def generate_subtitles_gemini(audio_path: Path, fmt: str, language=None) -> str:
         print("Error: GEMINI_API_KEY environment variable not set.", file=sys.stderr)
         sys.exit(1)
 
+    require_whisper()
     client = genai.Client(api_key=api_key)
-    prompt = build_vtt_prompt(language) if fmt == "vtt" else build_srt_prompt(language)
 
-    print(f"Uploading {audio_path.name}...", file=sys.stderr)
-    audio_file = client.files.upload(file=str(audio_path))
+    with tempfile.TemporaryDirectory() as tmp:
+        wav_path = os.path.join(tmp, "audio.wav")
+        convert_to_wav(audio_path, wav_path)
+        with wave.open(wav_path) as wav:
+            total_seconds = wav.getnframes() / wav.getframerate()
 
-    lang_display = language if language else "Urdu/English mix"
-    print(f"Generating subtitles with Gemini ({lang_display})...", file=sys.stderr)
-    response = call_gemini(
-        client,
-        model="gemini-2.5-flash",
-        contents=[prompt, audio_file],
+        lang_code = whisper_language_for(language)
+        print(f"Timing words with whisper.cpp ({lang_code})... (this may take a while)", file=sys.stderr)
+        words = whisper_words(wav_path, lang_code)
+        if not words:
+            print("Error: whisper found no speech to time.", file=sys.stderr)
+            sys.exit(1)
+
+        chunks = plan_chunks(words, total_seconds, chunk_minutes * 60)
+        lang_display = language if language else "Urdu/English mix"
+        texts, responses = [], []
+        for number, (start, end) in enumerate(chunks, 1):
+            print(f"Transcribing part {number}/{len(chunks)} with Gemini ({lang_display})...", file=sys.stderr)
+            clip_path = os.path.join(tmp, f"part{number:02d}.mp3")
+            extract_clip(wav_path, start, end, clip_path)
+            text, response = transcribe_chunk(client, clip_path, language)
+            texts.append(text)
+            responses.append(response)
+
+    print_cost(responses)
+    cues = align_cues("\n".join(texts), words)
+    return render_subtitles(cues, fmt)
+
+
+# --- Whisper word timing --------------------------------------------------
+
+# whisper.cpp tends to stretch a word back over the silence or music before
+# it (the first word of a podcast spanned 0.07s-3.34s over the intro), so
+# cap how long a single word may last.
+MAX_WORD_SECONDS = 1.5
+STRETCHED_WORD_SECONDS = 1.0
+
+# Gemini's --language is free-form; whisper needs a code to transcribe in the
+# same script Gemini writes, or few words would line up.
+WHISPER_LANGUAGE_NAMES = {"urdu": "ur", "english": "en", "hindi": "hi", "arabic": "ar", "punjabi": "pa"}
+
+
+def whisper_language_for(language) -> str:
+    """Map Gemini's free-form language to a whisper language code."""
+    if not language:
+        return "ur"
+    lowered = language.lower()
+    for name, code in WHISPER_LANGUAGE_NAMES.items():
+        if name in lowered:
+            return code
+    return "auto"
+
+
+def whisper_words(wav_path: str, lang_code: str, offset=0.0):
+    """Run whisper-cli one word per segment; return [(start, end, word), ...]."""
+    out_base = f"{wav_path}.words"
+    cmd = [
+        "whisper-cli",
+        "-m", WHISPER_MODEL,
+        "-l", lang_code,
+        *WHISPER_LOOP_GUARDS,
+        "-ml", "1", "-sow",
+        "-oj",
+        "-of", out_base,
+        wav_path,
+    ]
+    # Raw bytes, as in generate_subtitles_whisper: progress output can hold
+    # partial multi-byte UTF-8.
+    result = subprocess.run(cmd, capture_output=True)
+    if result.returncode != 0:
+        stderr_text = result.stderr.decode("utf-8", errors="replace")
+        print(f"Error from whisper-cli:\n{stderr_text}", file=sys.stderr)
+        sys.exit(1)
+
+    json_path = Path(f"{out_base}.json")
+    # The JSON can hold the same broken UTF-8 fragments; replacing them only
+    # costs the affected word its alignment.
+    data = json.loads(json_path.read_bytes().decode("utf-8", errors="replace"))
+    json_path.unlink()
+
+    words = []
+    for segment in data["transcription"]:
+        start = offset + segment["offsets"]["from"] / 1000
+        end = offset + segment["offsets"]["to"] / 1000
+        if end - start > MAX_WORD_SECONDS:
+            start = end - STRETCHED_WORD_SECONDS
+        for token in segment["text"].split():
+            if normalize_word(token):
+                words.append((start, end, token))
+    return words
+
+
+def plan_chunks(words, total_seconds: float, chunk_seconds: float):
+    """Split the audio roughly every chunk_seconds, cutting at the widest pause nearby."""
+    cuts = [0.0]
+    while total_seconds - cuts[-1] > chunk_seconds * 1.2:
+        target = cuts[-1] + chunk_seconds
+        pauses = [
+            (b[0] - a[1], (a[1] + b[0]) / 2)
+            for a, b in zip(words, words[1:])
+            if abs(a[1] - target) < 30
+        ]
+        cuts.append(max(pauses)[1] if pauses else target)
+    cuts.append(total_seconds)
+    return list(zip(cuts, cuts[1:]))
+
+
+def extract_clip(wav_path: str, start: float, end: float, clip_path: str):
+    """Cut [start, end) into a small mono mp3 that fits in an inline Gemini request."""
+    subprocess.run(
+        ["ffmpeg", "-ss", f"{start:.3f}", "-to", f"{end:.3f}", "-i", wav_path,
+         "-ac", "1", "-b:a", "32k", "-y", clip_path],
+        capture_output=True, check=True,
     )
 
-    print_cost(response)
-    return clean_response(response.text)
+
+# --- Aligning Gemini text to whisper timings ------------------------------
+
+CUE_MAX_WORDS = 12
+CUE_MAX_SECONDS = 7.0
+CUE_MIN_SECONDS = 1.0
+
+DIACRITICS = re.compile(r"[ً-ٰٟۖ-ۭ]")
+NON_WORD = re.compile(r"[^\w]")
+# Gemini and whisper spell the same Urdu word with different letter variants
+# (آپ vs اپ, ي vs ی); fold them so the words compare equal.
+LETTER_FOLDS = str.maketrans({
+    "آ": "ا", "أ": "ا", "إ": "ا", "ٱ": "ا",
+    "ي": "ی", "ى": "ی", "ئ": "ی",
+    "ك": "ک", "ه": "ہ", "ة": "ہ", "ۃ": "ہ", "ھ": "ہ",
+    "ۓ": "ے", "ؤ": "و",
+})
+
+
+def normalize_word(word: str) -> str:
+    """Comparison form of a word: no diacritics, punctuation or letter variants."""
+    word = DIACRITICS.sub("", word).translate(LETTER_FOLDS)
+    return NON_WORD.sub("", word).lower()
+
+
+def caption_groups(text: str):
+    """Split a transcript into sentences, then into runs of at most CUE_MAX_WORDS words."""
+    groups = []
+    for line in text.splitlines():
+        for sentence in re.split(r"(?<=[۔؟?!])\s+", line):
+            words = sentence.split()
+            if not words:
+                continue
+            parts = -(-len(words) // CUE_MAX_WORDS)
+            size = -(-len(words) // parts)
+            i = 0
+            while i < len(words):
+                end = min(i + size, len(words))
+                # prefer to break just after a comma near the target length
+                if end < len(words):
+                    for k in range(end, max(i + 3, end - 3), -1):
+                        if words[k - 1].endswith(("،", ",")):
+                            end = k
+                            break
+                groups.append(words[i:end])
+                i = end
+    return groups
+
+
+def align_cues(text: str, words):
+    """Time each caption of Gemini's text using the matching whisper words."""
+    groups = caption_groups(text)
+    g_words = [w for group in groups for w in group]
+    g_norm = [normalize_word(w) for w in g_words]
+    w_norm = [normalize_word(w) for _, _, w in words]
+
+    times = [None] * len(g_words)
+    matcher = difflib.SequenceMatcher(None, g_norm, w_norm, autojunk=False)
+    for a, b, size in matcher.get_matching_blocks():
+        for k in range(size):
+            times[a + k] = words[b + k][:2]
+
+    # Inside mismatched stretches, pair up words that are spelled similarly.
+    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+        if tag != "replace":
+            continue
+        j = j1
+        for i in range(i1, i2):
+            best_ratio, best_j = 0.0, None
+            for jj in range(j, min(j2, j + 4)):
+                ratio = difflib.SequenceMatcher(None, g_norm[i], w_norm[jj]).ratio()
+                if ratio > best_ratio:
+                    best_ratio, best_j = ratio, jj
+            if best_j is not None and best_ratio >= 0.6:
+                times[i] = words[best_j][:2]
+                j = best_j + 1
+
+    matched = sum(t is not None for t in times)
+    share = matched / len(times) if times else 0
+    print(f"Matched {share:.0%} of Gemini's words to whisper timings.", file=sys.stderr)
+    if share < 0.5:
+        print("WARNING: few words matched; timing may be off. Check --language.", file=sys.stderr)
+
+    # Spread words that matched nothing evenly between their timed neighbours.
+    prev_known = [None] * len(times)
+    last = None
+    for i, t in enumerate(times):
+        if t is not None:
+            last = i
+        prev_known[i] = last
+    next_known = [None] * len(times)
+    last = None
+    for i in range(len(times) - 1, -1, -1):
+        if times[i] is not None:
+            last = i
+        next_known[i] = last
+    for i, t in enumerate(times):
+        if t is not None:
+            continue
+        p, n = prev_known[i], next_known[i]
+        if p is None and n is None:
+            times[i] = (0.0, 0.0)
+        elif p is None:
+            times[i] = (times[n][0], times[n][0])
+        elif n is None:
+            times[i] = (times[p][1], times[p][1])
+        else:
+            t0 = times[p][1] + (times[n][0] - times[p][1]) * (i - p) / (n - p)
+            times[i] = (t0, t0)
+
+    cues = []
+    index = 0
+    for group in groups:
+        pending = [list(range(index, index + len(group)))]
+        index += len(group)
+        while pending:
+            part = pending.pop(0)
+            start, end = times[part[0]][0], times[part[-1]][1]
+            if end - start > CUE_MAX_SECONDS and len(part) >= 4:
+                middle = len(part) // 2
+                pending[:0] = [part[:middle], part[middle:]]
+                continue
+            cues.append([start, end, " ".join(g_words[i] for i in part)])
+
+    for i, cue in enumerate(cues):
+        cue[1] = max(cue[1], cue[0] + CUE_MIN_SECONDS)
+        if i + 1 < len(cues) and cue[1] > cues[i + 1][0]:
+            cue[1] = max(cues[i + 1][0], cue[0] + 0.3)
+    for previous, cue in zip(cues, cues[1:]):
+        if cue[0] < previous[1]:
+            cue[0] = previous[1]
+            cue[1] = max(cue[1], cue[0] + 0.3)
+    return cues
+
+
+def format_timestamp(seconds: float, fmt: str) -> str:
+    ms = round(seconds * 1000)
+    hours, ms = divmod(ms, 3_600_000)
+    minutes, ms = divmod(ms, 60_000)
+    secs, ms = divmod(ms, 1000)
+    separator = "." if fmt == "vtt" else ","
+    return f"{hours:02d}:{minutes:02d}:{secs:02d}{separator}{ms:03d}"
+
+
+def render_subtitles(cues, fmt: str) -> str:
+    lines = ["WEBVTT", ""] if fmt == "vtt" else []
+    for number, (start, end, text) in enumerate(cues, 1):
+        if fmt == "srt":
+            lines.append(str(number))
+        lines += [f"{format_timestamp(start, fmt)} --> {format_timestamp(end, fmt)}", text, ""]
+    return "\n".join(lines).strip()
 
 
 def require_whisper():
@@ -342,6 +613,12 @@ def main() -> int:
         "-l", "--language",
         help="Language of the audio (see engine sections above for format and defaults)",
     )
+    parser.add_argument(
+        "--chunk-minutes",
+        type=float,
+        default=10.0,
+        help="Gemini engine: minutes of audio per Gemini request (default: 10)",
+    )
 
     args = parser.parse_args()
     audio_path = args.file.resolve()
@@ -360,7 +637,9 @@ def main() -> int:
         if args.engine == "whisper":
             subtitles = generate_subtitles_whisper(audio_path, fmt, language=args.language)
         else:
-            subtitles = generate_subtitles_gemini(audio_path, fmt, language=args.language)
+            subtitles = generate_subtitles_gemini(
+                audio_path, fmt, language=args.language, chunk_minutes=args.chunk_minutes,
+            )
 
         if not subtitles:
             print("Error: No subtitles generated.", file=sys.stderr)
