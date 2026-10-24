@@ -187,6 +187,34 @@ def transcribe_chunk(client, clip_path: str, language=None):
     return clean_response(response.text), response
 
 
+CHUNK_MAX_ATTEMPTS = 3
+
+
+def repeated_phrases(words, n=8) -> int:
+    """Count n-word runs that occur more than once."""
+    keys = [" ".join(normalize_word(w) for w in words[i:i + n]) for i in range(len(words) - n + 1)]
+    return len(keys) - len(set(keys))
+
+
+def transcript_problem(gemini_words, whisper_words_heard):
+    """Say what looks wrong with a Gemini part transcript, judged against whisper.
+
+    Gemini occasionally loops, writing a passage twice that was spoken once,
+    or stops early. Whisper's own text for the same span is the reference:
+    a podcast that genuinely repeats a passage shows repeats in both (277 vs
+    154 on one real part), while a Gemini loop shows them only in Gemini's
+    (70 vs 1). Clean parts came within 0.97-1.10 of whisper's word count.
+    """
+    heard = len(whisper_words_heard)
+    if heard >= 20 and len(gemini_words) < 0.7 * heard:
+        return f"only {len(gemini_words)} words where whisper heard {heard}"
+    gemini_repeats = repeated_phrases(gemini_words)
+    whisper_repeats = repeated_phrases(whisper_words_heard)
+    if gemini_repeats >= 20 and gemini_repeats > 3 * (whisper_repeats + 5):
+        return f"{gemini_repeats} repeated phrases that whisper did not hear"
+    return None
+
+
 def generate_subtitles_gemini(audio_path: Path, fmt: str, language=None, chunk_minutes=10.0) -> str:
     """Transcribe the words with Gemini and time them with whisper.cpp.
 
@@ -227,9 +255,16 @@ def generate_subtitles_gemini(audio_path: Path, fmt: str, language=None, chunk_m
             print(f"Transcribing part {number}/{len(chunks)} with Gemini ({lang_display})...", file=sys.stderr)
             clip_path = os.path.join(tmp, f"part{number:02d}.mp3")
             extract_clip(wav_path, start, end, clip_path)
-            text, response = transcribe_chunk(client, clip_path, language)
+            heard = [w for s, _, w in words if start <= s < end]
+            for attempt in range(1, CHUNK_MAX_ATTEMPTS + 1):
+                text, response = transcribe_chunk(client, clip_path, language)
+                responses.append(response)
+                problem = transcript_problem(text.split(), heard)
+                if not problem:
+                    break
+                action = "retrying" if attempt < CHUNK_MAX_ATTEMPTS else "keeping it anyway"
+                print(f"WARNING: part {number}: {problem}; {action}.", file=sys.stderr)
             texts.append(text)
-            responses.append(response)
 
     print_cost(responses)
     cues = align_cues("\n".join(texts), words)
