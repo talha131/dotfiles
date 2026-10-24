@@ -76,6 +76,16 @@ my-youtube-subtitles --help
 - `--output` / `-o` — custom output filename (default: same name as input)
 - `--engine` / `-e` — `whisper` (default) or `gemini`
 - `--language` / `-l` — same as my-transcribe (free-form for Gemini, codes for Whisper)
+- `--chunk-minutes` — Gemini engine: minutes of audio per Gemini request (default: 10)
+
+**Gemini engine:** Gemini writes the words and Whisper supplies the timing,
+so it needs the Whisper setup as well as `GEMINI_API_KEY`. Gemini's own
+subtitle timestamps are unreliable on long audio, so the script asks it only
+for plain text, one ~10-minute part per request, and lines every word up with
+Whisper's word timestamps. A part that comes back looping or short (judged
+against Whisper's text for the same span) is requested again. A 40-minute
+episode takes 4 requests, which fits the Gemini API free tier; rate limits
+are waited out and retried automatically.
 
 **Examples:**
 
