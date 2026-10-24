@@ -2,8 +2,8 @@
 
 Personal utility scripts managed via dotfiles.
 
-Both `my-transcribe` and `my-youtube-subtitles` support two engines: Gemini
-(cloud, default) and Whisper (local, offline). See shared setup below.
+Both `my-transcribe` and `my-youtube-subtitles` support two engines: Whisper
+(local, offline, default) and Gemini (cloud). See shared setup below.
 
 ### Shared setup
 
@@ -74,7 +74,7 @@ my-youtube-subtitles --help
 
 - `--format` / `-f` — `vtt` (default) or `srt`
 - `--output` / `-o` — custom output filename (default: same name as input)
-- `--engine` / `-e` — `gemini` (default) or `whisper`
+- `--engine` / `-e` — `whisper` (default) or `gemini`
 - `--language` / `-l` — same as my-transcribe (free-form for Gemini, codes for Whisper)
 
 **Examples:**
