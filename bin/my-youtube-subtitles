@@ -9,10 +9,12 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 
 WHISPER_MODEL = os.path.expanduser("~/.local/share/whisper-cpp/ggml-large-v3-turbo.bin")
@@ -147,6 +149,34 @@ def print_cost(response):
     print(f"Audio: ~{minutes}m {seconds}s | Estimated cost: ~${total_cost:.4f}", file=sys.stderr)
 
 
+GEMINI_MAX_ATTEMPTS = 6
+
+
+def call_gemini(client, **kwargs):
+    """generate_content with retries for rate limits and transient server errors.
+
+    The free tier allows only a few requests per minute, so a 429 is routine:
+    wait for the delay the API asks for and try again. A daily quota cannot be
+    waited out within one run, so that exits with a hint instead.
+    """
+    from google.genai import errors
+
+    for attempt in range(1, GEMINI_MAX_ATTEMPTS + 1):
+        try:
+            return client.models.generate_content(**kwargs)
+        except errors.APIError as e:
+            message = str(e)
+            if e.code == 429 and "PerDay" in message:
+                print("Error: Gemini daily quota exhausted. Try again tomorrow, or use --engine whisper.", file=sys.stderr)
+                sys.exit(1)
+            if e.code not in (429, 500, 503) or attempt == GEMINI_MAX_ATTEMPTS:
+                raise
+            match = re.search(r"retry(?:Delay': '| in )(\d+(?:\.\d+)?)s", message)
+            delay = float(match.group(1)) + 1 if match else 10 * attempt
+            print(f"Gemini returned {e.code}; retrying in {delay:.0f}s...", file=sys.stderr)
+            time.sleep(delay)
+
+
 def generate_subtitles_gemini(audio_path: Path, fmt: str, language=None) -> str:
     """Upload audio to Gemini and return subtitles."""
     from google import genai
@@ -164,7 +194,8 @@ def generate_subtitles_gemini(audio_path: Path, fmt: str, language=None) -> str:
 
     lang_display = language if language else "Urdu/English mix"
     print(f"Generating subtitles with Gemini ({lang_display})...", file=sys.stderr)
-    response = client.models.generate_content(
+    response = call_gemini(
+        client,
         model="gemini-2.5-flash",
         contents=[prompt, audio_file],
     )
