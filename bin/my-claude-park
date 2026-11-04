@@ -13,8 +13,9 @@ Notes go to $MY_CLAUDE_PARK_DIR when set (handy for testing).
 Usage:
     my-claude-park hook               # SessionEnd hook: JSON on stdin
     my-claude-park handoff            # /my-park: markdown on stdin, this session
-    my-claude-park list               # parked sessions, tab-separated, newest first
-    my-claude-park mark <id> <status> # e.g. resumed, done, parked
+    my-claude-park list               # parked, not done; tab-separated, newest first
+    my-claude-park mark <id> done     # tick the done checkbox
+    my-claude-park mark <id> <status> # set status, e.g. resumed, parked
 """
 
 from __future__ import annotations
@@ -30,7 +31,7 @@ VAULT_DIR = Path(os.environ.get("MY_CLAUDE_PARK_DIR")
                  or Path.home() / "Developer/My Second Brain/00 Inbox/Claude Sessions")
 HANDOFF = "## Handoff"
 # Fields kept in the frontmatter, in this order.
-FIELDS = ("status", "title", "folder", "session", "account", "ended")
+FIELDS = ("status", "done", "title", "folder", "session", "account", "ended")
 
 
 def account_name() -> str:
@@ -128,8 +129,9 @@ def render_meta(meta: dict, extra: list[str]) -> str:
     lines = ["---"]
     for key in FIELDS:
         value = str(meta.get(key, ""))
-        # Quote anything that YAML could misread; JSON strings are valid YAML.
-        if key in ("title", "folder") or re.search(r"[:#'\"\[\]{}]", value):
+        # Free text is quoted (JSON strings are valid YAML); the rest stays
+        # bare so Obsidian types it: done as a checkbox, ended as date & time.
+        if key in ("title", "folder"):
             value = json.dumps(value, ensure_ascii=False)
         lines.append(f"{key}: {value}")
     lines += extra
@@ -192,11 +194,13 @@ def save(session: str, transcript: Path | None, hook_cwd: str, handoff: str | No
     title = info["title"] or old_meta.get("title") or info["prompt"][:60] or Path(folder).name
     meta = {
         "status": "parked",
+        # A ticked checkbox survives later exits; only unticking reopens it.
+        "done": "true" if old_meta.get("done") == "true" else "false",
         "title": title,
         "folder": folder,
         "session": session,
         "account": account_name(),
-        "ended": f"{datetime.now():%Y-%m-%d %H:%M}",
+        "ended": f"{datetime.now():%Y-%m-%dT%H:%M}",
     }
     if handoff is not None:
         stamp = f"{datetime.now():%Y-%m-%d %H:%M}"
@@ -244,26 +248,31 @@ def cmd_list() -> int:
     rows = []
     for path in VAULT_DIR.glob("*.md") if VAULT_DIR.is_dir() else []:
         meta, _, _ = parse_note(path)
-        if meta.get("status") == "parked" and meta.get("session"):
+        if meta.get("status") == "parked" and meta.get("done") != "true" and meta.get("session"):
             rows.append((meta.get("ended", ""), meta, path))
     home = str(Path.home())
     dropbox = home + "/Library/CloudStorage/Dropbox"
     for ended, meta, path in sorted(rows, key=lambda r: r[0], reverse=True):
         folder = meta.get("folder", "")
         short = folder.replace(dropbox, "~/Dropbox", 1).replace(home, "~", 1)
-        print("\t".join([ended, meta.get("account", ""), meta.get("title", ""), short,
+        print("\t".join([ended.replace("T", " "), meta.get("account", ""), meta.get("title", ""), short,
                          meta["session"], folder, str(path)]))
     return 0
 
 
 def cmd_mark(session: str, status: str) -> int:
+    """`done` ticks the checkbox; anything else sets the status."""
     note = find_note(session)
     if not note:
         print(f"my-claude-park: no note for session {session}", file=sys.stderr)
         return 1
-    text = note.read_text(encoding="utf-8")
-    text = re.sub(r"(?m)^status: .*$", f"status: {status}", text, count=1)
-    note.write_text(text, encoding="utf-8")
+    meta, extra, body = parse_note(note)
+    meta.setdefault("done", "false")
+    if status == "done":
+        meta["done"] = "true"
+    else:
+        meta["status"] = status
+    note.write_text(render_meta(meta, extra) + body, encoding="utf-8")
     return 0
 
 
