@@ -227,9 +227,10 @@ The loop:
    registered in each account's `settings.json`, see `claude/CLAUDE.md`) writes
    or updates that session's note: status `parked`, Claude's own title, the
    folder it was launched in, session id, account, and your last prompt.
-2. Optionally run **`/my-park`** first. Claude writes a handoff (goal, done, next,
-   open questions, key files) into the note's `## Handoff` section, which later
-   exits keep.
+2. Optionally run **`/my-park`** first. Claude writes a handoff (goal, done,
+   next, open questions, key files) into the note's `## Handoff` section, which
+   later exits keep. Text after the command, e.g. `/my-park waiting on the
+   client's reply`, leads the handoff verbatim as **My summary**.
 3. **`cr`** (fish) lists parked sessions in fzf, newest first, with the note as
    preview. Enter moves into the folder, names the cmux tab, marks the note
    `resumed` and runs `claude --resume`. ctrl-d marks a session `done` instead.
