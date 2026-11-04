@@ -233,13 +233,13 @@ The loop:
    client's reply`, leads the handoff verbatim as **My summary**.
 3. **`cr`** (fish) lists parked sessions in fzf, newest first, with the note as
    preview. Enter moves into the folder, names the cmux tab, marks the note
-   `resumed` and runs `claude --resume`. ctrl-d marks a session `done` instead.
+   `resumed` and runs `claude --resume`. ctrl-d ticks the session's `done` box instead.
    `cr jump` pre-fills the search.
 
 ```fish
 cr                                  # pick and resume
 my-claude-park list                 # parked sessions, tab-separated
-my-claude-park mark <id> done       # retire one without opening it
+my-claude-park mark <id> done       # tick done without opening it
 ```
 
 - Only interactive sessions are recorded: `claude -p` runs (`entrypoint`
@@ -248,5 +248,11 @@ my-claude-park mark <id> done       # retire one without opening it
   project dir, not the hook's `cwd`, which drifts when Claude `cd`s; resuming
   from any other folder would not find the session.
 - Everything above `## Handoff` is regenerated on each exit, so edit freely
-  below it. Set `status: done` in Obsidian to drop a session from `cr`.
+  below it, and add your own properties: they are kept.
+- **Finishing a session** means ticking its `done` checkbox, which drops it
+  from `cr`; exits leave a ticked box alone, so only unticking reopens it.
+  The vault's `00 Inbox/Claude Sessions.base` shows every session as a table
+  (views Open, Done, All, newest first) with that checkbox clickable. It lives
+  in the vault, not this repo, along with the `done` (checkbox) and `ended`
+  (date & time) types in `.obsidian/types.json`.
 - `MY_CLAUDE_PARK_DIR` overrides the notes folder (used for testing).
