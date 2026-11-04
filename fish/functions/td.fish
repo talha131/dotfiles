@@ -11,5 +11,9 @@ function td -d "Create a temporary directory under \$TMPDIR and cd into it" --ar
         echo $account >$dir/.claude-account
         echo $dir
         cd $dir
+        # Name the cmux tab; the time tells several scratch tabs apart.
+        if set -q CMUX_SURFACE_ID
+            mytab "Temp task "(date +%H:%M)
+        end
     end
 end
