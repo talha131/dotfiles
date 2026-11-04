@@ -69,6 +69,21 @@ ln -s ~/Developer/dotfiles/ghostty/config  ~/.config/ghostty/config
 cmux reads this Ghostty file for terminal rendering (font, theme, transparency).
 See [`ghostty/CLAUDE.md`](ghostty/CLAUDE.md).
 
+## claude → each account's config dir
+
+Slash commands are linked file by file into every Claude Code account
+(`~/.claude` is account `x`; the rest live in `~/.config/claude/<name>`):
+
+```fish
+for d in ~/.claude ~/.config/claude/*/
+    mkdir -p $d/commands
+    ln -s ~/Developer/dotfiles/claude/commands/park.md $d/commands/park.md
+end
+```
+
+Each account's `settings.json` also needs the `SessionEnd` hook for
+`my-claude-park`. See [`claude/CLAUDE.md`](claude/CLAUDE.md).
+
 ## bin → on `$PATH` (no symlink)
 
 `bin/` is **not** symlinked; `fish/config.fish` adds it to `$PATH` with

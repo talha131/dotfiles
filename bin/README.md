@@ -214,3 +214,38 @@ my-claude-backup --keep 60
 - **Atomic writes.** Restores go to a temp file, `fsync`, then `rename()`.
   A truncated config is how these get lost in the first place.
 - The file being replaced is kept as `.claude.json.before-restore-<stamp>`.
+
+## my-claude-park
+
+Records Claude Code sessions as Obsidian notes so tabs and workspaces can be
+closed freely and any session picked up again. Notes land in
+`~/Developer/My Second Brain/00 Inbox/Claude Sessions/`, one per session.
+
+The loop:
+
+1. **Exit** a session as usual. A `SessionEnd` hook (`my-claude-park hook`,
+   registered in each account's `settings.json`, see `claude/CLAUDE.md`) writes
+   or updates that session's note: status `parked`, Claude's own title, the
+   folder it was launched in, session id, account, and your last prompt.
+2. Optionally run **`/park`** first. Claude writes a handoff (goal, done, next,
+   open questions, key files) into the note's `## Handoff` section, which later
+   exits keep.
+3. **`cr`** (fish) lists parked sessions in fzf, newest first, with the note as
+   preview. Enter moves into the folder, names the cmux tab, marks the note
+   `resumed` and runs `claude --resume`. ctrl-d marks a session `done` instead.
+   `cr jump` pre-fills the search.
+
+```fish
+cr                                  # pick and resume
+my-claude-park list                 # parked sessions, tab-separated
+my-claude-park mark <id> done       # retire one without opening it
+```
+
+- Only interactive sessions are recorded: `claude -p` runs (`entrypoint`
+  `sdk-cli`) and sessions closed before any prompt are skipped.
+- The resume folder is the one whose encoded name matches the transcript's
+  project dir, not the hook's `cwd`, which drifts when Claude `cd`s; resuming
+  from any other folder would not find the session.
+- Everything above `## Handoff` is regenerated on each exit, so edit freely
+  below it. Set `status: done` in Obsidian to drop a session from `cr`.
+- `MY_CLAUDE_PARK_DIR` overrides the notes folder (used for testing).
