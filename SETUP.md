@@ -77,7 +77,7 @@ Slash commands are linked file by file into every Claude Code account
 ```fish
 for d in ~/.claude ~/.config/claude/*/
     mkdir -p $d/commands
-    ln -s ~/Developer/dotfiles/claude/commands/park.md $d/commands/park.md
+    ln -s ~/Developer/dotfiles/claude/commands/my-park.md $d/commands/my-park.md
 end
 ```
 

@@ -7,14 +7,14 @@ account `x`, `~/.config/claude/<name>/commands/` for the others):
 ```fish
 for d in ~/.claude ~/.config/claude/*/
     mkdir -p $d/commands
-    ln -s ~/Developer/dotfiles/claude/commands/park.md $d/commands/park.md
+    ln -s ~/Developer/dotfiles/claude/commands/my-park.md $d/commands/my-park.md
 end
 ```
 
 Link files, not the folder: Claude Code writes its own state into the config
 dirs. `~/.claude/skills/` is avoided on purpose, because skill sync manages it.
 
-- `park.md` — `/park` writes a handoff into this session's Obsidian note via
+- `my-park.md` — `/my-park` writes a handoff into this session's Obsidian note via
   `bin/my-claude-park handoff`, ahead of exiting and resuming later with `cr`.
 
 ## Session parking hook

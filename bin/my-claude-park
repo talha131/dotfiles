@@ -6,13 +6,13 @@ and any session resumed later with `cr` (fish/functions/cr.fish).
 One note per session in VAULT_DIR, found again by its `session:` field, so
 repeated exits update the same note. The part above "## Handoff" is
 regenerated on every exit; the handoff section and anything below it are
-yours (or /park's) and are kept.
+yours (or /my-park's) and are kept.
 
 Notes go to $MY_CLAUDE_PARK_DIR when set (handy for testing).
 
 Usage:
     my-claude-park hook               # SessionEnd hook: JSON on stdin
-    my-claude-park handoff            # /park: markdown on stdin, this session
+    my-claude-park handoff            # /my-park: markdown on stdin, this session
     my-claude-park list               # parked sessions, tab-separated, newest first
     my-claude-park mark <id> <status> # e.g. resumed, done, parked
 """
@@ -186,7 +186,7 @@ def save(session: str, transcript: Path | None, hook_cwd: str, handoff: str | No
     }
     if handoff is not None:
         stamp = f"{datetime.now():%Y-%m-%d %H:%M}"
-        tail = f"{HANDOFF}\n\n_Written by /park, {stamp}._\n\n{handoff.strip()}\n"
+        tail = f"{HANDOFF}\n\n_Written by /my-park, {stamp}._\n\n{handoff.strip()}\n"
 
     VAULT_DIR.mkdir(parents=True, exist_ok=True)
     path = note or new_note_path(title, session)
