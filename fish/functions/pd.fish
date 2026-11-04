@@ -5,9 +5,9 @@ function pd -d "Create a dated project folder under ~/Dropbox/Claude Project and
         echo "usage: pd [-p prefix] [-a account] <name>
 
 Create ~/Dropbox/Claude Project/YYYY-MM-DD - <name>, pin its Claude Code
-account in .claude-account, cd into it, and report which account claude will
-use there. Re-running on the same day reuses the folder and leaves an existing
-marker alone.
+account in .claude-account, cd into it, name the cmux tab <name>, and report
+which account claude will use there. Re-running on the same day reuses the
+folder and leaves an existing marker alone.
 
 Options:
   -p, --prefix TEXT     put TEXT before the date: \"TEXT - YYYY-MM-DD - <name>\"
@@ -79,4 +79,9 @@ Examples:
     end
 
     cd $dir
+
+    # Name the cmux tab after the project, so it stays put when claude starts.
+    if set -q CMUX_SURFACE_ID
+        mytab "$argv"
+    end
 end
