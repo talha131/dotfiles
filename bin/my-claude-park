@@ -92,27 +92,39 @@ def launch_folder(transcript: Path, candidates: list[str]) -> str:
     return candidates[0] if candidates else str(Path.home())
 
 
-def parse_note(path: Path) -> tuple[dict, str]:
-    """Frontmatter fields and the body after it."""
+def parse_note(path: Path) -> tuple[dict, list[str], str]:
+    """Our frontmatter fields, the other frontmatter lines verbatim (properties
+    added in Obsidian, tags), and the body after the frontmatter."""
     text = path.read_text(encoding="utf-8")
     meta: dict = {}
+    extra: list[str] = []
     m = re.match(r"---\n(.*?)\n---\n?", text, re.S)
     if not m:
-        return meta, text
+        return meta, extra, text
+    ours = False
     for line in m.group(1).splitlines():
+        # Indented lines and list items continue the key above them.
+        if line[:1] in (" ", "\t") or line.startswith("- "):
+            if not ours:
+                extra.append(line)
+            continue
         key, sep, value = line.partition(":")
-        if sep:
-            value = value.strip()
-            if value.startswith('"'):
-                try:
-                    value = json.loads(value)
-                except ValueError:
-                    pass
-            meta[key.strip()] = value
-    return meta, text[m.end():]
+        key = key.strip()
+        ours = bool(sep) and key in FIELDS
+        if not ours:
+            extra.append(line)
+            continue
+        value = value.strip()
+        if value.startswith('"'):
+            try:
+                value = json.loads(value)
+            except ValueError:
+                pass
+        meta[key] = value
+    return meta, extra, text[m.end():]
 
 
-def render_meta(meta: dict) -> str:
+def render_meta(meta: dict, extra: list[str]) -> str:
     lines = ["---"]
     for key in FIELDS:
         value = str(meta.get(key, ""))
@@ -120,7 +132,9 @@ def render_meta(meta: dict) -> str:
         if key in ("title", "folder") or re.search(r"[:#'\"\[\]{}]", value):
             value = json.dumps(value, ensure_ascii=False)
         lines.append(f"{key}: {value}")
-    lines.append("tags: [claude-session]")
+    lines += extra
+    if not any(line.startswith("tags:") for line in extra):
+        lines.append("tags: [claude-session]")
     lines.append("---")
     return "\n".join(lines) + "\n"
 
@@ -170,7 +184,7 @@ def save(session: str, transcript: Path | None, hook_cwd: str, handoff: str | No
     folder = launch_folder(transcript, candidates) if transcript else (hook_cwd or os.getcwd())
 
     note = find_note(session)
-    old_meta, old_body = parse_note(note) if note else ({}, "")
+    old_meta, extra, old_body = parse_note(note) if note else ({}, [], "")
     tail = ""
     if HANDOFF in old_body:
         tail = old_body[old_body.index(HANDOFF):]
@@ -190,7 +204,7 @@ def save(session: str, transcript: Path | None, hook_cwd: str, handoff: str | No
 
     VAULT_DIR.mkdir(parents=True, exist_ok=True)
     path = note or new_note_path(title, session)
-    path.write_text(render_meta(meta) + "\n" + managed_body(meta, info["prompt"]) + tail, encoding="utf-8")
+    path.write_text(render_meta(meta, extra) + "\n" + managed_body(meta, info["prompt"]) + tail, encoding="utf-8")
     return path
 
 
@@ -229,7 +243,7 @@ def cmd_handoff() -> int:
 def cmd_list() -> int:
     rows = []
     for path in VAULT_DIR.glob("*.md") if VAULT_DIR.is_dir() else []:
-        meta, _ = parse_note(path)
+        meta, _, _ = parse_note(path)
         if meta.get("status") == "parked" and meta.get("session"):
             rows.append((meta.get("ended", ""), meta, path))
     home = str(Path.home())
