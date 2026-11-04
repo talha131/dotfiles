@@ -1,10 +1,10 @@
-function pd -d "Create a dated project folder under ~/Developer/Claude-Project and cd into it"
+function pd -d "Create a dated project folder under ~/Dropbox/Claude Project and cd into it"
     argparse h/help 'p/prefix=' 'a/account=' -- $argv
     or return
     if set -q _flag_help
         echo "usage: pd [-p prefix] [-a account] <name>
 
-Create ~/Developer/Claude-Project/YYYY-MM-DD - <name>, pin its Claude Code
+Create ~/Dropbox/Claude Project/YYYY-MM-DD - <name>, pin its Claude Code
 account in .claude-account, cd into it, and report which account claude will
 use there. Re-running on the same day reuses the folder and leaves an existing
 marker alone.
@@ -41,7 +41,7 @@ Examples:
         set account $_flag_account
     end
 
-    set -l dir "$HOME/Developer/Claude-Project/$folder"
+    set -l dir "$HOME/Dropbox/Claude Project/$folder"
     set -l short (string replace -- $HOME '~' $dir)
     if test -d $dir
         echo "Reusing  $short"
