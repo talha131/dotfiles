@@ -59,6 +59,26 @@ mytab "dotfiles folder"
 Wraps `cmux rename-tab --surface $CMUX_SURFACE_ID …` to dodge the
 `$CMUX_TAB_ID` gotcha (see [Renaming](#renaming-tabs-workspaces-and-windows)).
 
+A name set this way is fixed: titles that programs set later (Claude's
+`✳ …` titles, fish's directory title) don't replace it. Undo it with
+`cmux tab-action --action clear-name`.
+
+#### Tabs that name themselves
+
+Some tabs get a `mytab` name automatically (each one is skipped outside cmux):
+
+| Where | Title |
+|---|---|
+| `pd <name>` | `<name>` (no date or prefix) |
+| `td` | `Temp task HH:MM` |
+| `cd` into `~/Developer/Ustadji-app` | `Ustadji` |
+| `cd` into `~/Developer/talha@jumpdesktop.com/jump`, `jump-ws`, `jump-ws-*` | the folder name, e.g. `jump-ws-chief` |
+| … inside `.claude/worktrees/<name>` | `<project> · <name>`, e.g. `Ustadji · name-case` |
+
+The `cd` rule is `fish/conf.d/cmux_project_tab.fish`. It renames only when the
+computed title changes, so a manual `mytab` holds until you move to another
+project or worktree. To title another project, add a `case` to its `switch`.
+
 ### `myws <state> [workspace-ref]` — set a workspace state badge
 ```fish
 myws done         myws active       myws deferred      # set a pill (current ws)

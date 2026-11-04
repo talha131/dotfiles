@@ -11,7 +11,10 @@ Symlinked to `~/.config/fish/`. Layout:
   `complete` definitions). Symlinked into `~/.config/fish/completions/` like
   `functions/` and `conf.d/`.
 - `conf.d/` — auto-sourced at startup. `done.fish` is a vendored plugin (don't
-  hand-edit); `fish_frozen_theme.fish` pins the color theme.
+  hand-edit); `fish_frozen_theme.fish` pins the color theme;
+  `cmux_project_tab.fish` titles cmux tabs after the Jump/Ustadji projects on
+  `cd` (see `cmux/GUIDE.md`). Event handlers (`--on-variable`, `--on-event`)
+  must live here, not in `functions/`, which only loads on first call.
 
 ## Notes
 
