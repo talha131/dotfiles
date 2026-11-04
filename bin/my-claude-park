@@ -1,0 +1,271 @@
+#!/usr/bin/env python3
+"""
+Park Claude Code sessions as Obsidian notes, so tabs can be closed freely
+and any session resumed later with `cr` (fish/functions/cr.fish).
+
+One note per session in VAULT_DIR, found again by its `session:` field, so
+repeated exits update the same note. The part above "## Handoff" is
+regenerated on every exit; the handoff section and anything below it are
+yours (or /park's) and are kept.
+
+Notes go to $MY_CLAUDE_PARK_DIR when set (handy for testing).
+
+Usage:
+    my-claude-park hook               # SessionEnd hook: JSON on stdin
+    my-claude-park handoff            # /park: markdown on stdin, this session
+    my-claude-park list               # parked sessions, tab-separated, newest first
+    my-claude-park mark <id> <status> # e.g. resumed, done, parked
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import re
+import sys
+from datetime import datetime
+from pathlib import Path
+
+VAULT_DIR = Path(os.environ.get("MY_CLAUDE_PARK_DIR")
+                 or Path.home() / "Developer/My Second Brain/00 Inbox/Claude Sessions")
+HANDOFF = "## Handoff"
+# Fields kept in the frontmatter, in this order.
+FIELDS = ("status", "title", "folder", "session", "account", "ended")
+
+
+def account_name() -> str:
+    """Account the session ran on, as bin/claude names it."""
+    config = os.environ.get("CLAUDE_CONFIG_DIR", "")
+    accounts = Path.home() / ".config/claude"
+    if config and Path(config).parent == accounts:
+        return Path(config).name
+    return "x"
+
+
+def config_dir() -> Path:
+    return Path(os.environ.get("CLAUDE_CONFIG_DIR") or Path.home() / ".claude")
+
+
+def find_transcript(session: str) -> Path | None:
+    hits = list((config_dir() / "projects").glob(f"*/{session}.jsonl"))
+    return hits[0] if hits else None
+
+
+def encode(path: str) -> str:
+    """Claude Code's project-dir name for a folder."""
+    return re.sub(r"[^A-Za-z0-9]", "-", path)
+
+
+def read_transcript(path: Path) -> dict:
+    info: dict = {"title": "", "prompt": "", "entrypoint": "", "cwds": [], "prompts": 0}
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except OSError:
+        return info
+    for line in lines:
+        try:
+            rec = json.loads(line)
+        except ValueError:
+            continue
+        kind = rec.get("type")
+        if kind == "ai-title" and rec.get("aiTitle"):
+            info["title"] = rec["aiTitle"]
+        elif kind == "last-prompt" and rec.get("lastPrompt"):
+            info["prompt"] = rec["lastPrompt"]
+        elif kind == "user" and rec.get("origin", {}).get("kind") == "human":
+            info["prompts"] += 1
+        if rec.get("entrypoint") and not info["entrypoint"]:
+            info["entrypoint"] = rec["entrypoint"]
+        cwd = rec.get("cwd")
+        if cwd and cwd not in info["cwds"]:
+            info["cwds"].append(cwd)
+    return info
+
+
+def launch_folder(transcript: Path, candidates: list[str]) -> str:
+    """The folder `claude --resume` must run in: the one whose encoding names
+    the transcript's project dir. Falls back to the first candidate."""
+    want = transcript.parent.name
+    for cwd in candidates:
+        if encode(cwd) == want:
+            return cwd
+    return candidates[0] if candidates else str(Path.home())
+
+
+def parse_note(path: Path) -> tuple[dict, str]:
+    """Frontmatter fields and the body after it."""
+    text = path.read_text(encoding="utf-8")
+    meta: dict = {}
+    m = re.match(r"---\n(.*?)\n---\n?", text, re.S)
+    if not m:
+        return meta, text
+    for line in m.group(1).splitlines():
+        key, sep, value = line.partition(":")
+        if sep:
+            value = value.strip()
+            if value.startswith('"'):
+                try:
+                    value = json.loads(value)
+                except ValueError:
+                    pass
+            meta[key.strip()] = value
+    return meta, text[m.end():]
+
+
+def render_meta(meta: dict) -> str:
+    lines = ["---"]
+    for key in FIELDS:
+        value = str(meta.get(key, ""))
+        # Quote anything that YAML could misread; JSON strings are valid YAML.
+        if key in ("title", "folder") or re.search(r"[:#'\"\[\]{}]", value):
+            value = json.dumps(value, ensure_ascii=False)
+        lines.append(f"{key}: {value}")
+    lines.append("tags: [claude-session]")
+    lines.append("---")
+    return "\n".join(lines) + "\n"
+
+
+def find_note(session: str) -> Path | None:
+    if not VAULT_DIR.is_dir():
+        return None
+    needle = f"session: {session}"
+    for path in VAULT_DIR.glob("*.md"):
+        try:
+            with path.open(encoding="utf-8") as f:
+                head = f.read(2000)
+        except OSError:
+            continue
+        if needle in head:
+            return path
+    return None
+
+
+def new_note_path(title: str, session: str) -> Path:
+    safe = re.sub(r'[\\/:*?"<>|#^\[\]]', "", title).strip() or "Claude session"
+    path = VAULT_DIR / f"{datetime.now():%Y-%m-%d} {safe[:80]}.md"
+    if path.exists():
+        path = path.with_name(f"{path.stem} ({session[:8]}).md")
+    return path
+
+
+def managed_body(meta: dict, prompt: str) -> str:
+    folder = meta["folder"]
+    quoted = "'" + folder.replace("'", "'\\''") + "'"
+    parts = [
+        f"# {meta['title']}\n",
+        "Resume with `cr`, or:\n",
+        "```sh",
+        f"cd {quoted}; claude --resume {meta['session']}",
+        "```\n",
+    ]
+    if prompt:
+        parts.append("## Last prompt\n")
+        parts.append("\n".join("> " + line for line in prompt.splitlines()) + "\n")
+    return "\n".join(parts) + "\n"
+
+
+def save(session: str, transcript: Path | None, hook_cwd: str, handoff: str | None) -> Path | None:
+    info = read_transcript(transcript) if transcript else read_transcript(Path(os.devnull))
+    candidates = info["cwds"] + ([hook_cwd] if hook_cwd else [])
+    folder = launch_folder(transcript, candidates) if transcript else (hook_cwd or os.getcwd())
+
+    note = find_note(session)
+    old_meta, old_body = parse_note(note) if note else ({}, "")
+    tail = ""
+    if HANDOFF in old_body:
+        tail = old_body[old_body.index(HANDOFF):]
+
+    title = info["title"] or old_meta.get("title") or info["prompt"][:60] or Path(folder).name
+    meta = {
+        "status": "parked",
+        "title": title,
+        "folder": folder,
+        "session": session,
+        "account": account_name(),
+        "ended": f"{datetime.now():%Y-%m-%d %H:%M}",
+    }
+    if handoff is not None:
+        stamp = f"{datetime.now():%Y-%m-%d %H:%M}"
+        tail = f"{HANDOFF}\n\n_Written by /park, {stamp}._\n\n{handoff.strip()}\n"
+
+    VAULT_DIR.mkdir(parents=True, exist_ok=True)
+    path = note or new_note_path(title, session)
+    path.write_text(render_meta(meta) + "\n" + managed_body(meta, info["prompt"]) + tail, encoding="utf-8")
+    return path
+
+
+def cmd_hook() -> int:
+    try:
+        data = json.load(sys.stdin)
+    except ValueError:
+        return 0
+    session = data.get("session_id", "")
+    transcript = Path(data["transcript_path"]) if data.get("transcript_path") else None
+    if not session or not transcript or not transcript.exists():
+        return 0
+    info = read_transcript(transcript)
+    # Interactive sessions only: `claude -p` runs (entrypoint sdk-cli) and
+    # sessions closed before any prompt are not worth a note.
+    if info["entrypoint"] not in ("", "cli") or not (info["prompts"] or info["prompt"]):
+        return 0
+    save(session, transcript, data.get("cwd", ""), None)
+    return 0
+
+
+def cmd_handoff() -> int:
+    session = os.environ.get("CLAUDE_CODE_SESSION_ID", "")
+    if not session:
+        print("my-claude-park: CLAUDE_CODE_SESSION_ID is not set; run this from inside Claude Code", file=sys.stderr)
+        return 1
+    text = sys.stdin.read()
+    if not text.strip():
+        print("my-claude-park: empty handoff on stdin", file=sys.stderr)
+        return 1
+    path = save(session, find_transcript(session), os.getcwd(), text)
+    print(path)
+    return 0
+
+
+def cmd_list() -> int:
+    rows = []
+    for path in VAULT_DIR.glob("*.md") if VAULT_DIR.is_dir() else []:
+        meta, _ = parse_note(path)
+        if meta.get("status") == "parked" and meta.get("session"):
+            rows.append((meta.get("ended", ""), meta, path))
+    home = str(Path.home())
+    dropbox = home + "/Library/CloudStorage/Dropbox"
+    for ended, meta, path in sorted(rows, key=lambda r: r[0], reverse=True):
+        folder = meta.get("folder", "")
+        short = folder.replace(dropbox, "~/Dropbox", 1).replace(home, "~", 1)
+        print("\t".join([ended, meta.get("account", ""), meta.get("title", ""), short,
+                         meta["session"], folder, str(path)]))
+    return 0
+
+
+def cmd_mark(session: str, status: str) -> int:
+    note = find_note(session)
+    if not note:
+        print(f"my-claude-park: no note for session {session}", file=sys.stderr)
+        return 1
+    text = note.read_text(encoding="utf-8")
+    text = re.sub(r"(?m)^status: .*$", f"status: {status}", text, count=1)
+    note.write_text(text, encoding="utf-8")
+    return 0
+
+
+def main() -> int:
+    args = sys.argv[1:]
+    if args == ["hook"]:
+        return cmd_hook()
+    if args == ["handoff"]:
+        return cmd_handoff()
+    if args == ["list"]:
+        return cmd_list()
+    if len(args) == 3 and args[0] == "mark":
+        return cmd_mark(args[1], args[2])
+    print(__doc__.strip(), file=sys.stderr)
+    return 2
+
+
+if __name__ == "__main__":
+    sys.exit(main())
