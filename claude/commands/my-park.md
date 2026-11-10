@@ -14,7 +14,8 @@ $ARGUMENTS
 </user-summary>
 
 If the summary is not empty, it leads the handoff, verbatim, under
-`**My summary:**`. Fix nothing in it. Treat it as the user's view of where
+`**My summary:**`, on its own line. Up to 60 characters, it also names the note.
+Fix nothing in it. Treat it as the user's view of where
 things stand: let it steer the rest, and don't repeat what it already says.
 
 Write it in this shape, in Markdown, short and concrete. Name real files,
