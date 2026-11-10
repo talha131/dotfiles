@@ -34,6 +34,8 @@ HANDOFF = "## Handoff"
 FIELDS = ("status", "done", "title", "folder", "session", "account", "ended")
 # A /my-park summary this short names the note; longer ones are prose.
 MAX_LABEL = 60
+RECENT_PROMPTS = 5
+PROMPT_CHARS = 300
 
 
 def account_name() -> str:
@@ -59,8 +61,25 @@ def encode(path: str) -> str:
     return re.sub(r"[^A-Za-z0-9]", "-", path)
 
 
+def human_prompt(rec: dict) -> tuple[str, str]:
+    """A human prompt's local time and its text on one line, as it was typed."""
+    try:
+        when = datetime.fromisoformat(rec["timestamp"].replace("Z", "+00:00")).astimezone()
+        stamp = f"{when:%Y-%m-%d %H:%M}"
+    except (KeyError, AttributeError, ValueError):
+        stamp = ""
+    content = rec.get("message", {}).get("content", "")
+    if isinstance(content, list):
+        content = " ".join(b.get("text", "") for b in content if isinstance(b, dict))
+    name = re.search(r"<command-name>(.*?)</command-name>", content)
+    if name:
+        args = re.search(r"<command-args>(.*?)</command-args>", content, re.S)
+        content = f"{name[1]} {args[1] if args else ''}"
+    return stamp, " ".join(content.split())
+
+
 def read_transcript(path: Path) -> dict:
-    info: dict = {"title": "", "prompt": "", "entrypoint": "", "cwds": [], "prompts": 0}
+    info: dict = {"title": "", "prompt": "", "entrypoint": "", "cwds": [], "prompts": 0, "recent": []}
     try:
         lines = path.read_text(encoding="utf-8").splitlines()
     except OSError:
@@ -77,6 +96,7 @@ def read_transcript(path: Path) -> dict:
             info["prompt"] = rec["lastPrompt"]
         elif kind == "user" and rec.get("origin", {}).get("kind") == "human":
             info["prompts"] += 1
+            info["recent"].append(human_prompt(rec))
         if rec.get("entrypoint") and not info["entrypoint"]:
             info["entrypoint"] = rec["entrypoint"]
         cwd = rec.get("cwd")
@@ -173,7 +193,15 @@ def summary_label(tail: str) -> str:
     return label if len(label) <= MAX_LABEL else ""
 
 
-def managed_body(meta: dict, prompt: str) -> str:
+def stale_handoff_notice(tail: str, recent: list[tuple[str, str]]) -> str:
+    """A line saying the session moved on after its handoff was written."""
+    m = re.search(r"Written by /my-park, (\d{4}-\d\d-\d\d \d\d:\d\d)", tail)
+    if m and recent and recent[-1][0] > m[1]:
+        return f"_This session continued after the handoff below ({m[1]}); see Recent prompts._\n\n"
+    return ""
+
+
+def managed_body(meta: dict, prompt: str, recent: list[tuple[str, str]]) -> str:
     folder = meta["folder"]
     quoted = "'" + folder.replace("'", "'\\''") + "'"
     parts = [
@@ -183,7 +211,13 @@ def managed_body(meta: dict, prompt: str) -> str:
         f"cd {quoted}; claude --resume {meta['session']}",
         "```\n",
     ]
-    if prompt:
+    if recent:
+        parts.append("## Recent prompts\n")
+        for stamp, text in recent[-RECENT_PROMPTS:]:
+            short = text if len(text) <= PROMPT_CHARS else text[:PROMPT_CHARS] + "…"
+            parts.append(f"- `{stamp}` {short}")
+        parts.append("")
+    elif prompt:
         parts.append("## Last prompt\n")
         parts.append("\n".join("> " + line for line in prompt.splitlines()) + "\n")
     return "\n".join(parts) + "\n"
@@ -223,7 +257,8 @@ def save(session: str, transcript: Path | None, hook_cwd: str, handoff: str | No
     if note and label and title != old_meta.get("title"):
         path = new_note_path(title, session)
         note.rename(path)
-    path.write_text(render_meta(meta, extra) + "\n" + managed_body(meta, info["prompt"]) + tail, encoding="utf-8")
+    body = managed_body(meta, info["prompt"], info["recent"]) + stale_handoff_notice(tail, info["recent"])
+    path.write_text(render_meta(meta, extra) + "\n" + body + tail, encoding="utf-8")
     return path
 
 
