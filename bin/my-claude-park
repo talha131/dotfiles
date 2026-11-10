@@ -32,6 +32,8 @@ VAULT_DIR = Path(os.environ.get("MY_CLAUDE_PARK_DIR")
 HANDOFF = "## Handoff"
 # Fields kept in the frontmatter, in this order.
 FIELDS = ("status", "done", "title", "folder", "session", "account", "ended")
+# A /my-park summary this short names the note; longer ones are prose.
+MAX_LABEL = 60
 
 
 def account_name() -> str:
@@ -164,6 +166,13 @@ def new_note_path(title: str, session: str) -> Path:
     return path
 
 
+def summary_label(tail: str) -> str:
+    """The user's own /my-park text, when it is short enough to name the note."""
+    m = re.search(r"^\*\*My summary:\*\*[ \t]*(.+)\n(?:\n|\Z)", tail, re.M)
+    label = m[1].strip().strip("\"'“”").strip() if m else ""
+    return label if len(label) <= MAX_LABEL else ""
+
+
 def managed_body(meta: dict, prompt: str) -> str:
     folder = meta["folder"]
     quoted = "'" + folder.replace("'", "'\\''") + "'"
@@ -191,7 +200,12 @@ def save(session: str, transcript: Path | None, hook_cwd: str, handoff: str | No
     if HANDOFF in old_body:
         tail = old_body[old_body.index(HANDOFF):]
 
-    title = info["title"] or old_meta.get("title") or info["prompt"][:60] or Path(folder).name
+    if handoff is not None:
+        stamp = f"{datetime.now():%Y-%m-%d %H:%M}"
+        tail = f"{HANDOFF}\n\n_Written by /my-park, {stamp}._\n\n{handoff.strip()}\n"
+
+    label = summary_label(tail)
+    title = label or info["title"] or old_meta.get("title") or info["prompt"][:60] or Path(folder).name
     meta = {
         "status": "parked",
         # A ticked checkbox survives later exits; only unticking reopens it.
@@ -202,12 +216,13 @@ def save(session: str, transcript: Path | None, hook_cwd: str, handoff: str | No
         "account": account_name(),
         "ended": f"{datetime.now():%Y-%m-%dT%H:%M}",
     }
-    if handoff is not None:
-        stamp = f"{datetime.now():%Y-%m-%d %H:%M}"
-        tail = f"{HANDOFF}\n\n_Written by /my-park, {stamp}._\n\n{handoff.strip()}\n"
 
     VAULT_DIR.mkdir(parents=True, exist_ok=True)
     path = note or new_note_path(title, session)
+    # Your label also names the file, which is what Obsidian's table shows.
+    if note and label and title != old_meta.get("title"):
+        path = new_note_path(title, session)
+        note.rename(path)
     path.write_text(render_meta(meta, extra) + "\n" + managed_body(meta, info["prompt"]) + tail, encoding="utf-8")
     return path
 
