@@ -62,6 +62,17 @@ fish_add_path ~/.antigravity/antigravity/bin
 # uv
 fish_add_path ~/.local/bin
 
+# Claude Code: let bypass mode (the `claude` abbr above adds
+# --dangerously-skip-permissions) really skip the "Dangerous rm operation not
+# ruled out" prompt. Claude still shows it in bypass mode whenever its parser
+# can't fully read a command, even one with no rm in it (e.g. zsh-only
+# `${(s/:/)PATH}` or `$(for ...)`), and auto-blocks after ~2 min, which stalls
+# unattended sessions. This variable is Claude's supported off switch for it
+# (checked in 2.1.323). Trade-off, accepted on purpose: a real `rm -rf` on an
+# unresolved target (say an empty "$VAR/") now runs without asking. Sessions
+# already running only see this after a restart from a fresh shell.
+set -gx CLAUDE_CODE_EVEN_MORE_DANGEROUSLY_SKIP_PERMISSIONS 1
+
 # Trust workspaces for Gemini CLI so headless dispatches (e.g. /octo:review)
 # don't bail with the trusted-folders prompt. Required for the Octopus
 # multi-LLM review fleet to actually use Gemini instead of falling back.
