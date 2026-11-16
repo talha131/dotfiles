@@ -15,6 +15,7 @@ function ssgc -d 'Download and backup SSGC bills'
 
     set temp (mktemp -d)
     set -l keep_files
+    set -l failed
     pushd $temp
 
     for line in (cat $config_file)
@@ -36,7 +37,8 @@ function ssgc -d 'Download and backup SSGC bills'
         set pdf_url (http --ignore-stdin --form POST "https://viewbill.ssgc.com.pk/web/" b=$account g-recaptcha-response="any_random_text" | rg -o 'gasbill[0-9_]+\.pdf' | head -1 | sed 's|^|https://viewbill.ssgc.com.pk/web/billpdfs/|')
 
         if test -z "$pdf_url"
-            echo "⚠️  Could not get PDF for account: $account (no PDF URL found in response)"
+            echo "❌ Could not get PDF for account: $account (no PDF URL found in response)"
+            set -a failed $account
             continue
         end
 
@@ -44,15 +46,23 @@ function ssgc -d 'Download and backup SSGC bills'
 
         # Download
         echo "📥 Downloading $filename"
-        http --ignore-stdin -d -o "$filename" "$pdf_url"
+        if not http --ignore-stdin --check-status -d -o "$filename" "$pdf_url"
+            echo "❌ Download failed for account: $account"
+            set -a failed $account
+            continue
+        end
+
+        # Track files to keep (the local copy is useful even if upload fails)
+        if test "$keep_flag" = "keep"
+            set -a keep_files $filename
+        end
 
         # Upload to pCloud
         echo "📤 Uploading to pcloud:$destination"
-        rclone -v copy "$filename" "pcloud:$destination"
-
-        # Track files to keep
-        if test "$keep_flag" = "keep"
-            set -a keep_files $filename
+        if not rclone -v copy "$filename" "pcloud:$destination"
+            echo "❌ Upload to pCloud FAILED for account: $account"
+            set -a failed $account
+            continue
         end
 
         echo "✅ Done: $filename"
@@ -72,4 +82,12 @@ function ssgc -d 'Download and backup SSGC bills'
     end
 
     trash $temp
+
+    if test (count $failed) -gt 0
+        echo
+        echo "❌ $(count $failed) bill(s) FAILED — not on pCloud: $failed"
+        return 1
+    end
+    echo
+    echo "✅ All bills downloaded and uploaded to pCloud"
 end
