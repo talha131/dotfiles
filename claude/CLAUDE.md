@@ -17,10 +17,13 @@ dirs. `~/.claude/skills/` is avoided on purpose, because skill sync manages it.
 - `my-park.md` — `/my-park` writes a handoff into this session's Obsidian note via
   `bin/my-claude-park handoff`, ahead of exiting and resuming later with `cr`.
 
-## Session parking hook
+## Optional session parking hook
 
-`settings.json` is not tracked (it holds per-account state), so the SessionEnd
-hook that records sessions is added by hand to each account's settings:
+Off by default. Sessions get a `cr` note only through `/my-park`. The
+`SessionEnd` hook below parks **every** interactive session on exit instead,
+which floods `cr` (see `bin/README.md`). `settings.json` is not tracked (it
+holds per-account state), so to turn it on, add this by hand to each
+account's settings under `"hooks"`:
 
 ```json
 "SessionEnd": [

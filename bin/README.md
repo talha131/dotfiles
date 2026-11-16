@@ -218,28 +218,25 @@ my-claude-backup --keep 60
 ## my-claude-park
 
 Records Claude Code sessions as Obsidian notes so tabs and workspaces can be
-closed freely and any session picked up again. Notes land in
+closed freely and the sessions worth keeping picked up again. Notes land in
 `~/Developer/My Second Brain/00 Inbox/Claude Sessions/`, one per session.
 
 The loop:
 
-1. **Exit** a session as usual. A `SessionEnd` hook (`my-claude-park hook`,
-   registered in each account's `settings.json`, see `claude/CLAUDE.md`) writes
-   or updates that session's note: status `parked`, Claude's own title, the
-   folder it was launched in, session id, account, and your last five prompts.
-   Notes only change on exit, so a session still open shows as `resumed` with
-   its previous `ended` time.
-2. Optionally run **`/my-park`** first. Claude writes a handoff (goal, done,
-   next, open questions, key files) into the note's `## Handoff` section, which
-   later exits keep. Text after the command, e.g. `/my-park waiting on the
-   client's reply`, leads the handoff verbatim as **My summary**. Up to 60
-   characters, it also becomes the note's title and file name, in place of
-   Claude's own title. The handoff is only rewritten by `/my-park`: if you
-   resume and carry on, the note says it is older than the latest work.
-3. **`cr`** (fish) lists parked sessions in fzf, newest first, with the note as
+1. **`/my-park`** before exiting a session you want to come back to. Claude
+   writes a handoff (goal, done, next, open questions, key files) into the
+   note's `## Handoff` section, along with status `parked`, Claude's own title,
+   the folder it was launched in, session id, account, and your last five
+   prompts. Text after the command, e.g. `/my-park waiting on the client's
+   reply`, leads the handoff verbatim as **My summary**. Up to 60 characters,
+   it also becomes the note's title and file name, in place of Claude's own
+   title. Sessions you exit without `/my-park` get no note.
+2. **`cr`** (fish) lists parked sessions in fzf, newest first, with the note as
    preview. Enter moves into the folder, names the cmux tab, marks the note
    `resumed` and runs `claude --resume`. ctrl-d ticks the session's `done` box instead.
    `cr jump` pre-fills the search.
+3. A resumed session **leaves `cr`** until you run `/my-park` in it again,
+   which rewrites the handoff and sets it back to `parked`.
 
 ```fish
 cr                                  # pick and resume
@@ -247,17 +244,27 @@ my-claude-park list                 # parked sessions, tab-separated
 my-claude-park mark <id> done       # tick done without opening it
 ```
 
-- Only interactive sessions are recorded: `claude -p` runs (`entrypoint`
-  `sdk-cli`) and sessions closed before any prompt are skipped.
 - The resume folder is the one whose encoded name matches the transcript's
-  project dir, not the hook's `cwd`, which drifts when Claude `cd`s; resuming
+  project dir, not the shell's `cwd`, which drifts when Claude `cd`s; resuming
   from any other folder would not find the session.
-- Everything above `## Handoff` is regenerated on each exit, so edit freely
-  below it, and add your own properties: they are kept.
+- Everything above `## Handoff` is regenerated on each `/my-park`, so edit
+  freely below it, and add your own properties: they are kept.
 - **Finishing a session** means ticking its `done` checkbox, which drops it
-  from `cr`; exits leave a ticked box alone, so only unticking reopens it.
+  from `cr`; later parks leave a ticked box alone, so only unticking reopens it.
   The vault's `00 Inbox/Claude Sessions.base` shows every session as a table
   (views Open, Done, All, newest first) with that checkbox clickable. It lives
   in the vault, not this repo, along with the `done` (checkbox) and `ended`
   (date & time) types in `.obsidian/types.json`.
 - `MY_CLAUDE_PARK_DIR` overrides the notes folder (used for testing).
+
+### Optional: park every session on exit
+
+`my-claude-park hook` is a `SessionEnd` hook that writes or refreshes the note
+on **every** interactive exit, `/my-park` or not, and refreshes a resumed
+session's note on its next exit. It was on until 2026-11-16 and is now off: it
+filled `cr` with sessions nobody meant to come back to. To turn it back on, add
+it to each account's `settings.json` (see `claude/CLAUDE.md`).
+
+With it on, `claude -p` runs (`entrypoint` `sdk-cli`) and sessions closed
+before any prompt are still skipped, and a note whose handoff predates later
+prompts says so.

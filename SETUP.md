@@ -81,8 +81,8 @@ for d in ~/.claude ~/.config/claude/*/
 end
 ```
 
-Each account's `settings.json` also needs the `SessionEnd` hook for
-`my-claude-park`. See [`claude/CLAUDE.md`](claude/CLAUDE.md).
+An optional `SessionEnd` hook parks every session on exit. It is off by
+default. See [`claude/CLAUDE.md`](claude/CLAUDE.md).
 
 ## bin → on `$PATH` (no symlink)
 
