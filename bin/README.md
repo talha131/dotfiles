@@ -268,3 +268,43 @@ it to each account's `settings.json` (see `claude/CLAUDE.md`).
 With it on, `claude -p` runs (`entrypoint` `sdk-cli`) and sessions closed
 before any prompt are still skipped, and a note whose handoff predates later
 prompts says so.
+
+---
+
+## my-pcloud-upload
+
+Uploads files to the pCloud **Public Folder** and prints a direct
+(hotlinkable) `filedn.com` URL for each. Built to be called by other scripts
+and Claude sessions, e.g. to replace large media in notes with links.
+
+### Usage
+
+```
+my-pcloud-upload [--per-folder N] <file> [<file> ...]
+```
+
+- **stdout:** one `<local path>\t<url>` line per file, in input order —
+  only for files that are uploaded **and** verified (a HEAD request to the
+  public URL must return the local file's size).
+- **stderr:** progress, plus `FAILED\t<local path>\t<reason>` per failure.
+- **Exit status:** `0` only if every file succeeded, else `1`.
+
+```fish
+my-pcloud-upload clip.mp4 diagram.png
+my-pcloud-upload ~/Pictures/trip/*.jpg > links.tsv
+```
+
+### Behaviour
+
+- **Copies, never moves.** Delete local files yourself once the links are in
+  place.
+- **Folders:** files land in `Public Folder/share-NNN/`. When the newest
+  folder holds `--per-folder` files (default 200), the next one is started.
+  Counts are read from pCloud on each run, so there is no local state.
+- **Names:** `<slug>-<sha256[:8]>.<ext>` (e.g. `My Trip (1).MP4` →
+  `my-trip-1-a3f9c2d1.mp4`). The same content always maps to the same name,
+  so re-running after a partial failure skips what's already there and
+  returns the same URLs.
+- **Bulk:** all files go up in one `rclone copy` (4 parallel transfers).
+  Concurrent runs may push a folder slightly past the limit; harmless.
+- Requires `rclone` with a `pcloud:` remote.

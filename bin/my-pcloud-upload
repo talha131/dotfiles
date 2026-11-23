@@ -1,0 +1,207 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.9"
+# dependencies = []
+# ///
+"""
+Upload files to the pCloud Public Folder and print direct (hotlinkable) URLs.
+
+Usage:
+    my-pcloud-upload [--per-folder N] <file> [<file> ...]
+
+Output (stdout), one line per successfully uploaded file, in input order:
+    <local path>\t<direct URL>
+
+Failures go to stderr as `FAILED\t<local path>\t<reason>` and produce no stdout
+line. Exit status is 0 only if every file was uploaded AND verified; otherwise 1.
+
+Files land in `Public Folder/share-NNN/`. When the newest folder holds
+--per-folder files (default 200), a new one is started. Remote names are
+`<slug>-<hash8>.<ext>`, so re-uploading the same content is a no-op that
+returns the same URL — reruns after a partial failure are cheap.
+
+Copies, never moves: local files are left untouched. Requires `rclone` with a
+`pcloud:` remote.
+"""
+
+import argparse
+import hashlib
+import json
+import re
+import subprocess
+import sys
+import tempfile
+import time
+import unicodedata
+import urllib.parse
+import urllib.request
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+
+REMOTE_ROOT = "pcloud:Public Folder"
+PUBLIC_BASE = "https://filedn.com/laUTmcj57lPkQfIaVW9b29L"
+FOLDER_PREFIX = "share-"
+FOLDER_RE = re.compile(rf"^{FOLDER_PREFIX}(\d+)$")
+
+
+def log(msg):
+    print(msg, file=sys.stderr, flush=True)
+
+
+def fail(path, reason):
+    print(f"FAILED\t{path}\t{reason}", file=sys.stderr, flush=True)
+
+
+def slugify(text, max_len=60):
+    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
+    text = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+    return text[:max_len].rstrip("-")
+
+
+def short_hash(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()[:8]
+
+
+def remote_name(path):
+    stem = slugify(path.stem) or "file"
+    ext = slugify(path.suffix)
+    name = f"{stem}-{short_hash(path)}"
+    return f"{name}.{ext}" if ext else name
+
+
+def folder_name(n):
+    return f"{FOLDER_PREFIX}{n:03d}"
+
+
+def public_url(folder, name):
+    return f"{PUBLIC_BASE}/{urllib.parse.quote(folder)}/{urllib.parse.quote(name)}"
+
+
+def list_remote():
+    """Return {folder_number: {name: size}} for every share-NNN folder."""
+    res = subprocess.run(
+        ["rclone", "lsjson", "-R", "--files-only", "--no-mimetype", "--no-modtime",
+         "--include", f"/{FOLDER_PREFIX}*/**", REMOTE_ROOT],
+        capture_output=True, text=True,
+    )
+    if res.returncode != 0:
+        raise RuntimeError(f"rclone lsjson failed: {res.stderr.strip()}")
+    folders = {}
+    for entry in json.loads(res.stdout or "[]"):
+        parts = entry["Path"].split("/")
+        m = FOLDER_RE.match(parts[0])
+        if m and len(parts) == 2:
+            folders.setdefault(int(m.group(1)), {})[parts[1]] = entry["Size"]
+    return folders
+
+
+def verify(url, size, attempts=4):
+    """HEAD the public URL until it serves `size` bytes, or give up."""
+    last = "no response"
+    for i in range(attempts):
+        if i:
+            time.sleep(2 * i)
+        try:
+            req = urllib.request.Request(url, method="HEAD")
+            with urllib.request.urlopen(req, timeout=30) as r:
+                served = r.headers.get("Content-Length")
+                if r.status == 200 and served is not None and int(served) == size:
+                    return None
+                last = f"HTTP {r.status}, Content-Length {served}, expected {size}"
+        except Exception as e:  # network errors, 404, etc.
+            last = str(e)
+    return f"public URL not serving the file ({last})"
+
+
+def main():
+    ap = argparse.ArgumentParser(
+        description="Upload files to pCloud Public Folder and print direct URLs.",
+    )
+    ap.add_argument("files", nargs="+", type=Path)
+    ap.add_argument("--per-folder", type=int, default=200, metavar="N",
+                    help="max files per share-NNN folder (default: 200)")
+    args = ap.parse_args()
+
+    failed = False
+    jobs = []  # (local path, size, remote name), in input order
+    for p in args.files:
+        if not p.is_file():
+            fail(p, "not a regular file")
+            failed = True
+            continue
+        try:
+            jobs.append((p, p.stat().st_size, remote_name(p)))
+        except OSError as e:
+            fail(p, f"cannot read: {e}")
+            failed = True
+
+    if not jobs:
+        return 1
+
+    try:
+        folders = list_remote()
+    except RuntimeError as e:
+        for p, _, _ in jobs:
+            fail(p, str(e))
+        return 1
+
+    # Content already on pCloud (same name = same hash) is reused, not re-sent.
+    existing = {name: n for n, files in folders.items() for name in files}
+
+    # Assign new files to folders, rolling over at --per-folder.
+    current = max(folders, default=1)
+    count = len(folders.get(current, {}))
+    placement = {}  # remote name -> folder number
+    for _, _, name in jobs:
+        if name in placement:
+            continue
+        if name in existing:
+            placement[name] = existing[name]
+            continue
+        if count >= args.per_folder:
+            current += 1
+            count = 0
+        placement[name] = current
+        count += 1
+
+    # Stage symlinks laid out exactly as they should appear remotely, then
+    # upload everything in one rclone run (parallel transfers, one auth).
+    with tempfile.TemporaryDirectory() as stage:
+        for p, _, name in jobs:
+            dest = Path(stage) / folder_name(placement[name]) / name
+            dest.parent.mkdir(exist_ok=True)
+            if not dest.exists():
+                dest.symlink_to(p.resolve())
+
+        new = sum(1 for name in placement if name not in existing)
+        log(f"Uploading {new} new file(s) to {REMOTE_ROOT} "
+            f"({len(placement) - new} already there) ...")
+        res = subprocess.run(
+            ["rclone", "copy", "--copy-links", "--transfers", "4",
+             "--stats", "15s", "--stats-one-line", "-v", stage, REMOTE_ROOT],
+        )
+        if res.returncode != 0:
+            log(f"rclone copy exited {res.returncode}; verifying each file")
+
+    # The public URL is the source of truth: a file only counts as uploaded
+    # when filedn serves it at the expected size.
+    urls = [public_url(folder_name(placement[name]), name) for _, _, name in jobs]
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        errors = list(pool.map(verify, urls, [size for _, size, _ in jobs]))
+
+    for (p, _, _), url, err in zip(jobs, urls, errors):
+        if err:
+            fail(p, err)
+            failed = True
+        else:
+            print(f"{p}\t{url}", flush=True)
+
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
