@@ -16,6 +16,8 @@ function ssgc -d 'Download and backup SSGC bills'
     set temp (mktemp -d)
     set -l keep_files
     set -l failed
+    set -l skipped
+    set -l uploaded
     pushd $temp
 
     for line in (cat $config_file)
@@ -44,6 +46,27 @@ function ssgc -d 'Download and backup SSGC bills'
 
         set filename (basename $pdf_url)
 
+        # Skip bills already on pCloud. The trailing timestamp in the filename
+        # changes on every request, so match on account + bill month only.
+        set month (string split _ $filename)[3]
+        set listing (rclone lsf "pcloud:$destination" 2>&1)
+        if test $status -ne 0
+            echo "⚠️  Could not check pCloud for $account ($listing[-1]); downloading anyway"
+            set listing
+        end
+        set existing (string match -- gasbill_$account"_"$month"_*.pdf" $listing)
+        if test (count $existing) -gt 0
+            echo "⏭️  No new bill for $account: $month is already on pCloud ($existing[-1])"
+            set -l answer n
+            if isatty stdin
+                read -P "   Re-download and upload anyway? [y/N] " answer
+            end
+            if not string match -qi 'y*' -- $answer
+                set -a skipped $account
+                continue
+            end
+        end
+
         # Download
         echo "📥 Downloading $filename"
         if not http --ignore-stdin --check-status -d -o "$filename" "$pdf_url"
@@ -66,6 +89,7 @@ function ssgc -d 'Download and backup SSGC bills'
         end
 
         echo "✅ Done: $filename"
+        set -a uploaded $account
     end
 
     # Copy kept files to Downloads
@@ -83,11 +107,17 @@ function ssgc -d 'Download and backup SSGC bills'
 
     trash $temp
 
+    echo
+    if test (count $skipped) -gt 0
+        echo "⏭️  $(count $skipped) bill(s) skipped — no new bill on SSGC yet: $skipped"
+    end
     if test (count $failed) -gt 0
-        echo
         echo "❌ $(count $failed) bill(s) FAILED — not on pCloud: $failed"
         return 1
     end
-    echo
-    echo "✅ All bills downloaded and uploaded to pCloud"
+    if test (count $uploaded) -gt 0
+        echo "✅ $(count $uploaded) bill(s) downloaded and uploaded to pCloud"
+    else
+        echo "✅ Nothing new to upload"
+    end
 end
