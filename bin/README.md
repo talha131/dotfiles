@@ -301,8 +301,10 @@ my-pcloud-upload ~/Pictures/trip/*.jpg > links.tsv
 - **Folders:** files land in `Public Folder/share-NNN/`. When the newest
   folder holds `--per-folder` files (default 200), the next one is started.
   Counts are read from pCloud on each run, so there is no local state.
-- **Names:** `<slug>-<sha256[:8]>.<ext>` (e.g. `My Trip (1).MP4` →
-  `my-trip-1-a3f9c2d1.mp4`). The same content always maps to the same name,
+- **Names:** `<original stem>-<sha256[:8]><ext>`, case and characters kept
+  (e.g. `Talk [dQw4w9WgXcQ].MP4` → `Talk [dQw4w9WgXcQ]-a3f9c2d1.MP4`, served
+  as `Talk%20%5BdQw4w9WgXcQ%5D-a3f9c2d1.MP4`). The hash keeps same-named
+  files from overwriting each other. The same content always maps to the same name,
   so re-running after a partial failure skips what's already there and
   returns the same URLs.
 - **Bulk:** all files go up in one `rclone copy` (4 parallel transfers).
