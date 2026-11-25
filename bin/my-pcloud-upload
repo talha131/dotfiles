@@ -16,7 +16,8 @@ Failures go to stderr as `FAILED\t<local path>\t<reason>` and produce no stdout
 line. Exit status is 0 only if every file was uploaded AND verified; otherwise 1.
 
 Files land in `Public Folder/share-NNN/`. When the newest folder holds
---per-folder files (default 200), a new one is started. Remote names are
+--per-folder files (default 200), a new one is started. Each folder gets an
+empty index.html so filedn serves a 404 instead of a file listing. Remote names are
 `<original stem>-<hash8><ext>`, percent-encoded in the URL, so re-uploading
 the same content is a no-op that returns the same URL — reruns after a partial
 failure are cheap.
@@ -43,6 +44,8 @@ REMOTE_ROOT = "pcloud:Public Folder"
 PUBLIC_BASE = "https://filedn.com/laUTmcj57lPkQfIaVW9b29L"
 FOLDER_PREFIX = "share-"
 FOLDER_RE = re.compile(rf"^{FOLDER_PREFIX}(\d+)$")
+# An empty index.html stops filedn from listing a folder's contents.
+INDEX = "index.html"
 
 
 def log(msg):
@@ -152,7 +155,7 @@ def main():
 
     # Assign new files to folders, rolling over at --per-folder.
     current = max(folders, default=1)
-    count = len(folders.get(current, {}))
+    count = len(folders.get(current, {}).keys() - {INDEX})
     placement = {}  # remote name -> folder number
     for _, _, name in jobs:
         if name in placement:
@@ -174,6 +177,9 @@ def main():
             dest.parent.mkdir(exist_ok=True)
             if not dest.exists():
                 dest.symlink_to(p.resolve())
+        for n in set(placement.values()):
+            if INDEX not in folders.get(n, {}):
+                (Path(stage) / folder_name(n) / INDEX).touch()
 
         new = sum(1 for name in placement if name not in existing)
         log(f"Uploading {new} new file(s) to {REMOTE_ROOT} "

@@ -301,6 +301,8 @@ my-pcloud-upload ~/Pictures/trip/*.jpg > links.tsv
 - **Folders:** files land in `Public Folder/share-NNN/`. When the newest
   folder holds `--per-folder` files (default 200), the next one is started.
   Counts are read from pCloud on each run, so there is no local state.
+- **No listings:** every folder it uploads into gets an empty `index.html`
+  (if missing), so the folder URL returns 404 instead of listing its files.
 - **Names:** `<original stem>-<sha256[:8]><ext>`, case and characters kept
   (e.g. `Talk [dQw4w9WgXcQ].MP4` → `Talk [dQw4w9WgXcQ]-a3f9c2d1.MP4`, served
   as `Talk%20%5BdQw4w9WgXcQ%5D-a3f9c2d1.MP4`). The hash keeps same-named
