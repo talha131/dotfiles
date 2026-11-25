@@ -13,6 +13,28 @@ function ssgc -d 'Download and backup SSGC bills'
         return 1
     end
 
+    # Decide once what to do with bills already on pCloud: y (re-download
+    # all), n (skip all), or ask (prompt per bill). Non-interactive runs skip.
+    set -l redownload n
+    if isatty stdin
+        while true
+            read -l -P "Download again if already on pCloud? [y/n/ask] (ask) " answer
+            or return 1 # Ctrl-C / Ctrl-D cancels the run
+            switch (string lower -- (string trim -- "$answer"))
+                case y yes
+                    set redownload y
+                case n no
+                    set redownload n
+                case '' a ask
+                    set redownload ask
+                case '*'
+                    echo "   Please answer y, n, or ask"
+                    continue
+            end
+            break
+        end
+    end
+
     set temp (mktemp -d)
     set -l keep_files
     set -l failed
@@ -56,15 +78,17 @@ function ssgc -d 'Download and backup SSGC bills'
         end
         set existing (string match -- gasbill_$account"_"$month"_*.pdf" $listing)
         if test (count $existing) -gt 0
-            echo "⏭️  No new bill for $account: $month is already on pCloud ($existing[-1])"
-            set -l answer n
-            if isatty stdin
+            echo "ℹ️  No new bill for $account: $month is already on pCloud ($existing[-1])"
+            set -l answer $redownload
+            if test $answer = ask
                 read -P "   Re-download and upload anyway? [y/N] " answer
             end
             if not string match -qi 'y*' -- $answer
+                echo "⏭️  Skipped $account"
                 set -a skipped $account
                 continue
             end
+            echo "🔁 Re-downloading $account"
         end
 
         # Download
