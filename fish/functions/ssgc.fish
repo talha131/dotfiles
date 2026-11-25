@@ -13,26 +13,22 @@ function ssgc -d 'Download and backup SSGC bills'
         return 1
     end
 
-    # Decide once what to do with bills already on pCloud: y (re-download
-    # all), n (skip all), or ask (prompt per bill). Non-interactive runs skip.
+    # Decide once what to do with bills already on pCloud: re-download all,
+    # skip all, or ask per bill. Non-interactive runs skip.
     set -l redownload n
     if isatty stdin
-        echo "Some bills may already be on pCloud. For those:"
-        echo "  y    re-download and upload all of them again"
-        echo "  n    skip all of them"
-        echo "  ask  ask for each bill (default)"
         while true
-            read -l -P "Download again if already on pCloud? [y/n/ask] (ask) " answer
+            read -l -P "Bills already on pCloud: [r]e-download all / [s]kip all / [a]sk each? (a) " answer
             or return 1 # Ctrl-C / Ctrl-D cancels the run
             switch (string lower -- (string trim -- "$answer"))
-                case y yes
+                case r re-download redownload
                     set redownload y
-                case n no
+                case s skip
                     set redownload n
                 case '' a ask
                     set redownload ask
                 case '*'
-                    echo "   Please answer y, n, or ask"
+                    echo "   Please answer r, s, or a"
                     continue
             end
             break
